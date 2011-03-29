@@ -11,11 +11,12 @@
 		9DAEA5C01341CCE80065D815 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5BF1341CCE80065D815 /* Foundation.framework */; };
 		9DAEA5C21341CCE80065D815 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5C11341CCE80065D815 /* CoreGraphics.framework */; };
 		9DAEA5C41341CCE80065D815 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5C31341CCE80065D815 /* CoreData.framework */; };
-		9DAEA5CA1341CCE80065D815 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5C81341CCE80065D815 /* InfoPlist.strings */; };
 		9DAEA5CD1341CCE80065D815 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA5CC1341CCE80065D815 /* main.m */; };
 		9DAEA5D01341CCE80065D815 /* EstateConsultantAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA5CF1341CCE80065D815 /* EstateConsultantAppDelegate.m */; };
-		9DAEA5D31341CCE80065D815 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5D11341CCE80065D815 /* MainWindow.xib */; };
-		9DAEA5D61341CCE80065D815 /* EstateConsultant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA5D41341CCE80065D815 /* EstateConsultant.xcdatamodeld */; };
+		9DAEA5EE1341CDD20065D815 /* Clients.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5E31341CDD20065D815 /* Clients.plist */; };
+		9DAEA5F01341CDD20065D815 /* EstateConsultant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA5E71341CDD20065D815 /* EstateConsultant.xcdatamodeld */; };
+		9DAEA5F11341CDD20065D815 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5E91341CDD20065D815 /* InfoPlist.strings */; };
+		9DAEA5F21341CDD20065D815 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5EB1341CDD20065D815 /* MainWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,14 +25,15 @@
 		9DAEA5BF1341CCE80065D815 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9DAEA5C11341CCE80065D815 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9DAEA5C31341CCE80065D815 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		9DAEA5C71341CCE80065D815 /* EstateConsultant-Info.plist */ = {isa = PBXFileReference; path = "EstateConsultant-Info.plist"; sourceTree = "<group>"; };
-		9DAEA5C91341CCE80065D815 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9DAEA5CB1341CCE80065D815 /* EstateConsultant-Prefix.pch */ = {isa = PBXFileReference; path = "EstateConsultant-Prefix.pch"; sourceTree = "<group>"; };
+		9DAEA5C71341CCE80065D815 /* EstateConsultant-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EstateConsultant-Info.plist"; sourceTree = "<group>"; };
+		9DAEA5CB1341CCE80065D815 /* EstateConsultant-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EstateConsultant-Prefix.pch"; sourceTree = "<group>"; };
 		9DAEA5CC1341CCE80065D815 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9DAEA5CE1341CCE80065D815 /* EstateConsultantAppDelegate.h */ = {isa = PBXFileReference; path = EstateConsultantAppDelegate.h; sourceTree = "<group>"; };
+		9DAEA5CE1341CCE80065D815 /* EstateConsultantAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EstateConsultantAppDelegate.h; sourceTree = "<group>"; };
 		9DAEA5CF1341CCE80065D815 /* EstateConsultantAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EstateConsultantAppDelegate.m; sourceTree = "<group>"; };
-		9DAEA5D21341CCE80065D815 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		9DAEA5D51341CCE80065D815 /* EstateConsultant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EstateConsultant.xcdatamodel; sourceTree = "<group>"; };
+		9DAEA5E31341CDD20065D815 /* Clients.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Clients.plist; sourceTree = "<group>"; };
+		9DAEA5E81341CDD20065D815 /* PropertyConsultant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PropertyConsultant.xcdatamodel; sourceTree = "<group>"; };
+		9DAEA5EA1341CDD20065D815 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DAEA5EC1341CDD20065D815 /* zh */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh; path = zh.lproj/MainWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,24 +82,73 @@
 		9DAEA5C51341CCE80065D815 /* EstateConsultant */ = {
 			isa = PBXGroup;
 			children = (
+				9DAEA5DE1341CDD20065D815 /* Controllers */,
+				9DAEA5DF1341CDD20065D815 /* DataProviders */,
+				9DAEA5E01341CDD20065D815 /* Models */,
+				9DAEA5E11341CDD20065D815 /* Resources */,
+				9DAEA5ED1341CDD20065D815 /* Views */,
+				9DAEA5C71341CCE80065D815 /* EstateConsultant-Info.plist */,
+				9DAEA5CB1341CCE80065D815 /* EstateConsultant-Prefix.pch */,
+				9DAEA5CC1341CCE80065D815 /* main.m */,
 				9DAEA5CE1341CCE80065D815 /* EstateConsultantAppDelegate.h */,
 				9DAEA5CF1341CCE80065D815 /* EstateConsultantAppDelegate.m */,
-				9DAEA5D11341CCE80065D815 /* MainWindow.xib */,
-				9DAEA5D41341CCE80065D815 /* EstateConsultant.xcdatamodeld */,
-				9DAEA5C61341CCE80065D815 /* Supporting Files */,
 			);
 			path = EstateConsultant;
 			sourceTree = "<group>";
 		};
-		9DAEA5C61341CCE80065D815 /* Supporting Files */ = {
+		9DAEA5DE1341CDD20065D815 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9DAEA5C71341CCE80065D815 /* EstateConsultant-Info.plist */,
-				9DAEA5C81341CCE80065D815 /* InfoPlist.strings */,
-				9DAEA5CB1341CCE80065D815 /* EstateConsultant-Prefix.pch */,
-				9DAEA5CC1341CCE80065D815 /* main.m */,
 			);
-			name = "Supporting Files";
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9DAEA5DF1341CDD20065D815 /* DataProviders */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataProviders;
+			sourceTree = "<group>";
+		};
+		9DAEA5E01341CDD20065D815 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9DAEA5E11341CDD20065D815 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9DAEA5E21341CDD20065D815 /* DemoData */,
+				9DAEA5E61341CDD20065D815 /* Images */,
+				9DAEA5E71341CDD20065D815 /* EstateConsultant.xcdatamodeld */,
+				9DAEA5E91341CDD20065D815 /* InfoPlist.strings */,
+				9DAEA5EB1341CDD20065D815 /* MainWindow.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9DAEA5E21341CDD20065D815 /* DemoData */ = {
+			isa = PBXGroup;
+			children = (
+				9DAEA5E31341CDD20065D815 /* Clients.plist */,
+			);
+			path = DemoData;
+			sourceTree = "<group>";
+		};
+		9DAEA5E61341CDD20065D815 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		9DAEA5ED1341CDD20065D815 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +185,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				zh,
 			);
 			mainGroup = 9DAEA5AE1341CCE80065D815;
 			productRefGroup = 9DAEA5BA1341CCE80065D815 /* Products */;
@@ -150,8 +202,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DAEA5CA1341CCE80065D815 /* InfoPlist.strings in Resources */,
-				9DAEA5D31341CCE80065D815 /* MainWindow.xib in Resources */,
+				9DAEA5EE1341CDD20065D815 /* Clients.plist in Resources */,
+				9DAEA5F11341CDD20065D815 /* InfoPlist.strings in Resources */,
+				9DAEA5F21341CDD20065D815 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,25 +217,25 @@
 			files = (
 				9DAEA5CD1341CCE80065D815 /* main.m in Sources */,
 				9DAEA5D01341CCE80065D815 /* EstateConsultantAppDelegate.m in Sources */,
-				9DAEA5D61341CCE80065D815 /* EstateConsultant.xcdatamodeld in Sources */,
+				9DAEA5F01341CDD20065D815 /* EstateConsultant.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9DAEA5C81341CCE80065D815 /* InfoPlist.strings */ = {
+		9DAEA5E91341CDD20065D815 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9DAEA5C91341CCE80065D815 /* en */,
+				9DAEA5EA1341CDD20065D815 /* zh */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		9DAEA5D11341CCE80065D815 /* MainWindow.xib */ = {
+		9DAEA5EB1341CDD20065D815 /* MainWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9DAEA5D21341CCE80065D815 /* en */,
+				9DAEA5EC1341CDD20065D815 /* zh */,
 			);
 			name = MainWindow.xib;
 			sourceTree = "<group>";
@@ -275,13 +328,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9DAEA5D41341CCE80065D815 /* EstateConsultant.xcdatamodeld */ = {
+		9DAEA5E71341CDD20065D815 /* EstateConsultant.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9DAEA5D51341CCE80065D815 /* EstateConsultant.xcdatamodel */,
+				9DAEA5E81341CDD20065D815 /* PropertyConsultant.xcdatamodel */,
 			);
-			currentVersion = 9DAEA5D51341CCE80065D815 /* EstateConsultant.xcdatamodel */;
-			path = EstateConsultant.xcdatamodeld;
+			currentVersion = 9DAEA5E81341CDD20065D815 /* PropertyConsultant.xcdatamodel */;
+			name = EstateConsultant.xcdatamodeld;
+			path = PropertyConsultant.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
