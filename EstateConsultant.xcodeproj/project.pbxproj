@@ -1,0 +1,291 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9DAEA5BE1341CCE80065D815 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5BD1341CCE80065D815 /* UIKit.framework */; };
+		9DAEA5C01341CCE80065D815 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5BF1341CCE80065D815 /* Foundation.framework */; };
+		9DAEA5C21341CCE80065D815 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5C11341CCE80065D815 /* CoreGraphics.framework */; };
+		9DAEA5C41341CCE80065D815 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5C31341CCE80065D815 /* CoreData.framework */; };
+		9DAEA5CA1341CCE80065D815 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5C81341CCE80065D815 /* InfoPlist.strings */; };
+		9DAEA5CD1341CCE80065D815 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA5CC1341CCE80065D815 /* main.m */; };
+		9DAEA5D01341CCE80065D815 /* EstateConsultantAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA5CF1341CCE80065D815 /* EstateConsultantAppDelegate.m */; };
+		9DAEA5D31341CCE80065D815 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5D11341CCE80065D815 /* MainWindow.xib */; };
+		9DAEA5D61341CCE80065D815 /* EstateConsultant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA5D41341CCE80065D815 /* EstateConsultant.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9DAEA5B91341CCE80065D815 /* EstateConsultant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EstateConsultant.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DAEA5BD1341CCE80065D815 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9DAEA5BF1341CCE80065D815 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9DAEA5C11341CCE80065D815 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9DAEA5C31341CCE80065D815 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9DAEA5C71341CCE80065D815 /* EstateConsultant-Info.plist */ = {isa = PBXFileReference; path = "EstateConsultant-Info.plist"; sourceTree = "<group>"; };
+		9DAEA5C91341CCE80065D815 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DAEA5CB1341CCE80065D815 /* EstateConsultant-Prefix.pch */ = {isa = PBXFileReference; path = "EstateConsultant-Prefix.pch"; sourceTree = "<group>"; };
+		9DAEA5CC1341CCE80065D815 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9DAEA5CE1341CCE80065D815 /* EstateConsultantAppDelegate.h */ = {isa = PBXFileReference; path = EstateConsultantAppDelegate.h; sourceTree = "<group>"; };
+		9DAEA5CF1341CCE80065D815 /* EstateConsultantAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EstateConsultantAppDelegate.m; sourceTree = "<group>"; };
+		9DAEA5D21341CCE80065D815 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		9DAEA5D51341CCE80065D815 /* EstateConsultant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EstateConsultant.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DAEA5B61341CCE80065D815 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DAEA5BE1341CCE80065D815 /* UIKit.framework in Frameworks */,
+				9DAEA5C01341CCE80065D815 /* Foundation.framework in Frameworks */,
+				9DAEA5C21341CCE80065D815 /* CoreGraphics.framework in Frameworks */,
+				9DAEA5C41341CCE80065D815 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DAEA5AE1341CCE80065D815 = {
+			isa = PBXGroup;
+			children = (
+				9DAEA5C51341CCE80065D815 /* EstateConsultant */,
+				9DAEA5BC1341CCE80065D815 /* Frameworks */,
+				9DAEA5BA1341CCE80065D815 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DAEA5BA1341CCE80065D815 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DAEA5B91341CCE80065D815 /* EstateConsultant.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DAEA5BC1341CCE80065D815 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9DAEA5BD1341CCE80065D815 /* UIKit.framework */,
+				9DAEA5BF1341CCE80065D815 /* Foundation.framework */,
+				9DAEA5C11341CCE80065D815 /* CoreGraphics.framework */,
+				9DAEA5C31341CCE80065D815 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9DAEA5C51341CCE80065D815 /* EstateConsultant */ = {
+			isa = PBXGroup;
+			children = (
+				9DAEA5CE1341CCE80065D815 /* EstateConsultantAppDelegate.h */,
+				9DAEA5CF1341CCE80065D815 /* EstateConsultantAppDelegate.m */,
+				9DAEA5D11341CCE80065D815 /* MainWindow.xib */,
+				9DAEA5D41341CCE80065D815 /* EstateConsultant.xcdatamodeld */,
+				9DAEA5C61341CCE80065D815 /* Supporting Files */,
+			);
+			path = EstateConsultant;
+			sourceTree = "<group>";
+		};
+		9DAEA5C61341CCE80065D815 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DAEA5C71341CCE80065D815 /* EstateConsultant-Info.plist */,
+				9DAEA5C81341CCE80065D815 /* InfoPlist.strings */,
+				9DAEA5CB1341CCE80065D815 /* EstateConsultant-Prefix.pch */,
+				9DAEA5CC1341CCE80065D815 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DAEA5B81341CCE80065D815 /* EstateConsultant */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DAEA5D91341CCE80065D815 /* Build configuration list for PBXNativeTarget "EstateConsultant" */;
+			buildPhases = (
+				9DAEA5B51341CCE80065D815 /* Sources */,
+				9DAEA5B61341CCE80065D815 /* Frameworks */,
+				9DAEA5B71341CCE80065D815 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EstateConsultant;
+			productName = EstateConsultant;
+			productReference = 9DAEA5B91341CCE80065D815 /* EstateConsultant.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DAEA5B01341CCE80065D815 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = mycolorway;
+			};
+			buildConfigurationList = 9DAEA5B31341CCE80065D815 /* Build configuration list for PBXProject "EstateConsultant" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9DAEA5AE1341CCE80065D815;
+			productRefGroup = 9DAEA5BA1341CCE80065D815 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DAEA5B81341CCE80065D815 /* EstateConsultant */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DAEA5B71341CCE80065D815 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DAEA5CA1341CCE80065D815 /* InfoPlist.strings in Resources */,
+				9DAEA5D31341CCE80065D815 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DAEA5B51341CCE80065D815 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DAEA5CD1341CCE80065D815 /* main.m in Sources */,
+				9DAEA5D01341CCE80065D815 /* EstateConsultantAppDelegate.m in Sources */,
+				9DAEA5D61341CCE80065D815 /* EstateConsultant.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9DAEA5C81341CCE80065D815 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DAEA5C91341CCE80065D815 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9DAEA5D11341CCE80065D815 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DAEA5D21341CCE80065D815 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DAEA5D71341CCE80065D815 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		9DAEA5D81341CCE80065D815 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		9DAEA5DA1341CCE80065D815 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EstateConsultant/EstateConsultant-Prefix.pch";
+				INFOPLIST_FILE = "EstateConsultant/EstateConsultant-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9DAEA5DB1341CCE80065D815 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EstateConsultant/EstateConsultant-Prefix.pch";
+				INFOPLIST_FILE = "EstateConsultant/EstateConsultant-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DAEA5B31341CCE80065D815 /* Build configuration list for PBXProject "EstateConsultant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DAEA5D71341CCE80065D815 /* Debug */,
+				9DAEA5D81341CCE80065D815 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DAEA5D91341CCE80065D815 /* Build configuration list for PBXNativeTarget "EstateConsultant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DAEA5DA1341CCE80065D815 /* Debug */,
+				9DAEA5DB1341CCE80065D815 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9DAEA5D41341CCE80065D815 /* EstateConsultant.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9DAEA5D51341CCE80065D815 /* EstateConsultant.xcdatamodel */,
+			);
+			currentVersion = 9DAEA5D51341CCE80065D815 /* EstateConsultant.xcdatamodel */;
+			path = EstateConsultant.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 9DAEA5B01341CCE80065D815 /* Project object */;
+}
