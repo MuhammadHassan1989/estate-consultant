@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <dict>
+        <key>id</key>
+        <integer>5</integer>
+        <key>name</key>
+        <string>L1</string>
+        <key>desc</key>
+        <string>两室一厅一卫</string>
+        <key>area</key>
+        <integer>68</integer>
+        <key>pics</key>
+        <string>layout-pic-1.png;layout-pic-2.png;layout-pic-3.png;layout-pic-4.png;layout-pic-5.png</string>
+    </dict>
+    <dict>
+        <key>id</key>
+        <integer>4</integer>
+        <key>name</key>
+        <string>B2</string>
+        <key>desc</key>
+        <string>四室两厅两卫</string>
+        <key>area</key>
+        <integer>145</integer>
+        <key>pics</key>
+        <string>layout-pic-1.png;layout-pic-2.png;layout-pic-3.png;layout-pic-4.png;layout-pic-5.png</string>
+    </dict>
+    <dict>
+        <key>id</key>
+        <integer>3</integer>
+        <key>name</key>
+        <string>B1</string>
+        <key>desc</key>
+        <string>三室两厅两卫</string>
+        <key>area</key>
+        <integer>128</integer>
+        <key>pics</key>
+        <string>layout-pic-1.png;layout-pic-2.png;layout-pic-3.png;layout-pic-4.png;layout-pic-5.png</string>
+    </dict>
+    <dict>
+        <key>id</key>
+        <integer>2</integer>
+        <key>name</key>
+        <string>D2</string>
+        <key>desc</key>
+        <string>三室一厅两卫</string>
+        <key>area</key>
+        <integer>98</integer>
+        <key>pics</key>
+        <string>layout-pic-1.png;layout-pic-2.png;layout-pic-3.png;layout-pic-4.png;layout-pic-5.png</string>
+    </dict>
+    <dict>
+        <key>id</key>
+        <integer>1</integer>
+        <key>name</key>
+        <string>D1</string>
+        <key>desc</key>
+        <string>三室两厅两卫</string>
+        <key>area</key>
+        <integer>132</integer>
+        <key>pics</key>
+        <string>layout-pic-1.png;layout-pic-2.png;layout-pic-3.png;layout-pic-4.png;layout-pic-5.png</string>
+    </dict>
+</array>
+</plist>
