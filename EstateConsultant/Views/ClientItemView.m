@@ -7,6 +7,8 @@
 //
 
 #import "ClientItemView.h"
+#import "ClientViewController.h"
+#import "EstateConsultantAppDelegate.h"
 #import "DataProvider.h"
 
 
@@ -59,11 +61,43 @@
     [self.nameLabel setText:name];
     [self.phoneLabel setText:client.phone];
 
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    [self.dateLabel setText:[dateFormatter stringFromDate:client.date]];
+    NSDate *date = [client valueForKeyPath:@"history.@max.date"];
+    NSString *dateText = nil;
+    if (date == nil) {
+        dateText = @"-";
+    } else {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        dateText = [dateFormatter stringFromDate:date];
+        [dateFormatter release];
+    }
+    [self.dateLabel setText:dateText];
     
+    if (_client != nil) {
+        [_client release];
+        _client = nil;
+    }
     _client = [client retain];
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectClient:)];
+    [self addGestureRecognizer:tapGesture];
+    [tapGesture release];
+}
+
+- (void)selectClient:(UIGestureRecognizer *)sender
+{    
+    ClientViewController *clientController = [[ClientViewController alloc] initWithNibName:@"ClientViewController" bundle:nil];
+    [clientController setClient:self.client];
+    [clientController.view setFrame:[UIScreen mainScreen].applicationFrame];
+    
+    EstateConsultantAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.viewController = clientController;
+    [clientController release];
 }
 
 @end

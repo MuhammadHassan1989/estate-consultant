@@ -41,12 +41,15 @@
 
 #pragma mark - Client Data Provider
 - (Client *)getClientByID:(NSInteger)clientID;
+- (Client *)clientWithName:(NSString *)name andPhone:(NSString *)phone andSex:(NSInteger)sex ofConsultant:(Consultant *)consultant;
 
-#pragma mark - Layout Data Provider
+#pragma mark - House Data Provider
 - (House *)getHouseByID:(NSInteger)houseID;
+- (NSSet *)getOnSaleHousesOfLayout:(Layout *)layout;
 
 #pragma mark - Layout Data Provider
 - (Layout *)getLayoutByID:(NSInteger)layoutID;
+- (NSArray *)getLayouts;
 
 #pragma mark - Position Data Provider
 - (Position *)getPositionByID:(NSInteger)positionID;

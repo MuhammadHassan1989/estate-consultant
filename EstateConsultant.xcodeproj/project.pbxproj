@@ -7,21 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D0D5D19134B439A00306221 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D5D18134B439A00306221 /* History.m */; };
-		9D0D5D1C134B439A00306221 /* Consultant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D5D1B134B439A00306221 /* Consultant.m */; };
-		9D0D5D1F134B439A00306221 /* House.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D5D1E134B439A00306221 /* House.m */; };
-		9D0D5D22134B439B00306221 /* Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D5D21134B439B00306221 /* Layout.m */; };
-		9D0D5D25134B439B00306221 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D5D24134B439B00306221 /* Client.m */; };
-		9D0D5D28134B439B00306221 /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D5D27134B439B00306221 /* Position.m */; };
 		9D0D5D2A134B5A7700306221 /* icon-search.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D0D5D29134B5A7700306221 /* icon-search.png */; };
+		9D23470C13502B740042AE17 /* LayoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D23470A13502B730042AE17 /* LayoutListViewController.m */; };
+		9D23470D13502B740042AE17 /* LayoutListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D23470B13502B730042AE17 /* LayoutListViewController.xib */; };
+		9D23471013502D160042AE17 /* LayoutItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D23470F13502D160042AE17 /* LayoutItemView.m */; };
+		9D23471213502D270042AE17 /* LayoutItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D23471113502D270042AE17 /* LayoutItemView.xib */; };
+		9D234714135037890042AE17 /* arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D234713135037890042AE17 /* arrow-right.png */; };
 		9D26B704134305F600D7F49D /* EstateConsultant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D26B702134305F600D7F49D /* EstateConsultant.xcdatamodeld */; };
 		9D2CA32F134C4F0B00197404 /* ConsultantStatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2CA32E134C4F0B00197404 /* ConsultantStatView.m */; };
 		9D2CA332134C4F1F00197404 /* ConsultantStatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CA331134C4F1F00197404 /* ConsultantStatView.xib */; };
+		9D2CA33C134CAFC800197404 /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2CA33A134CAFC800197404 /* ClientViewController.m */; };
+		9D2CA33D134CAFC800197404 /* ClientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2CA33B134CAFC800197404 /* ClientViewController.xib */; };
 		9D2DFAFA134457470022F1F0 /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2DFAF9134457460022F1F0 /* DataProvider.m */; };
 		9D2DFAFD134459A00022F1F0 /* EstateConsultantUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2DFAFC134459A00022F1F0 /* EstateConsultantUtils.m */; };
 		9D2DFB0F1345C75C0022F1F0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2DFB0D1345C75C0022F1F0 /* LoginViewController.m */; };
 		9D2DFB171345CE420022F1F0 /* ClientListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2DFB151345CE420022F1F0 /* ClientListViewController.m */; };
 		9D2DFB1C1345E1D50022F1F0 /* consultant.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2DFB1B1345E1D50022F1F0 /* consultant.png */; };
+		9D77C7811351A010002026FA /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D77C7801351A010002026FA /* Position.m */; };
+		9D77C7841351A010002026FA /* Consultant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D77C7831351A010002026FA /* Consultant.m */; };
+		9D77C7871351A010002026FA /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D77C7861351A010002026FA /* Client.m */; };
+		9D77C78A1351A010002026FA /* House.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D77C7891351A010002026FA /* House.m */; };
+		9D77C78D1351A011002026FA /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D77C78C1351A011002026FA /* History.m */; };
+		9D77C7901351A011002026FA /* Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D77C78F1351A011002026FA /* Layout.m */; };
+		9D77C79313529837002026FA /* nav-arrow-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C79113529837002026FA /* nav-arrow-left.png */; };
+		9D77C79413529837002026FA /* nav-arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C79213529837002026FA /* nav-arrow-right.png */; };
+		9D77C7971352DB8E002026FA /* PositionItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D77C7961352DB8E002026FA /* PositionItemView.m */; };
+		9D77C7991352DC3F002026FA /* PositionItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C7981352DC3F002026FA /* PositionItemView.xib */; };
+		9D77C79C1354536B002026FA /* LayoutPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D77C79B1354536A002026FA /* LayoutPictureView.m */; };
+		9D77C79E13545389002026FA /* LayoutPictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D77C79D13545389002026FA /* LayoutPictureView.xib */; };
+		9D7B135A134D592D000DDA4D /* client.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B1359134D592D000DDA4D /* client.png */; };
+		9D7B135D134D5958000DDA4D /* clients.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B135C134D5958000DDA4D /* clients.png */; };
+		9D7B135F134D5A6D000DDA4D /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B135E134D5A6D000DDA4D /* house.png */; };
+		9D7B1361134D5B39000DDA4D /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B1360134D5B39000DDA4D /* list.png */; };
+		9D7B1369134D9AF7000DDA4D /* defaults.zip in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B1368134D9AF7000DDA4D /* defaults.zip */; };
+		9D7B1377134DA0C4000DDA4D /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B136D134DA0C4000DDA4D /* ioapi.c */; };
+		9D7B1378134DA0C4000DDA4D /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B136F134DA0C4000DDA4D /* mztools.c */; };
+		9D7B1379134DA0C4000DDA4D /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B1371134DA0C4000DDA4D /* unzip.c */; };
+		9D7B137A134DA0C4000DDA4D /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B1373134DA0C4000DDA4D /* zip.c */; };
+		9D7B137B134DA0C4000DDA4D /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B1376134DA0C4000DDA4D /* ZipArchive.mm */; };
+		9D7B137D134DA4D7000DDA4D /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7B137C134DA4D7000DDA4D /* libz.1.2.3.dylib */; };
+		9D7B1380134DBCD9000DDA4D /* ClientHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B137F134DBCD9000DDA4D /* ClientHistoryView.m */; };
+		9D7B1382134DBCEE000DDA4D /* ClientHistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B1381134DBCEE000DDA4D /* ClientHistoryView.xib */; };
+		9D7B1385134DC82A000DDA4D /* LayoutThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B1384134DC82A000DDA4D /* LayoutThumbView.m */; };
+		9D7B1387134DCA46000DDA4D /* LayoutThumbView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B1386134DCA46000DDA4D /* LayoutThumbView.xib */; };
+		9D7B1389134DCF13000DDA4D /* sold-out.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B1388134DCF12000DDA4D /* sold-out.png */; };
 		9DAEA5BE1341CCE80065D815 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5BD1341CCE80065D815 /* UIKit.framework */; };
 		9DAEA5C01341CCE80065D815 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5BF1341CCE80065D815 /* Foundation.framework */; };
 		9DAEA5C21341CCE80065D815 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5C11341CCE80065D815 /* CoreGraphics.framework */; };
@@ -36,6 +65,8 @@
 		9DAEA60013422C420065D815 /* House.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5FF13422C420065D815 /* House.plist */; };
 		9DAEA60213422C500065D815 /* Layout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA60113422C4F0065D815 /* Layout.plist */; };
 		9DAEA60413422C5A0065D815 /* Position.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA60313422C5A0065D815 /* Position.plist */; };
+		9DC58260135086CE0079B0B8 /* LayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5825E135086CD0079B0B8 /* LayoutViewController.m */; };
+		9DC58261135086CE0079B0B8 /* LayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DC5825F135086CE0079B0B8 /* LayoutViewController.xib */; };
 		9DCE68EA1345FC55006D7734 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCE68E91345FC55006D7734 /* logout.png */; };
 		9DCE68ED1345FD71006D7734 /* stat.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCE68EC1345FD71006D7734 /* stat.png */; };
 		9DCE68EF1346055A006D7734 /* add-client.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCE68EE1346055A006D7734 /* add-client.png */; };
@@ -44,26 +75,26 @@
 		9DCE690213470269006D7734 /* ClientListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCE690013470269006D7734 /* ClientListViewController.xib */; };
 		9DCE690313470269006D7734 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCE690113470269006D7734 /* LoginViewController.xib */; };
 		9DCE6909134702A5006D7734 /* ClientItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCE6908134702A5006D7734 /* ClientItemView.m */; };
+		9DE3BC26134EFD1900EC6AAB /* AddClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE3BC24134EFD1800EC6AAB /* AddClientViewController.m */; };
+		9DE3BC27134EFD1900EC6AAB /* AddClientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE3BC25134EFD1800EC6AAB /* AddClientViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9D0D5D17134B439A00306221 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
-		9D0D5D18134B439A00306221 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
-		9D0D5D1A134B439A00306221 /* Consultant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consultant.h; sourceTree = "<group>"; };
-		9D0D5D1B134B439A00306221 /* Consultant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Consultant.m; sourceTree = "<group>"; };
-		9D0D5D1D134B439A00306221 /* House.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = House.h; sourceTree = "<group>"; };
-		9D0D5D1E134B439A00306221 /* House.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = House.m; sourceTree = "<group>"; };
-		9D0D5D20134B439A00306221 /* Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layout.h; sourceTree = "<group>"; };
-		9D0D5D21134B439B00306221 /* Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Layout.m; sourceTree = "<group>"; };
-		9D0D5D23134B439B00306221 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
-		9D0D5D24134B439B00306221 /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
-		9D0D5D26134B439B00306221 /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
-		9D0D5D27134B439B00306221 /* Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Position.m; sourceTree = "<group>"; };
 		9D0D5D29134B5A7700306221 /* icon-search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-search.png"; sourceTree = "<group>"; };
+		9D23470913502B730042AE17 /* LayoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutListViewController.h; sourceTree = "<group>"; };
+		9D23470A13502B730042AE17 /* LayoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutListViewController.m; sourceTree = "<group>"; };
+		9D23470B13502B730042AE17 /* LayoutListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutListViewController.xib; sourceTree = "<group>"; };
+		9D23470E13502D160042AE17 /* LayoutItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutItemView.h; sourceTree = "<group>"; };
+		9D23470F13502D160042AE17 /* LayoutItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutItemView.m; sourceTree = "<group>"; };
+		9D23471113502D270042AE17 /* LayoutItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutItemView.xib; sourceTree = "<group>"; };
+		9D234713135037890042AE17 /* arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-right.png"; sourceTree = "<group>"; };
 		9D26B703134305F600D7F49D /* PropertyConsultant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PropertyConsultant.xcdatamodel; sourceTree = "<group>"; };
 		9D2CA32D134C4F0B00197404 /* ConsultantStatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultantStatView.h; sourceTree = "<group>"; };
 		9D2CA32E134C4F0B00197404 /* ConsultantStatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultantStatView.m; sourceTree = "<group>"; };
 		9D2CA331134C4F1F00197404 /* ConsultantStatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConsultantStatView.xib; sourceTree = "<group>"; };
+		9D2CA339134CAFC800197404 /* ClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientViewController.h; sourceTree = "<group>"; };
+		9D2CA33A134CAFC800197404 /* ClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientViewController.m; sourceTree = "<group>"; };
+		9D2CA33B134CAFC800197404 /* ClientViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientViewController.xib; sourceTree = "<group>"; };
 		9D2DFAF8134457460022F1F0 /* DataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataProvider.h; sourceTree = "<group>"; };
 		9D2DFAF9134457460022F1F0 /* DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataProvider.m; sourceTree = "<group>"; };
 		9D2DFAFB134459A00022F1F0 /* EstateConsultantUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EstateConsultantUtils.h; sourceTree = "<group>"; };
@@ -73,6 +104,50 @@
 		9D2DFB141345CE420022F1F0 /* ClientListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientListViewController.h; sourceTree = "<group>"; };
 		9D2DFB151345CE420022F1F0 /* ClientListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientListViewController.m; sourceTree = "<group>"; };
 		9D2DFB1B1345E1D50022F1F0 /* consultant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = consultant.png; sourceTree = "<group>"; };
+		9D77C77F1351A010002026FA /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
+		9D77C7801351A010002026FA /* Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Position.m; sourceTree = "<group>"; };
+		9D77C7821351A010002026FA /* Consultant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consultant.h; sourceTree = "<group>"; };
+		9D77C7831351A010002026FA /* Consultant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Consultant.m; sourceTree = "<group>"; };
+		9D77C7851351A010002026FA /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
+		9D77C7861351A010002026FA /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
+		9D77C7881351A010002026FA /* House.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = House.h; sourceTree = "<group>"; };
+		9D77C7891351A010002026FA /* House.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = House.m; sourceTree = "<group>"; };
+		9D77C78B1351A011002026FA /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		9D77C78C1351A011002026FA /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		9D77C78E1351A011002026FA /* Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layout.h; sourceTree = "<group>"; };
+		9D77C78F1351A011002026FA /* Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Layout.m; sourceTree = "<group>"; };
+		9D77C79113529837002026FA /* nav-arrow-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-arrow-left.png"; sourceTree = "<group>"; };
+		9D77C79213529837002026FA /* nav-arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-arrow-right.png"; sourceTree = "<group>"; };
+		9D77C7951352DB8E002026FA /* PositionItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionItemView.h; sourceTree = "<group>"; };
+		9D77C7961352DB8E002026FA /* PositionItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionItemView.m; sourceTree = "<group>"; };
+		9D77C7981352DC3F002026FA /* PositionItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PositionItemView.xib; sourceTree = "<group>"; };
+		9D77C79A1354536A002026FA /* LayoutPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutPictureView.h; sourceTree = "<group>"; };
+		9D77C79B1354536A002026FA /* LayoutPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutPictureView.m; sourceTree = "<group>"; };
+		9D77C79D13545389002026FA /* LayoutPictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutPictureView.xib; sourceTree = "<group>"; };
+		9D7B1359134D592D000DDA4D /* client.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = client.png; sourceTree = "<group>"; };
+		9D7B135C134D5958000DDA4D /* clients.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clients.png; sourceTree = "<group>"; };
+		9D7B135E134D5A6D000DDA4D /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
+		9D7B1360134D5B39000DDA4D /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
+		9D7B1368134D9AF7000DDA4D /* defaults.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = defaults.zip; sourceTree = "<group>"; };
+		9D7B136C134DA0C4000DDA4D /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		9D7B136D134DA0C4000DDA4D /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		9D7B136E134DA0C4000DDA4D /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		9D7B136F134DA0C4000DDA4D /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		9D7B1370134DA0C4000DDA4D /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		9D7B1371134DA0C4000DDA4D /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		9D7B1372134DA0C4000DDA4D /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		9D7B1373134DA0C4000DDA4D /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		9D7B1374134DA0C4000DDA4D /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		9D7B1375134DA0C4000DDA4D /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		9D7B1376134DA0C4000DDA4D /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		9D7B137C134DA4D7000DDA4D /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		9D7B137E134DBCD9000DDA4D /* ClientHistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientHistoryView.h; sourceTree = "<group>"; };
+		9D7B137F134DBCD9000DDA4D /* ClientHistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientHistoryView.m; sourceTree = "<group>"; };
+		9D7B1381134DBCEE000DDA4D /* ClientHistoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientHistoryView.xib; sourceTree = "<group>"; };
+		9D7B1383134DC82A000DDA4D /* LayoutThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutThumbView.h; sourceTree = "<group>"; };
+		9D7B1384134DC82A000DDA4D /* LayoutThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutThumbView.m; sourceTree = "<group>"; };
+		9D7B1386134DCA46000DDA4D /* LayoutThumbView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutThumbView.xib; sourceTree = "<group>"; };
+		9D7B1388134DCF12000DDA4D /* sold-out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sold-out.png"; sourceTree = "<group>"; };
 		9DAEA5B91341CCE80065D815 /* EstateConsultant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EstateConsultant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DAEA5BD1341CCE80065D815 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9DAEA5BF1341CCE80065D815 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -91,6 +166,9 @@
 		9DAEA5FF13422C420065D815 /* House.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = House.plist; sourceTree = "<group>"; };
 		9DAEA60113422C4F0065D815 /* Layout.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Layout.plist; sourceTree = "<group>"; };
 		9DAEA60313422C5A0065D815 /* Position.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Position.plist; sourceTree = "<group>"; };
+		9DC5825D135086CD0079B0B8 /* LayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutViewController.h; sourceTree = "<group>"; };
+		9DC5825E135086CD0079B0B8 /* LayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutViewController.m; sourceTree = "<group>"; };
+		9DC5825F135086CE0079B0B8 /* LayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutViewController.xib; sourceTree = "<group>"; };
 		9DCE68E91345FC55006D7734 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
 		9DCE68EC1345FD71006D7734 /* stat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stat.png; sourceTree = "<group>"; };
 		9DCE68EE1346055A006D7734 /* add-client.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-client.png"; sourceTree = "<group>"; };
@@ -100,6 +178,9 @@
 		9DCE690113470269006D7734 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		9DCE6907134702A5006D7734 /* ClientItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientItemView.h; sourceTree = "<group>"; };
 		9DCE6908134702A5006D7734 /* ClientItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientItemView.m; sourceTree = "<group>"; };
+		9DE3BC23134EFD1700EC6AAB /* AddClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddClientViewController.h; sourceTree = "<group>"; };
+		9DE3BC24134EFD1800EC6AAB /* AddClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddClientViewController.m; sourceTree = "<group>"; };
+		9DE3BC25134EFD1800EC6AAB /* AddClientViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddClientViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D7B137D134DA4D7000DDA4D /* libz.1.2.3.dylib in Frameworks */,
 				9DAEA5BE1341CCE80065D815 /* UIKit.framework in Frameworks */,
 				9DAEA5C01341CCE80065D815 /* Foundation.framework in Frameworks */,
 				9DAEA5C21341CCE80065D815 /* CoreGraphics.framework in Frameworks */,
@@ -117,9 +199,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D7B136A134DA0C4000DDA4D /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				9D7B136B134DA0C4000DDA4D /* minizip */,
+				9D7B1375134DA0C4000DDA4D /* ZipArchive.h */,
+				9D7B1376134DA0C4000DDA4D /* ZipArchive.mm */,
+			);
+			path = ZipArchive;
+			sourceTree = "<group>";
+		};
+		9D7B136B134DA0C4000DDA4D /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				9D7B136C134DA0C4000DDA4D /* crypt.h */,
+				9D7B136D134DA0C4000DDA4D /* ioapi.c */,
+				9D7B136E134DA0C4000DDA4D /* ioapi.h */,
+				9D7B136F134DA0C4000DDA4D /* mztools.c */,
+				9D7B1370134DA0C4000DDA4D /* mztools.h */,
+				9D7B1371134DA0C4000DDA4D /* unzip.c */,
+				9D7B1372134DA0C4000DDA4D /* unzip.h */,
+				9D7B1373134DA0C4000DDA4D /* zip.c */,
+				9D7B1374134DA0C4000DDA4D /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
 		9DAEA5AE1341CCE80065D815 = {
 			isa = PBXGroup;
 			children = (
+				9D7B137C134DA4D7000DDA4D /* libz.1.2.3.dylib */,
 				9DAEA5C51341CCE80065D815 /* EstateConsultant */,
 				9DAEA5BC1341CCE80065D815 /* Frameworks */,
 				9DAEA5BA1341CCE80065D815 /* Products */,
@@ -148,6 +257,7 @@
 		9DAEA5C51341CCE80065D815 /* EstateConsultant */ = {
 			isa = PBXGroup;
 			children = (
+				9D7B136A134DA0C4000DDA4D /* ZipArchive */,
 				9DAEA5E01341CDD20065D815 /* Models */,
 				9DAEA5ED1341CDD20065D815 /* Views */,
 				9DAEA5DE1341CDD20065D815 /* Controllers */,
@@ -172,6 +282,18 @@
 				9D2DFB141345CE420022F1F0 /* ClientListViewController.h */,
 				9D2DFB151345CE420022F1F0 /* ClientListViewController.m */,
 				9DCE690013470269006D7734 /* ClientListViewController.xib */,
+				9DE3BC23134EFD1700EC6AAB /* AddClientViewController.h */,
+				9DE3BC24134EFD1800EC6AAB /* AddClientViewController.m */,
+				9DE3BC25134EFD1800EC6AAB /* AddClientViewController.xib */,
+				9D2CA339134CAFC800197404 /* ClientViewController.h */,
+				9D2CA33A134CAFC800197404 /* ClientViewController.m */,
+				9D2CA33B134CAFC800197404 /* ClientViewController.xib */,
+				9D23470913502B730042AE17 /* LayoutListViewController.h */,
+				9D23470A13502B730042AE17 /* LayoutListViewController.m */,
+				9D23470B13502B730042AE17 /* LayoutListViewController.xib */,
+				9DC5825D135086CD0079B0B8 /* LayoutViewController.h */,
+				9DC5825E135086CD0079B0B8 /* LayoutViewController.m */,
+				9DC5825F135086CE0079B0B8 /* LayoutViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -179,18 +301,18 @@
 		9DAEA5E01341CDD20065D815 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9D0D5D26134B439B00306221 /* Position.h */,
-				9D0D5D27134B439B00306221 /* Position.m */,
-				9D0D5D23134B439B00306221 /* Client.h */,
-				9D0D5D24134B439B00306221 /* Client.m */,
-				9D0D5D20134B439A00306221 /* Layout.h */,
-				9D0D5D21134B439B00306221 /* Layout.m */,
-				9D0D5D1D134B439A00306221 /* House.h */,
-				9D0D5D1E134B439A00306221 /* House.m */,
-				9D0D5D1A134B439A00306221 /* Consultant.h */,
-				9D0D5D1B134B439A00306221 /* Consultant.m */,
-				9D0D5D17134B439A00306221 /* History.h */,
-				9D0D5D18134B439A00306221 /* History.m */,
+				9D77C78E1351A011002026FA /* Layout.h */,
+				9D77C78F1351A011002026FA /* Layout.m */,
+				9D77C78B1351A011002026FA /* History.h */,
+				9D77C78C1351A011002026FA /* History.m */,
+				9D77C7881351A010002026FA /* House.h */,
+				9D77C7891351A010002026FA /* House.m */,
+				9D77C7851351A010002026FA /* Client.h */,
+				9D77C7861351A010002026FA /* Client.m */,
+				9D77C7821351A010002026FA /* Consultant.h */,
+				9D77C7831351A010002026FA /* Consultant.m */,
+				9D77C77F1351A010002026FA /* Position.h */,
+				9D77C7801351A010002026FA /* Position.m */,
 				9D2DFAF8134457460022F1F0 /* DataProvider.h */,
 				9D2DFAF9134457460022F1F0 /* DataProvider.m */,
 			);
@@ -205,6 +327,7 @@
 				9DAEA5E91341CDD20065D815 /* InfoPlist.strings */,
 				9DAEA5EB1341CDD20065D815 /* MainWindow.xib */,
 				9D26B702134305F600D7F49D /* EstateConsultant.xcdatamodeld */,
+				9D7B1368134D9AF7000DDA4D /* defaults.zip */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -225,6 +348,14 @@
 		9DAEA5E61341CDD20065D815 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9D77C79113529837002026FA /* nav-arrow-left.png */,
+				9D77C79213529837002026FA /* nav-arrow-right.png */,
+				9D234713135037890042AE17 /* arrow-right.png */,
+				9D7B1388134DCF12000DDA4D /* sold-out.png */,
+				9D7B1360134D5B39000DDA4D /* list.png */,
+				9D7B135E134D5A6D000DDA4D /* house.png */,
+				9D7B135C134D5958000DDA4D /* clients.png */,
+				9D7B1359134D592D000DDA4D /* client.png */,
 				9D0D5D29134B5A7700306221 /* icon-search.png */,
 				9DCE68F013460B3B006D7734 /* sad.png */,
 				9DCE68EC1345FD71006D7734 /* stat.png */,
@@ -244,6 +375,21 @@
 				9D2CA32D134C4F0B00197404 /* ConsultantStatView.h */,
 				9D2CA32E134C4F0B00197404 /* ConsultantStatView.m */,
 				9D2CA331134C4F1F00197404 /* ConsultantStatView.xib */,
+				9D7B137E134DBCD9000DDA4D /* ClientHistoryView.h */,
+				9D7B137F134DBCD9000DDA4D /* ClientHistoryView.m */,
+				9D7B1381134DBCEE000DDA4D /* ClientHistoryView.xib */,
+				9D7B1383134DC82A000DDA4D /* LayoutThumbView.h */,
+				9D7B1384134DC82A000DDA4D /* LayoutThumbView.m */,
+				9D7B1386134DCA46000DDA4D /* LayoutThumbView.xib */,
+				9D23470E13502D160042AE17 /* LayoutItemView.h */,
+				9D23470F13502D160042AE17 /* LayoutItemView.m */,
+				9D23471113502D270042AE17 /* LayoutItemView.xib */,
+				9D77C7951352DB8E002026FA /* PositionItemView.h */,
+				9D77C7961352DB8E002026FA /* PositionItemView.m */,
+				9D77C7981352DC3F002026FA /* PositionItemView.xib */,
+				9D77C79A1354536A002026FA /* LayoutPictureView.h */,
+				9D77C79B1354536A002026FA /* LayoutPictureView.m */,
+				9D77C79D13545389002026FA /* LayoutPictureView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +463,24 @@
 				9DCE690313470269006D7734 /* LoginViewController.xib in Resources */,
 				9D0D5D2A134B5A7700306221 /* icon-search.png in Resources */,
 				9D2CA332134C4F1F00197404 /* ConsultantStatView.xib in Resources */,
+				9D2CA33D134CAFC800197404 /* ClientViewController.xib in Resources */,
+				9D7B135A134D592D000DDA4D /* client.png in Resources */,
+				9D7B135D134D5958000DDA4D /* clients.png in Resources */,
+				9D7B135F134D5A6D000DDA4D /* house.png in Resources */,
+				9D7B1361134D5B39000DDA4D /* list.png in Resources */,
+				9D7B1369134D9AF7000DDA4D /* defaults.zip in Resources */,
+				9D7B1382134DBCEE000DDA4D /* ClientHistoryView.xib in Resources */,
+				9D7B1387134DCA46000DDA4D /* LayoutThumbView.xib in Resources */,
+				9D7B1389134DCF13000DDA4D /* sold-out.png in Resources */,
+				9DE3BC27134EFD1900EC6AAB /* AddClientViewController.xib in Resources */,
+				9D23470D13502B740042AE17 /* LayoutListViewController.xib in Resources */,
+				9D23471213502D270042AE17 /* LayoutItemView.xib in Resources */,
+				9D234714135037890042AE17 /* arrow-right.png in Resources */,
+				9DC58261135086CE0079B0B8 /* LayoutViewController.xib in Resources */,
+				9D77C79313529837002026FA /* nav-arrow-left.png in Resources */,
+				9D77C79413529837002026FA /* nav-arrow-right.png in Resources */,
+				9D77C7991352DC3F002026FA /* PositionItemView.xib in Resources */,
+				9D77C79E13545389002026FA /* LayoutPictureView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,13 +499,27 @@
 				9D2DFB0F1345C75C0022F1F0 /* LoginViewController.m in Sources */,
 				9D2DFB171345CE420022F1F0 /* ClientListViewController.m in Sources */,
 				9DCE6909134702A5006D7734 /* ClientItemView.m in Sources */,
-				9D0D5D19134B439A00306221 /* History.m in Sources */,
-				9D0D5D1C134B439A00306221 /* Consultant.m in Sources */,
-				9D0D5D1F134B439A00306221 /* House.m in Sources */,
-				9D0D5D22134B439B00306221 /* Layout.m in Sources */,
-				9D0D5D25134B439B00306221 /* Client.m in Sources */,
-				9D0D5D28134B439B00306221 /* Position.m in Sources */,
 				9D2CA32F134C4F0B00197404 /* ConsultantStatView.m in Sources */,
+				9D2CA33C134CAFC800197404 /* ClientViewController.m in Sources */,
+				9D7B1377134DA0C4000DDA4D /* ioapi.c in Sources */,
+				9D7B1378134DA0C4000DDA4D /* mztools.c in Sources */,
+				9D7B1379134DA0C4000DDA4D /* unzip.c in Sources */,
+				9D7B137A134DA0C4000DDA4D /* zip.c in Sources */,
+				9D7B137B134DA0C4000DDA4D /* ZipArchive.mm in Sources */,
+				9D7B1380134DBCD9000DDA4D /* ClientHistoryView.m in Sources */,
+				9D7B1385134DC82A000DDA4D /* LayoutThumbView.m in Sources */,
+				9DE3BC26134EFD1900EC6AAB /* AddClientViewController.m in Sources */,
+				9D23470C13502B740042AE17 /* LayoutListViewController.m in Sources */,
+				9D23471013502D160042AE17 /* LayoutItemView.m in Sources */,
+				9DC58260135086CE0079B0B8 /* LayoutViewController.m in Sources */,
+				9D77C7811351A010002026FA /* Position.m in Sources */,
+				9D77C7841351A010002026FA /* Consultant.m in Sources */,
+				9D77C7871351A010002026FA /* Client.m in Sources */,
+				9D77C78A1351A010002026FA /* House.m in Sources */,
+				9D77C78D1351A011002026FA /* History.m in Sources */,
+				9D77C7901351A011002026FA /* Layout.m in Sources */,
+				9D77C7971352DB8E002026FA /* PositionItemView.m in Sources */,
+				9D77C79C1354536B002026FA /* LayoutPictureView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

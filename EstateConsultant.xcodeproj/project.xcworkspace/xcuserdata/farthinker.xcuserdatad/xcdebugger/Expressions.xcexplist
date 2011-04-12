@@ -3,14 +3,6 @@
    version = "1.0">
    <StackStates>
       <StackState
-         stackFrameDescription = "-[EstateConsultantAppDelegate managedObjectContext]:EstateConsultantAppDelegate.m">
-         <expressions>
-            <expression
-               value = "_isDemo">
-            </expression>
-         </expressions>
-      </StackState>
-      <StackState
          stackFrameDescription = "-[EstateConsultantAppDelegate setIsDemo:]:EstateConsultantAppDelegate.m">
          <expressions>
             <expression
@@ -19,7 +11,49 @@
          </expressions>
       </StackState>
       <StackState
+         stackFrameDescription = "-[LayoutViewController setLayout:]:LayoutViewController.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
          stackFrameDescription = "-[LoginViewController tryDemo:forEvent:]:LoginViewController.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[ClientViewController returnClientList:forEvent:]:ClientViewController.m">
+         <expressions>
+            <expression
+               value = "appDelegate.consultant">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[PositionItemView setPosition:]:PositionItemView.m">
+         <expressions>
+            <expression
+               value = "_button">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[EstateConsultantAppDelegate managedObjectContext]:EstateConsultantAppDelegate.m">
+         <expressions>
+            <expression
+               value = "_isDemo">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[EstateConsultantAppDelegate setViewController:]:EstateConsultantAppDelegate.m">
+         <expressions>
+            <expression
+               value = "_viewController">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[ClientHistoryView awakeFromNib]:ClientHistoryView.m">
          <expressions>
          </expressions>
       </StackState>

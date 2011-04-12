@@ -8,6 +8,8 @@
 
 #import "ClientListViewController.h"
 #import "LoginViewController.h"
+#import "ClientViewController.h"
+#import "AddClientViewController.h"
 #import "ClientItemView.h"
 #import "EstateConsultantAppDelegate.h"
 #import "DataProvider.h"
@@ -40,6 +42,8 @@
     [_clientList release];
     [_searchField release];
     [_clientItems release];
+    [_statPopover release];
+    [_addClientPopover release];
     [super dealloc];
 }
 
@@ -56,7 +60,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self.nameLabel setText:self.consultant.name];
     [self.searchField setDelegate:self];
     
@@ -67,7 +70,6 @@
     [searchImgView setContentMode:UIViewContentModeRight];
     [self.searchField setLeftView:searchImgView];
     [self.searchField setLeftViewMode:UITextFieldViewModeAlways];
-    [searchImgPath release];
     [searchImg release];
     [searchImgView release];
     
@@ -81,7 +83,7 @@
     [self.clientList setFrame:appFrame];
     
     NSInteger index = 0;
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"history.@max.date" ascending:NO];
     NSArray *clients = [self.consultant.clients sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     [sortDescriptor release];
 
@@ -89,7 +91,8 @@
     for (Client *client in clients) {
         UIViewController *itemController = [[UIViewController alloc] initWithNibName:@"ClientItemView" bundle:nil];
         [(ClientItemView *)itemController.view setClient:client];
-        [itemController.view setFrame:CGRectMake(20, _scrollTopInset + index * 80, appFrame.size.width - 40, 60)];
+        [itemController.view setFrame:CGRectMake(30, _scrollTopInset + index * 80, appFrame.size.width - 60, 60)];
+        
         [self.clientList addSubview:itemController.view];
         [_clientItems addObject:itemController.view];
         [itemController release];
@@ -128,15 +131,33 @@
 }
 
 - (IBAction)showStat:(id)sender forEvent:(UIEvent *)event {
-    UIViewController *contentController = [[UIViewController alloc] initWithNibName:@"ConsultantStatView" bundle:nil];
-    contentController.contentSizeForViewInPopover = CGSizeMake(300, 224);
+    if (_statPopover == nil) {
+        UIViewController *contentController = [[UIViewController alloc] initWithNibName:@"ConsultantStatView" bundle:nil];
+        contentController.contentSizeForViewInPopover = CGSizeMake(300, 224);
+        _statPopover = [[UIPopoverController alloc] initWithContentViewController:contentController];
+        [contentController release];
+    }
     
-    UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:contentController];
-    [popoverController presentPopoverFromRect:((UIButton *)sender).frame
+    [_statPopover presentPopoverFromRect:((UIButton *)sender).frame
                                        inView:self.view
                      permittedArrowDirections:UIPopoverArrowDirectionAny
                                      animated:NO];
-    [contentController release];
+}
+
+- (IBAction)showAddClientForm:(id)sender forEvent:(UIEvent *)event {
+    if (_addClientPopover == nil) {
+        AddClientViewController *contentController = [[AddClientViewController alloc] initWithNibName:@"AddClientViewController" bundle:nil];
+        contentController.contentSizeForViewInPopover = CGSizeMake(340, 243);
+        _addClientPopover = [[UIPopoverController alloc] initWithContentViewController:contentController];
+        contentController.consultant = self.consultant;
+        contentController.parentPopover = _addClientPopover;
+        [contentController release];
+    }
+    
+    [_addClientPopover presentPopoverFromRect:((UIButton *)sender).frame
+                                  inView:self.view
+                permittedArrowDirections:UIPopoverArrowDirectionAny
+                                animated:NO];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

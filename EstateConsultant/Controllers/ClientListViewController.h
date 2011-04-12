@@ -13,6 +13,8 @@
 @interface ClientListViewController : UIViewController <UITextFieldDelegate> {
     NSInteger _scrollTopInset;
     NSMutableArray *_clientItems;
+    UIPopoverController *_statPopover;
+    UIPopoverController *_addClientPopover;
 }
 
 @property (nonatomic, retain) Consultant *consultant;
@@ -23,6 +25,7 @@
 
 - (IBAction)logout:(id)sender forEvent:(UIEvent *)event;
 - (IBAction)showStat:(id)sender forEvent:(UIEvent *)event;
+- (IBAction)showAddClientForm:(id)sender forEvent:(UIEvent *)event;
 - (void)filterClients:(NSString *)text;
 
 @end

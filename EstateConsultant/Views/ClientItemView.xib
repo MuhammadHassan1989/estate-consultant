@@ -95,7 +95,7 @@
 					<object class="IBUILabel" id="852997679">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">289</int>
-						<string key="NSFrame">{{570, 10}, {126, 40}}</string>
+						<string key="NSFrame">{{582, 10}, {126, 40}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -110,7 +110,7 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
-						<int key="IBUITextAlignment">2</int>
+						<int key="IBUITextAlignment">1</int>
 					</object>
 				</object>
 				<string key="NSFrameSize">{728, 60}</string>
@@ -175,8 +175,8 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="434061704"/>
-							<reference ref="852997679"/>
 							<reference ref="549589985"/>
+							<reference ref="852997679"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Client Item View</string>

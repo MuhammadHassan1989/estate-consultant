@@ -3,8 +3,6 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>date</key>
-		<date>2011-04-05T04:00:00Z</date>
 		<key>consultant</key>
 		<integer>1</integer>
 		<key>estateType</key>
@@ -31,8 +29,6 @@
 		</array>
 	</dict>
 	<dict>
-		<key>date</key>
-		<date>2011-04-04T04:00:00Z</date>
 		<key>consultant</key>
 		<integer>1</integer>
 		<key>estateType</key>
@@ -59,8 +55,6 @@
 		</array>
 	</dict>
 	<dict>
-		<key>date</key>
-		<date>2011-04-03T04:00:00Z</date>
 		<key>consultant</key>
 		<integer>1</integer>
 		<key>estateType</key>
@@ -86,8 +80,6 @@
 		<array/>
 	</dict>
 	<dict>
-		<key>date</key>
-		<date>2011-04-02T04:00:00Z</date>
 		<key>consultant</key>
 		<integer>1</integer>
 		<key>estateType</key>
@@ -110,8 +102,6 @@
 		<array/>
 	</dict>
 	<dict>
-		<key>date</key>
-		<date>2011-04-01T04:00:00Z</date>
 		<key>consultant</key>
 		<integer>1</integer>
 		<key>estateType</key>
@@ -134,8 +124,6 @@
 		<array/>
 	</dict>
 	<dict>
-		<key>date</key>
-		<date>2011-03-30T04:00:00Z</date>
 		<key>consultant</key>
 		<integer>1</integer>
 		<key>estateType</key>
@@ -158,8 +146,6 @@
 		<array/>
 	</dict>
 	<dict>
-		<key>date</key>
-		<date>2011-03-29T04:00:00Z</date>
 		<key>consultant</key>
 		<integer>1</integer>
 		<key>estateType</key>
@@ -182,8 +168,6 @@
 		<array/>
 	</dict>
 	<dict>
-		<key>date</key>
-		<date>2011-03-28T04:00:00Z</date>
 		<key>consultant</key>
 		<integer>1</integer>
 		<key>estateType</key>
@@ -206,8 +190,6 @@
 		<array/>
 	</dict>
 	<dict>
-		<key>date</key>
-		<date>2011-03-27T04:00:00Z</date>
 		<key>consultant</key>
 		<integer>1</integer>
 		<key>estateType</key>
@@ -230,8 +212,6 @@
 		<array/>
 	</dict>
 	<dict>
-		<key>date</key>
-		<date>2011-03-26T04:00:00Z</date>
 		<key>consultant</key>
 		<integer>1</integer>
 		<key>estateType</key>
@@ -254,8 +234,6 @@
 		<array/>
 	</dict>
 	<dict>
-		<key>date</key>
-		<date>2011-03-25T04:00:00Z</date>
 		<key>consultant</key>
 		<integer>1</integer>
 		<key>estateType</key>
@@ -278,8 +256,6 @@
 		<array/>
 	</dict>
 	<dict>
-		<key>date</key>
-		<date>2011-03-24T04:00:00Z</date>
 		<key>consultant</key>
 		<integer>1</integer>
 		<key>estateType</key>

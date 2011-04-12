@@ -19,6 +19,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [[DataProvider sharedProvider] setIsDemo:NO];
+        EstateConsultantAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        appDelegate.consultantID = -1;
     }
     return self;
 }
@@ -41,7 +43,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
@@ -65,8 +66,11 @@
     clientListController.consultant = [[DataProvider sharedProvider] getConsultantByID:1];
     [clientListController.view setFrame:[UIScreen mainScreen].applicationFrame];
     
+    
     EstateConsultantAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.consultantID = [clientListController.consultant.consultantID intValue];
     appDelegate.viewController = clientListController;
+
     [clientListController release];
 }
 

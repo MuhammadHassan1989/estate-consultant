@@ -8,6 +8,7 @@
 
 #import "EstateConsultantUtils.h"
 #import "EstateConsultantAppDelegate.h"
+#import "DataProvider.h"
 
 static EstateConsultantUtils *sharedUtils = nil;
 
@@ -59,7 +60,12 @@ static EstateConsultantUtils *sharedUtils = nil;
 
 - (NSURL *)documentsURL
 {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    if ([[DataProvider sharedProvider] isDemo]) {
+        return [url URLByAppendingPathComponent:@"demo"];
+    } else {
+        return url;
+    }
 }
 
 

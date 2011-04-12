@@ -2,12 +2,13 @@
 //  Client.m
 //  EstateConsultant
 //
-//  Created by farthinker on 4/5/11.
+//  Created by farthinker on 4/10/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
 #import "Client.h"
 #import "Consultant.h"
+#import "History.h"
 #import "House.h"
 #import "Layout.h"
 
@@ -18,12 +19,12 @@
 @dynamic estateType;
 @dynamic sex;
 @dynamic clientID;
-@dynamic date;
 @dynamic wishes;
 @dynamic purchases;
 @dynamic consultant;
 @dynamic orders;
 @dynamic follows;
+@dynamic history;
 
 - (void)addWishesObject:(House *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
@@ -139,6 +140,35 @@
     [self willChangeValueForKey:@"follows" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
     [[self primitiveValueForKey:@"follows"] minusSet:value];
     [self didChangeValueForKey:@"follows" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
+}
+
+
+- (void)addHistoryObject:(History *)value {    
+    NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
+    [self willChangeValueForKey:@"history" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
+    [[self primitiveValueForKey:@"history"] addObject:value];
+    [self didChangeValueForKey:@"history" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
+    [changedObjects release];
+}
+
+- (void)removeHistoryObject:(History *)value {
+    NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
+    [self willChangeValueForKey:@"history" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
+    [[self primitiveValueForKey:@"history"] removeObject:value];
+    [self didChangeValueForKey:@"history" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
+    [changedObjects release];
+}
+
+- (void)addHistory:(NSSet *)value {    
+    [self willChangeValueForKey:@"history" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
+    [[self primitiveValueForKey:@"history"] unionSet:value];
+    [self didChangeValueForKey:@"history" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
+}
+
+- (void)removeHistory:(NSSet *)value {
+    [self willChangeValueForKey:@"history" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
+    [[self primitiveValueForKey:@"history"] minusSet:value];
+    [self didChangeValueForKey:@"history" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
 
 

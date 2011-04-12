@@ -2,14 +2,14 @@
 //  House.h
 //  EstateConsultant
 //
-//  Created by farthinker on 4/5/11.
+//  Created by farthinker on 4/10/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Client, Layout, Position;
+@class Client, History, Layout, Position;
 
 @interface House : NSManagedObject {
 @private
@@ -23,6 +23,7 @@
 @property (nonatomic, retain) NSSet* wishers;
 @property (nonatomic, retain) Client * orderer;
 @property (nonatomic, retain) Layout * layout;
+@property (nonatomic, retain) NSSet* history;
 @property (nonatomic, retain) Client * purchaser;
 
 @end

@@ -9,6 +9,7 @@
 #import "EstateConsultantAppDelegate.h"
 #import "LoginViewController.h"
 #import "DataProvider.h"
+#import "ZipArchive.h"
 #import "EstateConsultantUtils.h"
 
 @implementation EstateConsultantAppDelegate
@@ -16,10 +17,12 @@
 
 @synthesize window = _window;
 @synthesize viewController = _viewController;
+@synthesize consultantID = _consultantID;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self initApplicationDirectories];
     [[DataProvider sharedProvider] loadDemoData];
     
     LoginViewController *loginController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
@@ -85,13 +88,30 @@
     */
 }
 
+- (void)initApplicationDirectories
+{
+    NSString *documentsPath = [[[EstateConsultantUtils sharedUtils] documentsURL] path];
+    NSString *demoPath = [documentsPath stringByAppendingPathComponent:@"demo"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:demoPath]) {
+        ZipArchive *zipper = [[ZipArchive alloc] init];
+        [zipper UnzipOpenFile:[[NSBundle mainBundle] pathForResource:@"defaults" ofType:@"zip"]];
+        [zipper UnzipFileTo:documentsPath overWrite:YES];
+        [zipper UnzipCloseFile];
+        [zipper release];
+        
+        NSLog(@"application directories created");
+    }
+}
+
 - (void)setViewController:(UIViewController *)viewController
-{    
+{
     [self.window addSubview:viewController.view];
     
-    if (_viewController) {
+    if (_viewController != nil) {
         [[_viewController.view retain] removeFromSuperview];
         [_viewController release];
+        _viewController = nil;
     }
 
     _viewController = [viewController retain];

@@ -66,34 +66,18 @@ static DataProvider *sharedProvider = nil;
  */
 - (NSManagedObjectContext *)managedObjectContext
 {
-    if (_isDemo) {
-        if (_demoManagedObjectContext != nil)
-        {
-            return _demoManagedObjectContext;
-        }
-        
-        NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-        if (coordinator != nil)
-        {
-            _demoManagedObjectContext = [[NSManagedObjectContext alloc] init];
-            [_demoManagedObjectContext setPersistentStoreCoordinator:coordinator];
-        }
-        return _demoManagedObjectContext;
-        
-    } else {
-        if (_managedObjectContext != nil)
-        {
-            return _managedObjectContext;
-        }
-        
-        NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-        if (coordinator != nil)
-        {
-            _managedObjectContext = [[NSManagedObjectContext alloc] init];
-            [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-        }
+    if (_managedObjectContext != nil)
+    {
         return _managedObjectContext;
     }
+    
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil)
+    {
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    }
+    return _managedObjectContext;
 }
 
 /**
@@ -117,74 +101,60 @@ static DataProvider *sharedProvider = nil;
  */
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-    if (_isDemo) {
-        if (_demoPersistentStoreCoordinator != nil)
-        {
-            return _demoPersistentStoreCoordinator;
-        }
-        
-        NSURL *storeURL = [[[EstateConsultantUtils sharedUtils] documentsURL] URLByAppendingPathComponent:@"EstateConsultantDemo.sqlite"];
-        
-        NSError *error = nil;
-        _demoPersistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-        if (![_demoPersistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
-        {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }    
-        
-        return _demoPersistentStoreCoordinator;
-        
-    } else {
-        if (_persistentStoreCoordinator != nil)
-        {
-            return _persistentStoreCoordinator;
-        }
-        
-        NSURL *storeURL = [[[EstateConsultantUtils sharedUtils] documentsURL] URLByAppendingPathComponent:@"EstateConsultant.sqlite"];
-        
-        NSError *error = nil;
-        _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-        if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
-        {
-            /*
-             Replace this implementation with code to handle the error appropriately.
-             
-             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-             
-             Typical reasons for an error here include:
-             * The persistent store is not accessible;
-             * The schema for the persistent store is incompatible with current managed object model.
-             Check the error message to determine what the actual problem was.
-             
-             
-             If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-             
-             If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-             * Simply deleting the existing store:
-             [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-             
-             * Performing automatic lightweight migration by passing the following dictionary as the options parameter: 
-             [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-             
-             Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-             
-             */
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }    
-        
+    if (_persistentStoreCoordinator != nil)
+    {
         return _persistentStoreCoordinator;
     }
+    
+    NSURL *storeURL = [[[EstateConsultantUtils sharedUtils] documentsURL] URLByAppendingPathComponent:@"EstateConsultant.sqlite"];
+    
+    NSError *error = nil;
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         
+         Typical reasons for an error here include:
+         * The persistent store is not accessible;
+         * The schema for the persistent store is incompatible with current managed object model.
+         Check the error message to determine what the actual problem was.
+         
+         
+         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
+         
+         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
+         * Simply deleting the existing store:
+         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
+         
+         * Performing automatic lightweight migration by passing the following dictionary as the options parameter: 
+         [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+         
+         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
+         
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }    
+    
+    return _persistentStoreCoordinator;
 }
 
 - (void)setIsDemo:(Boolean)isDemo
 {
     if (isDemo == _isDemo) {
         return;
+    } else if (_managedObjectContext != nil) {
+        [self saveContext];
+        [_managedObjectContext release];
+        _managedObjectContext = nil;
+    } else if (_persistentStoreCoordinator != nil) {
+        [_persistentStoreCoordinator release];
+        _persistentStoreCoordinator = nil;
     }
     
-    [self saveContext];
     _isDemo = isDemo;
 }
 
@@ -203,17 +173,19 @@ static DataProvider *sharedProvider = nil;
              */
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
-        } 
+        }
+        NSLog(@"context saved");
     }
 }
 
 - (void)loadDemoData
 {
-    NSURL *documentsURL = [[EstateConsultantUtils sharedUtils] documentsURL];
-    NSURL *storeURL = [documentsURL URLByAppendingPathComponent:@"EstateConsultantDemo.sqlite"];
+    self.isDemo = YES;
     
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]]) {
-		self.isDemo = YES;
+    NSString *documentsPath = [[[EstateConsultantUtils sharedUtils] documentsURL] path];
+    NSString *storePath = [documentsPath stringByAppendingPathComponent:@"EstateConsultant.sqlite"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:storePath]) {
         NSManagedObjectContext *moc = [self managedObjectContext];
         
         // layout data
@@ -228,6 +200,7 @@ static DataProvider *sharedProvider = nil;
             newLayout.name = [layout valueForKey:@"name"];
             newLayout.pics = [layout valueForKey:@"pics"];
         }
+        [layouts release];
         
         // position data
         NSString *positionFile = [[NSBundle mainBundle] pathForResource:@"Position.plist" ofType:nil];
@@ -236,8 +209,9 @@ static DataProvider *sharedProvider = nil;
             Position *newPosition = [NSEntityDescription insertNewObjectForEntityForName:@"Position"
                                                             inManagedObjectContext:moc];
             newPosition.name = [position valueForKey:@"name"];
-            newPosition.positionID = [position valueForKey:@"positionID"];
+            newPosition.positionID = [position valueForKey:@"id"];
         }
+        [positions release];
         
         // house data
         NSString *houseFile = [[NSBundle mainBundle] pathForResource:@"House.plist" ofType:nil];
@@ -253,19 +227,7 @@ static DataProvider *sharedProvider = nil;
             newHosue.layout = [self getLayoutByID:[[house valueForKey:@"layout"] intValue]];
             newHosue.position = [self getPositionByID:[[house valueForKey:@"position"] intValue]];
         }
-        
-        // history data
-        NSString *historyFile = [[NSBundle mainBundle] pathForResource:@"History.plist" ofType:nil];
-        NSArray *histories = [[NSArray alloc] initWithContentsOfFile:historyFile];
-        for (NSDictionary *history in histories) {
-            History *newHistory = [NSEntityDescription insertNewObjectForEntityForName:@"History"
-                                                                inManagedObjectContext:moc];
-            newHistory.historyID = [history valueForKey:@"id"];
-            newHistory.clientID = [history valueForKey:@"client"];
-            newHistory.date = [history valueForKey:@"date"];
-            newHistory.action = [history valueForKey:@"action"];
-            newHistory.target = [history valueForKey:@"target"];
-        }
+        [houses release];
         
         // consultant data
         NSString *consultantsFile = [[NSBundle mainBundle] pathForResource:@"Consultant.plist" ofType:nil];
@@ -277,6 +239,7 @@ static DataProvider *sharedProvider = nil;
             newConsultant.name = [consultant valueForKey:@"name"];
             newConsultant.username = [consultant valueForKey:@"username"];
         }
+        [consultants release];
         
         // client data
         NSString *clientsFile = [[NSBundle mainBundle] pathForResource:@"Client.plist" ofType:nil];
@@ -289,7 +252,6 @@ static DataProvider *sharedProvider = nil;
             newClient.estateType = [client valueForKey:@"estateType"];
             newClient.name = [client valueForKey:@"name"];
             newClient.sex = [client valueForKey:@"sex"];
-            newClient.date = [client valueForKey:@"date"];
             newClient.consultant = [self getConsultantByID:[[client valueForKey:@"consultant"] intValue]];
             
             NSArray* followIDs = [client valueForKey:@"follows"];
@@ -298,6 +260,7 @@ static DataProvider *sharedProvider = nil;
                 [followSet addObject:[self getLayoutByID:[followID intValue]]];
             }
             newClient.follows = followSet;
+            [followSet release];
             
             NSArray* wishIDs = [client valueForKey:@"wishes"];
             NSMutableSet *wishSet = [[NSMutableSet alloc] initWithCapacity:wishIDs.count];
@@ -305,6 +268,7 @@ static DataProvider *sharedProvider = nil;
                 [wishSet addObject:[self getHouseByID:[wishID intValue]]];
             }
             newClient.wishes = wishSet;
+            [wishSet release];
             
             NSArray* orderIDs = [client valueForKey:@"orders"];
             NSMutableSet *orderSet = [[NSMutableSet alloc] initWithCapacity:orderIDs.count];
@@ -312,6 +276,7 @@ static DataProvider *sharedProvider = nil;
                 [orderSet addObject:[self getHouseByID:[orderID intValue]]];
             }
             newClient.orders = orderSet;
+            [orderSet release];
             
             NSArray* purchaseIDs = [client valueForKey:@"purchases"];
             NSMutableSet *purchaseSet = [[NSMutableSet alloc] initWithCapacity:purchaseIDs.count];
@@ -319,12 +284,43 @@ static DataProvider *sharedProvider = nil;
                 [purchaseSet addObject:[self getHouseByID:[purchaseID intValue]]];
             }
             newClient.purchases = purchaseSet;
+            [purchaseSet release];
         }
+        [clients release];
+        
+        // history data
+        NSString *historyFile = [[NSBundle mainBundle] pathForResource:@"History.plist" ofType:nil];
+        NSArray *histories = [[NSArray alloc] initWithContentsOfFile:historyFile];
+        for (NSDictionary *history in histories) {
+            History *newHistory = [NSEntityDescription insertNewObjectForEntityForName:@"History"
+                                                                inManagedObjectContext:moc];
+            newHistory.historyID = [history valueForKey:@"id"];
+            newHistory.date = [history valueForKey:@"date"];
+            newHistory.action = [history valueForKey:@"action"];
+            newHistory.client = [self getClientByID:[[history valueForKey:@"client"] intValue]];
+            
+            NSArray* layoutIDs = [history valueForKey:@"layouts"];
+            NSMutableSet *layoutSet = [[NSMutableSet alloc] initWithCapacity:layoutIDs.count];
+            for (NSNumber *layoutID in layoutIDs) {
+                [layoutSet addObject:[self getLayoutByID:[layoutID intValue]]];
+            }
+            newHistory.layouts = layoutSet;
+            [layoutSet release];
+            
+            NSArray* houseIDs = [history valueForKey:@"houses"];
+            NSMutableSet *houseSet = [[NSMutableSet alloc] initWithCapacity:houseIDs.count];
+            for (NSNumber *houseID in houseIDs) {
+                [houseSet addObject:[self getHouseByID:[houseID intValue]]];
+            }
+            newHistory.houses = houseSet;
+            [houseSet release];
+        }
+        [histories release];
                 
-        self.isDemo = NO;
 		NSLog(@"demo data loaded");
 	}
-
+    
+    self.isDemo = NO;
 }
 
 
@@ -425,8 +421,21 @@ static DataProvider *sharedProvider = nil;
     }
 }
 
+- (Client *)clientWithName:(NSString *)name andPhone:(NSString *)phone andSex:(NSInteger)sex ofConsultant:(Consultant *)consultant
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    Client *newClient = [NSEntityDescription insertNewObjectForEntityForName:@"Client"
+                                                      inManagedObjectContext:moc];
+    newClient.phone = phone;
+    newClient.name = name;
+    newClient.sex = [NSNumber numberWithInt:sex];
+    newClient.consultant = consultant;
+    
+    return newClient;
+}
 
-#pragma mark - Layout Data Provider
+
+#pragma mark - House Data Provider
 
 - (House *)getHouseByID:(NSInteger)houseID
 {
@@ -457,6 +466,12 @@ static DataProvider *sharedProvider = nil;
     }
 }
 
+- (NSSet *)getOnSaleHousesOfLayout:(Layout *)layout
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"status == 1"];
+    return [layout.houses filteredSetUsingPredicate:predicate];
+}
+
 
 #pragma mark - Layout Data Provider
 
@@ -471,7 +486,7 @@ static DataProvider *sharedProvider = nil;
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"layoutID == %i", layoutID];
     [request setPredicate:predicate];
-    
+        
     NSError *error = nil;
     NSArray *results = [moc executeFetchRequest:request error:&error];
     [request release];
@@ -486,6 +501,34 @@ static DataProvider *sharedProvider = nil;
         return [results objectAtIndex:0];
     } else {
         return nil;
+    }
+}
+
+- (NSArray *)getLayouts
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Layout"
+                                                         inManagedObjectContext:moc];
+    [request setEntity:entityDescription];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"layoutID" ascending:YES];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [sortDescriptor release];
+        
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    [request release];
+    
+    NSLog(@"data provider: getLayouts; result: %i", [results count]);
+    
+    if (results == nil)
+    {
+        NSLog(@"data provider error: getLayouts");
+        return nil;
+    }else {
+        return results;
     }
 }
 

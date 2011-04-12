@@ -3,6 +3,13 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>layouts</key>
+		<array/>
+		<key>houses</key>
+		<array>
+			<integer>1</integer>
+			<integer>2</integer>
+		</array>
 		<key>action</key>
 		<integer>1</integer>
 		<key>client</key>
@@ -11,46 +18,66 @@
 		<date>2011-03-25T04:00:00Z</date>
 		<key>id</key>
 		<integer>4</integer>
-		<key>target</key>
-		<integer>1</integer>
 	</dict>
 	<dict>
+		<key>houses</key>
+		<array>
+			<integer>3</integer>
+			<integer>4</integer>
+		</array>
+		<key>layouts</key>
+		<array/>
 		<key>action</key>
 		<integer>1</integer>
 		<key>client</key>
 		<integer>1</integer>
 		<key>date</key>
-		<date>2011-03-25T04:00:00Z</date>
+		<date>2011-03-23T04:00:00Z</date>
 		<key>id</key>
 		<integer>4</integer>
-		<key>target</key>
+	</dict>
+	<dict>
+		<key>layouts</key>
+		<array/>
+		<key>houses</key>
+		<array>
+			<integer>5</integer>
+			<integer>6</integer>
+		</array>
+		<key>action</key>
+		<integer>1</integer>
+		<key>client</key>
+		<integer>1</integer>
+		<key>date</key>
+		<date>2011-03-20T04:00:00Z</date>
+		<key>id</key>
+		<integer>4</integer>
+	</dict>
+	<dict>
+		<key>houses</key>
+		<array>
+			<integer>7</integer>
+			<integer>8</integer>
+		</array>
+		<key>layouts</key>
+		<array/>
+		<key>action</key>
+		<integer>1</integer>
+		<key>client</key>
 		<integer>2</integer>
-	</dict>
-	<dict>
-		<key>action</key>
-		<integer>1</integer>
-		<key>client</key>
-		<integer>1</integer>
 		<key>date</key>
 		<date>2011-03-25T04:00:00Z</date>
 		<key>id</key>
 		<integer>4</integer>
-		<key>target</key>
-		<integer>3</integer>
 	</dict>
 	<dict>
-		<key>action</key>
-		<integer>1</integer>
-		<key>client</key>
-		<integer>2</integer>
-		<key>date</key>
-		<date>2011-03-25T04:00:00Z</date>
-		<key>id</key>
-		<integer>4</integer>
-		<key>target</key>
-		<integer>3</integer>
-	</dict>
-	<dict>
+		<key>layouts</key>
+		<array/>
+		<key>houses</key>
+		<array>
+			<integer>1</integer>
+			<integer>2</integer>
+		</array>
 		<key>action</key>
 		<integer>2</integer>
 		<key>client</key>
@@ -59,10 +86,15 @@
 		<date>2011-03-27T04:00:00Z</date>
 		<key>id</key>
 		<integer>1</integer>
-		<key>target</key>
-		<integer>1</integer>
 	</dict>
 	<dict>
+		<key>houses</key>
+		<array/>
+		<key>layouts</key>
+		<array>
+			<integer>1</integer>
+			<integer>2</integer>
+		</array>
 		<key>action</key>
 		<integer>0</integer>
 		<key>client</key>
@@ -71,10 +103,15 @@
 		<date>2011-03-25T04:00:00Z</date>
 		<key>id</key>
 		<integer>2</integer>
-		<key>target</key>
-		<integer>2</integer>
 	</dict>
 	<dict>
+		<key>layouts</key>
+		<array>
+			<integer>3</integer>
+			<integer>4</integer>
+		</array>
+		<key>houses</key>
+		<array/>
 		<key>action</key>
 		<integer>0</integer>
 		<key>client</key>
@@ -83,8 +120,6 @@
 		<date>2011-03-23T04:00:00Z</date>
 		<key>id</key>
 		<integer>3</integer>
-		<key>target</key>
-		<integer>1</integer>
 	</dict>
 </array>
 </plist>
