@@ -56,7 +56,6 @@
     
     [self.phoneLabel setDelegate:self];
     [self.nameLabel setDelegate:self];    
-    [self.nameLabel becomeFirstResponder];
     
     [self.addClientButton setEnabled:NO];
 }
@@ -72,6 +71,11 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.nameLabel becomeFirstResponder];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

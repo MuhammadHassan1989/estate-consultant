@@ -108,6 +108,7 @@
             itemView.selected = NO;
         }
     }
+    
     _selectedLayout = selectedLayout;
 }
 

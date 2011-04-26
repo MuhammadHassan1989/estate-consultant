@@ -431,6 +431,8 @@ static DataProvider *sharedProvider = nil;
     newClient.sex = [NSNumber numberWithInt:sex];
     newClient.consultant = consultant;
     
+    [self saveContext];
+    
     return newClient;
 }
 
@@ -595,6 +597,83 @@ static DataProvider *sharedProvider = nil;
     } else {
         return nil;
     }
+}
+
+- (History *)getHistoryByDate:(NSDate *)date
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"History"
+                                                         inManagedObjectContext:moc];
+    [request setEntity:entityDescription];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"date == %@", date];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    [request release];
+    
+    NSLog(@"data provider: getHistoryByDate(%@); result: %u", date, results.count);
+    
+    if (results == nil)
+    {
+        NSLog(@"data provider error: getHistoryByDate(%@)", date);
+        return nil;
+    } else if ([results count] > 0) {
+        return [results objectAtIndex:0];
+    } else {
+        return nil;
+    }
+}
+
+- (History *)historyOfClient:(Client *)client withAction:(NSInteger)action andTarget:(id)target
+{
+    NSDate *now = [NSDate date];
+    NSUInteger theUnitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    NSTimeZone *timezone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+    [calendar setTimeZone:timezone];
+    NSDateComponents* dateComps = [calendar components:theUnitFlags fromDate:now];
+    [dateComps setHour:0];
+    [dateComps setMinute:0];
+    [dateComps setSecond:0];
+    NSDate* date = [calendar dateFromComponents:dateComps];
+    
+    History *history = [self getHistoryByDate:date];
+    
+    if (history == nil) {
+        NSManagedObjectContext *moc = [self managedObjectContext];
+        history = [NSEntityDescription insertNewObjectForEntityForName:@"History"
+                                                          inManagedObjectContext:moc];
+        history.action = [NSNumber numberWithInteger:action];
+        history.date = date;
+        history.client = client;
+    }
+    
+    if (history.action.intValue == action) {
+        NSString *targetKey;
+        if (action == 0) {
+            targetKey = @"layouts";
+        } else {
+            targetKey = @"houses";
+        }
+        
+        NSMutableSet *targets = [history mutableSetValueForKey:targetKey];
+        [targets addObject:target];
+    } else if (history.action.intValue < action) {
+        history.action = [NSNumber numberWithInteger:action];
+        
+        NSMutableSet *layouts = [history mutableSetValueForKey:@"layouts"];
+        [layouts removeAllObjects];
+        NSMutableSet *houses = [history mutableSetValueForKey:@"houses"];
+        [houses addObject:target];
+    } else {
+        return nil;
+    }
+    
+    return history;
 }
 
 

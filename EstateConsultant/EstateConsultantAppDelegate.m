@@ -109,6 +109,8 @@
     [self.window addSubview:viewController.view];
     
     if (_viewController != nil) {
+        [[DataProvider sharedProvider] saveContext];
+        
         [[_viewController.view retain] removeFromSuperview];
         [_viewController release];
         _viewController = nil;

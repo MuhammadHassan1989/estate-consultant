@@ -56,6 +56,8 @@
 
 #pragma mark - History Data Provider
 - (History *)getHistoryByID:(NSInteger)historyID;
+- (History *)getHistoryByDate:(NSDate *)date;
+- (History *)historyOfClient:(Client *)client withAction:(NSInteger)action andTarget:(id)target;
 
 
 @end

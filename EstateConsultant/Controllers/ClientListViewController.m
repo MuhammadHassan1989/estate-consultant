@@ -83,9 +83,13 @@
     [self.clientList setFrame:appFrame];
     
     NSInteger index = 0;
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"history.@max.date" ascending:NO];
-    NSArray *clients = [self.consultant.clients sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    [sortDescriptor release];
+    NSSortDescriptor *dateSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"history.@max.date" ascending:NO];
+    NSSortDescriptor *idSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"clientID" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:dateSortDescriptor, idSortDescriptor, nil];
+    NSArray *clients = [self.consultant.clients sortedArrayUsingDescriptors:sortDescriptors];
+    [dateSortDescriptor release];
+    [idSortDescriptor release];
+    [sortDescriptors release];
 
     _clientItems = [[NSMutableArray alloc] initWithCapacity:[clients count]];
     for (Client *client in clients) {
@@ -202,7 +206,7 @@
                          for (ClientItemView *view in showItems) {
                              view.hidden = NO;
                              view.alpha = 1.0;
-                             view.frame = CGRectMake(20, _scrollTopInset + index * 80, view.frame.size.width, view.frame.size.height);
+                             view.frame = CGRectMake(30, _scrollTopInset + index * 80, view.frame.size.width, view.frame.size.height);
                              index++;
                          }
                          

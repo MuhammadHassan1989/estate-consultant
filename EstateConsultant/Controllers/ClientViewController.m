@@ -83,6 +83,7 @@
         UIViewController *targetController = [[UIViewController alloc] initWithNibName:@"ClientHistoryView" bundle:nil];
         [targetController.view setFrame:CGRectMake(40, originY, appFrame.size.width - 80, 410)];
         [(ClientHistoryView *)targetController.view setHistory:history];
+        [(ClientHistoryView *)targetController.view setClientViewControlelr:self];
         originY += targetController.view.frame.size.height + 30;
         
         [self.scrollView addSubview:targetController.view];
@@ -90,7 +91,6 @@
     }
     
     [self.scrollView setContentSize:CGSizeMake(appFrame.size.width, originY)];
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(layoutSelected:) 
@@ -131,30 +131,25 @@
 }
 
 - (IBAction)showLayoutList:(id)sender forEvent:(UIEvent *)event {
-    if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft
-        || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-        [self loadLayoutView:nil];
-    } else {
-        if (_layoutListPopover == nil) {
-            NSArray *layouts = [[DataProvider sharedProvider] getLayouts];
-            NSInteger popHeight = layouts.count * 82;
-            if (popHeight > 520) {
-                popHeight = 520;
-            }
-            
-            LayoutListViewController *contentController = [[LayoutListViewController alloc] initWithNibName:@"LayoutListViewController" bundle:nil];
-            contentController.contentSizeForViewInPopover = CGSizeMake(320, popHeight);
-            contentController.layouts = layouts;
-            
-            _layoutListPopover = [[UIPopoverController alloc] initWithContentViewController:contentController];
-            [contentController release];
+    if (_layoutListPopover == nil) {
+        NSArray *layouts = [[DataProvider sharedProvider] getLayouts];
+        NSInteger popHeight = layouts.count * 82;
+        if (popHeight > 600) {
+            popHeight = 600;
         }
         
-        [_layoutListPopover presentPopoverFromRect:((UIButton *)sender).frame
-                                            inView:self.view
-                          permittedArrowDirections:UIPopoverArrowDirectionAny
-                                          animated:NO];
+        LayoutListViewController *contentController = [[LayoutListViewController alloc] initWithNibName:@"LayoutListViewController" bundle:nil];
+        contentController.contentSizeForViewInPopover = CGSizeMake(320, popHeight);
+        contentController.layouts = layouts;
+        
+        _layoutListPopover = [[UIPopoverController alloc] initWithContentViewController:contentController];
+        [contentController release];
     }
+    
+    [_layoutListPopover presentPopoverFromRect:((UIButton *)sender).frame
+                                        inView:self.view
+                      permittedArrowDirections:UIPopoverArrowDirectionAny
+                                      animated:NO];
 }
 
 - (IBAction)changeSex:(id)sender forEvent:(UIEvent *)event {
@@ -212,8 +207,8 @@
     
     LayoutViewController *layoutController = [[LayoutViewController alloc] initWithNibName:@"LayoutViewController" bundle:nil];
     [layoutController.view setFrame:CGRectMake(0, 0, 703, 768)];
-    [layoutController setLayout:layout];
     [layoutController setClient:self.client];
+    [layoutController setLayout:layout];
     
     UISplitViewController *splitController = [[UISplitViewController alloc] init];
     splitController.viewControllers = [NSArray arrayWithObjects:listController, layoutController, nil];

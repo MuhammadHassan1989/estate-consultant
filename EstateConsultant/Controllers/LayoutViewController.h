@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "DataProvider.h"
+#import "LayoutPictureView.h"
 
 
 @interface LayoutViewController : UIViewController {
     NSMutableArray *_layoutPics;
     NSMutableArray *_positionItems;
     UIPopoverController *_layoutListPopover;
+    LayoutPictureView *_layoutPictureView;
 }
 
 @property (nonatomic, retain) Client *client;
@@ -32,5 +34,9 @@
 - (IBAction)showLayoutList:(id)sender forEvent:(UIEvent *)event;
 - (IBAction)returnToClient:(id)sender forEvent:(UIEvent *)event;
 
+#pragma delegate methods
+- (void)positionSelected:(Position *)position;
+- (void)closeHouseList;
+- (void)closeCalculator;
 
 @end

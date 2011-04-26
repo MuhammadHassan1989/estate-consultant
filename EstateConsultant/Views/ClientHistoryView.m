@@ -16,6 +16,7 @@
 @synthesize history = _history;
 @synthesize dateLabel = _dateLabel;
 @synthesize actionLabel = _actionLabel;
+@synthesize clientViewControlelr = _clientViewController;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -71,6 +72,7 @@
             [dict setObject:target.name forKey:@"name"];
             [dict setObject:[NSNumber numberWithInt:1] forKey:@"status"];
             [dict setObject:img forKey:@"image"];
+            [dict setObject:target forKey:@"layout"];
             [targets addObject:dict];
             
             [img release];
@@ -85,9 +87,10 @@
             UIImage *img = [[UIImage alloc] initWithContentsOfFile:imgPath];
             
             NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:3];
-            [dict setObject:[target.layout.name stringByAppendingFormat:@"(%@)", target.num] forKey:@"name"];
+            [dict setObject:[NSString stringWithFormat:@"%@(%@)",target.layout.name, target.num] forKey:@"name"];
             [dict setObject:target.status forKey:@"status"];
             [dict setObject:img forKey:@"image"];
+            [dict setObject:target.layout forKey:@"layout"];
             [targets addObject:dict];
             
             [img release];
@@ -111,6 +114,10 @@
         [targetController.view setFrame:CGRectMake(originX, originY, 280, 280)];
         [(LayoutThumbView *)targetController.view setLayoutInfo:target];
         
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectLayout:)];
+        [targetController.view addGestureRecognizer:tapGesture];
+        [tapGesture release];
+        
         [self addSubview:targetController.view];
         [_layoutThumbViews addObject:targetController.view];
         [targetController release];
@@ -120,7 +127,7 @@
     [targets release];
     
     CGRect frame = [self frame];
-    [self setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 90 + 320 * ceil(index / 2))];
+    [self setFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 90 + 320 * ceil(index / 2.0))];
     
     if (_history != nil) {
         [_history release];
@@ -145,6 +152,12 @@
     [_actionLabel release];
     [_layoutThumbViews release];
     [super dealloc];
+}
+
+- (void)selectLayout:(UIGestureRecognizer *)gesture
+{
+    NSDictionary *layoutInfo = [(LayoutThumbView *)gesture.view layoutInfo];
+    [self.clientViewControlelr loadLayoutView:[layoutInfo valueForKey:@"layout"]];
 }
 
 @end

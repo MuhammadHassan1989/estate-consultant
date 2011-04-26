@@ -14,6 +14,7 @@
 @synthesize layoutID = _layoutID;
 @synthesize position = _position;
 @synthesize button = _button;
+@synthesize delegate = _delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -52,7 +53,7 @@
 }
 
 - (IBAction)selectPosition:(id)sender forEvent:(UIEvent *)event {
-    NSLog(@"selectPosition");
+    [self.delegate positionSelected:self.position];
 }
 
 @end

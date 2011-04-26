@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9D0D5D2A134B5A7700306221 /* icon-search.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D0D5D29134B5A7700306221 /* icon-search.png */; };
+		9D1CBF0E1356AEA900DA6BF7 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CBF0D1356AEA900DA6BF7 /* CustomNavigationController.m */; };
 		9D23470C13502B740042AE17 /* LayoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D23470A13502B730042AE17 /* LayoutListViewController.m */; };
 		9D23470D13502B740042AE17 /* LayoutListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D23470B13502B730042AE17 /* LayoutListViewController.xib */; };
 		9D23471013502D160042AE17 /* LayoutItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D23470F13502D160042AE17 /* LayoutItemView.m */; };
@@ -23,6 +24,8 @@
 		9D2DFB0F1345C75C0022F1F0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2DFB0D1345C75C0022F1F0 /* LoginViewController.m */; };
 		9D2DFB171345CE420022F1F0 /* ClientListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2DFB151345CE420022F1F0 /* ClientListViewController.m */; };
 		9D2DFB1C1345E1D50022F1F0 /* consultant.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2DFB1B1345E1D50022F1F0 /* consultant.png */; };
+		9D3D9AF81355EFC1003B7BFC /* LoanCalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D9AF61355EFC1003B7BFC /* LoanCalculatorViewController.m */; };
+		9D3D9AF91355EFC1003B7BFC /* LoanCalculatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3D9AF71355EFC1003B7BFC /* LoanCalculatorViewController.xib */; };
 		9D77C7811351A010002026FA /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D77C7801351A010002026FA /* Position.m */; };
 		9D77C7841351A010002026FA /* Consultant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D77C7831351A010002026FA /* Consultant.m */; };
 		9D77C7871351A010002026FA /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D77C7861351A010002026FA /* Client.m */; };
@@ -77,10 +80,16 @@
 		9DCE6909134702A5006D7734 /* ClientItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCE6908134702A5006D7734 /* ClientItemView.m */; };
 		9DE3BC26134EFD1900EC6AAB /* AddClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE3BC24134EFD1800EC6AAB /* AddClientViewController.m */; };
 		9DE3BC27134EFD1900EC6AAB /* AddClientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE3BC25134EFD1800EC6AAB /* AddClientViewController.xib */; };
+		9DEF3EC4135553E000B4FA51 /* HouseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF3EC2135553E000B4FA51 /* HouseListViewController.m */; };
+		9DEF3EC91355555000B4FA51 /* HouseItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DEF3EC81355555000B4FA51 /* HouseItemView.m */; };
+		9DEF3ECB1355556500B4FA51 /* HouseItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DEF3ECA1355556500B4FA51 /* HouseItemView.xib */; };
+		9DEF3ECD1355850400B4FA51 /* HouseListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DEF3ECC1355850400B4FA51 /* HouseListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9D0D5D29134B5A7700306221 /* icon-search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-search.png"; sourceTree = "<group>"; };
+		9D1CBF0C1356AEA900DA6BF7 /* CustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
+		9D1CBF0D1356AEA900DA6BF7 /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		9D23470913502B730042AE17 /* LayoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutListViewController.h; sourceTree = "<group>"; };
 		9D23470A13502B730042AE17 /* LayoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutListViewController.m; sourceTree = "<group>"; };
 		9D23470B13502B730042AE17 /* LayoutListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutListViewController.xib; sourceTree = "<group>"; };
@@ -104,6 +113,9 @@
 		9D2DFB141345CE420022F1F0 /* ClientListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientListViewController.h; sourceTree = "<group>"; };
 		9D2DFB151345CE420022F1F0 /* ClientListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientListViewController.m; sourceTree = "<group>"; };
 		9D2DFB1B1345E1D50022F1F0 /* consultant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = consultant.png; sourceTree = "<group>"; };
+		9D3D9AF51355EFC1003B7BFC /* LoanCalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanCalculatorViewController.h; sourceTree = "<group>"; };
+		9D3D9AF61355EFC1003B7BFC /* LoanCalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanCalculatorViewController.m; sourceTree = "<group>"; };
+		9D3D9AF71355EFC1003B7BFC /* LoanCalculatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanCalculatorViewController.xib; sourceTree = "<group>"; };
 		9D77C77F1351A010002026FA /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
 		9D77C7801351A010002026FA /* Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Position.m; sourceTree = "<group>"; };
 		9D77C7821351A010002026FA /* Consultant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consultant.h; sourceTree = "<group>"; };
@@ -181,6 +193,12 @@
 		9DE3BC23134EFD1700EC6AAB /* AddClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddClientViewController.h; sourceTree = "<group>"; };
 		9DE3BC24134EFD1800EC6AAB /* AddClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddClientViewController.m; sourceTree = "<group>"; };
 		9DE3BC25134EFD1800EC6AAB /* AddClientViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddClientViewController.xib; sourceTree = "<group>"; };
+		9DEF3EC1135553E000B4FA51 /* HouseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseListViewController.h; sourceTree = "<group>"; };
+		9DEF3EC2135553E000B4FA51 /* HouseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseListViewController.m; sourceTree = "<group>"; };
+		9DEF3EC71355555000B4FA51 /* HouseItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseItemView.h; sourceTree = "<group>"; };
+		9DEF3EC81355555000B4FA51 /* HouseItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseItemView.m; sourceTree = "<group>"; };
+		9DEF3ECA1355556500B4FA51 /* HouseItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseItemView.xib; sourceTree = "<group>"; };
+		9DEF3ECC1355850400B4FA51 /* HouseListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +312,14 @@
 				9DC5825D135086CD0079B0B8 /* LayoutViewController.h */,
 				9DC5825E135086CD0079B0B8 /* LayoutViewController.m */,
 				9DC5825F135086CE0079B0B8 /* LayoutViewController.xib */,
+				9DEF3EC1135553E000B4FA51 /* HouseListViewController.h */,
+				9DEF3EC2135553E000B4FA51 /* HouseListViewController.m */,
+				9DEF3ECC1355850400B4FA51 /* HouseListViewController.xib */,
+				9D3D9AF51355EFC1003B7BFC /* LoanCalculatorViewController.h */,
+				9D3D9AF61355EFC1003B7BFC /* LoanCalculatorViewController.m */,
+				9D3D9AF71355EFC1003B7BFC /* LoanCalculatorViewController.xib */,
+				9D1CBF0C1356AEA900DA6BF7 /* CustomNavigationController.h */,
+				9D1CBF0D1356AEA900DA6BF7 /* CustomNavigationController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -390,6 +416,9 @@
 				9D77C79A1354536A002026FA /* LayoutPictureView.h */,
 				9D77C79B1354536A002026FA /* LayoutPictureView.m */,
 				9D77C79D13545389002026FA /* LayoutPictureView.xib */,
+				9DEF3EC71355555000B4FA51 /* HouseItemView.h */,
+				9DEF3EC81355555000B4FA51 /* HouseItemView.m */,
+				9DEF3ECA1355556500B4FA51 /* HouseItemView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -481,6 +510,9 @@
 				9D77C79413529837002026FA /* nav-arrow-right.png in Resources */,
 				9D77C7991352DC3F002026FA /* PositionItemView.xib in Resources */,
 				9D77C79E13545389002026FA /* LayoutPictureView.xib in Resources */,
+				9DEF3ECB1355556500B4FA51 /* HouseItemView.xib in Resources */,
+				9DEF3ECD1355850400B4FA51 /* HouseListViewController.xib in Resources */,
+				9D3D9AF91355EFC1003B7BFC /* LoanCalculatorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +552,10 @@
 				9D77C7901351A011002026FA /* Layout.m in Sources */,
 				9D77C7971352DB8E002026FA /* PositionItemView.m in Sources */,
 				9D77C79C1354536B002026FA /* LayoutPictureView.m in Sources */,
+				9DEF3EC4135553E000B4FA51 /* HouseListViewController.m in Sources */,
+				9DEF3EC91355555000B4FA51 /* HouseItemView.m in Sources */,
+				9D3D9AF81355EFC1003B7BFC /* LoanCalculatorViewController.m in Sources */,
+				9D1CBF0E1356AEA900DA6BF7 /* CustomNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

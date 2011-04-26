@@ -9,9 +9,10 @@
 #import "LayoutViewController.h"
 #import "ClientViewController.h"
 #import "LayoutListViewController.h"
+#import "HouseListViewController.h"
+#import "CustomNavigationController.h"
 #import "PositionItemView.h"
 #import "LayoutItemView.h"
-#import "LayoutPictureView.h"
 #import "EstateConsultantAppDelegate.h"
 #import "EstateConsultantUtils.h"
 
@@ -56,6 +57,7 @@
     [_layoutListButton release];
     [_layoutListPopover release];
     [_positionItems release];
+    [_layoutPictureView release];
     [super dealloc];
 }
 
@@ -107,7 +109,6 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-
     if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft
         || self.interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
         [UIView animateWithDuration:duration
@@ -117,6 +118,7 @@
                          completion:^(BOOL finished){
                              self.layoutListButton.hidden = YES;
                          }];
+        
     } else {
         [UIView animateWithDuration:duration
                          animations:^{
@@ -125,6 +127,11 @@
                          }
                          completion:nil];
     }
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, self.scrollView.contentSize.height)];
 }
 
 - (void)setLayout:(Layout *)layout
@@ -145,12 +152,17 @@
     NSSet *onSaleHouses = [[DataProvider sharedProvider] getOnSaleHousesOfLayout:layout];
     [self.onSaleCountLabel setText:[NSString stringWithFormat:@"%i", onSaleHouses.count]];
     
+    if (_layoutPictureView != nil) {
+        [_layoutPictureView removeFromSuperview];
+        _layoutPictureView = nil;
+    }
     UIViewController *picsController = [[UIViewController alloc] initWithNibName:@"LayoutPictureView" bundle:nil];
-    [picsController.view setFrame:CGRectMake(0, 236, self.view.frame.size.width, 612)];
-    [(LayoutPictureView *)picsController.view setLayout:layout];
-    [self.scrollView addSubview:picsController.view];
+    _layoutPictureView = (LayoutPictureView *)picsController.view;    
+    [_layoutPictureView setFrame:CGRectMake(0, 236, self.scrollView.frame.size.width, 612)];
+    [_layoutPictureView setLayout:layout];
+    [self.scrollView addSubview:_layoutPictureView];
     [picsController release];
-        
+    
     NSSet *positions = [layout valueForKeyPath:@"houses.@distinctUnionOfObjects.position"];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"positionID" ascending:YES];
     NSArray *sortedPositions = [positions sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
@@ -169,13 +181,14 @@
     
     NSInteger pIndex = 0;
     for (Position *position in sortedPositions) {
-        NSInteger originX = 40 + (pIndex % 2) * (newPositionFrame.size.width / 2 - 40);
+        NSInteger originX = 40 + (pIndex % 2) * (newPositionFrame.size.width / 2 - 20);
         NSInteger originY = 20 + pIndex / 2 * 70;
-        UIViewController *positionItemController = [[UIViewController alloc] initWithNibName:@"positionItemView" bundle:nil];
+        UIViewController *positionItemController = [[UIViewController alloc] initWithNibName:@"PositionItemView" bundle:nil];
         PositionItemView *pView = (PositionItemView *)positionItemController.view;
         [pView setFrame:CGRectMake(originX, originY, newPositionFrame.size.width / 2 - 60, 50)];
         [pView setPosition:position];
         [pView setLayoutID:self.layout.layoutID.intValue];
+        [pView setDelegate:self];
         
         [self.positionView addSubview:pView];
         [_positionItems addObject:pView];
@@ -185,6 +198,8 @@
     
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, newPositionFrame.origin.y + newPositionFrame.size.height)];
     
+    [[DataProvider sharedProvider] historyOfClient:self.client withAction:0 andTarget:layout];
+    
     if (_layout != nil) {
         [_layout release];
         _layout = nil;
@@ -193,17 +208,43 @@
 }
 
 - (void)layoutSelected:(NSNotification *)notification
-{        
+{   
+    [_layoutListPopover dismissPopoverAnimated:NO];
     LayoutItemView *view = (LayoutItemView *)notification.object;        
     [self setLayout:view.layout];
+}
+
+- (void)positionSelected:(Position *)position
+{
+    HouseListViewController *houseLiseController = [[HouseListViewController alloc] initWithNibName:@"HouseListViewController" bundle:nil];
+    [houseLiseController setClient:self.client];
+    [houseLiseController setPosition:position];
+    [houseLiseController setLayoutController:self];
+    
+    CustomNavigationController *navController = [[CustomNavigationController alloc] initWithRootViewController:houseLiseController];
+    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+    
+    [self presentModalViewController:navController animated:YES];
+    [houseLiseController release];
+    [navController release];
+}
+
+- (void)closeHouseList
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)closeCalculator
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)showLayoutList:(id)sender forEvent:(UIEvent *)event {
     if (_layoutListPopover == nil) {
         LayoutListViewController *layoutListController = [self.splitViewController.viewControllers objectAtIndex:0];
         NSInteger popHeight = layoutListController.layouts.count * 82;
-        if (popHeight > 520) {
-            popHeight = 520;
+        if (popHeight > 600) {
+            popHeight = 600;
         }
         layoutListController.contentSizeForViewInPopover = CGSizeMake(320, popHeight);
                 

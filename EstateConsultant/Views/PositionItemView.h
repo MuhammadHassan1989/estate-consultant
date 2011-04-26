@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DataProvider.h"
+#import "LayoutViewController.h"
 
 
 @interface PositionItemView : UIView {
@@ -16,6 +17,7 @@
 @property (nonatomic, assign) NSInteger layoutID;
 @property (nonatomic, retain) Position *position;
 @property (nonatomic, retain) IBOutlet UIButton *button;
+@property (nonatomic, assign) LayoutViewController *delegate;
 
 - (IBAction)selectPosition:(id)sender forEvent:(UIEvent *)event;
 

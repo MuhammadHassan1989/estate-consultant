@@ -11,12 +11,17 @@
          </expressions>
       </StackState>
       <StackState
-         stackFrameDescription = "-[LayoutViewController setLayout:]:LayoutViewController.m">
+         stackFrameDescription = "-[ClientHistoryView awakeFromNib]:ClientHistoryView.m">
          <expressions>
          </expressions>
       </StackState>
       <StackState
          stackFrameDescription = "-[LoginViewController tryDemo:forEvent:]:LoginViewController.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[PositionItemView selectPosition:forEvent:]:PositionItemView.m">
          <expressions>
          </expressions>
       </StackState>
@@ -53,7 +58,18 @@
          </expressions>
       </StackState>
       <StackState
-         stackFrameDescription = "-[ClientHistoryView awakeFromNib]:ClientHistoryView.m">
+         stackFrameDescription = "-[HouseListViewController viewDidLoad]:HouseListViewController.m">
+         <expressions>
+            <expression
+               value = "self.scrollView">
+            </expression>
+            <expression
+               value = "_scrollView">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[LayoutViewController setLayout:]:LayoutViewController.m">
          <expressions>
          </expressions>
       </StackState>

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DataProvider.h"
+#import "ClientViewController.h"
 
 
 @interface ClientHistoryView : UIView {
@@ -17,6 +18,7 @@
 @property (nonatomic, retain) History *history;
 @property (nonatomic, retain) IBOutlet UILabel *dateLabel;
 @property (nonatomic, retain) IBOutlet UILabel *actionLabel;
+@property (nonatomic, assign) ClientViewController *clientViewControlelr;
 
 
 @end
