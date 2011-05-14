@@ -2,48 +2,32 @@
 //  ClientViewController.m
 //  EstateConsultant
 //
-//  Created by farthinker on 4/6/11.
+//  Created by farthinker on 4/29/11.
 //  Copyright 2011 mycolorway. All rights reserved.
 //
 
 #import "ClientViewController.h"
+#import "ClientTypeController.h"
 #import "ClientListViewController.h"
-#import "LayoutListViewController.h"
-#import "LayoutViewController.h"
-#import "ClientHistoryView.h"
-#import "LayoutItemView.h"
-#import "EstateConsultantAppDelegate.h"
-
 
 @implementation ClientViewController
 
-@synthesize client = _client;
-@synthesize nameField = _nameField;
-@synthesize sexSelect = _sexSelect;
-@synthesize phoneField = _phoneField;
-@synthesize estateTypeSelect = _estateTypeSelect;
-@synthesize scrollView = _scrollView;
-@synthesize emptyInfo = _emptyInfo;
+@synthesize consultant = _consultant;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _scrollTopInset = 360;
+        // Custom initialization
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [_client release];
-    [_nameField release];
-    [_sexSelect release];
-    [_phoneField release];
-    [_estateTypeSelect release];
-    [_scrollView release];
-    [_emptyInfo release];
-    [_layoutListPopover release];
+    [_listNavController release];
+    [_detailController release];
+    [_consultant release];
     [super dealloc];
 }
 
@@ -61,164 +45,52 @@
 {
     [super viewDidLoad];
     
-    [self.nameField setText:self.client.name];
-    [self.nameField setDelegate:self];
-    [self.phoneField setText:self.client.phone];
-    [self.phoneField setDelegate:self];
-    [self.sexSelect setSelectedSegmentIndex:[self.client.sex intValue]];
-    [self.estateTypeSelect setSelectedSegmentIndex:[self.client.estateType intValue]];
+    ClientTypeController *clientTypeController = [[ClientTypeController alloc] initWithNibName:@"ClientTypeController" bundle:nil];
+    clientTypeController.consultant = self.consultant;
+    clientTypeController.navigationItem.title = @"分类";
+    _listNavController = [[UINavigationController alloc] initWithRootViewController:clientTypeController];
+    [clientTypeController release];
     
+    ClientListViewController *clientListController = [[ClientListViewController alloc] initWithNibName:@"ClientListViewController" bundle:nil];
+    clientListController.clientType = 0;
+    clientListController.consultant = self.consultant;
+    clientListController.navigationItem.title = @"我的客户";
+    [_listNavController pushViewController:clientListController animated:NO];
+    [clientListController release];
     
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
-    NSArray *histories = [self.client.history sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    if (histories.count > 0) {
-        self.emptyInfo.hidden = YES;
-    } else {
-        self.emptyInfo.hidden = NO;
-    }
+    [_listNavController.view setFrame:CGRectMake(0, 0, 320, 694)];
+    [_listNavController viewWillAppear:NO];
+    [self.view addSubview:_listNavController.view];
     
-    CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
-    NSInteger originY = _scrollTopInset + 30;
-    for (History *history in histories) {
-        UIViewController *targetController = [[UIViewController alloc] initWithNibName:@"ClientHistoryView" bundle:nil];
-        [targetController.view setFrame:CGRectMake(40, originY, appFrame.size.width - 80, 410)];
-        [(ClientHistoryView *)targetController.view setHistory:history];
-        [(ClientHistoryView *)targetController.view setClientViewControlelr:self];
-        originY += targetController.view.frame.size.height + 30;
-        
-        [self.scrollView addSubview:targetController.view];
-        [targetController release];
-    }
-    
-    [self.scrollView setContentSize:CGSizeMake(appFrame.size.width, originY)];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(layoutSelected:) 
-                                                 name:@"LayoutSelected" 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showClient:)
+                                                 name:@"SelectClient"
                                                object:nil];
 }
 
 - (void)viewDidUnload
 {
-    [self setClient:nil];
-    [self setNameField:nil];
-    [self setSexSelect:nil];
-    [self setPhoneField:nil];
-    [self setEstateTypeSelect:nil];
-    [self setScrollView:nil];
-    [self setEmptyInfo:nil];
+    [self setConsultant:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-	return YES;
+	return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) ||
+    (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
-- (IBAction)returnClientList:(id)sender forEvent:(UIEvent *)event {
-    EstateConsultantAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    Consultant *consultant = [[DataProvider sharedProvider] getConsultantByID:appDelegate.consultantID];
-    
-    ClientListViewController *clientListController = [[ClientListViewController alloc] initWithNibName:@"ClientListViewController" bundle:nil];
-    [clientListController setConsultant:consultant];
-    [clientListController.view setFrame:[UIScreen mainScreen].applicationFrame];
-
-    appDelegate.viewController = clientListController;
-    [clientListController release];
-}
-
-- (IBAction)showLayoutList:(id)sender forEvent:(UIEvent *)event {
-    if (_layoutListPopover == nil) {
-        NSArray *layouts = [[DataProvider sharedProvider] getLayouts];
-        NSInteger popHeight = layouts.count * 82;
-        if (popHeight > 600) {
-            popHeight = 600;
-        }
-        
-        LayoutListViewController *contentController = [[LayoutListViewController alloc] initWithNibName:@"LayoutListViewController" bundle:nil];
-        contentController.contentSizeForViewInPopover = CGSizeMake(320, popHeight);
-        contentController.layouts = layouts;
-        
-        _layoutListPopover = [[UIPopoverController alloc] initWithContentViewController:contentController];
-        [contentController release];
-    }
-    
-    [_layoutListPopover presentPopoverFromRect:((UIButton *)sender).frame
-                                        inView:self.view
-                      permittedArrowDirections:UIPopoverArrowDirectionAny
-                                      animated:NO];
-}
-
-- (IBAction)changeSex:(id)sender forEvent:(UIEvent *)event {
-    self.client.sex = [NSNumber numberWithInt:self.sexSelect.selectedSegmentIndex];
-}
-
-- (IBAction)changeEstateType:(id)sender forEvent:(UIEvent *)event {
-    self.client.estateType = [NSNumber numberWithInt:self.estateTypeSelect.selectedSegmentIndex];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (void)showClient:(NSNotification *)notification
 {
-    if (textField.text == nil || textField.text.length == 0) {
-        return YES;
+    if (_detailController == nil) {
+        _detailController = [[ClientDetailController alloc] initWithNibName:@"ClientDetailController" bundle:nil];
+        [_detailController.view setFrame:CGRectMake(322, 0, 702, 694)];
+        [self.view addSubview:_detailController.view];
     }
     
-    if (textField == self.nameField) {
-        self.client.name = textField.text;
-    } else if ( textField == self.phoneField) {
-        self.client.phone = textField.text;
-    }
-    
-    [textField resignFirstResponder];
-    return YES;
+    Client *client = [[notification userInfo] valueForKey:@"client"];
+    _detailController.client = client;
 }
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if (textField == self.phoneField) {
-        NSPredicate *numberPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES '^[0-9]*$'"];
-        if (![numberPredicate evaluateWithObject:string]) {
-            return NO;
-        }        
-    }
-    return YES;
-}
-
-- (void)layoutSelected:(NSNotification *)notification
-{
-    [_layoutListPopover dismissPopoverAnimated:NO];
-    [self loadLayoutView:((LayoutItemView *)notification.object).layout];
-}
-
-- (void)loadLayoutView:(Layout *)layout
-{
-    NSArray *layouts = [[DataProvider sharedProvider] getLayouts];
-    if (layout == nil && layouts.count > 0) {
-        layout = [layouts objectAtIndex:0];
-    }
-    
-    LayoutListViewController *listController = [[LayoutListViewController alloc] initWithNibName:@"LayoutListViewController" bundle:nil];
-    [listController.view setFrame:CGRectMake(0, 0, 320, layouts.count * 82)];
-    listController.layouts = layouts;
-    listController.selectedLayout = layout;
-    
-    LayoutViewController *layoutController = [[LayoutViewController alloc] initWithNibName:@"LayoutViewController" bundle:nil];
-    [layoutController.view setFrame:CGRectMake(0, 0, 703, 768)];
-    [layoutController setClient:self.client];
-    [layoutController setLayout:layout];
-    
-    UISplitViewController *splitController = [[UISplitViewController alloc] init];
-    splitController.viewControllers = [NSArray arrayWithObjects:listController, layoutController, nil];
-    [listController release];
-    [layoutController release];
-    
-    EstateConsultantAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    appDelegate.viewController = splitController;
-    [splitController release];
-}
-
 
 @end

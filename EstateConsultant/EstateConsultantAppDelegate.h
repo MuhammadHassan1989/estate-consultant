@@ -13,8 +13,6 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) UIViewController *viewController;
-@property (nonatomic, assign) NSInteger consultantID;
 
 - (void)initApplicationDirectories;
 

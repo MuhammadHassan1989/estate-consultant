@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Consultant.h"
 #import "Client.h"
+#import "Profile.h"
+#import "ClientProfile.h"
 #import "House.h"
 #import "Layout.h"
 #import "Position.h"
@@ -41,7 +43,14 @@
 
 #pragma mark - Client Data Provider
 - (Client *)getClientByID:(NSInteger)clientID;
+- (NSArray *)getAllClients;
+- (NSArray *)getClientsByType:(NSInteger)clientType ofConsultant:(Consultant *)consultant;
 - (Client *)clientWithName:(NSString *)name andPhone:(NSString *)phone andSex:(NSInteger)sex ofConsultant:(Consultant *)consultant;
+
+#pragma mark - Profile Data Provider
+- (Profile *)getProfileByID:(NSInteger)profileID;
+- (NSArray *)getAllProfiles;
+- (ClientProfile *)getClientProfile:(Profile *)profile ofClient:(Client *)client;
 
 #pragma mark - House Data Provider
 - (House *)getHouseByID:(NSInteger)houseID;

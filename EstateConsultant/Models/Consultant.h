@@ -2,7 +2,7 @@
 //  Consultant.h
 //  EstateConsultant
 //
-//  Created by farthinker on 4/10/11.
+//  Created by farthinker on 5/12/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
@@ -14,10 +14,9 @@
 @interface Consultant : NSManagedObject {
 @private
 }
-@property (nonatomic, retain) NSString * username;
-@property (nonatomic, retain) NSString * password;
 @property (nonatomic, retain) NSNumber * consultantID;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * username;
 @property (nonatomic, retain) NSSet* clients;
 
 @end

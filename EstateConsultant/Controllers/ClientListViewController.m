@@ -2,34 +2,24 @@
 //  ClientListViewController.m
 //  EstateConsultant
 //
-//  Created by farthinker on 4/1/11.
+//  Created by farthinker on 5/1/11.
 //  Copyright 2011 mycolorway. All rights reserved.
 //
 
 #import "ClientListViewController.h"
-#import "LoginViewController.h"
-#import "ClientViewController.h"
-#import "AddClientViewController.h"
-#import "ClientItemView.h"
-#import "EstateConsultantAppDelegate.h"
-#import "DataProvider.h"
 
 
 @implementation ClientListViewController
 
+@synthesize clientType = _clientType;
 @synthesize consultant = _consultant;
-@synthesize nameLabel = _nameLabel;
-@synthesize emptyInfo = _emptyInfo;
-@synthesize clientList = _clientList;
-@synthesize searchField = _searchField;
+@synthesize clients = _clients;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        _scrollTopInset = 220;
-
     }
     return self;
 }
@@ -37,13 +27,7 @@
 - (void)dealloc
 {
     [_consultant release];
-    [_nameLabel release];
-    [_emptyInfo release];
-    [_clientList release];
-    [_searchField release];
-    [_clientItems release];
-    [_statPopover release];
-    [_addClientPopover release];
+    [_clients release];
     [super dealloc];
 }
 
@@ -60,62 +44,37 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.nameLabel setText:self.consultant.name];
-    [self.searchField setDelegate:self];
-    
-    NSString *searchImgPath = [[NSBundle mainBundle] pathForResource:@"icon-search.png" ofType:nil];
-    UIImage *searchImg = [[UIImage alloc] initWithContentsOfFile:searchImgPath];
-    UIImageView *searchImgView = [[UIImageView alloc] initWithImage:searchImg];
-    [searchImgView setFrame:CGRectMake(0, 0, 40, 50)];
-    [searchImgView setContentMode:UIViewContentModeRight];
-    [self.searchField setLeftView:searchImgView];
-    [self.searchField setLeftViewMode:UITextFieldViewModeAlways];
-    [searchImg release];
-    [searchImgView release];
-    
-    if ([self.consultant.clients count] > 0) {
-        [self.emptyInfo setHidden:YES];
-    } else {
-        [self.emptyInfo setHidden:NO];
-    }
-    
-    CGRect appFrame = [UIScreen mainScreen].applicationFrame;
-    [self.clientList setFrame:appFrame];
-    
-    NSInteger index = 0;
-    NSSortDescriptor *dateSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"history.@max.date" ascending:NO];
-    NSSortDescriptor *idSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"clientID" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:dateSortDescriptor, idSortDescriptor, nil];
-    NSArray *clients = [self.consultant.clients sortedArrayUsingDescriptors:sortDescriptors];
-    [dateSortDescriptor release];
-    [idSortDescriptor release];
-    [sortDescriptors release];
 
-    _clientItems = [[NSMutableArray alloc] initWithCapacity:[clients count]];
-    for (Client *client in clients) {
-        UIViewController *itemController = [[UIViewController alloc] initWithNibName:@"ClientItemView" bundle:nil];
-        [(ClientItemView *)itemController.view setClient:client];
-        [itemController.view setFrame:CGRectMake(30, _scrollTopInset + index * 80, appFrame.size.width - 60, 60)];
-        
-        [self.clientList addSubview:itemController.view];
-        [_clientItems addObject:itemController.view];
-        [itemController release];
-        index++;
-    }
+    self.clearsSelectionOnViewWillAppear = NO;
     
-    [self.clientList setContentSize:CGSizeMake(appFrame.size.width, index * 80 + _scrollTopInset)];
+    self.clients = [[DataProvider sharedProvider] getClientsByType:self.clientType ofConsultant:self.consultant];
 }
 
 - (void)viewDidUnload
 {
     [self setConsultant:nil];
-    [self setNameLabel:nil];
-    [self setEmptyInfo:nil];
-    [self setClientList:nil];
-    [self setSearchField:nil];
+    [self setClients:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -124,107 +83,114 @@
 	return YES;
 }
 
+#pragma mark - Table view data source
 
-- (IBAction)logout:(id)sender forEvent:(UIEvent *)event {
-    LoginViewController *loginController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    [loginController.view setFrame:[UIScreen mainScreen].applicationFrame];
-    
-    EstateConsultantAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    appDelegate.viewController = loginController;
-    [loginController release];
-}
-
-- (IBAction)showStat:(id)sender forEvent:(UIEvent *)event {
-    if (_statPopover == nil) {
-        UIViewController *contentController = [[UIViewController alloc] initWithNibName:@"ConsultantStatView" bundle:nil];
-        contentController.contentSizeForViewInPopover = CGSizeMake(300, 224);
-        _statPopover = [[UIPopoverController alloc] initWithContentViewController:contentController];
-        [contentController release];
-    }
-    
-    [_statPopover presentPopoverFromRect:((UIButton *)sender).frame
-                                       inView:self.view
-                     permittedArrowDirections:UIPopoverArrowDirectionAny
-                                     animated:NO];
-}
-
-- (IBAction)showAddClientForm:(id)sender forEvent:(UIEvent *)event {
-    if (_addClientPopover == nil) {
-        AddClientViewController *contentController = [[AddClientViewController alloc] initWithNibName:@"AddClientViewController" bundle:nil];
-        contentController.contentSizeForViewInPopover = CGSizeMake(340, 243);
-        _addClientPopover = [[UIPopoverController alloc] initWithContentViewController:contentController];
-        contentController.consultant = self.consultant;
-        contentController.parentPopover = _addClientPopover;
-        [contentController release];
-    }
-    
-    [_addClientPopover presentPopoverFromRect:((UIButton *)sender).frame
-                                  inView:self.view
-                permittedArrowDirections:UIPopoverArrowDirectionAny
-                                animated:NO];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [textField resignFirstResponder];
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _clients.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"ClientCell";
+    
+    UILabel *phoneLabel;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        
+        phoneLabel = [[[UILabel alloc] initWithFrame:CGRectMake(190, 2, 120, 40)] autorelease];
+        phoneLabel.tag = 1;
+        phoneLabel.font = [UIFont systemFontOfSize:16.0];
+        phoneLabel.textAlignment = UITextAlignmentRight;
+        phoneLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1.0];
+        phoneLabel.highlightedTextColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+        phoneLabel.opaque = YES;
+        [cell.contentView addSubview:phoneLabel];
+    } else {
+        phoneLabel = (UILabel *)[cell.contentView viewWithTag:1];
+    }
+    
+    Client *client = [_clients objectAtIndex:indexPath.row];
+    
+    NSString *imagePath;
+    if (client.starred.boolValue) {
+        imagePath = [[NSBundle mainBundle] pathForResource:@"star-on.png" ofType:nil];
+    } else {
+        imagePath = [[NSBundle mainBundle] pathForResource:@"star.png" ofType:nil];
+    }
+    UIImage *starImage = [[UIImage alloc] initWithContentsOfFile:imagePath];
+    [cell.imageView setImage:starImage];
+    [starImage release];
+    
+    cell.textLabel.font = [UIFont systemFontOfSize:18];
+    if (client.sex.intValue == 0) {
+        cell.textLabel.text = [client.name stringByAppendingString:@"女士"];
+    } else if (client.sex.intValue == 1) {
+        cell.textLabel.text = [client.name stringByAppendingString:@"先生"];        
+    }
+    
+    phoneLabel.text = client.phone;
+    [cell.contentView bringSubviewToFront:phoneLabel];
+            
+    return cell;
+}
+
+/*
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
+*/
 
-- (BOOL)textFieldShouldClear:(UITextField *)textField
+/*
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self filterClients:@""];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
+*/
+
+/*
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+}
+*/
+
+/*
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
+*/
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSPredicate *numberPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES '^[0-9]*$'"];
-    if (![numberPredicate evaluateWithObject:string]) {
-        return NO;
-    }
+    Client  *client = [_clients objectAtIndex:indexPath.row];
     
-    NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];    
-    [self filterClients:text];
-    return YES;
-}
-
-- (void)filterClients:(NSString *)text {
-    NSMutableArray *showItems = [[NSMutableArray alloc] init];
-    NSMutableArray *hideItems = [[NSMutableArray alloc] init];
-    for (ClientItemView *itemView in _clientItems) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.client.phone CONTAINS %@", text];
-        if ([predicate evaluateWithObject:itemView] || [text length] == 0) {
-            [showItems addObject:itemView];
-        } else {
-            [hideItems addObject:itemView];
-        }
-    }
-    
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         NSInteger index = 0;
-                         for (ClientItemView *view in showItems) {
-                             view.hidden = NO;
-                             view.alpha = 1.0;
-                             view.frame = CGRectMake(30, _scrollTopInset + index * 80, view.frame.size.width, view.frame.size.height);
-                             index++;
-                         }
-                         
-                         for (ClientItemView *view in hideItems) {
-                             view.alpha = 0.0;
-                         }
-                     }
-                     completion:^(BOOL finished){                         
-                         for (ClientItemView *view in hideItems) {
-                             view.hidden = YES;
-                         }
-                     }];
-    
-//    CGRect appFrame = [UIScreen mainScreen].applicationFrame;
-//    [self.clientList setContentSize:CGSizeMake(appFrame.size.width, [showItems count] * 80 + _scrollTopInset)];
-    
-    [showItems release];
-    [hideItems release];
+    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:client, @"client", nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SelectClient"
+                                                        object:self
+                                                      userInfo:userInfo];
+    [userInfo release];
 }
 
 @end

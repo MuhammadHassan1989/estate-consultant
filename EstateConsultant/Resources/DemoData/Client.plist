@@ -3,12 +3,29 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>profiles</key>
+		<array>
+			<dict>
+				<key>profileID</key>
+				<integer>1</integer>
+				<key>value</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>profileID</key>
+				<integer>2</integer>
+				<key>value</key>
+				<string>0</string>
+			</dict>
+		</array>
 		<key>consultant</key>
 		<integer>1</integer>
-		<key>estateType</key>
-		<integer>0</integer>
 		<key>follows</key>
-		<array/>
+		<array>
+			<integer>1</integer>
+			<integer>2</integer>
+			<integer>3</integer>
+		</array>
 		<key>id</key>
 		<integer>1</integer>
 		<key>name</key>
@@ -17,24 +34,37 @@
 		<array/>
 		<key>phone</key>
 		<string>13281865556</string>
+		<key>profile</key>
+		<string></string>
 		<key>purchases</key>
 		<array/>
 		<key>sex</key>
 		<integer>0</integer>
-		<key>wishes</key>
-		<array>
-			<integer>1</integer>
-			<integer>2</integer>
-			<integer>3</integer>
-		</array>
+		<key>starred</key>
+		<true/>
 	</dict>
 	<dict>
+		<key>profiles</key>
+		<array>
+			<dict>
+				<key>profileID</key>
+				<integer>1</integer>
+				<key>value</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>profileID</key>
+				<integer>2</integer>
+				<key>value</key>
+				<string>0</string>
+			</dict>
+		</array>
 		<key>consultant</key>
 		<integer>1</integer>
-		<key>estateType</key>
-		<integer>0</integer>
 		<key>follows</key>
-		<array/>
+		<array>
+			<integer>3</integer>
+		</array>
 		<key>id</key>
 		<integer>2</integer>
 		<key>name</key>
@@ -45,25 +75,35 @@
 		</array>
 		<key>phone</key>
 		<string>18608049950</string>
+		<key>profile</key>
+		<string>0</string>
 		<key>purchases</key>
 		<array/>
 		<key>sex</key>
 		<integer>1</integer>
-		<key>wishes</key>
-		<array>
-			<integer>3</integer>
-		</array>
+		<key>starred</key>
+		<true/>
 	</dict>
 	<dict>
+		<key>profiles</key>
+		<array>
+			<dict>
+				<key>profileID</key>
+				<integer>1</integer>
+				<key>value</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>profileID</key>
+				<integer>2</integer>
+				<key>value</key>
+				<string>0</string>
+			</dict>
+		</array>
 		<key>consultant</key>
 		<integer>1</integer>
-		<key>estateType</key>
-		<integer>0</integer>
 		<key>follows</key>
-		<array>
-			<integer>1</integer>
-			<integer>2</integer>
-		</array>
+		<array/>
 		<key>id</key>
 		<integer>3</integer>
 		<key>name</key>
@@ -72,18 +112,33 @@
 		<array/>
 		<key>phone</key>
 		<string>13583745932</string>
+		<key>profile</key>
+		<string>0</string>
 		<key>purchases</key>
 		<array/>
 		<key>sex</key>
 		<integer>1</integer>
-		<key>wishes</key>
-		<array/>
+		<key>starred</key>
+		<false/>
 	</dict>
 	<dict>
+		<key>profiles</key>
+		<array>
+			<dict>
+				<key>profileID</key>
+				<integer>1</integer>
+				<key>value</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>profileID</key>
+				<integer>2</integer>
+				<key>value</key>
+				<string>0</string>
+			</dict>
+		</array>
 		<key>consultant</key>
 		<integer>1</integer>
-		<key>estateType</key>
-		<integer>0</integer>
 		<key>follows</key>
 		<array/>
 		<key>id</key>
@@ -94,18 +149,33 @@
 		<array/>
 		<key>phone</key>
 		<string>13693472643</string>
+		<key>profile</key>
+		<string></string>
 		<key>purchases</key>
 		<array/>
 		<key>sex</key>
 		<integer>0</integer>
-		<key>wishes</key>
-		<array/>
+		<key>starred</key>
+		<false/>
 	</dict>
 	<dict>
+		<key>profiles</key>
+		<array>
+			<dict>
+				<key>profileID</key>
+				<integer>1</integer>
+				<key>value</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>profileID</key>
+				<integer>2</integer>
+				<key>value</key>
+				<string>0</string>
+			</dict>
+		</array>
 		<key>consultant</key>
 		<integer>1</integer>
-		<key>estateType</key>
-		<integer>0</integer>
 		<key>follows</key>
 		<array/>
 		<key>id</key>
@@ -116,18 +186,33 @@
 		<array/>
 		<key>phone</key>
 		<string>13980098247</string>
+		<key>profile</key>
+		<string></string>
 		<key>purchases</key>
 		<array/>
 		<key>sex</key>
 		<integer>1</integer>
-		<key>wishes</key>
-		<array/>
+		<key>starred</key>
+		<false/>
 	</dict>
 	<dict>
+		<key>profiles</key>
+		<array>
+			<dict>
+				<key>profileID</key>
+				<integer>1</integer>
+				<key>value</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>profileID</key>
+				<integer>2</integer>
+				<key>value</key>
+				<string>0</string>
+			</dict>
+		</array>
 		<key>consultant</key>
 		<integer>1</integer>
-		<key>estateType</key>
-		<integer>0</integer>
 		<key>follows</key>
 		<array/>
 		<key>id</key>
@@ -138,18 +223,33 @@
 		<array/>
 		<key>phone</key>
 		<string>13281865556</string>
+		<key>profile</key>
+		<string></string>
 		<key>purchases</key>
 		<array/>
 		<key>sex</key>
 		<integer>0</integer>
-		<key>wishes</key>
-		<array/>
+		<key>starred</key>
+		<false/>
 	</dict>
 	<dict>
+		<key>profiles</key>
+		<array>
+			<dict>
+				<key>profileID</key>
+				<integer>1</integer>
+				<key>value</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>profileID</key>
+				<integer>2</integer>
+				<key>value</key>
+				<string>0</string>
+			</dict>
+		</array>
 		<key>consultant</key>
 		<integer>1</integer>
-		<key>estateType</key>
-		<integer>0</integer>
 		<key>follows</key>
 		<array/>
 		<key>id</key>
@@ -160,18 +260,33 @@
 		<array/>
 		<key>phone</key>
 		<string>13281865556</string>
+		<key>profile</key>
+		<string></string>
 		<key>purchases</key>
 		<array/>
 		<key>sex</key>
 		<integer>0</integer>
-		<key>wishes</key>
-		<array/>
+		<key>starred</key>
+		<false/>
 	</dict>
 	<dict>
+		<key>profiles</key>
+		<array>
+			<dict>
+				<key>profileID</key>
+				<integer>1</integer>
+				<key>value</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>profileID</key>
+				<integer>2</integer>
+				<key>value</key>
+				<string>0</string>
+			</dict>
+		</array>
 		<key>consultant</key>
 		<integer>1</integer>
-		<key>estateType</key>
-		<integer>0</integer>
 		<key>follows</key>
 		<array/>
 		<key>id</key>
@@ -182,18 +297,33 @@
 		<array/>
 		<key>phone</key>
 		<string>13281865556</string>
+		<key>profile</key>
+		<string></string>
 		<key>purchases</key>
 		<array/>
 		<key>sex</key>
 		<integer>0</integer>
-		<key>wishes</key>
-		<array/>
+		<key>starred</key>
+		<true/>
 	</dict>
 	<dict>
+		<key>profiles</key>
+		<array>
+			<dict>
+				<key>profileID</key>
+				<integer>1</integer>
+				<key>value</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>profileID</key>
+				<integer>2</integer>
+				<key>value</key>
+				<string>0</string>
+			</dict>
+		</array>
 		<key>consultant</key>
 		<integer>1</integer>
-		<key>estateType</key>
-		<integer>0</integer>
 		<key>follows</key>
 		<array/>
 		<key>id</key>
@@ -204,18 +334,33 @@
 		<array/>
 		<key>phone</key>
 		<string>13281865556</string>
+		<key>profile</key>
+		<string></string>
 		<key>purchases</key>
 		<array/>
 		<key>sex</key>
 		<integer>0</integer>
-		<key>wishes</key>
-		<array/>
+		<key>starred</key>
+		<false/>
 	</dict>
 	<dict>
+		<key>profiles</key>
+		<array>
+			<dict>
+				<key>profileID</key>
+				<integer>1</integer>
+				<key>value</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>profileID</key>
+				<integer>2</integer>
+				<key>value</key>
+				<string>0</string>
+			</dict>
+		</array>
 		<key>consultant</key>
 		<integer>1</integer>
-		<key>estateType</key>
-		<integer>0</integer>
 		<key>follows</key>
 		<array/>
 		<key>id</key>
@@ -226,18 +371,33 @@
 		<array/>
 		<key>phone</key>
 		<string>13281865556</string>
+		<key>profile</key>
+		<string></string>
 		<key>purchases</key>
 		<array/>
 		<key>sex</key>
 		<integer>0</integer>
-		<key>wishes</key>
-		<array/>
+		<key>starred</key>
+		<true/>
 	</dict>
 	<dict>
+		<key>profiles</key>
+		<array>
+			<dict>
+				<key>profileID</key>
+				<integer>1</integer>
+				<key>value</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>profileID</key>
+				<integer>2</integer>
+				<key>value</key>
+				<string>0</string>
+			</dict>
+		</array>
 		<key>consultant</key>
 		<integer>1</integer>
-		<key>estateType</key>
-		<integer>0</integer>
 		<key>follows</key>
 		<array/>
 		<key>id</key>
@@ -248,18 +408,33 @@
 		<array/>
 		<key>phone</key>
 		<string>13281865556</string>
+		<key>profile</key>
+		<string></string>
 		<key>purchases</key>
 		<array/>
 		<key>sex</key>
 		<integer>0</integer>
-		<key>wishes</key>
-		<array/>
+		<key>starred</key>
+		<false/>
 	</dict>
 	<dict>
+		<key>profiles</key>
+		<array>
+			<dict>
+				<key>profileID</key>
+				<integer>1</integer>
+				<key>value</key>
+				<string>1</string>
+			</dict>
+			<dict>
+				<key>profileID</key>
+				<integer>2</integer>
+				<key>value</key>
+				<string>0</string>
+			</dict>
+		</array>
 		<key>consultant</key>
 		<integer>1</integer>
-		<key>estateType</key>
-		<integer>0</integer>
 		<key>follows</key>
 		<array/>
 		<key>id</key>
@@ -270,12 +445,14 @@
 		<array/>
 		<key>phone</key>
 		<string>13281865556</string>
+		<key>profile</key>
+		<string></string>
 		<key>purchases</key>
 		<array/>
 		<key>sex</key>
 		<integer>0</integer>
-		<key>wishes</key>
-		<array/>
+		<key>starred</key>
+		<false/>
 	</dict>
 </array>
 </plist>

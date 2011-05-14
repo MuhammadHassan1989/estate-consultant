@@ -7,7 +7,7 @@
 //
 
 #import "EstateConsultantAppDelegate.h"
-#import "LoginViewController.h"
+#import "RootViewController.h"
 #import "DataProvider.h"
 #import "ZipArchive.h"
 #import "EstateConsultantUtils.h"
@@ -16,19 +16,16 @@
 
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;
-@synthesize consultantID = _consultantID;
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initApplicationDirectories];
     [[DataProvider sharedProvider] loadDemoData];
     
-    LoginViewController *loginController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    [loginController.view setFrame:[UIScreen mainScreen].applicationFrame];
-    self.viewController = loginController;
-    [loginController release];
+    RootViewController *rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
+    [rootViewController.view setFrame:[UIScreen mainScreen].applicationFrame];
+    [self.window setRootViewController:rootViewController];
+    [rootViewController release];
     
     [self.window makeKeyAndVisible];
     
@@ -76,7 +73,6 @@
 - (void)dealloc
 {
     [_window release];
-    [_viewController release];
     [super dealloc];
 }
 
@@ -102,21 +98,6 @@
         
         NSLog(@"application directories created");
     }
-}
-
-- (void)setViewController:(UIViewController *)viewController
-{
-    [self.window addSubview:viewController.view];
-    
-    if (_viewController != nil) {
-        [[DataProvider sharedProvider] saveContext];
-        
-        [[_viewController.view retain] removeFromSuperview];
-        [_viewController release];
-        _viewController = nil;
-    }
-
-    _viewController = [viewController retain];
 }
 
 

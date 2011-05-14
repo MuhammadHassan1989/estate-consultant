@@ -241,6 +241,21 @@ static DataProvider *sharedProvider = nil;
         }
         [consultants release];
         
+        // profile data
+        NSString *profilesFile = [[NSBundle mainBundle] pathForResource:@"Profile.plist" ofType:nil];
+        NSArray *profiles = [[NSArray alloc] initWithContentsOfFile:profilesFile];
+        for (NSDictionary *profile in profiles) {
+            Profile *newProfile = [NSEntityDescription insertNewObjectForEntityForName:@"Profile"
+                                                                      inManagedObjectContext:moc];
+            newProfile.profileID = [profile valueForKey:@"id"];
+            newProfile.type = [profile valueForKey:@"type"];
+            newProfile.name = [profile valueForKey:@"name"];
+            newProfile.meta = [profile valueForKey:@"meta"];
+            newProfile.defaultValue = [profile valueForKey:@"default"];
+            newProfile.sequence = [profile valueForKey:@"sequence"];
+        }
+        [profiles release];
+        
         // client data
         NSString *clientsFile = [[NSBundle mainBundle] pathForResource:@"Client.plist" ofType:nil];
         NSArray *clients = [[NSArray alloc] initWithContentsOfFile:clientsFile];
@@ -249,27 +264,19 @@ static DataProvider *sharedProvider = nil;
                                                               inManagedObjectContext:moc];
             newClient.clientID = [client valueForKey:@"id"];
             newClient.phone = [client valueForKey:@"phone"];
-            newClient.estateType = [client valueForKey:@"estateType"];
             newClient.name = [client valueForKey:@"name"];
             newClient.sex = [client valueForKey:@"sex"];
+            newClient.starred = [client valueForKey:@"starred"];
             newClient.consultant = [self getConsultantByID:[[client valueForKey:@"consultant"] intValue]];
             
             NSArray* followIDs = [client valueForKey:@"follows"];
             NSMutableSet *followSet = [[NSMutableSet alloc] initWithCapacity:followIDs.count];
             for (NSNumber *followID in followIDs) {
-                [followSet addObject:[self getLayoutByID:[followID intValue]]];
+                [followSet addObject:[self getHouseByID:[followID intValue]]];
             }
             newClient.follows = followSet;
             [followSet release];
-            
-            NSArray* wishIDs = [client valueForKey:@"wishes"];
-            NSMutableSet *wishSet = [[NSMutableSet alloc] initWithCapacity:wishIDs.count];
-            for (NSNumber *wishID in wishIDs) {
-                [wishSet addObject:[self getHouseByID:[wishID intValue]]];
-            }
-            newClient.wishes = wishSet;
-            [wishSet release];
-            
+                        
             NSArray* orderIDs = [client valueForKey:@"orders"];
             NSMutableSet *orderSet = [[NSMutableSet alloc] initWithCapacity:orderIDs.count];
             for (NSNumber *orderID in orderIDs) {
@@ -285,6 +292,19 @@ static DataProvider *sharedProvider = nil;
             }
             newClient.purchases = purchaseSet;
             [purchaseSet release];
+            
+            NSArray* profileObjects = [client valueForKey:@"profiles"];
+            NSMutableSet *profileSet = [[NSMutableSet alloc] initWithCapacity:profileObjects.count];
+            for (NSDictionary *profileObject in profileObjects) {
+                ClientProfile *clientProfile = [NSEntityDescription insertNewObjectForEntityForName:@"ClientProfile"
+                                                                             inManagedObjectContext:moc];
+                clientProfile.client = newClient;
+                clientProfile.profile = [self getProfileByID:[[profileObject valueForKey:@"profileID"] intValue]];
+                clientProfile.value = [profileObject valueForKey:@"value"];
+                [profileSet addObject:clientProfile];
+            }
+            newClient.clientProfiles = profileSet;
+            [profileSet release];
         }
         [clients release];
         
@@ -298,15 +318,7 @@ static DataProvider *sharedProvider = nil;
             newHistory.date = [history valueForKey:@"date"];
             newHistory.action = [history valueForKey:@"action"];
             newHistory.client = [self getClientByID:[[history valueForKey:@"client"] intValue]];
-            
-            NSArray* layoutIDs = [history valueForKey:@"layouts"];
-            NSMutableSet *layoutSet = [[NSMutableSet alloc] initWithCapacity:layoutIDs.count];
-            for (NSNumber *layoutID in layoutIDs) {
-                [layoutSet addObject:[self getLayoutByID:[layoutID intValue]]];
-            }
-            newHistory.layouts = layoutSet;
-            [layoutSet release];
-            
+                        
             NSArray* houseIDs = [history valueForKey:@"houses"];
             NSMutableSet *houseSet = [[NSMutableSet alloc] initWithCapacity:houseIDs.count];
             for (NSNumber *houseID in houseIDs) {
@@ -421,6 +433,70 @@ static DataProvider *sharedProvider = nil;
     }
 }
 
+- (NSArray *)getAllClients
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Client"
+                                                         inManagedObjectContext:moc];
+    [request setEntity:entityDescription];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sequence" ascending:YES];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [sortDescriptor release];
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    [request release];
+    
+    NSLog(@"data provider: getAllClients; result: %i", [results count]);
+    
+    if (results == nil)
+    {
+        NSLog(@"data provider error: getAllClients");
+        return nil;
+    }
+    
+    return results;
+}
+
+- (NSArray *)getClientsByType:(NSInteger)clientType ofConsultant:(Consultant *)consultant
+{
+    NSArray *results = nil;
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"history.@max.date" ascending:NO];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+
+    if (clientType == 0) {
+        results = [consultant.clients sortedArrayUsingDescriptors:sortDescriptors];
+    } else if (clientType == 1) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.starred.boolValue == YES"];
+        NSSet *clients = [consultant.clients filteredSetUsingPredicate:predicate];
+        results = [clients sortedArrayUsingDescriptors:sortDescriptors];
+    } else if (clientType == 2) { 
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.orders.@count == 0 && SELF.purchases.@count == 0"];
+        NSSet *clients = [consultant.clients filteredSetUsingPredicate:predicate];
+        results = [clients sortedArrayUsingDescriptors:sortDescriptors];        
+    } else if (clientType == 3) { 
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.orders.@count > 0"];
+        NSSet *clients = [consultant.clients filteredSetUsingPredicate:predicate];
+        results = [clients sortedArrayUsingDescriptors:sortDescriptors];        
+    } else if (clientType == 4) { 
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.purchases.@count > 0"];
+        NSSet *clients = [consultant.clients filteredSetUsingPredicate:predicate];
+        results = [clients sortedArrayUsingDescriptors:sortDescriptors];        
+    } else if (clientType == 5) { 
+        NSArray *allClients = [self getAllClients];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.consultant.consultantID.intValue != %i", consultant.consultantID.intValue];
+        NSArray *clients = [allClients filteredArrayUsingPredicate:predicate];
+        results = [clients sortedArrayUsingDescriptors:sortDescriptors];
+    }
+    
+    [sortDescriptors release];
+    [sortDescriptor release];
+    return results;
+}
+
 - (Client *)clientWithName:(NSString *)name andPhone:(NSString *)phone andSex:(NSInteger)sex ofConsultant:(Consultant *)consultant
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
@@ -435,6 +511,70 @@ static DataProvider *sharedProvider = nil;
     
     return newClient;
 }
+
+
+#pragma mark - Profile Data Provider
+- (Profile *)getProfileByID:(NSInteger)profileID
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Profile"
+                                                         inManagedObjectContext:moc];
+    [request setEntity:entityDescription];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"profileID == %i", profileID];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    [request release];
+    
+    NSLog(@"data provider: getProfileByID(%i); result: %i", profileID, [results count]);
+    
+    if (results == nil)
+    {
+        NSLog(@"data provider error: getProfileByID(%i)", profileID);
+        return nil;
+    } else if ([results count] > 0) {
+        return [results objectAtIndex:0];
+    } else {
+        return nil;
+    }
+
+}
+
+- (NSArray *)getAllProfiles
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Profile"
+                                                         inManagedObjectContext:moc];
+    [request setEntity:entityDescription];
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    [request release];
+    
+    NSLog(@"data provider: getAllProfiles; result: %i", [results count]);
+    
+    if (results == nil)
+    {
+        NSLog(@"data provider error: getAllProfiles");
+        return nil;
+    }
+    
+    return results;
+}
+
+- (ClientProfile *)getClientProfile:(Profile *)profile ofClient:(Client *)client
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.profile.profileID=%@", profile.profileID];
+    NSSet *clientProfiles = [client.clientProfiles filteredSetUsingPredicate:predicate];
+    return [clientProfiles anyObject];
+}
+
 
 
 #pragma mark - House Data Provider

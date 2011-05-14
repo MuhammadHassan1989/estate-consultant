@@ -2,25 +2,23 @@
 //  Layout.h
 //  EstateConsultant
 //
-//  Created by farthinker on 4/10/11.
+//  Created by farthinker on 5/12/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Client, History, House;
+@class House;
 
 @interface Layout : NSManagedObject {
 @private
 }
 @property (nonatomic, retain) NSNumber * area;
-@property (nonatomic, retain) NSString * pics;
+@property (nonatomic, retain) NSString * desc;
 @property (nonatomic, retain) NSNumber * layoutID;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * desc;
+@property (nonatomic, retain) NSString * pics;
 @property (nonatomic, retain) NSSet* houses;
-@property (nonatomic, retain) NSSet* history;
-@property (nonatomic, retain) NSSet* followers;
 
 @end
