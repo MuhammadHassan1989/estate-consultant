@@ -43,13 +43,13 @@
 
 #pragma mark - Client Data Provider
 - (Client *)getClientByID:(NSInteger)clientID;
-- (NSArray *)getAllClients;
+- (NSArray *)getClients;
 - (NSArray *)getClientsByType:(NSInteger)clientType ofConsultant:(Consultant *)consultant;
 - (Client *)clientWithName:(NSString *)name andPhone:(NSString *)phone andSex:(NSInteger)sex ofConsultant:(Consultant *)consultant;
 
 #pragma mark - Profile Data Provider
 - (Profile *)getProfileByID:(NSInteger)profileID;
-- (NSArray *)getAllProfiles;
+- (NSArray *)getProfiles;
 - (ClientProfile *)getClientProfile:(Profile *)profile ofClient:(Client *)client;
 
 #pragma mark - House Data Provider
@@ -62,11 +62,12 @@
 
 #pragma mark - Position Data Provider
 - (Position *)getPositionByID:(NSInteger)positionID;
+- (NSArray *)getPositions;
 
 #pragma mark - History Data Provider
 - (History *)getHistoryByID:(NSInteger)historyID;
-- (History *)getHistoryByDate:(NSDate *)date;
-- (History *)historyOfClient:(Client *)client withAction:(NSInteger)action andTarget:(id)target;
+- (History *)getHistoryByDate:(NSDate *)date andAction:(NSInteger)action;
+- (History *)historyOfClient:(Client *)client withAction:(NSInteger)action andHouse:(House *)house;
 
 
 @end

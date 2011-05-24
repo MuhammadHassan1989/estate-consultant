@@ -2,7 +2,7 @@
 //  House.m
 //  EstateConsultant
 //
-//  Created by farthinker on 5/12/11.
+//  Created by farthinker on 5/17/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
@@ -14,46 +14,17 @@
 
 
 @implementation House
-@dynamic floor;
-@dynamic houseID;
-@dynamic num;
-@dynamic price;
 @dynamic status;
-@dynamic followers;
+@dynamic houseID;
+@dynamic floor;
+@dynamic price;
+@dynamic num;
 @dynamic history;
 @dynamic layout;
+@dynamic followers;
 @dynamic orderer;
 @dynamic position;
 @dynamic purchaser;
-
-- (void)addFollowersObject:(Client *)value {    
-    NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
-    [self willChangeValueForKey:@"followers" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
-    [[self primitiveValueForKey:@"followers"] addObject:value];
-    [self didChangeValueForKey:@"followers" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
-    [changedObjects release];
-}
-
-- (void)removeFollowersObject:(Client *)value {
-    NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
-    [self willChangeValueForKey:@"followers" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
-    [[self primitiveValueForKey:@"followers"] removeObject:value];
-    [self didChangeValueForKey:@"followers" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
-    [changedObjects release];
-}
-
-- (void)addFollowers:(NSSet *)value {    
-    [self willChangeValueForKey:@"followers" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
-    [[self primitiveValueForKey:@"followers"] unionSet:value];
-    [self didChangeValueForKey:@"followers" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
-}
-
-- (void)removeFollowers:(NSSet *)value {
-    [self willChangeValueForKey:@"followers" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
-    [[self primitiveValueForKey:@"followers"] minusSet:value];
-    [self didChangeValueForKey:@"followers" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
-}
-
 
 - (void)addHistoryObject:(History *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
@@ -83,6 +54,35 @@
     [self didChangeValueForKey:@"history" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
 
+
+
+- (void)addFollowersObject:(Client *)value {    
+    NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
+    [self willChangeValueForKey:@"followers" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
+    [[self primitiveValueForKey:@"followers"] addObject:value];
+    [self didChangeValueForKey:@"followers" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
+    [changedObjects release];
+}
+
+- (void)removeFollowersObject:(Client *)value {
+    NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
+    [self willChangeValueForKey:@"followers" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
+    [[self primitiveValueForKey:@"followers"] removeObject:value];
+    [self didChangeValueForKey:@"followers" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
+    [changedObjects release];
+}
+
+- (void)addFollowers:(NSSet *)value {    
+    [self willChangeValueForKey:@"followers" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
+    [[self primitiveValueForKey:@"followers"] unionSet:value];
+    [self didChangeValueForKey:@"followers" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
+}
+
+- (void)removeFollowers:(NSSet *)value {
+    [self willChangeValueForKey:@"followers" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
+    [[self primitiveValueForKey:@"followers"] minusSet:value];
+    [self didChangeValueForKey:@"followers" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
+}
 
 
 

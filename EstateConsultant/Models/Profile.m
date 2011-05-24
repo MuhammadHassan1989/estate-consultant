@@ -2,7 +2,7 @@
 //  Profile.m
 //  EstateConsultant
 //
-//  Created by farthinker on 5/12/11.
+//  Created by farthinker on 5/17/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
@@ -11,12 +11,12 @@
 
 
 @implementation Profile
-@dynamic defaultValue;
-@dynamic meta;
-@dynamic name;
 @dynamic profileID;
-@dynamic type;
+@dynamic defaultValue;
 @dynamic sequence;
+@dynamic meta;
+@dynamic type;
+@dynamic name;
 @dynamic clientProfiles;
 
 - (void)addClientProfilesObject:(ClientProfile *)value {    

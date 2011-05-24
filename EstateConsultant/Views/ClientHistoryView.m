@@ -56,7 +56,9 @@
     self.dateLabel.text = [dateFormatter stringFromDate:history.date];
     [dateFormatter release];
     
-    if (history.action.intValue == 1) {
+    if (history.action.intValue == 0) {
+        self.actionLabel.text = @"首次来访";
+    } else if (history.action.intValue == 1) {
         self.actionLabel.text = @"关注";
     } else if (history.action.intValue == 2) {
         self.actionLabel.text = @"认购";

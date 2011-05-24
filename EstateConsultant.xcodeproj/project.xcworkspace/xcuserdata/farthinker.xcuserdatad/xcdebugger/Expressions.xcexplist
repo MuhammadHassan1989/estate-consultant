@@ -3,25 +3,7 @@
    version = "1.0">
    <StackStates>
       <StackState
-         stackFrameDescription = "-[EstateConsultantAppDelegate setIsDemo:]:EstateConsultantAppDelegate.m">
-         <expressions>
-            <expression
-               value = "_isDemo">
-            </expression>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[ClientHistoryView awakeFromNib]:ClientHistoryView.m">
-         <expressions>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[LoginViewController tryDemo:forEvent:]:LoginViewController.m">
-         <expressions>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[PositionItemView selectPosition:forEvent:]:PositionItemView.m">
+         stackFrameDescription = "-[ClientListController searchDisplayController:shouldReloadTableForSearchString:]:ClientListController.m">
          <expressions>
          </expressions>
       </StackState>
@@ -34,10 +16,10 @@
          </expressions>
       </StackState>
       <StackState
-         stackFrameDescription = "-[PositionItemView setPosition:]:PositionItemView.m">
+         stackFrameDescription = "-[EstateConsultantAppDelegate setIsDemo:]:EstateConsultantAppDelegate.m">
          <expressions>
             <expression
-               value = "_button">
+               value = "_isDemo">
             </expression>
          </expressions>
       </StackState>
@@ -50,10 +32,10 @@
          </expressions>
       </StackState>
       <StackState
-         stackFrameDescription = "-[EstateConsultantAppDelegate setViewController:]:EstateConsultantAppDelegate.m">
+         stackFrameDescription = "-[ClientListController tableView:numberOfRowsInSection:]:ClientListController.m">
          <expressions>
             <expression
-               value = "_viewController">
+               value = "self.searchController.searchResultsTableView">
             </expression>
          </expressions>
       </StackState>
@@ -69,8 +51,39 @@
          </expressions>
       </StackState>
       <StackState
+         stackFrameDescription = "-[PositionItemView setPosition:]:PositionItemView.m">
+         <expressions>
+            <expression
+               value = "_button">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[LoginViewController tryDemo:forEvent:]:LoginViewController.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[PositionItemView selectPosition:forEvent:]:PositionItemView.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
          stackFrameDescription = "-[LayoutViewController setLayout:]:LayoutViewController.m">
          <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[ClientHistoryView awakeFromNib]:ClientHistoryView.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[EstateConsultantAppDelegate setViewController:]:EstateConsultantAppDelegate.m">
+         <expressions>
+            <expression
+               value = "_viewController">
+            </expression>
          </expressions>
       </StackState>
    </StackStates>

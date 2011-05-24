@@ -2,7 +2,7 @@
 //  History.h
 //  EstateConsultant
 //
-//  Created by farthinker on 5/12/11.
+//  Created by farthinker on 5/17/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
@@ -14,10 +14,10 @@
 @interface History : NSManagedObject {
 @private
 }
-@property (nonatomic, retain) NSNumber * action;
-@property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSNumber * historyID;
-@property (nonatomic, retain) Client * client;
+@property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSNumber * action;
 @property (nonatomic, retain) NSSet* houses;
+@property (nonatomic, retain) Client * client;
 
 @end

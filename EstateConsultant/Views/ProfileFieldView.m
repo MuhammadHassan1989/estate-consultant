@@ -63,13 +63,25 @@
     ClientProfile *clientProfile = [[DataProvider sharedProvider] getClientProfile:self.profile ofClient:client];
     if ([self.profile.type isEqualToString:@"text"]) {
         self.valueLabel.text = clientProfile.value;
-    } else if ([clientProfile.profile.type isEqualToString:@"select"]) {
-        NSArray *segments = [clientProfile.profile.meta componentsSeparatedByString:@";"];
+    } else if ([self.profile.type isEqualToString:@"select"]) {
+        NSArray *segments = [self.profile.meta componentsSeparatedByString:@";"];
         self.valueLabel.text = [segments objectAtIndex:[clientProfile.value intValue]];
     }
     
+    [clientProfile addObserver:self forKeyPath:@"value" options:NSKeyValueObservingOptionNew context:nil];
+    
     [_client release];
     _client = [client retain];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([self.profile.type isEqualToString:@"text"]) {
+        self.valueLabel.text = [object valueForKeyPath:keyPath];
+    } else if ([self.profile.type isEqualToString:@"select"]) {
+        NSArray *segments = [self.profile.meta componentsSeparatedByString:@";"];
+        self.valueLabel.text = [segments objectAtIndex:[[object valueForKeyPath:keyPath] intValue]];
+    }
 }
 
 @end

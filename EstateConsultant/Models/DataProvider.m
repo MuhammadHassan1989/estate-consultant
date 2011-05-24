@@ -433,7 +433,7 @@ static DataProvider *sharedProvider = nil;
     }
 }
 
-- (NSArray *)getAllClients
+- (NSArray *)getClients
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -441,22 +441,22 @@ static DataProvider *sharedProvider = nil;
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Client"
                                                          inManagedObjectContext:moc];
     [request setEntity:entityDescription];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sequence" ascending:YES];
-    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    [sortDescriptor release];
-    
+            
     NSError *error = nil;
     NSArray *results = [moc executeFetchRequest:request error:&error];
     [request release];
     
-    NSLog(@"data provider: getAllClients; result: %i", [results count]);
+    NSLog(@"data provider: getClients; result: %i", [results count]);
     
     if (results == nil)
     {
-        NSLog(@"data provider error: getAllClients");
+        NSLog(@"data provider error: getClients");
         return nil;
     }
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"history.@max.date" ascending:YES];
+    results = [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [sortDescriptor release];
     
     return results;
 }
@@ -486,7 +486,7 @@ static DataProvider *sharedProvider = nil;
         NSSet *clients = [consultant.clients filteredSetUsingPredicate:predicate];
         results = [clients sortedArrayUsingDescriptors:sortDescriptors];        
     } else if (clientType == 5) { 
-        NSArray *allClients = [self getAllClients];
+        NSArray *allClients = [self getClients];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.consultant.consultantID.intValue != %i", consultant.consultantID.intValue];
         NSArray *clients = [allClients filteredArrayUsingPredicate:predicate];
         results = [clients sortedArrayUsingDescriptors:sortDescriptors];
@@ -544,7 +544,7 @@ static DataProvider *sharedProvider = nil;
 
 }
 
-- (NSArray *)getAllProfiles
+- (NSArray *)getProfiles
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -553,15 +553,19 @@ static DataProvider *sharedProvider = nil;
                                                          inManagedObjectContext:moc];
     [request setEntity:entityDescription];
     
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sequence" ascending:YES];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [sortDescriptor release];
+    
     NSError *error = nil;
     NSArray *results = [moc executeFetchRequest:request error:&error];
     [request release];
     
-    NSLog(@"data provider: getAllProfiles; result: %i", [results count]);
+    NSLog(@"data provider: getProfiles; result: %i", [results count]);
     
     if (results == nil)
     {
-        NSLog(@"data provider error: getAllProfiles");
+        NSLog(@"data provider error: getProfiles");
         return nil;
     }
     
@@ -707,6 +711,34 @@ static DataProvider *sharedProvider = nil;
 
 }
 
+- (NSArray *)getPositions
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Position"
+                                                         inManagedObjectContext:moc];
+    [request setEntity:entityDescription];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"positionID" ascending:YES];
+    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [sortDescriptor release];
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    [request release];
+    
+    NSLog(@"data provider: getPositions; result: %i", [results count]);
+    
+    if (results == nil)
+    {
+        NSLog(@"data provider error: getPositions");
+        return nil;
+    }
+    
+    return results;
+}
+
 
 #pragma mark - History Data Provider
 
@@ -739,7 +771,7 @@ static DataProvider *sharedProvider = nil;
     }
 }
 
-- (History *)getHistoryByDate:(NSDate *)date
+- (History *)getHistoryByDate:(NSDate *)date andAction:(NSInteger)action
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -748,18 +780,18 @@ static DataProvider *sharedProvider = nil;
                                                          inManagedObjectContext:moc];
     [request setEntity:entityDescription];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"date == %@", date];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"date == %@ && action == %i", date, action];
     [request setPredicate:predicate];
     
     NSError *error = nil;
     NSArray *results = [moc executeFetchRequest:request error:&error];
     [request release];
     
-    NSLog(@"data provider: getHistoryByDate(%@); result: %u", date, results.count);
+    NSLog(@"data provider: getHistoryByDate(%@)andAction(%i); result: %u", date, action, results.count);
     
     if (results == nil)
     {
-        NSLog(@"data provider error: getHistoryByDate(%@)", date);
+        NSLog(@"data provider error: getHistoryByDate(%@)andAction(%i)", date, action);
         return nil;
     } else if ([results count] > 0) {
         return [results objectAtIndex:0];
@@ -768,20 +800,21 @@ static DataProvider *sharedProvider = nil;
     }
 }
 
-- (History *)historyOfClient:(Client *)client withAction:(NSInteger)action andTarget:(id)target
+- (History *)historyOfClient:(Client *)client withAction:(NSInteger)action andHouse:(House *)house
 {
     NSDate *now = [NSDate date];
     NSUInteger theUnitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
-    NSCalendar* calendar = [NSCalendar currentCalendar];
-    NSTimeZone *timezone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+    NSCalendar* calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSTimeZone *timezone = [NSTimeZone timeZoneForSecondsFromGMT:0];
     [calendar setTimeZone:timezone];
     NSDateComponents* dateComps = [calendar components:theUnitFlags fromDate:now];
     [dateComps setHour:0];
     [dateComps setMinute:0];
     [dateComps setSecond:0];
     NSDate* date = [calendar dateFromComponents:dateComps];
+    [calendar release];
     
-    History *history = [self getHistoryByDate:date];
+    History *history = [self getHistoryByDate:date andAction:action];
     
     if (history == nil) {
         NSManagedObjectContext *moc = [self managedObjectContext];
@@ -790,28 +823,15 @@ static DataProvider *sharedProvider = nil;
         history.action = [NSNumber numberWithInteger:action];
         history.date = date;
         history.client = client;
+        if (house != nil) {
+            history.houses = [NSSet setWithObject:house];
+        }
+    } else if (house != nil && ![history.houses containsObject:house]) {
+        NSMutableSet *houses = [history mutableSetValueForKey:@"houses"];
+        [houses addObject:house];
     }
     
-    if (history.action.intValue == action) {
-        NSString *targetKey;
-        if (action == 0) {
-            targetKey = @"layouts";
-        } else {
-            targetKey = @"houses";
-        }
-        
-        NSMutableSet *targets = [history mutableSetValueForKey:targetKey];
-        [targets addObject:target];
-    } else if (history.action.intValue < action) {
-        history.action = [NSNumber numberWithInteger:action];
-        
-        NSMutableSet *layouts = [history mutableSetValueForKey:@"layouts"];
-        [layouts removeAllObjects];
-        NSMutableSet *houses = [history mutableSetValueForKey:@"houses"];
-        [houses addObject:target];
-    } else {
-        return nil;
-    }
+    [self saveContext];
     
     return history;
 }

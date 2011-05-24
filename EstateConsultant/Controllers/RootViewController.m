@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-
+#import "LoanCalculatorController.h"
 
 @implementation RootViewController
 
@@ -50,6 +50,12 @@
     [[DataProvider sharedProvider] setIsDemo:YES];
     self.consultant = [[DataProvider sharedProvider] getConsultantByID:1];
     self.navTab.selectedSegmentIndex = 0;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(calculateLoan:)
+                                                 name:@"CalculateLoan"
+                                               object:nil];
+    
 }
 
 - (void)viewDidUnload
@@ -107,5 +113,27 @@
     [self.view addSubview:viewController.view];
     _selectedView = viewController.view;
 }
+
+- (void)calculateLoan:(NSNotification *)notification
+{
+    House *house = [[notification userInfo] valueForKey:@"house"];
+    
+    LoanCalculatorController *calculatorController = [[LoanCalculatorController alloc] initWithNibName:@"LoanCalculatorController"
+                                                                                                bundle:nil];
+    calculatorController.modalPresentationStyle = UIModalPresentationPageSheet;
+    [self presentModalViewController:calculatorController animated:YES];
+    
+    calculatorController.position = house.position;
+    calculatorController.house = house;
+    
+    if (_clientViewController.detailController != nil) {
+        calculatorController.client = _clientViewController.detailController.client;
+    } else {
+        calculatorController.client = nil;        
+    }
+
+    [calculatorController release];
+}
+
 
 @end

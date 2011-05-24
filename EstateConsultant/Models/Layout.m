@@ -2,7 +2,7 @@
 //  Layout.m
 //  EstateConsultant
 //
-//  Created by farthinker on 5/12/11.
+//  Created by farthinker on 5/17/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
@@ -11,11 +11,11 @@
 
 
 @implementation Layout
-@dynamic area;
-@dynamic desc;
-@dynamic layoutID;
-@dynamic name;
 @dynamic pics;
+@dynamic area;
+@dynamic layoutID;
+@dynamic desc;
+@dynamic name;
 @dynamic houses;
 
 - (void)addHousesObject:(House *)value {    
@@ -34,7 +34,7 @@
     [changedObjects release];
 }
 
-- (void)addHouses:(NSSet *)value {    
+- (void)addHouses:(NSSet *)value {
     [self willChangeValueForKey:@"houses" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
     [[self primitiveValueForKey:@"houses"] unionSet:value];
     [self didChangeValueForKey:@"houses" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];

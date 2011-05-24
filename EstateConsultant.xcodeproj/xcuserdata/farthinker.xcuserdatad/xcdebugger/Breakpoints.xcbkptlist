@@ -9,11 +9,25 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "EstateConsultant/Views/ClientTableViewCell.m"
-         timestampString = "326040935.58884"
+         timestampString = "327249339.859157"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "39"
-         endingLineNumber = "39"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
+         landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "EstateConsultant/Views/ClientTableViewCell.m"
+         timestampString = "327249435.609835"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
          landmarkName = "-setClient:"
          landmarkType = "5">
       </FileBreakpoint>
