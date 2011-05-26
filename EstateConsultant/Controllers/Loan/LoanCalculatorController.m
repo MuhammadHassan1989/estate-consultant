@@ -9,6 +9,8 @@
 #import "LoanCalculatorController.h"
 #import "EstateConsultantUtils.h"
 #import "ClientPickerController.h"
+#import "DownPaymentInputView.h"
+#import "NumberInputView.h"
 
 @implementation LoanCalculatorController
 
@@ -134,6 +136,18 @@
         
     [self.downPayment setDelegate:self];
     [self.loanPeriod setDelegate:self];
+    
+    UIViewController *downPaymentInputController = [[UIViewController alloc] initWithNibName:@"DownPaymentInputView" bundle:nil];
+    DownPaymentInputView *downPaymentInputView = (DownPaymentInputView *)downPaymentInputController.view;
+    downPaymentInputView.textfield = self.downPayment;
+    self.downPayment.inputView = downPaymentInputView;
+    [downPaymentInputController release];
+    
+    UIViewController *numberInputController = [[UIViewController alloc] initWithNibName:@"NumberInputView" bundle:nil];
+    NumberInputView *numberInputView = (NumberInputView *)numberInputController.view;
+    numberInputView.textfield = self.loanPeriod;
+    self.loanPeriod.inputView = numberInputView;
+    [numberInputController release];
 }
 
 - (void)viewDidUnload
@@ -279,6 +293,33 @@
 
 - (IBAction)cancelClient:(id)sender {
     self.client = nil;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    CGRect bounds = self.view.bounds;
+    if (textField == self.downPayment) {
+        [(DownPaymentInputView *)textField.inputView setTotalPrice:_totalPrice];
+        
+        bounds.origin.y = 30;
+    } else if (textField == self.loanPeriod) {
+        bounds.origin.y = 100;
+    }
+    
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.view.bounds = bounds;
+                     }];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    CGRect bounds = self.view.bounds;
+    bounds.origin.y = 0;
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.view.bounds = bounds;
+                     }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

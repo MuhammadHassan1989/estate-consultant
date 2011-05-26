@@ -97,7 +97,6 @@
     if (currentPage + 1 < _pictureViews.count) {
         [self loadPicture:currentPage + 1];
     }
-
 }
 
 - (void)loadPicture:(NSInteger)page

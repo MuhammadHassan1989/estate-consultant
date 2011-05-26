@@ -8,6 +8,7 @@
 
 #import "ClientCreateController.h"
 #import "DataProvider.h"
+#import "NumberInputView.h"
 
 
 @implementation ClientCreateController
@@ -56,6 +57,12 @@
     [self.nameLabel setDelegate:self];    
     
     [self.addClientButton setEnabled:NO];
+    
+    UIViewController *numberInputController = [[UIViewController alloc] initWithNibName:@"NumberInputView" bundle:nil];
+    NumberInputView *numberInputView = (NumberInputView *)numberInputController.view;
+    numberInputView.textfield = self.phoneLabel;
+    self.phoneLabel.inputView = numberInputView;
+    [numberInputController release];
 }
 
 - (void)viewDidUnload

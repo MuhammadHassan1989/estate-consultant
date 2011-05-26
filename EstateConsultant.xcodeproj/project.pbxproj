@@ -50,6 +50,8 @@
 		9D579CA91383BE87005A3EC4 /* ClientCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D579CA71383BE87005A3EC4 /* ClientCreateController.m */; };
 		9D5A240B137BC1B600F14CFC /* Profile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D5A240A137BC1B600F14CFC /* Profile.plist */; };
 		9D5A2411137BC92300F14CFC /* EstateConsultant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A240F137BC92300F14CFC /* EstateConsultant.xcdatamodeld */; };
+		9D623FBD138CF5220019F1E4 /* NumberInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D623FBC138CF5220019F1E4 /* NumberInputView.m */; };
+		9D623FC0138CF53F0019F1E4 /* NumberInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D623FBF138CF53F0019F1E4 /* NumberInputView.xib */; };
 		9D642EF613850C9500A87D02 /* LoanCalculatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D642EF413850C9500A87D02 /* LoanCalculatorController.m */; };
 		9D642EF713850C9500A87D02 /* LoanCalculatorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D642EF513850C9500A87D02 /* LoanCalculatorController.xib */; };
 		9D642EFB13850CBA00A87D02 /* PopoverPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D642EF913850CBA00A87D02 /* PopoverPickerController.m */; };
@@ -85,6 +87,8 @@
 		9DB107F713863F5D00190647 /* ClientPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DB107F513863F5D00190647 /* ClientPickerController.xib */; };
 		9DB28D54136BF4C5003E81C6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB28D4A136BF4C5003E81C6 /* RootViewController.m */; };
 		9DB28D55136BF4C5003E81C6 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DB28D4B136BF4C5003E81C6 /* RootViewController.xib */; };
+		9DCB5B22138D555F000572E8 /* DownPaymentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB5B21138D555F000572E8 /* DownPaymentInputView.m */; };
+		9DCB5B25138D5580000572E8 /* DownPaymentInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB5B24138D5580000572E8 /* DownPaymentInputView.xib */; };
 		9DF52511137E5E48008EC8D5 /* ProfileEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF52510137E5E48008EC8D5 /* ProfileEditView.m */; };
 		9DF52513137E5E5F008EC8D5 /* ProfileEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF52512137E5E5F008EC8D5 /* ProfileEditView.xib */; };
 		9DF52516137EC49F008EC8D5 /* ClientHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF52515137EC49F008EC8D5 /* ClientHistoryView.m */; };
@@ -158,6 +162,9 @@
 		9D579CA71383BE87005A3EC4 /* ClientCreateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientCreateController.m; sourceTree = "<group>"; };
 		9D5A240A137BC1B600F14CFC /* Profile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Profile.plist; sourceTree = "<group>"; };
 		9D5A2410137BC92300F14CFC /* EstateConsultant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EstateConsultant.xcdatamodel; sourceTree = "<group>"; };
+		9D623FBB138CF5220019F1E4 /* NumberInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberInputView.h; sourceTree = "<group>"; };
+		9D623FBC138CF5220019F1E4 /* NumberInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberInputView.m; sourceTree = "<group>"; };
+		9D623FBF138CF53F0019F1E4 /* NumberInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumberInputView.xib; sourceTree = "<group>"; };
 		9D642EF313850C9500A87D02 /* LoanCalculatorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanCalculatorController.h; sourceTree = "<group>"; };
 		9D642EF413850C9500A87D02 /* LoanCalculatorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanCalculatorController.m; sourceTree = "<group>"; };
 		9D642EF513850C9500A87D02 /* LoanCalculatorController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoanCalculatorController.xib; sourceTree = "<group>"; };
@@ -209,6 +216,9 @@
 		9DB28D49136BF4C5003E81C6 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		9DB28D4A136BF4C5003E81C6 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		9DB28D4B136BF4C5003E81C6 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		9DCB5B20138D555F000572E8 /* DownPaymentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownPaymentInputView.h; sourceTree = "<group>"; };
+		9DCB5B21138D555F000572E8 /* DownPaymentInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownPaymentInputView.m; sourceTree = "<group>"; };
+		9DCB5B24138D5580000572E8 /* DownPaymentInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownPaymentInputView.xib; sourceTree = "<group>"; };
 		9DF5250F137E5E48008EC8D5 /* ProfileEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileEditView.h; sourceTree = "<group>"; };
 		9DF52510137E5E48008EC8D5 /* ProfileEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileEditView.m; sourceTree = "<group>"; };
 		9DF52512137E5E5F008EC8D5 /* ProfileEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileEditView.xib; sourceTree = "<group>"; };
@@ -322,6 +332,12 @@
 				9D579CA213839BB3005A3EC4 /* StockTableViewCell.h */,
 				9D579CA313839BB3005A3EC4 /* StockTableViewCell.m */,
 				9D579C9813837814005A3EC4 /* StockTableViewCell.xib */,
+				9D623FBB138CF5220019F1E4 /* NumberInputView.h */,
+				9D623FBC138CF5220019F1E4 /* NumberInputView.m */,
+				9D623FBF138CF53F0019F1E4 /* NumberInputView.xib */,
+				9DCB5B20138D555F000572E8 /* DownPaymentInputView.h */,
+				9DCB5B21138D555F000572E8 /* DownPaymentInputView.m */,
+				9DCB5B24138D5580000572E8 /* DownPaymentInputView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -571,6 +587,8 @@
 				9DB107DD1386326200190647 /* close.png in Resources */,
 				9DB107F713863F5D00190647 /* ClientPickerController.xib in Resources */,
 				9D727B741389535600870D79 /* PictureGalleryController.xib in Resources */,
+				9D623FC0138CF53F0019F1E4 /* NumberInputView.xib in Resources */,
+				9DCB5B25138D5580000572E8 /* DownPaymentInputView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +638,8 @@
 				9D642EFB13850CBA00A87D02 /* PopoverPickerController.m in Sources */,
 				9DB107F613863F5D00190647 /* ClientPickerController.m in Sources */,
 				9D727B731389535600870D79 /* PictureGalleryController.m in Sources */,
+				9D623FBD138CF5220019F1E4 /* NumberInputView.m in Sources */,
+				9DCB5B22138D555F000572E8 /* DownPaymentInputView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
