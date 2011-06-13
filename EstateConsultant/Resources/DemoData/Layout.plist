@@ -3,64 +3,68 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>area</key>
-		<integer>68</integer>
+		<key>batch</key>
+		<integer>1</integer>
 		<key>desc</key>
-		<string>两室一厅一卫</string>
-		<key>id</key>
-		<integer>5</integer>
-		<key>name</key>
-		<string>L1</string>
-		<key>pics</key>
-		<string>layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg</string>
-	</dict>
-	<dict>
-		<key>area</key>
-		<integer>145</integer>
-		<key>desc</key>
-		<string>四室两厅两卫</string>
-		<key>id</key>
-		<integer>4</integer>
-		<key>name</key>
-		<string>B2</string>
-		<key>pics</key>
-		<string>layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg</string>
-	</dict>
-	<dict>
-		<key>area</key>
-		<integer>128</integer>
-		<key>desc</key>
-		<string>三室两厅两卫</string>
-		<key>id</key>
-		<integer>3</integer>
-		<key>name</key>
-		<string>B1</string>
-		<key>pics</key>
-		<string>layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg</string>
-	</dict>
-	<dict>
-		<key>area</key>
-		<integer>98</integer>
-		<key>desc</key>
-		<string>三室一厅两卫</string>
-		<key>id</key>
-		<integer>2</integer>
-		<key>name</key>
-		<string>D2</string>
-		<key>pics</key>
-		<string>layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg</string>
-	</dict>
-	<dict>
-		<key>area</key>
-		<integer>132</integer>
-		<key>desc</key>
-		<string>三室两厅两卫</string>
+		<string>一室一厅一卫</string>
+		<key>floorArea</key>
+		<real>48.18</real>
 		<key>id</key>
 		<integer>1</integer>
 		<key>name</key>
-		<string>D1</string>
+		<string>A1</string>
 		<key>pics</key>
 		<string>layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg</string>
+		<key>poolArea</key>
+		<real>14.61</real>
+	</dict>
+	<dict>
+		<key>batch</key>
+		<integer>1</integer>
+		<key>desc</key>
+		<string>一室一厅一卫</string>
+		<key>floorArea</key>
+		<real>49.56</real>
+		<key>id</key>
+		<integer>2</integer>
+		<key>name</key>
+		<string>A2</string>
+		<key>pics</key>
+		<string>layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg</string>
+		<key>poolArea</key>
+		<real>15.03</real>
+	</dict>
+	<dict>
+		<key>batch</key>
+		<integer>1</integer>
+		<key>desc</key>
+		<string>两室一厅一卫</string>
+		<key>floorArea</key>
+		<real>55.23</real>
+		<key>id</key>
+		<integer>3</integer>
+		<key>name</key>
+		<string>A3</string>
+		<key>pics</key>
+		<string>layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg</string>
+		<key>poolArea</key>
+		<real>16.75</real>
+	</dict>
+	<dict>
+		<key>batch</key>
+		<integer>1</integer>
+		<key>desc</key>
+		<string>一室一厅一卫</string>
+		<key>floorArea</key>
+		<real>47.87</real>
+		<key>id</key>
+		<integer>4</integer>
+		<key>name</key>
+		<string>A4</string>
+		<key>pics</key>
+		<string>layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg</string>
+		<key>poolArea</key>
+		<real>14.52</real>
 	</dict>
 </array>
 </plist>

@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataProvider.h"
 
-
-@interface StockListController : UITableViewController {
-    NSArray *_positions;
+@interface StockListController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+    Batch *_batch;
+    NSArray *_buildings;
+    NSMutableArray *_positionArray;
+    UITableView *_tableView;
 }
 
-@property (nonatomic, retain) NSArray *positions;
+@property (nonatomic, retain) Batch *batch;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 @end

@@ -2,12 +2,13 @@
 //  Consultant.m
 //  EstateConsultant
 //
-//  Created by farthinker on 5/17/11.
+//  Created by farthinker on 6/9/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
 #import "Consultant.h"
 #import "Client.h"
+#import "Estate.h"
 
 
 @implementation Consultant
@@ -15,6 +16,7 @@
 @dynamic consultantID;
 @dynamic name;
 @dynamic clients;
+@dynamic estate;
 
 - (void)addClientsObject:(Client *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
@@ -43,6 +45,7 @@
     [[self primitiveValueForKey:@"clients"] minusSet:value];
     [self didChangeValueForKey:@"clients" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
+
 
 
 @end

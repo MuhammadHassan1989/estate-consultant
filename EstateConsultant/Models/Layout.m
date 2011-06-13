@@ -2,21 +2,25 @@
 //  Layout.m
 //  EstateConsultant
 //
-//  Created by farthinker on 5/17/11.
+//  Created by farthinker on 6/9/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
 #import "Layout.h"
+#import "Batch.h"
 #import "House.h"
 
 
 @implementation Layout
+@dynamic floorArea;
 @dynamic pics;
-@dynamic area;
 @dynamic layoutID;
+@dynamic poolArea;
+@dynamic actualArea;
 @dynamic desc;
 @dynamic name;
 @dynamic houses;
+@dynamic batch;
 
 - (void)addHousesObject:(House *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
@@ -34,7 +38,7 @@
     [changedObjects release];
 }
 
-- (void)addHouses:(NSSet *)value {
+- (void)addHouses:(NSSet *)value {    
     [self willChangeValueForKey:@"houses" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
     [[self primitiveValueForKey:@"houses"] unionSet:value];
     [self didChangeValueForKey:@"houses" withSetMutation:NSKeyValueUnionSetMutation usingObjects:value];
@@ -45,6 +49,7 @@
     [[self primitiveValueForKey:@"houses"] minusSet:value];
     [self didChangeValueForKey:@"houses" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
+
 
 
 @end

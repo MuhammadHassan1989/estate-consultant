@@ -53,13 +53,12 @@
     
     self.nameLabel.text = profile.name;
     
-    [self.segmentField removeAllSegments];
     NSArray *segments = [profile.meta componentsSeparatedByString:@";"];
-    NSEnumerator *enumerator = [segments reverseObjectEnumerator];
-    NSString *segmentTitle;
-    while ((segmentTitle = [enumerator nextObject])) {
-        [self.segmentField insertSegmentWithTitle:segmentTitle atIndex:0 animated:NO];
-    }
+    UIImage *defaultBackground = [UIImage imageNamed:@"profile-field.png"];
+    UIImage *selectedBackground = [UIImage imageNamed:@"profile-field-selected.png"];
+    self.segmentField.defaultBackground = [defaultBackground stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+    self.segmentField.selectedBackground = [selectedBackground stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+    self.segmentField.items = segments;
     
     [_profile release];
     _profile = [profile retain];
@@ -76,7 +75,7 @@
     } else if ([self.profile.type isEqualToString:@"select"]) {
         self.textField.hidden = YES;
         self.segmentField.hidden = NO;
-        self.segmentField.selectedSegmentIndex = [clientProfile.value intValue];
+        self.segmentField.selectedIndex = [clientProfile.value intValue];
     }
     
     [_client release];
@@ -90,7 +89,7 @@
     if ([self.profile.type isEqualToString:@"text"]) {
         clientProfile.value = self.textField.text;
     } else if ([self.profile.type isEqualToString:@"select"]) {
-        clientProfile.value = [NSString stringWithFormat:@"%i", self.segmentField.selectedSegmentIndex];
+        clientProfile.value = [NSString stringWithFormat:@"%i", self.segmentField.selectedIndex];
     }
 }
 

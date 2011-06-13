@@ -8,20 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "DataProvider.h"
+#import "SingleSelectControl.h"
 
 @interface ProfileEditView : UIView {
     Profile *_profile;
     Client *_client;
     UILabel *_nameLabel;
     UITextField *_textField;
-    UISegmentedControl *_segmentField;
+    SingleSelectControl *_segmentField;
 }
 
 @property (nonatomic, retain) Profile* profile;
 @property (nonatomic, retain) Client* client;
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UITextField *textField;
-@property (nonatomic, retain) IBOutlet UISegmentedControl *segmentField;
+@property (nonatomic, retain) IBOutlet SingleSelectControl *segmentField;
 
 - (void)saveChanges;
 

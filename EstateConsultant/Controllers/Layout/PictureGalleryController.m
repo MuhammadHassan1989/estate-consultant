@@ -14,6 +14,7 @@
 
 @synthesize pictures = _pictures;
 @synthesize scrollView = _scrollView;
+@synthesize currentPage = _currentPage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,7 +58,7 @@
     }
 }
 
-- (NSInteger)currentPage
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     NSInteger page = round(self.scrollView.contentOffset.x / self.scrollView.frame.size.width);
     if (page < 0) {
@@ -65,18 +66,12 @@
     } else if (page + 1 > _pictureViews.count) {
         page = _pictureViews.count - 1;
     }
-    return page;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    NSInteger currentPage = self.currentPage;
         
     NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
     NSMutableArray *nullObjects = [[NSMutableArray alloc] init];
     NSInteger index = 0;
     for (id object in _pictureViews) {
-        if ((index > currentPage + 1 || index < currentPage - 1) && object != [NSNull null]) {
+        if ((index > page + 1 || index < page - 1) && object != [NSNull null]) {
             [(UIImageView *)object removeFromSuperview];
             [indexSet addIndex:index];
             [nullObjects addObject:[NSNull null]];
@@ -88,14 +83,18 @@
     [indexSet release];
     [nullObjects release];
     
-    [self loadPicture:currentPage];
+    [self loadPicture:page];
     
-    if (currentPage - 1 >= 0) {
-        [self loadPicture:currentPage - 1];
+    if (page - 1 >= 0) {
+        [self loadPicture:page - 1];
     }
     
-    if (currentPage + 1 < _pictureViews.count) {
-        [self loadPicture:currentPage + 1];
+    if (page + 1 < _pictureViews.count) {
+        [self loadPicture:page + 1];
+    }
+    
+    if (page != _currentPage) {
+        _currentPage = page;
     }
 }
 
@@ -107,7 +106,7 @@
     
     UIImage *picImage = [[UIImage alloc] initWithContentsOfFile:[self.pictures objectAtIndex:page]];
     UIImageView *picImageView = [[UIImageView alloc] initWithImage:picImage];
-    picImageView.frame = CGRectMake(20 + page * 1024, 20, 984, 708);
+    picImageView.frame = CGRectMake(20 + page * 1064, 0, 1024, 748);
     picImageView.contentMode = UIViewContentModeScaleAspectFit;
     picImageView.userInteractionEnabled = YES;
     
@@ -133,7 +132,7 @@
         [_pictureViews addObject:[NSNull null]];
     }
 
-    [self.scrollView setContentSize:CGSizeMake(self.pictures.count * 1024, 748)];
+    [self.scrollView setContentSize:CGSizeMake(self.pictures.count * 1064, 748)];
 }
 
 - (void)viewDidUnload

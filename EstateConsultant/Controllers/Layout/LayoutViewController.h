@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "LayoutDetailController.h"
+#import "StackScrollViewController.h"
+#import "DataProvider.h"
 
 
-@interface LayoutViewController : UIViewController {
-    UINavigationController *_navController;
-    LayoutDetailController *_detailController;
+@interface LayoutViewController : StackScrollViewController {
+    Batch *_batch;
 }
+
+@property (nonatomic, retain) Batch *batch;
 
 @end

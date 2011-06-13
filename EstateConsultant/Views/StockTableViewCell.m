@@ -14,10 +14,10 @@
 @synthesize house = _house;
 @synthesize floorLabel = _floorLabel;
 @synthesize numberLabel = _numberLabel;
-@synthesize layoutLabel = _layoutLabel;
 @synthesize priceLabel = _priceLabel;
 @synthesize totalPriceLabel = _totalPriceLabel;
 @synthesize statusLabel = _statusLabel;
+@synthesize followLabel = _followLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -40,10 +40,10 @@
     [_house release];
     [_floorLabel release];
     [_numberLabel release];
-    [_layoutLabel release];
     [_priceLabel release];
     [_totalPriceLabel release];
     [_statusLabel release];
+    [_followLabel release];
     [super dealloc];
 }
 
@@ -55,10 +55,10 @@
     
     self.floorLabel.text = [NSString stringWithFormat:@"%@楼", house.floor];
     self.numberLabel.text = [NSString stringWithFormat:@"#%@", house.num];
-    self.layoutLabel.text = house.layout.name;
     self.priceLabel.text = [NSString stringWithFormat:@"%@元/㎡", house.price];
+    self.followLabel.text = [NSString stringWithFormat:@"%i人关注", house.followers.count];
     
-    NSInteger totalPrice = house.price.intValue * house.layout.area.intValue / 10000;
+    NSInteger totalPrice = house.price.intValue * house.layout.floorArea.intValue / 10000;
     self.totalPriceLabel.text = [NSString stringWithFormat:@"%i万元", totalPrice];
     
     if (house.status.intValue == 1) {

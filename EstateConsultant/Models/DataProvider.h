@@ -15,6 +15,10 @@
 #import "Layout.h"
 #import "Position.h"
 #import "History.h"
+#import "Batch.h"
+#import "Building.h"
+#import "Unit.h"
+#import "Estate.h"
 
 
 @interface DataProvider : NSObject {
@@ -23,6 +27,7 @@
     NSManagedObjectModel *_managedObjectModel;
     NSPersistentStoreCoordinator *_persistentStoreCoordinator;
     NSPersistentStoreCoordinator *_demoPersistentStoreCoordinator;
+    Boolean _isDemo;
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
@@ -37,36 +42,35 @@
 - (void)loadDemoData;
 
 #pragma mark - Consultant Data Provider
+- (Estate *)getEstateByID:(NSInteger)estateID;
+
+#pragma mark - Consultant Data Provider
 - (Boolean)authenticateConsultant:(NSString *)username withPassword:(NSString *)password;
 - (Consultant *)getConsultantByUsername:(NSString *)username;
 - (Consultant *)getConsultantByID:(NSInteger)consultantID;
 
 #pragma mark - Client Data Provider
 - (Client *)getClientByID:(NSInteger)clientID;
-- (NSArray *)getClients;
-- (NSArray *)getClientsByType:(NSInteger)clientType ofConsultant:(Consultant *)consultant;
+- (NSArray *)getClientsOfEstate:(Estate *)estate;
 - (Client *)clientWithName:(NSString *)name andPhone:(NSString *)phone andSex:(NSInteger)sex ofConsultant:(Consultant *)consultant;
 
 #pragma mark - Profile Data Provider
 - (Profile *)getProfileByID:(NSInteger)profileID;
-- (NSArray *)getProfiles;
 - (ClientProfile *)getClientProfile:(Profile *)profile ofClient:(Client *)client;
 
 #pragma mark - House Data Provider
 - (House *)getHouseByID:(NSInteger)houseID;
-- (NSSet *)getOnSaleHousesOfLayout:(Layout *)layout;
 
 #pragma mark - Layout Data Provider
 - (Layout *)getLayoutByID:(NSInteger)layoutID;
-- (NSArray *)getLayouts;
 
 #pragma mark - Position Data Provider
+- (Batch *)getBatchByID:(NSInteger)batchID;
 - (Position *)getPositionByID:(NSInteger)positionID;
 - (NSArray *)getPositions;
 
 #pragma mark - History Data Provider
 - (History *)getHistoryByID:(NSInteger)historyID;
-- (History *)getHistoryByDate:(NSDate *)date andAction:(NSInteger)action;
 - (History *)historyOfClient:(Client *)client withAction:(NSInteger)action andHouse:(House *)house;
 
 

@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StockDetailController.h"
+#import "StackScrollViewController.h"
+#import "DataProvider.h"
 
-@interface StockViewController : UIViewController {
-    UINavigationController *_navController;
-    StockDetailController *_detailController;
+@interface StockViewController : StackScrollViewController {
+    Batch *_batch;
 }
+
+@property (nonatomic, retain) Batch *batch;
 
 @end

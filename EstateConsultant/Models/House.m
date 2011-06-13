@@ -2,7 +2,7 @@
 //  House.m
 //  EstateConsultant
 //
-//  Created by farthinker on 5/17/11.
+//  Created by farthinker on 6/9/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
@@ -22,9 +22,7 @@
 @dynamic history;
 @dynamic layout;
 @dynamic followers;
-@dynamic orderer;
 @dynamic position;
-@dynamic purchaser;
 
 - (void)addHistoryObject:(History *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
@@ -83,8 +81,6 @@
     [[self primitiveValueForKey:@"followers"] minusSet:value];
     [self didChangeValueForKey:@"followers" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
-
-
 
 
 

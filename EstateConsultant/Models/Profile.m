@@ -2,12 +2,13 @@
 //  Profile.m
 //  EstateConsultant
 //
-//  Created by farthinker on 5/17/11.
+//  Created by farthinker on 6/9/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
 #import "Profile.h"
 #import "ClientProfile.h"
+#import "Estate.h"
 
 
 @implementation Profile
@@ -17,7 +18,9 @@
 @dynamic meta;
 @dynamic type;
 @dynamic name;
+@dynamic estate;
 @dynamic clientProfiles;
+
 
 - (void)addClientProfilesObject:(ClientProfile *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];

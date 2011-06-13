@@ -9,11 +9,15 @@
 #import "LoanCalculatorController.h"
 #import "EstateConsultantUtils.h"
 #import "ClientPickerController.h"
+#import "PositionPickerController.h"
+#import "HousePickerController.h"
 #import "DownPaymentInputView.h"
 #import "NumberInputView.h"
 
 @implementation LoanCalculatorController
 
+@synthesize batch = _batch;
+@synthesize consultant = _consultant;
 @synthesize position = _position;
 @synthesize client = _client;
 @synthesize house = _house;
@@ -28,7 +32,8 @@
 @synthesize floorButton = _floorButton;
 @synthesize clientButton = _clientButton;
 @synthesize clientView = _clientView;
-@synthesize clientLabel = _clientLabel;
+@synthesize pickClientButton = _pickClientButton;
+@synthesize cancelClientButton = _cancelClientButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,6 +46,8 @@
 
 - (void)dealloc
 {
+    [_batch release];
+    [_consultant release];
     [_totalLabel release];
     [_paymentType release];
     [_loanRate release];
@@ -56,7 +63,8 @@
     [_floorButton release];
     [_clientButton release];
     [_clientView release];
-    [_clientLabel release];
+    [_pickClientButton release];
+    [_cancelClientButton release];
     [super dealloc];
 }
 
@@ -72,8 +80,11 @@
 {    
     if (position == nil) {
         [self.positionButton setTitle:@"轻击选择位置" forState:UIControlStateNormal];
+        [self startTwinkle:self.positionButton];
     } else if (position != _position) {
-        [self.positionButton setTitle:position.name forState:UIControlStateNormal];
+        [self stopTwinkle:self.positionButton];
+        NSString *positionString = [NSString stringWithFormat:@"%@号楼%@单元%@号", position.unit.building.number, position.unit.number, position.name];
+        [self.positionButton setTitle:positionString forState:UIControlStateNormal];
     }
     
     [_position release];
@@ -83,17 +94,26 @@
 - (void)setHouse:(House *)house
 {    
     if (house == nil) {
-        [self.floorButton setTitle:@"轻击选择楼层" forState:UIControlStateNormal];
+        if (self.position == nil) {
+            [self.floorButton setTitle:@"请先选择房源位置" forState:UIControlStateNormal];
+        } else {
+            [self.floorButton setTitle:@"轻击选择楼层" forState:UIControlStateNormal];
+            [self startTwinkle:self.floorButton];
+        }
         _totalPrice = 0;
-        [self startTwinkle:self.floorButton];
     } else if (house != _house) {
         [self stopTwinkle:self.floorButton];
-        NSString *floorText = [NSString stringWithFormat:@"%@楼(#%@)", house.floor, house.num];
+        NSString *floorText = [NSString stringWithFormat:@"%@楼", house.floor, house.num];
         [self.floorButton setTitle:floorText forState:UIControlStateNormal];
-        _totalPrice = house.price.intValue * house.layout.area.intValue;
+        _totalPrice = house.price.intValue;
     }
     
-    [self.totalLabel setText:[NSString stringWithFormat:@"%i元", _totalPrice]];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setPositiveFormat:@"###,###,###"];
+    NSString *numberString = [numberFormatter stringFromNumber:[NSNumber numberWithInt:_totalPrice]];
+    [self.totalLabel setText:[NSString stringWithFormat:@"%@ 元", numberString]];
+    [numberFormatter release];
+    
     [self calculateMonthlyPayment];
     
     [_house release];
@@ -103,12 +123,12 @@
 - (void)setClient:(Client *)client
 {    
     if (client == nil) {
-        self.clientButton.hidden = NO;
+        self.pickClientButton.hidden = NO;
         self.clientView.hidden = YES;
-        [self startTwinkle:self.clientButton];
+        [self startTwinkle:self.pickClientButton];
     } else if (client != _client) {
-        [self stopTwinkle:self.clientButton];
-        self.clientButton.hidden = YES;
+        [self stopTwinkle:self.pickClientButton];
+        self.pickClientButton.hidden = YES;
         self.clientView.hidden = NO;
         
         NSString *format;
@@ -117,7 +137,23 @@
         } else {
             format = @"%@女士";
         }
-        self.clientLabel.text = [NSString stringWithFormat:format, client.name];
+        
+        NSString *buttonText = [NSString stringWithFormat:format, client.name];
+        [self.clientButton setTitle:buttonText forState:UIControlStateNormal];
+        
+        CGRect buttonFrame = self.clientButton.frame;
+        CGFloat buttonWidth = [buttonText sizeWithFont:self.clientButton.titleLabel.font].width + 60;
+        buttonFrame.size.width = buttonWidth;
+        self.clientButton.frame = buttonFrame;
+        
+        CGRect cancelFrame = self.cancelClientButton.frame;
+        cancelFrame.origin.x = CGRectGetMaxX(buttonFrame) - CGRectGetWidth(cancelFrame);
+        self.cancelClientButton.frame = cancelFrame;
+        
+        UILabel *label = (UILabel *)[self.clientView viewWithTag:1];
+        CGRect labelFrame = label.frame;
+        labelFrame.origin.x = CGRectGetMaxX(buttonFrame);
+        label.frame = labelFrame;
     }
     
     [_client release];
@@ -133,6 +169,50 @@
     NSString *documentPath = [[[EstateConsultantUtils sharedUtils] documentsURL] path];
     NSString *ratePath = [documentPath stringByAppendingPathComponent:@"LoanRate.plist"];
 	_loanRateInfo = [[NSArray alloc] initWithContentsOfFile:ratePath];
+    
+    UIImage *defaultBackground = [[UIImage imageNamed:@"calculator-segmented.png"] stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+    UIImage *selectedBackground = [[UIImage imageNamed:@"calculator-segmented-selected.png"] stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+    self.paymentType.defaultBackground = defaultBackground;
+    self.paymentType.selectedBackground = selectedBackground;
+    self.paymentType.titleFont = [UIFont fontWithName:@"STHeitiSC-Medium" size:16];
+    self.paymentType.titleColor = [UIColor whiteColor];
+    self.paymentType.titleShadowColor = [UIColor colorWithWhite:0 alpha:0.75];
+    self.paymentType.selectedTitleShadowColor = [UIColor colorWithWhite:1.0 alpha:0.75];
+    self.paymentType.selectedTitleColor = [UIColor colorWithWhite:0.35 alpha:1.0];
+    self.paymentType.titleShadowOffset = CGSizeMake(0, -1);
+    self.paymentType.selectedTitleShadowOffset = CGSizeMake(0, 2);
+    self.paymentType.contentEdgeInsets = UIEdgeInsetsMake(-5, 0, 0, 0);
+    self.paymentType.selectedContentEdgeInsets = UIEdgeInsetsMake(3, 0, 0, 0);
+    self.paymentType.items = [NSArray arrayWithObjects:@"商业贷款", @"公积金", nil];
+    self.paymentType.selectedIndex = 0;
+    
+    self.loanRate.defaultBackground = defaultBackground;
+    self.loanRate.selectedBackground = selectedBackground;
+    self.loanRate.titleFont = [UIFont fontWithName:@"STHeitiSC-Medium" size:16];
+    self.loanRate.titleColor = [UIColor whiteColor];
+    self.loanRate.titleShadowColor = [UIColor colorWithWhite:0 alpha:0.75];
+    self.loanRate.selectedTitleColor = [UIColor colorWithWhite:0.35 alpha:1.0];
+    self.loanRate.selectedTitleShadowColor = [UIColor colorWithWhite:1.0 alpha:0.75];
+    self.loanRate.titleShadowOffset = CGSizeMake(0, -1);
+    self.loanRate.selectedTitleShadowOffset = CGSizeMake(0, 2);
+    self.loanRate.contentEdgeInsets = UIEdgeInsetsMake(-5, 0, 0, 0);
+    self.loanRate.selectedContentEdgeInsets = UIEdgeInsetsMake(3, 0, 0, 0);
+    self.loanRate.items = [NSArray arrayWithObjects:@"无", @"8.5折", @"1.1倍", nil];
+    self.loanRate.selectedIndex = 0;
+
+    self.discountRate.defaultBackground = defaultBackground;
+    self.discountRate.selectedBackground = selectedBackground;
+    self.discountRate.titleFont = [UIFont fontWithName:@"STHeitiSC-Medium" size:16];
+    self.discountRate.titleColor = [UIColor whiteColor];
+    self.discountRate.titleShadowColor = [UIColor colorWithWhite:0 alpha:0.75];
+    self.discountRate.selectedTitleColor = [UIColor colorWithWhite:0.35 alpha:1.0];
+    self.discountRate.selectedTitleShadowColor = [UIColor colorWithWhite:1.0 alpha:0.75];
+    self.discountRate.titleShadowOffset = CGSizeMake(0, -1);
+    self.discountRate.selectedTitleShadowOffset = CGSizeMake(0, 2);
+    self.discountRate.contentEdgeInsets = UIEdgeInsetsMake(-5, 0, 0, 0);
+    self.discountRate.selectedContentEdgeInsets = UIEdgeInsetsMake(3, 0, 0, 0);
+    self.discountRate.items = [NSArray arrayWithObjects:@"无", @"1%", @"2%", @"3%", @"4%", @"5%", nil];
+    self.discountRate.selectedIndex = 0;
         
     [self.downPayment setDelegate:self];
     [self.loanPeriod setDelegate:self];
@@ -148,10 +228,15 @@
     numberInputView.textfield = self.loanPeriod;
     self.loanPeriod.inputView = numberInputView;
     [numberInputController release];
+    
+    UIImage *clientButtonBg = [UIImage imageNamed:@"calculator-button.png"];
+    [self.clientButton setBackgroundImage:[clientButtonBg stretchableImageWithLeftCapWidth:20 topCapHeight:0] forState:UIControlStateNormal];
 }
 
 - (void)viewDidUnload
 {
+    [self setBatch:nil];
+    [self setConsultant:nil];
     [self setTotalLabel:nil];
     [self setPaymentType:nil];
     [self setLoanRate:nil];
@@ -166,7 +251,8 @@
     [self setFloorButton:nil];
     [self setClientButton:nil];
     [self setClientView:nil];
-    [self setClientLabel:nil];
+    [self setPickClientButton:nil];
+    [self setCancelClientButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -180,82 +266,92 @@
 
 - (IBAction)pickClient:(UIButton *)sender {
     ClientPickerController *pickerController = [[ClientPickerController alloc] initWithNibName:@"ClientPickerController" bundle:nil];
-    pickerController.contentSizeForViewInPopover = CGSizeMake(320, 482);
+    pickerController.consultant = self.consultant;
+    pickerController.contentSizeForViewInPopover = CGSizeMake(320, 600);
     
     UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:pickerController];
     popoverController.delegate = self;
     pickerController.parentPopover = popoverController;
     pickerController.calculatorController = self;
     
-    [popoverController presentPopoverFromRect:self.clientButton.frame
+    [popoverController presentPopoverFromRect:sender.frame
                                        inView:self.view
-                     permittedArrowDirections:UIPopoverArrowDirectionAny
+                     permittedArrowDirections:UIPopoverArrowDirectionLeft
                                      animated:YES];
     
     [pickerController release];
 }
 
+- (IBAction)changeClient:(UIButton *)sender {
+    ClientPickerController *pickerController = [[ClientPickerController alloc] initWithNibName:@"ClientPickerController" bundle:nil];
+    pickerController.consultant = self.consultant;
+    pickerController.contentSizeForViewInPopover = CGSizeMake(320, 600);
+    
+    UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:pickerController];
+    popoverController.delegate = self;
+    pickerController.parentPopover = popoverController;
+    pickerController.calculatorController = self;
+    
+    [popoverController presentPopoverFromRect:sender.frame
+                                       inView:self.clientView
+                     permittedArrowDirections:UIPopoverArrowDirectionLeft
+                                     animated:YES];
+    
+    [pickerController selectClient:self.client animated:NO];
+    [pickerController release];
+}
+
 - (IBAction)pickPosition:(UIButton *)sender {
-    NSArray *positions = [[DataProvider sharedProvider] getPositions];
-    [self showPicker:sender withDataSource:positions andSelectedObject:self.position];
+    PositionPickerController *pickerController = [[PositionPickerController alloc] initWithNibName:@"PositionPickerController" bundle:nil];
+    pickerController.batch = self.batch;
+    pickerController.contentSizeForViewInPopover = CGSizeMake(320, 600);
+    
+    UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:pickerController];
+    popoverController.delegate = self;
+    pickerController.parentPopover = popoverController;
+    pickerController.calculatorController = self;
+    
+    [popoverController presentPopoverFromRect:sender.frame
+                                       inView:self.view
+                     permittedArrowDirections:UIPopoverArrowDirectionLeft
+                                     animated:YES];
+    
+    if (self.position != nil) {
+        [pickerController selectPosition:self.position animated:NO];
+    }
+    
+    [pickerController release];
 }
 
 - (IBAction)pickFloor:(UIButton *)sender {
-    NSSortDescriptor *sortFloor = [[NSSortDescriptor alloc] initWithKey:@"floor" ascending:NO];
-    NSArray *houses = [self.position.houses sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortFloor]];
-    [sortFloor release];
-    
-    [self showPicker:sender withDataSource:houses andSelectedObject:self.house];
-}
-
-- (NSString *)popoverPicker:(PopoverPickerController *)popoverPicker titleForObject:(id)object
-{
-    NSString *title = nil;
-    if (popoverPicker.triggerView == self.floorButton) {
-        House *house = (House *)object;
-        title = [NSString stringWithFormat:@"%@楼 - #%@", house.floor, house.num];
-    } else if (popoverPicker.triggerView == self.positionButton) {
-        Position *position = (Position *)object;
-        title = position.name;
+    if (self.position == nil) {
+        return;
     }
     
-    return title;
-}
-
-- (void)popoverPicker:(PopoverPickerController *)popoverPicker didSelectObject:(id)object
-{
-    if (popoverPicker.triggerView == self.floorButton) {
-        self.house = (House *)object;
-    } if (popoverPicker.triggerView == self.positionButton) {
-        self.position = (Position *)object;
-        self.house = nil;
+    HousePickerController *pickerController = [[HousePickerController alloc] initWithNibName:@"HousePickerController" bundle:nil];
+    pickerController.position = self.position;
+    pickerController.contentSizeForViewInPopover = CGSizeMake(320, 600);
+    
+    UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:pickerController];
+    popoverController.delegate = self;
+    pickerController.parentPopover = popoverController;
+    pickerController.calculatorController = self;
+    
+    [popoverController presentPopoverFromRect:sender.frame
+                                       inView:self.view
+                     permittedArrowDirections:UIPopoverArrowDirectionRight
+                                     animated:YES];
+    
+    if (self.position != nil) {
+        [pickerController selectHouse:self.house animated:NO];
     }
+    
+    [pickerController release];
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     [popoverController release];
-}
-
-- (void)showPicker:(UIView *)trigger withDataSource:(NSArray *)dataSource andSelectedObject:(id)object
-{
-    PopoverPickerController *pickerController = [[PopoverPickerController alloc] initWithNibName:@"PopoverPickerController" bundle:nil];
-    pickerController.contentSizeForViewInPopover = CGSizeMake(320, 260);
-    pickerController.delegate = self;
-    pickerController.dataList = dataSource;
-    pickerController.triggerView = trigger;
-    
-    UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:pickerController];
-    popoverController.delegate = self;
-    pickerController.parentPopover = popoverController;
-    
-    [popoverController presentPopoverFromRect:trigger.frame
-                                       inView:self.view
-                     permittedArrowDirections:UIPopoverArrowDirectionAny
-                                     animated:YES];
-    
-    [pickerController selectObject:object];
-    [pickerController release];
 }
 
 - (void)startTwinkle:(UIView *)view
@@ -301,9 +397,9 @@
     if (textField == self.downPayment) {
         [(DownPaymentInputView *)textField.inputView setTotalPrice:_totalPrice];
         
-        bounds.origin.y = 30;
-    } else if (textField == self.loanPeriod) {
         bounds.origin.y = 100;
+    } else if (textField == self.loanPeriod) {
+        bounds.origin.y = 170;
     }
     
     [UIView animateWithDuration:0.3
@@ -340,7 +436,7 @@
 
 - (void)calculateMonthlyPayment {
     NSInteger totalPrice = _totalPrice;
-    NSInteger paymentType = [self.paymentType selectedSegmentIndex];
+    NSInteger paymentType = [self.paymentType selectedIndex];
     NSInteger downPayment = [self.downPayment.text intValue];
     NSInteger loanPeriod = [self.loanPeriod.text intValue];
 	NSInteger monthCount = loanPeriod * 12;
@@ -352,7 +448,7 @@
     if (loanPeriod == 0 || totalPrice < downPayment) {
         monthlyPayment = 0;
     } else {
-        NSInteger selectedLoanRate = [self.loanRate selectedSegmentIndex];
+        NSInteger selectedLoanRate = [self.loanRate selectedIndex];
         if (selectedLoanRate == 0) {
             rateDiscount = 1;
         } else if (selectedLoanRate == 1) {
@@ -361,7 +457,7 @@
             rateDiscount = 1.1;
         }
         
-        NSInteger selectedDiscount = [self.discountRate selectedSegmentIndex];
+        NSInteger selectedDiscount = [self.discountRate selectedIndex];
         if (selectedDiscount == 1) {
             totalPrice = totalPrice * 0.99;
         } else if (selectedDiscount == 2) {
@@ -393,7 +489,10 @@
         }
     }
     
-	[self.resultLabel setText:[NSString stringWithFormat:@"月供金额：%i 元", monthlyPayment]];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setPositiveFormat:@"###,###,###"];
+	[self.resultLabel setText:[numberFormatter stringFromNumber:[NSNumber numberWithInt:monthlyPayment]]];
+    [numberFormatter release];
 }
 
 @end

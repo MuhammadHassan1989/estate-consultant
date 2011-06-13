@@ -8,11 +8,13 @@
 
 #import "ClientEditController.h"
 #import "ProfileEditView.h"
+#import "NumberInputView.h"
 
 
 @implementation ClientEditController
 
 @synthesize client = _client;
+@synthesize profiles = _profiles;
 @synthesize starImage = _starImage;
 @synthesize sexSegments = _sexSegments;
 @synthesize nameField = _nameField;
@@ -31,6 +33,7 @@
 - (void)dealloc
 {
     [_client release];
+    [_profiles release];
     [_starImage release];
     [_sexSegments release];
     [_nameField release];
@@ -54,12 +57,17 @@
 {
     [super viewDidLoad];
     
-    NSArray *profiles = [[DataProvider sharedProvider] getProfiles];
+    UIImage *defaultBackground = [UIImage imageNamed:@"profile-field.png"];
+    UIImage *selectedBackground = [UIImage imageNamed:@"profile-field-selected.png"];
+    self.sexSegments.defaultBackground = [defaultBackground stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+    self.sexSegments.selectedBackground = [selectedBackground stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+    self.sexSegments.items = [NSArray arrayWithObjects:@"女士", @"先生", nil];
+        
     NSInteger index = 0;
-    for (Profile *profile in profiles) {
+    for (Profile *profile in self.profiles) {
         UIViewController *profileFieldController = [[UIViewController alloc] initWithNibName:@"ProfileEditView" bundle:nil];
         ProfileEditView *profileField = (ProfileEditView *)profileFieldController.view;
-        profileField.frame = CGRectMake(40, index * 60 + 120, 620, 50);
+        profileField.frame = CGRectMake(40, index * 60 + 175, 628, 50);
         profileField.profile = profile;
         
         [self.profileList addSubview:profileField];
@@ -69,17 +77,24 @@
         index++;
     }
     
-    [self.profileList setContentSize:CGSizeMake(702, index * 60 + 120)];
+    [self.profileList setContentSize:CGSizeMake(710, index * 60 + 175)];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self 
                                                                                  action:@selector(tapStar:)];
     [self.starImage addGestureRecognizer:tapGesture];
     [tapGesture release];
+    
+    UIViewController *numberInputController = [[UIViewController alloc] initWithNibName:@"NumberInputView" bundle:nil];
+    NumberInputView *numberInputView = (NumberInputView *)numberInputController.view;
+    numberInputView.textfield = self.phoneField;
+    self.phoneField.inputView = numberInputView;
+    [numberInputController release];
 }
 
 - (void)viewDidUnload
 {
     [self setClient:nil];
+    [self setProfiles:nil];
     [self setStarImage:nil];
     [self setSexSegments:nil];
     [self setNameField:nil];
@@ -96,6 +111,26 @@
 	return YES;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];    
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField != self.phoneField) {
+        return YES;
+    }
+    
+    NSPredicate *numberPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES '^[0-9]*$'"];
+    if (![numberPredicate evaluateWithObject:string]) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 - (void)setClient:(Client *)client
 {
     if (client.starred.intValue) {
@@ -104,7 +139,7 @@
     
     self.nameField.text = client.name;
     self.phoneField.text = client.phone;
-    self.sexSegments.selectedSegmentIndex = client.sex.intValue;
+    self.sexSegments.selectedIndex = client.sex.intValue;
     self.starImage.highlighted = client.starred.boolValue;
     [_profileFields makeObjectsPerformSelector:@selector(setClient:) withObject:client];
     
@@ -121,7 +156,7 @@
 - (IBAction)endEdit:(id)sender {
     self.client.starred = [NSNumber numberWithBool:self.starImage.highlighted];    
     self.client.name = self.nameField.text;
-    self.client.sex = [NSNumber numberWithInteger:self.sexSegments.selectedSegmentIndex];
+    self.client.sex = [NSNumber numberWithInteger:self.sexSegments.selectedIndex];
     self.client.phone = self.phoneField.text;
     
     [_profileFields makeObjectsPerformSelector:@selector(saveChanges)];

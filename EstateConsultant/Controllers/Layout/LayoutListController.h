@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataProvider.h"
 
-
-@interface LayoutListController : UITableViewController {
+@interface LayoutListController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+    Batch *_batch;
     NSArray *_layouts;
+    UITableView *_tableView;
 }
 
-@property (nonatomic, retain) NSArray *layouts;
+@property (nonatomic, retain) Batch *batch;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 @end

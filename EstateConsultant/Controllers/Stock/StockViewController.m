@@ -8,9 +8,11 @@
 
 #import "StockViewController.h"
 #import "StockListController.h"
-
+#import "StockDetailController.h"
 
 @implementation StockViewController
+
+@synthesize batch = _batch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,8 +25,9 @@
 
 - (void)dealloc
 {
-    [_navController release];
-    [_detailController release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    [_batch release];
     [super dealloc];
 }
 
@@ -43,13 +46,10 @@
     [super viewDidLoad];
 
     StockListController *stockListController = [[StockListController alloc] initWithNibName:@"StockListController" bundle:nil];
-    stockListController.navigationItem.title = @"所有位置";
-    _navController = [[UINavigationController alloc] initWithRootViewController:stockListController];
+    stockListController.batch = self.batch;
+    [self pushViewController:stockListController];
     [stockListController release];
     
-    [_navController.view setFrame:CGRectMake(0, 0, 320, 694)];
-    [self.view addSubview:_navController.view];
-
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(showStockTable:)
                                                  name:@"SelectPosition"
@@ -58,6 +58,7 @@
 
 - (void)viewDidUnload
 {
+    [self setBatch:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -72,14 +73,18 @@
 
 - (void)showStockTable:(NSNotification *)notification
 {
-    if (_detailController == nil) {
-        _detailController = [[StockDetailController alloc] initWithNibName:@"StockDetailController" bundle:nil];
-        [_detailController.view setFrame:CGRectMake(322, 0, 702, 694)];
-        [self.view addSubview:_detailController.view];
+    Position *position = (Position *)[[notification userInfo] valueForKey:@"position"];   
+    
+    StockDetailController *detailController;
+    if (self.viewControllers.count < 2) {
+        detailController = [[StockDetailController alloc] initWithNibName:@"StockDetailController" bundle:nil];
+        [self pushViewController:detailController];
+    } else {
+        detailController = [self.viewControllers objectAtIndex:1];
     }
     
-    Position *position = (Position *)[[notification userInfo] valueForKey:@"position"];
-    _detailController.position = position;
+    detailController.position = position;
+    [self showViewAtIndex:1];
 }
 
 @end

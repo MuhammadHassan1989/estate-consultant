@@ -188,6 +188,56 @@ static DataProvider *sharedProvider = nil;
     if (![[NSFileManager defaultManager] fileExistsAtPath:storePath]) {
         NSManagedObjectContext *moc = [self managedObjectContext];
         
+        // estate data
+        NSString *estatesFile = [[NSBundle mainBundle] pathForResource:@"Estate.plist" ofType:nil];
+        NSArray *estates = [[NSArray alloc] initWithContentsOfFile:estatesFile];
+        for (NSDictionary *estate in estates) {
+            Estate *newEstate = [NSEntityDescription insertNewObjectForEntityForName:@"Estate"
+                                                              inManagedObjectContext:moc];
+            newEstate.estateID = [estate valueForKey:@"estateID"];
+            newEstate.name = [estate valueForKey:@"name"];
+        }
+        [estates release];
+        
+        // position data
+        NSString *positionFile = [[NSBundle mainBundle] pathForResource:@"Position.plist" ofType:nil];
+        NSArray *batchs = [[NSArray alloc] initWithContentsOfFile:positionFile];
+        for (NSDictionary *batch in batchs) {
+            Batch *newBatch = [NSEntityDescription insertNewObjectForEntityForName:@"Batch"
+                                                            inManagedObjectContext:moc];
+            newBatch.batchID = [batch valueForKey:@"batchID"];
+            newBatch.name = [batch valueForKey:@"batchName"];
+            newBatch.active = [batch valueForKey:@"active"];
+            newBatch.estate = [self getEstateByID:[[batch valueForKey:@"estate"] intValue]];
+            
+            NSArray *buildings = [batch valueForKey:@"buildings"];
+            NSInteger buildingID = 1;
+            for (NSArray *building in buildings) {
+                Building *newBuilding = [NSEntityDescription insertNewObjectForEntityForName:@"Building"
+                                                                      inManagedObjectContext:moc];
+                newBuilding.number = [NSNumber numberWithInteger:buildingID];
+                newBuilding.batch = newBatch;
+                NSInteger unitID = 1;
+                for (NSArray *units in building) {
+                    Unit *newUnit = [NSEntityDescription insertNewObjectForEntityForName:@"Unit"
+                                                                  inManagedObjectContext:moc];
+                    newUnit.number = [NSNumber numberWithInteger:unitID];
+                    newUnit.building = newBuilding;
+                    for (NSDictionary *position in units) {
+                        Position *newPosition = [NSEntityDescription insertNewObjectForEntityForName:@"Position"
+                                                                              inManagedObjectContext:moc];
+                        newPosition.name = [position valueForKey:@"name"];
+                        newPosition.positionID = [position valueForKey:@"id"];
+                        newPosition.unit = newUnit;
+                    }
+                    unitID++;
+                }
+                
+                buildingID++;
+            }
+        }
+        [batchs release];
+        
         // layout data
         NSString *layoutsFile = [[NSBundle mainBundle] pathForResource:@"Layout.plist" ofType:nil];
         NSArray *layouts = [[NSArray alloc] initWithContentsOfFile:layoutsFile];
@@ -195,23 +245,14 @@ static DataProvider *sharedProvider = nil;
             Layout *newLayout = [NSEntityDescription insertNewObjectForEntityForName:@"Layout"
                                                               inManagedObjectContext:moc];
             newLayout.layoutID = [layout valueForKey:@"id"];
-            newLayout.area = [layout valueForKey:@"area"];
+            newLayout.poolArea = [layout valueForKey:@"poolArea"];
+            newLayout.floorArea = [layout valueForKey:@"floorArea"];
             newLayout.desc = [layout valueForKey:@"desc"];
             newLayout.name = [layout valueForKey:@"name"];
             newLayout.pics = [layout valueForKey:@"pics"];
+            newLayout.batch = [self getBatchByID:[[layout valueForKey:@"batch"] intValue]];
         }
         [layouts release];
-        
-        // position data
-        NSString *positionFile = [[NSBundle mainBundle] pathForResource:@"Position.plist" ofType:nil];
-        NSArray *positions = [[NSArray alloc] initWithContentsOfFile:positionFile];
-        for (NSDictionary *position in positions) {
-            Position *newPosition = [NSEntityDescription insertNewObjectForEntityForName:@"Position"
-                                                            inManagedObjectContext:moc];
-            newPosition.name = [position valueForKey:@"name"];
-            newPosition.positionID = [position valueForKey:@"id"];
-        }
-        [positions release];
         
         // house data
         NSString *houseFile = [[NSBundle mainBundle] pathForResource:@"House.plist" ofType:nil];
@@ -238,6 +279,7 @@ static DataProvider *sharedProvider = nil;
             newConsultant.consultantID = [consultant valueForKey:@"id"];
             newConsultant.name = [consultant valueForKey:@"name"];
             newConsultant.username = [consultant valueForKey:@"username"];
+            newConsultant.estate = [self getEstateByID:[[consultant valueForKey:@"estate"] intValue]];
         }
         [consultants release];
         
@@ -253,6 +295,7 @@ static DataProvider *sharedProvider = nil;
             newProfile.meta = [profile valueForKey:@"meta"];
             newProfile.defaultValue = [profile valueForKey:@"default"];
             newProfile.sequence = [profile valueForKey:@"sequence"];
+            newProfile.estate = [self getEstateByID:[[profile valueForKey:@"estate"] intValue]];
         }
         [profiles release];
         
@@ -276,22 +319,6 @@ static DataProvider *sharedProvider = nil;
             }
             newClient.follows = followSet;
             [followSet release];
-                        
-            NSArray* orderIDs = [client valueForKey:@"orders"];
-            NSMutableSet *orderSet = [[NSMutableSet alloc] initWithCapacity:orderIDs.count];
-            for (NSNumber *orderID in orderIDs) {
-                [orderSet addObject:[self getHouseByID:[orderID intValue]]];
-            }
-            newClient.orders = orderSet;
-            [orderSet release];
-            
-            NSArray* purchaseIDs = [client valueForKey:@"purchases"];
-            NSMutableSet *purchaseSet = [[NSMutableSet alloc] initWithCapacity:purchaseIDs.count];
-            for (NSNumber *purchaseID in purchaseIDs) {
-                [purchaseSet addObject:[self getHouseByID:[purchaseID intValue]]];
-            }
-            newClient.purchases = purchaseSet;
-            [purchaseSet release];
             
             NSArray* profileObjects = [client valueForKey:@"profiles"];
             NSMutableSet *profileSet = [[NSMutableSet alloc] initWithCapacity:profileObjects.count];
@@ -333,6 +360,39 @@ static DataProvider *sharedProvider = nil;
 	}
     
     self.isDemo = NO;
+}
+
+
+#pragma mark - Estate Data Provider
+
+- (Estate *)getEstateByID:(NSInteger)estateID
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Estate"
+                                                         inManagedObjectContext:moc];
+    [request setEntity:entityDescription];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"estateID == %i", estateID];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    [request release];
+    
+    NSLog(@"data provider: getEstateByID(%i); result: %i", estateID, [results count]);
+    
+    if (results == nil)
+    {
+        NSLog(@"data provider error: getEstateByID(%i)", estateID);
+        return nil;
+    } else if ([results count] > 0) {
+        return [results objectAtIndex:0];
+    } else {
+        return nil;
+    }
+
 }
 
 
@@ -433,7 +493,7 @@ static DataProvider *sharedProvider = nil;
     }
 }
 
-- (NSArray *)getClients
+- (NSArray *)getClientsOfEstate:(Estate *)estate
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -441,59 +501,26 @@ static DataProvider *sharedProvider = nil;
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Client"
                                                          inManagedObjectContext:moc];
     [request setEntity:entityDescription];
-            
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"consultant.estate == %@", estate];
+    [request setPredicate:predicate];
+    
     NSError *error = nil;
     NSArray *results = [moc executeFetchRequest:request error:&error];
     [request release];
     
-    NSLog(@"data provider: getClients; result: %i", [results count]);
+    NSLog(@"data provider: getClientsOfEstate(%@); result: %i", estate, [results count]);
     
     if (results == nil)
     {
-        NSLog(@"data provider error: getClients");
+        NSLog(@"data provider error: getClientsOfEstate(%@)", estate);
         return nil;
     }
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"history.@max.date" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"history.@max.date" ascending:NO];
     results = [results sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     [sortDescriptor release];
     
-    return results;
-}
-
-- (NSArray *)getClientsByType:(NSInteger)clientType ofConsultant:(Consultant *)consultant
-{
-    NSArray *results = nil;
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"history.@max.date" ascending:NO];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-
-    if (clientType == 0) {
-        results = [consultant.clients sortedArrayUsingDescriptors:sortDescriptors];
-    } else if (clientType == 1) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.starred.boolValue == YES"];
-        NSSet *clients = [consultant.clients filteredSetUsingPredicate:predicate];
-        results = [clients sortedArrayUsingDescriptors:sortDescriptors];
-    } else if (clientType == 2) { 
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.orders.@count == 0 && SELF.purchases.@count == 0"];
-        NSSet *clients = [consultant.clients filteredSetUsingPredicate:predicate];
-        results = [clients sortedArrayUsingDescriptors:sortDescriptors];        
-    } else if (clientType == 3) { 
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.orders.@count > 0"];
-        NSSet *clients = [consultant.clients filteredSetUsingPredicate:predicate];
-        results = [clients sortedArrayUsingDescriptors:sortDescriptors];        
-    } else if (clientType == 4) { 
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.purchases.@count > 0"];
-        NSSet *clients = [consultant.clients filteredSetUsingPredicate:predicate];
-        results = [clients sortedArrayUsingDescriptors:sortDescriptors];        
-    } else if (clientType == 5) { 
-        NSArray *allClients = [self getClients];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.consultant.consultantID.intValue != %i", consultant.consultantID.intValue];
-        NSArray *clients = [allClients filteredArrayUsingPredicate:predicate];
-        results = [clients sortedArrayUsingDescriptors:sortDescriptors];
-    }
-    
-    [sortDescriptors release];
-    [sortDescriptor release];
     return results;
 }
 
@@ -544,34 +571,6 @@ static DataProvider *sharedProvider = nil;
 
 }
 
-- (NSArray *)getProfiles
-{
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Profile"
-                                                         inManagedObjectContext:moc];
-    [request setEntity:entityDescription];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sequence" ascending:YES];
-    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    [sortDescriptor release];
-    
-    NSError *error = nil;
-    NSArray *results = [moc executeFetchRequest:request error:&error];
-    [request release];
-    
-    NSLog(@"data provider: getProfiles; result: %i", [results count]);
-    
-    if (results == nil)
-    {
-        NSLog(@"data provider error: getProfiles");
-        return nil;
-    }
-    
-    return results;
-}
-
 - (ClientProfile *)getClientProfile:(Profile *)profile ofClient:(Client *)client
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.profile.profileID=%@", profile.profileID];
@@ -612,12 +611,6 @@ static DataProvider *sharedProvider = nil;
     }
 }
 
-- (NSSet *)getOnSaleHousesOfLayout:(Layout *)layout
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"status == 1"];
-    return [layout.houses filteredSetUsingPredicate:predicate];
-}
-
 
 #pragma mark - Layout Data Provider
 
@@ -650,36 +643,37 @@ static DataProvider *sharedProvider = nil;
     }
 }
 
-- (NSArray *)getLayouts
+
+#pragma mark - Position Data Provider
+
+- (Batch *)getBatchByID:(NSInteger)batchID
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Layout"
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Batch"
                                                          inManagedObjectContext:moc];
     [request setEntity:entityDescription];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"layoutID" ascending:YES];
-    [request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    [sortDescriptor release];
-        
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"batchID == %i", batchID];
+    [request setPredicate:predicate];
+    
     NSError *error = nil;
     NSArray *results = [moc executeFetchRequest:request error:&error];
     [request release];
     
-    NSLog(@"data provider: getLayouts; result: %i", [results count]);
+    NSLog(@"data provider: getBatchByID(%i); result: %i", batchID, [results count]);
     
     if (results == nil)
     {
-        NSLog(@"data provider error: getLayouts");
+        NSLog(@"data provider error: getBatchByID(%i)", batchID);
         return nil;
-    }else {
-        return results;
+    } else if ([results count] > 0) {
+        return [results objectAtIndex:0];
+    } else {
+        return nil;
     }
 }
-
-
-#pragma mark - Position Data Provider
 
 - (Position *)getPositionByID:(NSInteger)positionID
 {
@@ -708,7 +702,6 @@ static DataProvider *sharedProvider = nil;
     } else {
         return nil;
     }
-
 }
 
 - (NSArray *)getPositions
@@ -771,35 +764,6 @@ static DataProvider *sharedProvider = nil;
     }
 }
 
-- (History *)getHistoryByDate:(NSDate *)date andAction:(NSInteger)action
-{
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"History"
-                                                         inManagedObjectContext:moc];
-    [request setEntity:entityDescription];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"date == %@ && action == %i", date, action];
-    [request setPredicate:predicate];
-    
-    NSError *error = nil;
-    NSArray *results = [moc executeFetchRequest:request error:&error];
-    [request release];
-    
-    NSLog(@"data provider: getHistoryByDate(%@)andAction(%i); result: %u", date, action, results.count);
-    
-    if (results == nil)
-    {
-        NSLog(@"data provider error: getHistoryByDate(%@)andAction(%i)", date, action);
-        return nil;
-    } else if ([results count] > 0) {
-        return [results objectAtIndex:0];
-    } else {
-        return nil;
-    }
-}
-
 - (History *)historyOfClient:(Client *)client withAction:(NSInteger)action andHouse:(House *)house
 {
     NSDate *now = [NSDate date];
@@ -814,7 +778,8 @@ static DataProvider *sharedProvider = nil;
     NSDate* date = [calendar dateFromComponents:dateComps];
     [calendar release];
     
-    History *history = [self getHistoryByDate:date andAction:action];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"date == %@ && action == %i", date, action];
+    History *history = [[client.history filteredSetUsingPredicate:predicate] anyObject];
     
     if (history == nil) {
         NSManagedObjectContext *moc = [self managedObjectContext];

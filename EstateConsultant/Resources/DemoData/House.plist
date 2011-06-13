@@ -14,9 +14,9 @@
 		<key>position</key>
 		<integer>1</integer>
 		<key>price</key>
-		<integer>9400</integer>
+		<integer>438149</integer>
 		<key>status</key>
-		<integer>1</integer>
+		<integer>2</integer>
 	</dict>
 	<dict>
 		<key>floor</key>
@@ -24,15 +24,15 @@
 		<key>id</key>
 		<integer>18</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>2</integer>
 		<key>num</key>
 		<string>21052</string>
 		<key>position</key>
 		<integer>2</integer>
 		<key>price</key>
-		<integer>9400</integer>
+		<integer>450063</integer>
 		<key>status</key>
-		<integer>1</integer>
+		<integer>3</integer>
 	</dict>
 	<dict>
 		<key>floor</key>
@@ -40,13 +40,13 @@
 		<key>id</key>
 		<integer>19</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>3</integer>
 		<key>num</key>
 		<string>21053</string>
 		<key>position</key>
 		<integer>3</integer>
 		<key>price</key>
-		<integer>9400</integer>
+		<integer>506595</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -56,13 +56,13 @@
 		<key>id</key>
 		<integer>20</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>4</integer>
 		<key>num</key>
 		<string>21054</string>
 		<key>position</key>
 		<integer>4</integer>
 		<key>price</key>
-		<integer>9400</integer>
+		<integer>404786</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -78,7 +78,7 @@
 		<key>position</key>
 		<integer>1</integer>
 		<key>price</key>
-		<integer>9300</integer>
+		<integer>507107</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -88,13 +88,13 @@
 		<key>id</key>
 		<integer>14</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>2</integer>
 		<key>num</key>
 		<string>21042</string>
 		<key>position</key>
 		<integer>2</integer>
 		<key>price</key>
-		<integer>9300</integer>
+		<integer>435632</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -104,13 +104,13 @@
 		<key>id</key>
 		<integer>15</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>3</integer>
 		<key>num</key>
 		<string>21043</string>
 		<key>position</key>
 		<integer>3</integer>
 		<key>price</key>
-		<integer>9300</integer>
+		<integer>395451</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -120,13 +120,13 @@
 		<key>id</key>
 		<integer>16</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>4</integer>
 		<key>num</key>
 		<string>21044</string>
 		<key>position</key>
 		<integer>4</integer>
 		<key>price</key>
-		<integer>9300</integer>
+		<integer>419706</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -142,7 +142,7 @@
 		<key>position</key>
 		<integer>1</integer>
 		<key>price</key>
-		<integer>9200</integer>
+		<integer>473484</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -152,13 +152,13 @@
 		<key>id</key>
 		<integer>10</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>2</integer>
 		<key>num</key>
 		<string>21032</string>
 		<key>position</key>
 		<integer>2</integer>
 		<key>price</key>
-		<integer>9200</integer>
+		<integer>407282</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -168,13 +168,13 @@
 		<key>id</key>
 		<integer>11</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>3</integer>
 		<key>num</key>
 		<string>21033</string>
 		<key>position</key>
 		<integer>3</integer>
 		<key>price</key>
-		<integer>9200</integer>
+		<integer>486163</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -184,13 +184,13 @@
 		<key>id</key>
 		<integer>12</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>4</integer>
 		<key>num</key>
 		<string>21034</string>
 		<key>position</key>
 		<integer>4</integer>
 		<key>price</key>
-		<integer>9200</integer>
+		<integer>405117</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -200,13 +200,13 @@
 		<key>id</key>
 		<integer>6</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>2</integer>
 		<key>num</key>
 		<string>21022</string>
 		<key>position</key>
 		<integer>2</integer>
 		<key>price</key>
-		<integer>9100</integer>
+		<integer>399847</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -216,13 +216,13 @@
 		<key>id</key>
 		<integer>7</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>3</integer>
 		<key>num</key>
 		<string>21023</string>
 		<key>position</key>
 		<integer>3</integer>
 		<key>price</key>
-		<integer>9100</integer>
+		<integer>424873</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -232,13 +232,13 @@
 		<key>id</key>
 		<integer>8</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>4</integer>
 		<key>num</key>
 		<string>21024</string>
 		<key>position</key>
 		<integer>4</integer>
 		<key>price</key>
-		<integer>9100</integer>
+		<integer>478523</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -254,7 +254,7 @@
 		<key>position</key>
 		<integer>1</integer>
 		<key>price</key>
-		<integer>9100</integer>
+		<integer>411025</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -270,7 +270,7 @@
 		<key>position</key>
 		<integer>1</integer>
 		<key>price</key>
-		<integer>9000</integer>
+		<integer>490744</integer>
 		<key>status</key>
 		<integer>2</integer>
 	</dict>
@@ -280,13 +280,13 @@
 		<key>id</key>
 		<integer>2</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>2</integer>
 		<key>num</key>
 		<string>21012</string>
 		<key>position</key>
 		<integer>2</integer>
 		<key>price</key>
-		<integer>9000</integer>
+		<integer>408779</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -296,13 +296,13 @@
 		<key>id</key>
 		<integer>3</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>3</integer>
 		<key>num</key>
 		<string>21013</string>
 		<key>position</key>
 		<integer>3</integer>
 		<key>price</key>
-		<integer>9000</integer>
+		<integer>428748</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>
@@ -312,13 +312,13 @@
 		<key>id</key>
 		<integer>4</integer>
 		<key>layout</key>
-		<integer>1</integer>
+		<integer>4</integer>
 		<key>num</key>
 		<string>21014</string>
 		<key>position</key>
 		<integer>4</integer>
 		<key>price</key>
-		<integer>9000</integer>
+		<integer>482122</integer>
 		<key>status</key>
 		<integer>1</integer>
 	</dict>

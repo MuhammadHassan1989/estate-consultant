@@ -13,6 +13,8 @@
 
 @implementation LayoutViewController
 
+@synthesize batch = _batch;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -24,8 +26,9 @@
 
 - (void)dealloc
 {
-    [_navController release];
-    [_detailController release];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    [_batch release];
     [super dealloc];
 }
 
@@ -44,13 +47,10 @@
     [super viewDidLoad];
     
     LayoutListController *layoutListController = [[LayoutListController alloc] initWithNibName:@"LayoutListController" bundle:nil];
-    layoutListController.navigationItem.title = @"所有户型";
-    _navController = [[UINavigationController alloc] initWithRootViewController:layoutListController];
+    layoutListController.batch = self.batch;
+    [self pushViewController:layoutListController];
     [layoutListController release];
-    
-    [_navController.view setFrame:CGRectMake(0, 0, 320, 694)];
-    [self.view addSubview:_navController.view];
-    
+        
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(showLayout:)
                                                  name:@"SelectLayout"
@@ -59,6 +59,7 @@
 
 - (void)viewDidUnload
 {
+    [self setBatch:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -73,14 +74,18 @@
 
 - (void)showLayout:(NSNotification *)notification
 {
-    if (_detailController == nil) {
-        _detailController = [[LayoutDetailController alloc] initWithNibName:@"LayoutDetailController" bundle:nil];
-        [_detailController.view setFrame:CGRectMake(322, 0, 702, 694)];
-        [self.view addSubview:_detailController.view];
-    }
+    Layout *layout = (Layout *)[[notification userInfo] valueForKey:@"layout"];   
     
-    Layout *layout = (Layout *)[[notification userInfo] valueForKey:@"layout"];
-    _detailController.layout = layout;
+    LayoutDetailController *detailController;
+    if (self.viewControllers.count < 2) {
+        detailController = [[LayoutDetailController alloc] initWithNibName:@"LayoutDetailController" bundle:nil];
+        [self pushViewController:detailController];
+    } else {
+        detailController = [self.viewControllers objectAtIndex:1];
+    }
+        
+    detailController.layout = layout;
+    [self showViewAtIndex:1];
 }
 
 @end

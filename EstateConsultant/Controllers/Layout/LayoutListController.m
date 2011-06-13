@@ -11,11 +11,12 @@
 
 @implementation LayoutListController
 
-@synthesize layouts = _layouts;
+@synthesize tableView = _tableView;
+@synthesize batch = _batch;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -24,7 +25,9 @@
 
 - (void)dealloc
 {
+    [_batch release];
     [_layouts release];
+    [_tableView release];
     [super dealloc];
 }
 
@@ -42,12 +45,15 @@
 {
     [super viewDidLoad];
     
-    self.layouts = [[DataProvider sharedProvider] getLayouts];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"layoutID" ascending:YES];
+    _layouts = [[self.batch.layouts sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]] retain];
+    [sortDescriptor release];
 }
 
 - (void)viewDidUnload
 {
-    [self setLayouts:nil];
+    [self setBatch:nil];
+    [self setTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -90,21 +96,37 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.layouts.count;
+    return _layouts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"LayoutCell";
     
+    UILabel *descLabel;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"listitem.png"]] autorelease];
+        cell.selectedBackgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"listitem-selected.png"]] autorelease];
+        cell.indentationLevel = 1;
+        
+        descLabel = [[[UILabel alloc] initWithFrame:CGRectMake(180, 2, 120, 40)] autorelease];
+        descLabel.tag = 1;
+        descLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
+        descLabel.textAlignment = UITextAlignmentRight;
+        descLabel.textColor = [UIColor colorWithHue:0 saturation:0 brightness:0.4 alpha:1.0];
+        descLabel.highlightedTextColor = [UIColor whiteColor];
+        descLabel.backgroundColor = [UIColor colorWithHue:0.097 saturation:0.05 brightness:0.96 alpha:1.0];
+        descLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+        [cell.contentView addSubview:descLabel];
+    } else {
+        descLabel = (UILabel *)[cell.contentView viewWithTag:1];
     }
     
-    Layout *layout = [self.layouts objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", layout.name, layout.desc];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@㎡", layout.area];
+    Layout *layout = [_layouts objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@（%@）", layout.name, layout.desc];
+    descLabel.text = [NSString stringWithFormat:@"%i㎡", (NSInteger)roundf(layout.poolArea.floatValue + layout.floorArea.floatValue)];
         
     return cell;
 }
@@ -151,9 +173,18 @@
 
 #pragma mark - Table view delegate
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UILabel *descLabel = (UILabel *)[cell.contentView viewWithTag:1];
+    [cell.contentView bringSubviewToFront:descLabel];
+
+    cell.textLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:18];
+    cell.textLabel.textColor = [UIColor blackColor];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Layout *layout = [self.layouts objectAtIndex:indexPath.row];
+    Layout *layout = [_layouts objectAtIndex:indexPath.row];
     
     NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:layout, @"layout", nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SelectLayout"

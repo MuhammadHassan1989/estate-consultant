@@ -14,6 +14,7 @@
 @implementation ClientDetailController
 
 @synthesize client = _client;
+@synthesize profiles = _profiles;
 @synthesize scrollView = _scrollView;
 @synthesize infoList = _infoList;
 @synthesize historyList = _historyList;
@@ -34,9 +35,11 @@
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     [self removeObserverForClient:_client];
     [_client release];
-    
+    [_profiles release];
     [_scrollView release];
     [_infoList release];
     [_historyList release];
@@ -46,6 +49,7 @@
     [_profileFields release];
     [_phoneLabel release];
     [_historyViews release];
+    [_clientEditController release];
     [super dealloc];
 }
 
@@ -62,13 +66,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSArray *profiles = [[DataProvider sharedProvider] getProfiles];
+
     NSInteger index = 0;
-    for (Profile *profile in profiles) {
+    for (Profile *profile in self.profiles) {
         UIViewController *profileFieldController = [[UIViewController alloc] initWithNibName:@"ProfileFieldView" bundle:nil];
         ProfileFieldView *profileField = (ProfileFieldView *)profileFieldController.view;
-        profileField.frame = CGRectMake(40, index * 60 + 100, 620, 50);
+        profileField.frame = CGRectMake(40, index * 60 + 115, 628, 50);
         profileField.profile = profile;
         
         [self.infoList addSubview:profileField];
@@ -78,7 +81,8 @@
         index++;
     }
     
-    CGRect infoFrame = CGRectMake(0, 0, 702, 100 + index * 60);
+    CGRect infoFrame = self.infoList.frame;
+    infoFrame.size.height = index * 60 + 115;
     [self.infoList setFrame:infoFrame];
     [self.scrollView setContentSize:CGSizeMake(702, infoFrame.origin.y + infoFrame.size.height + 20)];
     
@@ -86,11 +90,17 @@
                                                                                  action:@selector(tapStar:)];
     [self.starImage addGestureRecognizer:tapGesture];
     [tapGesture release];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(endEditClient:) 
+                                                 name:@"EndEditClient"
+                                               object:nil];
 }
 
 - (void)viewDidUnload
-{
+{    
     [self setClient:nil];
+    [self setProfiles:nil];
     [self setScrollView:nil];
     [self setInfoList:nil];
     [self setHistoryList:nil];
@@ -125,7 +135,7 @@
         self.sexLabel.text = @"女士";
     }
     CGRect sexFrame = self.sexLabel.frame;
-    sexFrame.origin.x = 83 + [client.name sizeWithFont:self.sexLabel.font].width + 10;
+    sexFrame.origin.x = CGRectGetMinX(self.nameLabel.frame) + [client.name sizeWithFont:self.nameLabel.font].width + 10;
     self.sexLabel.frame = sexFrame;
     
     for (ProfileFieldView *profileField in _profileFields) {
@@ -145,24 +155,25 @@
     
     self.historyList.hidden = (historyItems.count < 1);
     
-    NSInteger index = 0;
+    CGFloat originY = 55;
     for (History *history in historyItems) {
         UIViewController *historyController = [[UIViewController alloc] initWithNibName:@"ClientHistoryView" bundle:nil];
         ClientHistoryView *historyView = (ClientHistoryView *)historyController.view;
-        historyView.frame = CGRectMake(40, index * 60 + 40, 620, 50);
+        historyView.frame = CGRectMake(40, originY, 605, 50);
         historyView.history = history;
         
         [self.historyList addSubview:historyView];
         [_historyViews addObject:historyView];
         [historyController release];
         
-        index++;
+        originY += CGRectGetHeight(historyView.frame) + 20;
     }
     
-    NSInteger originY = self.infoList.frame.origin.y + self.infoList.frame.size.height + 20;
-    CGRect historyFrame = CGRectMake(0, originY, 702, 40 + index * 60);
+    CGRect historyFrame = self.historyList.frame;
+    historyFrame.origin.y = CGRectGetMaxY(self.infoList.frame) + 15;
+    historyFrame.size.height = originY;
     [self.historyList setFrame:historyFrame];
-    [self.scrollView setContentSize:CGSizeMake(702, historyFrame.origin.y + historyFrame.size.height + 20)];
+    [self.scrollView setContentSize:CGSizeMake(702, CGRectGetMaxY(historyFrame) + 20)];
     
     [self addObserverForClient:client];
     [self removeObserverForClient:_client];
@@ -172,11 +183,32 @@
 }
 
 - (IBAction)editClient:(id)sender {
-    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:self.client, @"client", nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"StartEditClient" 
-                                                        object:self
-                                                      userInfo:userInfo];
-    [userInfo release];
+    if (_clientEditController == nil) {
+        _clientEditController = [[ClientEditController alloc] initWithNibName:@"ClientEditController" bundle:nil];
+        _clientEditController.profiles = self.profiles;
+        _clientEditController.view.frame = self.view.bounds;
+        _clientEditController.view.alpha = 0;
+        [self.view addSubview:_clientEditController.view];
+    }
+    
+    _clientEditController.client = self.client;
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         _clientEditController.view.alpha = 1;
+                     }];
+}
+
+- (void)endEditClient:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         _clientEditController.view.alpha = 0;
+                     }
+                     completion:^(BOOL finished){
+                         [_clientEditController.view removeFromSuperview];
+                         [_clientEditController release];
+                         _clientEditController = nil;
+                     }];
 }
 
 - (void)tapStar:(UIGestureRecognizer *)gesture
@@ -191,6 +223,10 @@
         self.starImage.highlighted = [[object valueForKeyPath:keyPath] boolValue];
     } else if([keyPath isEqualToString:@"name"]) {
         self.nameLabel.text = [object valueForKeyPath:keyPath];
+        
+        CGRect sexFrame = self.sexLabel.frame;
+        sexFrame.origin.x = CGRectGetMinX(self.nameLabel.frame) + [self.nameLabel.text sizeWithFont:self.nameLabel.font].width + 10;
+        self.sexLabel.frame = sexFrame;
     } else if([keyPath isEqualToString:@"phone"]) {
         self.phoneLabel.text = [object valueForKeyPath:keyPath];
     } else if([keyPath isEqualToString:@"sex"]) {
@@ -200,9 +236,6 @@
         } else if (sex == 0) {
             self.sexLabel.text = @"女士";
         }
-        CGRect sexFrame = self.sexLabel.frame;
-        sexFrame.origin.x = 83 + [self.nameLabel.text sizeWithFont:self.sexLabel.font].width + 10;
-        self.sexLabel.frame = sexFrame;
     }
 }
 

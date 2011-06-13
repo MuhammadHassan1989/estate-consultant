@@ -2,18 +2,20 @@
 //  Position.m
 //  EstateConsultant
 //
-//  Created by farthinker on 5/17/11.
+//  Created by farthinker on 6/9/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
 #import "Position.h"
 #import "House.h"
+#import "Unit.h"
 
 
 @implementation Position
 @dynamic name;
 @dynamic positionID;
 @dynamic houses;
+@dynamic unit;
 
 - (void)addHousesObject:(House *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
@@ -42,6 +44,7 @@
     [[self primitiveValueForKey:@"houses"] minusSet:value];
     [self didChangeValueForKey:@"houses" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
+
 
 
 @end

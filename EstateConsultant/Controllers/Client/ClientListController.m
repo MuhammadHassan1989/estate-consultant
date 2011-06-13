@@ -7,18 +7,18 @@
 //
 
 #import "ClientListController.h"
-#import "ClientCreateController.h"
 
 
 @implementation ClientListController
 
-@synthesize clientType = _clientType;
 @synthesize consultant = _consultant;
-@synthesize clients = _clients;
+@synthesize dataSource = _dataSource;
+@synthesize tableView = _tableView;
+@synthesize searchField = _searchField;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -26,13 +26,17 @@
 }
 
 - (void)dealloc
-{    
-    for (Client *client in self.clients) {
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    for (Client *client in _clients) {
         [self removeObserverForClient:client];
     }
     [_clients release];
-    [_filteredClients release];
+    [_dataSource release];
     [_consultant release];
+    [_tableView release];
+    [_searchField release];
     [super dealloc];
 }
 
@@ -44,44 +48,33 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.clearsSelectionOnViewWillAppear = NO;
     
-    NSArray *clients = [[DataProvider sharedProvider] getClientsByType:self.clientType 
-                                                          ofConsultant:self.consultant];
-    NSMutableArray *mutableClients = [[NSMutableArray alloc] initWithArray:clients];
-    self.clients = mutableClients;
-    [mutableClients release];
-    
-    for (Client *client in self.clients) {
+    NSArray *clients = [[DataProvider sharedProvider] getClientsOfEstate:self.consultant.estate];
+    _clients = [[NSMutableArray alloc] initWithArray:clients];
+    for (Client *client in _clients) {
         [self addObserverForClient:client];
     }
+    self.dataSource = _clients;
     
-    if (self.clientType == 0) {
-        UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
-                                                                                   target:self 
-                                                                                   action:@selector(showCreatePopover:)];
-        self.navigationItem.rightBarButtonItem = addButton;
-        [addButton release];
-    }
-    
+                
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(clientCreated:) 
                                                  name:@"CreateClient" 
                                                object:nil];
-    
-    self.searchDisplayController.searchBar.placeholder = @"输入姓名或手机号码搜索";
 }
 
 - (void)viewDidUnload
 {
     [self setConsultant:nil];
-    [self setClients:nil];
+    [self setDataSource:nil];
+    [self setTableView:nil];
+    [self setSearchField:nil];
     [super viewDidUnload];
 }
 
@@ -111,30 +104,11 @@
 	return YES;
 }
 
-- (void)showCreatePopover:(id)sender
-{
-    ClientCreateController *createController = [[ClientCreateController alloc] initWithNibName:@"ClientCreateController" 
-                                                                                                bundle:nil];
-    createController.contentSizeForViewInPopover = CGSizeMake(340, 243);
-    createController.consultant = self.consultant;
-        
-    UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:createController];
-    popoverController.delegate = self;
-    createController.parentPopover = popoverController;
-    [createController release];
-    
-    [popoverController presentPopoverFromBarButtonItem:sender
-                              permittedArrowDirections:UIPopoverArrowDirectionAny
-                                              animated:YES];
-    
-    popoverController.passthroughViews = nil;
-}
-
 - (void)clientCreated:(NSNotification *)notification
 {
     Client *newClient = [[notification userInfo] valueForKey:@"client"];
     [self addObserverForClient:newClient];
-    [self.clients insertObject:newClient atIndex:0];
+    [_clients insertObject:newClient atIndex:0];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
@@ -144,25 +118,36 @@
     [indexPaths release];
 }
 
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    [popoverController release];
-}
-
 - (void)addObserverForClient:(Client *)client
 {
-    [client addObserver:self forKeyPath:@"starred" options:NSKeyValueObservingOptionNew context:nil];
     [client addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew context:nil];
+    [client addObserver:self forKeyPath:@"sex" options:NSKeyValueObservingOptionNew context:nil];
     [client addObserver:self forKeyPath:@"phone" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)removeObserverForClient:(Client *)client
 {
-    [client removeObserver:self forKeyPath:@"starred"];
     [client removeObserver:self forKeyPath:@"name"];
+    [client removeObserver:self forKeyPath:@"sex"];
     [client removeObserver:self forKeyPath:@"phone"];
 }
 
+- (void)filterClients:(NSString *)searchString
+{
+    NSArray *results = _clients;
+        
+    if (searchString != nil && [searchString length] > 0) {
+        NSPredicate *clientPredicate = [NSPredicate predicateWithFormat:@"SELF.phone CONTAINS %@ || SELF.name CONTAINS %@", searchString, searchString];
+        results = [results filteredArrayUsingPredicate:clientPredicate];
+    }
+    
+    self.dataSource = results;
+    [self.tableView reloadData];
+}
+
+- (IBAction)changeSearchScope:(SingleSelectControl *)sender {
+    [self filterClients:self.searchField.text];
+}
 
 #pragma mark - Table view data source
 
@@ -173,13 +158,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger number = 0;
-    if (tableView == self.tableView) {
-        number = _clients.count;
-    } else if (tableView == self.searchDisplayController.searchResultsTableView) {
-        number = _filteredClients.count;
-    }
-    return number;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -187,49 +166,47 @@
     static NSString *CellIdentifier = @"ClientCell";
     
     UILabel *phoneLabel;
+    UILabel *sexLabel;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.indentationLevel = 1;
+        cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"listitem.png"]] autorelease];
+        cell.selectedBackgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"listitem-selected.png"]] autorelease];
         
-        phoneLabel = [[[UILabel alloc] initWithFrame:CGRectMake(190, 2, 120, 40)] autorelease];
+        phoneLabel = [[[UILabel alloc] initWithFrame:CGRectMake(180, 2, 120, 40)] autorelease];
         phoneLabel.tag = 1;
-        phoneLabel.font = [UIFont systemFontOfSize:16.0];
+        phoneLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
         phoneLabel.textAlignment = UITextAlignmentRight;
-        phoneLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1.0];
-        phoneLabel.highlightedTextColor = [UIColor colorWithWhite:1.0 alpha:1.0];
-        phoneLabel.opaque = YES;
+        phoneLabel.textColor = [UIColor colorWithHue:0 saturation:0 brightness:0.4 alpha:1.0];
+        phoneLabel.highlightedTextColor = [UIColor whiteColor];
+        phoneLabel.backgroundColor = [UIColor colorWithHue:0.097 saturation:0.05 brightness:0.96 alpha:1.0];
+        phoneLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         [cell.contentView addSubview:phoneLabel];
+        
+        sexLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 3, 60, 40)] autorelease];
+        sexLabel.tag = 2;
+        sexLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:18];
+        sexLabel.textColor = [UIColor colorWithHue:0 saturation:0 brightness:0.2 alpha:1.0];
+        sexLabel.highlightedTextColor = [UIColor whiteColor];
+        sexLabel.backgroundColor = [UIColor colorWithHue:0.097 saturation:0.05 brightness:0.96 alpha:1.0];
+        [cell.contentView addSubview:sexLabel];
     } else {
         phoneLabel = (UILabel *)[cell.contentView viewWithTag:1];
+        sexLabel = (UILabel *)[cell.contentView viewWithTag:2];
     }
     
-    Client *client;
-    if (tableView == self.tableView) {
-        client = [_clients objectAtIndex:indexPath.row];
-    } else if (tableView == self.searchDisplayController.searchResultsTableView) {
-        client = [_filteredClients objectAtIndex:indexPath.row];
-    }
-               
-    NSString *imagePath;
-    if (client.starred.boolValue) {
-        imagePath = [[NSBundle mainBundle] pathForResource:@"star-on.png" ofType:nil];
-    } else {
-        imagePath = [[NSBundle mainBundle] pathForResource:@"star.png" ofType:nil];
-    }
-    UIImage *starImage = [[UIImage alloc] initWithContentsOfFile:imagePath];
-    [cell.imageView setImage:starImage];
-    [starImage release];
+    Client *client = [self.dataSource objectAtIndex:indexPath.row];;
+    cell.textLabel.text = client.name;
     
-    cell.textLabel.font = [UIFont systemFontOfSize:18];
     if (client.sex.intValue == 0) {
-        cell.textLabel.text = [client.name stringByAppendingString:@"女士"];
+        sexLabel.text = @"女士";
     } else if (client.sex.intValue == 1) {
-        cell.textLabel.text = [client.name stringByAppendingString:@"先生"];        
+        sexLabel.text = @"先生";
     }
     
     phoneLabel.text = client.phone;
-    [cell.contentView bringSubviewToFront:phoneLabel];
-            
+    
     return cell;
 }
 
@@ -275,15 +252,25 @@
 
 #pragma mark - Table view delegate
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.textLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:18];
+    cell.textLabel.textColor = [UIColor blackColor];
+    
+    UILabel *sexLabel = (UILabel *)[cell.contentView viewWithTag:2];
+    CGRect sexFrame = sexLabel.frame;
+    sexFrame.origin.x = CGRectGetMinX(cell.textLabel.frame) + [cell.textLabel.text sizeWithFont:cell.textLabel.font].width + 5;
+    sexLabel.frame = sexFrame;
+    [cell.contentView bringSubviewToFront:sexLabel];
+
+    UILabel *phoneLabel = (UILabel *)[cell.contentView viewWithTag:1];
+    [cell.contentView bringSubviewToFront:phoneLabel];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Client *client = nil;
-    if (tableView == self.tableView) {
-        client = [_clients objectAtIndex:indexPath.row];
-    } else if (tableView == self.searchDisplayController.searchResultsTableView) {
-        client = [_filteredClients objectAtIndex:indexPath.row];
-        [self.searchDisplayController.searchBar resignFirstResponder];
-    }
+    Client *client = [self.dataSource objectAtIndex:indexPath.row];
+    [self.searchField resignFirstResponder];
     
     NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:client, @"client", nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SelectClient"
@@ -293,14 +280,23 @@
 }
 
 
-#pragma mark - Search display delegate
+#pragma mark - Text field delegate
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.phone CONTAINS %@ || SELF.name CONTAINS %@", searchString, searchString];
-    
-    [_filteredClients release];
-    _filteredClients = [[_clients filteredArrayUsingPredicate:predicate] retain];
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StartSearchClient" object:self];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *searchString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    [self filterClients:searchString];
     
     return YES;
 }
@@ -313,19 +309,21 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[_clients indexOfObject:object] inSection:0];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
-    if ([keyPath isEqualToString:@"starred"]) {
-        NSString *imagePath;
-        if ([[object valueForKeyPath:keyPath] boolValue]) {
-            imagePath = [[NSBundle mainBundle] pathForResource:@"star-on.png" ofType:nil];
-        } else {
-            imagePath = [[NSBundle mainBundle] pathForResource:@"star.png" ofType:nil];
-        }
-        UIImage *starImage = [[UIImage alloc] initWithContentsOfFile:imagePath];
-        [cell.imageView setImage:starImage];
-        [starImage release];
-    } else if ([keyPath isEqualToString:@"name"]) {
+    if ([keyPath isEqualToString:@"name"]) {
         cell.textLabel.text = [object valueForKeyPath:keyPath];
-    } else if ([keyPath isEqualToString:@"phone"]) {
+        
+        UILabel *sexLabel = (UILabel *)[cell.contentView viewWithTag:2];
+        CGRect sexFrame = sexLabel.frame;
+        sexFrame.origin.x = CGRectGetMinX(cell.textLabel.frame) + [cell.textLabel.text sizeWithFont:cell.textLabel.font].width + 5;
+        sexLabel.frame = sexFrame;
+    } else if ([keyPath isEqualToString:@"sex"]) {
+        NSString *sexText = @"女士";
+        if ([[object valueForKeyPath:keyPath] intValue] > 0) {
+            sexText = @"先生";
+        }
+        UILabel *sexLabel = (UILabel *)[cell.contentView viewWithTag:2];
+        sexLabel.text = sexText;
+    }else if ([keyPath isEqualToString:@"phone"]) {
         UILabel *phoneLabel = (UILabel *)[cell.contentView viewWithTag:1];
         phoneLabel.text = [object valueForKeyPath:keyPath];
     }

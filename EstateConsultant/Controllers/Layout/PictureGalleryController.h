@@ -13,6 +13,7 @@
     UIScrollView *_scrollView;
     NSArray *_pictures;
     NSMutableArray *_pictureViews;
+    NSInteger _currentPage;
 }
 
 @property (nonatomic, retain) NSArray *pictures;

@@ -8,21 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import "DataProvider.h"
+#import "SingleSelectControl.h"
 
-
-@interface ClientListController : UITableViewController <UIPopoverControllerDelegate> {
-    NSInteger _clientType;
+@interface ClientListController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource> {
     NSMutableArray *_clients;
-    NSArray *_filteredClients;
     Consultant *_consultant;
+    NSArray *_dataSource;
+    UITableView *_tableView;
+    UITextField *_searchField;
 }
 
-@property (nonatomic, assign) NSInteger clientType;
 @property (nonatomic, retain) Consultant *consultant;
-@property (nonatomic, retain) NSMutableArray *clients;
+@property (nonatomic, retain) NSArray *dataSource;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UITextField *searchField;
 
 - (void)addObserverForClient:(Client *)client;
 - (void)removeObserverForClient:(Client *)client;
+- (void)filterClients:(NSString *)searchString;
 
 
 @end

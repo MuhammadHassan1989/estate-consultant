@@ -86,5 +86,28 @@
             </expression>
          </expressions>
       </StackState>
+      <StackState
+         stackFrameDescription = "-[ClientEditController viewDidLoad]:ClientEditController.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[LayoutListController tableView:cellForRowAtIndexPath:]:LayoutListController.m">
+         <expressions>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[LayoutDetailController setLayout:]:LayoutDetailController.m">
+         <expressions>
+            <expression
+               value = "roundf(area)">
+            </expression>
+         </expressions>
+      </StackState>
+      <StackState
+         stackFrameDescription = "-[LayoutListController tableView:willDisplayCell:forRowAtIndexPath:]:LayoutListController.m">
+         <expressions>
+         </expressions>
+      </StackState>
    </StackStates>
 </VariablesStackState>

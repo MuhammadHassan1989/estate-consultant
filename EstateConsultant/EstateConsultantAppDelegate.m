@@ -7,7 +7,7 @@
 //
 
 #import "EstateConsultantAppDelegate.h"
-#import "RootViewController.h"
+#import "EstateConsultantViewController.h"
 #import "DataProvider.h"
 #import "ZipArchive.h"
 #import "EstateConsultantUtils.h"
@@ -22,7 +22,8 @@
     [self initApplicationDirectories];
     [[DataProvider sharedProvider] loadDemoData];
     
-    RootViewController *rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
+    EstateConsultantViewController *rootViewController = [[EstateConsultantViewController alloc] initWithNibName:@"EstateConsultantViewController" 
+                                                                                                          bundle:nil];
     [rootViewController.view setFrame:[UIScreen mainScreen].applicationFrame];
     [self.window setRootViewController:rootViewController];
     [rootViewController release];

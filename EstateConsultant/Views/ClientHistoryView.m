@@ -58,6 +58,7 @@
     
     if (history.action.intValue == 0) {
         self.actionLabel.text = @"首次来访";
+        self.actionLabel.textColor = [UIColor blackColor];
     } else if (history.action.intValue == 1) {
         self.actionLabel.text = @"关注";
     } else if (history.action.intValue == 2) {
@@ -66,23 +67,45 @@
         self.actionLabel.text = @"购买";
     }
     
-    NSInteger originX = 210;
+    NSInteger originY = 0;
     for (House *house in history.houses) {
-        UIFont *houseFont = [UIFont systemFontOfSize:16];
-        NSString *houseText = [NSString stringWithFormat:@"#%@(%@)", house.num, house.layout.name];
-        NSInteger textWidth = [houseText sizeWithFont:houseFont].width;
-        CGRect frame = CGRectMake(originX, 0, textWidth, 50);
+        UIFont *houseFont = [UIFont fontWithName:@"STHeitiSC-Medium" size:20];
+        
+        NSString *houseText = [NSString stringWithFormat:@"%@号楼%@单元%@号%@楼 - ", 
+                               house.position.unit.building.number,house.position.unit.number, house.position.name, house.floor];
+        CGRect frame = CGRectMake(220, originY, 320, 50);
         UILabel *houseLabel = [[UILabel alloc] initWithFrame:frame];
         houseLabel.font = houseFont;
         houseLabel.text = houseText;
+        houseLabel.textColor = [UIColor colorWithHue:0.086 saturation:0.62 brightness:0.51 alpha:1.0];
         houseLabel.backgroundColor = [UIColor clearColor];
         
+        CGRect statusFrame = CGRectMake(220 + [houseText sizeWithFont:houseFont].width, originY, 80, 50);
+        UILabel *statusLabel = [[UILabel alloc] initWithFrame:statusFrame];
+        statusLabel.font = houseFont;
+        statusLabel.textColor = [UIColor colorWithHue:0.086 saturation:0.62 brightness:0.51 alpha:1.0];
+        statusLabel.backgroundColor = [UIColor clearColor];
+        
+        if (house.status.intValue == 1) {
+            statusLabel.text = @"待售";
+        } else if (house.status.intValue == 2) {
+            statusLabel.text = @"被认购";
+        } else if (house.status.intValue == 3) {
+            statusLabel.text = @"已售";
+        }
+        
         [self addSubview:houseLabel];
+        [self addSubview:statusLabel];
         [_houseLabels addObject:houseLabel];
+        [_houseLabels addObject:statusLabel];
         [houseLabel release];
         
-        originX = originX + textWidth + 20;
+        originY += 50;
     }
+    
+    CGRect frame = self.frame;
+    frame.size.height = MAX(50, originY - 10);
+    self.frame = frame;
     
     [_history release];
     _history = [history retain];

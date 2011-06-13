@@ -2,7 +2,7 @@
 //  House.h
 //  EstateConsultant
 //
-//  Created by farthinker on 5/17/11.
+//  Created by farthinker on 6/9/11.
 //  Copyright (c) 2011 mycolorway. All rights reserved.
 //
 
@@ -22,8 +22,6 @@
 @property (nonatomic, retain) NSSet* history;
 @property (nonatomic, retain) Layout * layout;
 @property (nonatomic, retain) NSSet* followers;
-@property (nonatomic, retain) Client * orderer;
 @property (nonatomic, retain) Position * position;
-@property (nonatomic, retain) Client * purchaser;
 
 @end

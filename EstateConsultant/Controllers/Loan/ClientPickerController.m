@@ -11,13 +11,17 @@
 
 @implementation ClientPickerController
 
-@synthesize clients = _clients;
+@synthesize consultant = _consultant;
 @synthesize parentPopover = _parentPopover;
 @synthesize calculatorController = _calculatorController;
+@synthesize dataSource = _dataSource;
+@synthesize tableView = _tableView;
+@synthesize searchField = _searchField;
+@synthesize searchFieldBackground = _searchFieldBackground;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -27,7 +31,11 @@
 - (void)dealloc
 {
     [_clients release];
-    [_filteredClients release];
+    [_dataSource release];
+    [_consultant release];
+    [_tableView release];
+    [_searchField release];
+    [_searchFieldBackground release];
     [super dealloc];
 }
 
@@ -45,17 +53,21 @@
 {
     [super viewDidLoad];
 
-    self.clients = [[DataProvider sharedProvider] getClients];
+    NSArray *clients = [[DataProvider sharedProvider] getClientsOfEstate:self.consultant.estate];
+    _clients = [[NSMutableArray alloc] initWithArray:clients];
+    self.dataSource = _clients;
 }
 
 - (void)viewDidUnload
 {
-    [self setClients:nil];
+    [self setConsultant:nil];
+    [self setDataSource:nil];
+    [self setTableView:nil];
+    [self setSearchField:nil];
     [self setParentPopover:nil];
     [self setCalculatorController:nil];
+    [self setSearchFieldBackground:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -84,6 +96,25 @@
 	return YES;
 }
 
+- (void)filterClients:(NSString *)searchString
+{
+    NSArray *results = _clients;
+    
+    if (searchString != nil && [searchString length] > 0) {
+        NSPredicate *clientPredicate = [NSPredicate predicateWithFormat:@"SELF.phone CONTAINS %@ || SELF.name CONTAINS %@", searchString, searchString];
+        results = [results filteredArrayUsingPredicate:clientPredicate];
+    }
+    
+    self.dataSource = results;
+    [self.tableView reloadData];
+}
+
+- (void)selectClient:(Client *)client animated:(Boolean)animated
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[_clients indexOfObject:client] inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:animated scrollPosition:UITableViewScrollPositionTop];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -95,13 +126,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSInteger number = 0;
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        number = MIN(10, _filteredClients.count);
-    } else {
-        number = MIN(10, _clients.count);
-    }
-    return number;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,48 +134,48 @@
     static NSString *CellIdentifier = @"ClientCell";
     
     UILabel *phoneLabel;
+    UILabel *sexLabel;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"listitem.png"]] autorelease];
+        cell.selectedBackgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"listitem-selected.png"]] autorelease];
+        cell.indentationLevel = 1;
         
-        phoneLabel = [[[UILabel alloc] initWithFrame:CGRectMake(190, 2, 120, 40)] autorelease];
+        phoneLabel = [[[UILabel alloc] initWithFrame:CGRectMake(180, 2, 120, 40)] autorelease];
         phoneLabel.tag = 1;
-        phoneLabel.font = [UIFont systemFontOfSize:16.0];
+        phoneLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
         phoneLabel.textAlignment = UITextAlignmentRight;
-        phoneLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1.0];
-        phoneLabel.highlightedTextColor = [UIColor colorWithWhite:1.0 alpha:1.0];
-        phoneLabel.opaque = YES;
+        phoneLabel.textColor = [UIColor colorWithHue:0 saturation:0 brightness:0.4 alpha:1.0];
+        phoneLabel.highlightedTextColor = [UIColor whiteColor];
+        phoneLabel.backgroundColor = [UIColor colorWithHue:0.097 saturation:0.05 brightness:0.96 alpha:1.0];
+        phoneLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         [cell.contentView addSubview:phoneLabel];
+        
+        sexLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 3, 60, 40)] autorelease];
+        sexLabel.tag = 2;
+        sexLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:18];
+        sexLabel.textColor = [UIColor colorWithHue:0 saturation:0 brightness:0.2 alpha:1.0];
+        sexLabel.highlightedTextColor = [UIColor whiteColor];
+        sexLabel.backgroundColor = [UIColor colorWithHue:0.097 saturation:0.05 brightness:0.96 alpha:1.0];
+        
+        [cell.contentView addSubview:sexLabel];
     } else {
         phoneLabel = (UILabel *)[cell.contentView viewWithTag:1];
+        sexLabel = (UILabel *)[cell.contentView viewWithTag:2];
     }
     
-    Client *client;
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        client = [_filteredClients objectAtIndex:indexPath.row];
-    } else {
-        client = [_clients objectAtIndex:indexPath.row];
-    }
+    Client *client = [self.dataSource objectAtIndex:indexPath.row];;
     
-    NSString *imagePath;
-    if (client.starred.boolValue) {
-        imagePath = [[NSBundle mainBundle] pathForResource:@"star-on.png" ofType:nil];
-    } else {
-        imagePath = [[NSBundle mainBundle] pathForResource:@"star.png" ofType:nil];
-    }
-    UIImage *starImage = [[UIImage alloc] initWithContentsOfFile:imagePath];
-    [cell.imageView setImage:starImage];
-    [starImage release];
+    cell.textLabel.text = client.name;
     
-    cell.textLabel.font = [UIFont systemFontOfSize:18];
     if (client.sex.intValue == 0) {
-        cell.textLabel.text = [client.name stringByAppendingString:@"女士"];
+        sexLabel.text = @"女士";
     } else if (client.sex.intValue == 1) {
-        cell.textLabel.text = [client.name stringByAppendingString:@"先生"];        
+        sexLabel.text = @"先生";
     }
     
     phoneLabel.text = client.phone;
-    [cell.contentView bringSubviewToFront:phoneLabel];
     
     return cell;
 }
@@ -196,28 +221,48 @@
 
 #pragma mark - Table view delegate
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.textLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:18];
+    cell.textLabel.textColor = [UIColor blackColor];
+    
+    UILabel *sexLabel = (UILabel *)[cell.contentView viewWithTag:2];
+    CGRect sexFrame = sexLabel.frame;
+    sexFrame.origin.x = 20 + [cell.textLabel.text sizeWithFont:cell.textLabel.font].width + 5;
+    sexLabel.frame = sexFrame;
+    [cell.contentView bringSubviewToFront:sexLabel];
+    
+    UILabel *phoneLabel = (UILabel *)[cell.contentView viewWithTag:1];
+    [cell.contentView bringSubviewToFront:phoneLabel];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Client *client;
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        client = [_filteredClients objectAtIndex:indexPath.row];
-    } else {
-        client = [_clients objectAtIndex:indexPath.row];
-    }
+    [self.searchField resignFirstResponder];
     
+    Client *client = [self.dataSource objectAtIndex:indexPath.row];
     self.calculatorController.client = client;
     [self.parentPopover dismissPopoverAnimated:YES];
 }
 
 
-#pragma mark - Search display delegate
+#pragma mark - Text field delegate
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.phone CONTAINS %@ || SELF.name CONTAINS %@", searchString, searchString];
-    
-    [_filteredClients release];
-    _filteredClients = [[_clients filteredArrayUsingPredicate:predicate] retain];
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StartSearchClient" object:self];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *searchString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    [self filterClients:searchString];
     
     return YES;
 }

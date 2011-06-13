@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DataProvider.h"
+#import "ClientEditController.h"
 
 
 @interface ClientDetailController : UIViewController {
@@ -19,11 +20,14 @@
     UILabel *_sexLabel;
     UILabel *_phoneLabel;
     Client *_client;
+    NSArray *_profiles;
     NSMutableArray *_profileFields;
     NSMutableArray *_historyViews;
+    ClientEditController *_clientEditController;
 }
 
 @property (nonatomic, retain) Client *client;
+@property (nonatomic, retain) NSArray *profiles;
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) IBOutlet UIView *infoList;
 @property (nonatomic, retain) IBOutlet UIView *historyList;
@@ -36,6 +40,7 @@
 - (IBAction)editClient:(id)sender;
 - (void)addObserverForClient:(Client *)client;
 - (void)removeObserverForClient:(Client *)client;
+- (void)endEditClient:(NSNotification *)notification;
 
 
 @end

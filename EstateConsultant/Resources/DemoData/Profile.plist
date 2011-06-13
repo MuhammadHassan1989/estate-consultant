@@ -3,32 +3,36 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>sequence</key>
+		<key>estate</key>
 		<integer>1</integer>
+		<key>default</key>
+		<string>1</string>
 		<key>id</key>
 		<integer>1</integer>
 		<key>meta</key>
 		<string>投资;自住</string>
 		<key>name</key>
 		<string>置业目的</string>
+		<key>sequence</key>
+		<integer>1</integer>
 		<key>type</key>
 		<string>select</string>
-		<key>default</key>
-		<string>1</string>
 	</dict>
 	<dict>
-		<key>sequence</key>
-		<integer>2</integer>
+		<key>estate</key>
+		<integer>1</integer>
+		<key>default</key>
+		<string>0</string>
 		<key>id</key>
 		<integer>2</integer>
 		<key>meta</key>
 		<string>首次;多次</string>
 		<key>name</key>
 		<string>置业次数</string>
+		<key>sequence</key>
+		<integer>2</integer>
 		<key>type</key>
 		<string>select</string>
-		<key>default</key>
-		<string>0</string>
 	</dict>
 </array>
 </plist>
