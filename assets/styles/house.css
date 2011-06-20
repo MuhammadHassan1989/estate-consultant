@@ -1,0 +1,127 @@
+
+.batch-name {
+    display: block;
+    float: left;
+}
+
+.searchbar {
+    float: left;
+    position: relative;
+    margin: 0 0 0 20px;
+    padding: 0 0 0 10px;
+}
+
+.searchbar #txt-search {
+    font-size: 16px;
+    line-height: 20px;
+    width: 500px;
+    padding: 5px 5px;
+    color: #cccccc;
+    border: 1px solid #cccccc;
+    position: absolute;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    padding: 6px 5px\9
+}
+
+.searchbar #txt-search.active {
+    color: #333333;
+}
+
+.searchbar .link-search {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url(../images/icon-search.png) no-repeat 50% 3px;
+    position: absolute;
+    top: 0;
+    left: 490px;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.searchbar .link-search:hover {
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+
+.building {
+    padding: 0 10px 40px 10px;
+}
+
+.building .building-title {
+    padding: 5px 0 5px 5px;
+    border-bottom: 1px dotted #cccccc;
+    margin: 0 0 20px 0;
+}
+
+.building .building-title .building-name {
+    display: block;
+    float: left;
+    padding: 0 0 0 35px;
+    background: url(../images/icon-building.png) no-repeat 0 5px;
+    line-height: 40px;
+    font-size: 20px;
+    font-family: arial;
+}
+
+.building .building-title .link-delete-building {
+    float: right;
+    color: #cccccc;
+    margin: 20px 5px 0 20px;
+    display: none;
+}
+
+.building .building-title .link-delete-building:hover {
+    color: #ff3300;
+}
+
+.building .building-title-over .link-delete-building {
+    display: block;
+}
+
+.building .unit {
+    position: relative;
+    padding: 5px 0 0 0;
+}
+
+.building .unit .unit-name {
+    display: block;
+    line-height: 30px;
+    font-size: 24px;
+    font-family: arial;
+    font-weight: 800;
+    color: #dddddd;
+    position: absolute;
+    top: 7px;
+    left: 28px;
+}
+
+.building .unit .positions {
+    padding: 0 0 0 125px;
+}
+
+.building .unit .link-position {
+    display: block;
+    float: left;
+    width: 60px;
+    height: 30px;
+    margin: 0 20px 20px 0;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    font-family: arial;
+    font-weight: 800;
+    color: #ffffff;
+    background: #999999;
+}
+
+.building .unit .link-position:hover {
+    text-decoration: none;
+    background: #50a5e8;
+}
+
+.bottom-toolbar {
+    margin: 0 0 50px 10px;
+}

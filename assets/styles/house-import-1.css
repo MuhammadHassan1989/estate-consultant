@@ -1,0 +1,101 @@
+
+.flow {
+    padding: 30px 0 30px 10px;
+}
+
+.upload-toolbar {
+    padding: 10px 0 30px 10px;
+}
+
+.upload-toolbar .tips {
+    float: left;
+    line-height: 35px;
+    color: #999999;
+    margin: 0 0 0 10px;
+}
+
+.faq {
+    padding: 20px;
+    margin: 0 10px 40px 10px;
+    border: 1px solid #cccccc;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+.faq .question {
+    position: relative;
+    font-size: 18px;
+    color: #999999;
+    margin: 0 0 20px 0;
+}
+
+.faq .question span {
+    display: block;
+    line-height: 30px;
+    font-family: arial;
+    font-size: 24px;
+    font-weight: 800;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.faq .question p {
+    padding: 0 0 0 40px;
+    line-height: 30px;
+}
+
+.faq .anwser {
+    position: relative;
+    font-size: 14px;
+    color: #333333;
+}
+
+.faq .anwser span {
+    display: block;
+    line-height: 25px;
+    font-family: arial;
+    font-size: 24px;
+    font-weight: 800;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.faq .anwser p {
+    padding: 0 0 10px 40px;
+    line-height: 25px;
+}
+
+.faq .anwser p em {
+    font-size: 18px;
+    color: #000000;
+    font-weight: 800;
+    padding: 0 5px;
+}
+
+.faq .anwser p a {
+    font-size: 18px;
+    font-weight: 800;
+    padding: 0 5px;
+}
+
+.upload-result {
+    font-size: 18px;
+    padding: 10px 0 10px 50px;
+}
+
+.upload-result-success {
+    color: #57a833;
+    background: url(../images/icon-success.png) no-repeat 15px 8px;
+}
+
+.unit-title {
+    padding: 30px 0 0 10px;
+    font-size: 18px;
+    color: #666666;
+}
+
+.result-table {
+    margin: 20px 0 10px 0;
+}

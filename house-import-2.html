@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>导入新房源：第二步 - 龙湖三千里</title>
+    <link rel="stylesheet" type="text/css" href="assets/styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/styles/house-import-2.css" />
+    
+    <script type="text/javascript" src="assets/scripts/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="assets/scripts/house-import-2.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <h1><a href="/" title="百家">龙湖三千里</a></h1>
+        <ul class="nav">
+            <li><a href="#" class="active">房源</a></li>
+            <li><a href="#">户型</a></li>
+            <li><a href="#">置业顾问</a></li>
+        </ul>
+        <span class="header-links">
+            <a href="/logout" class="link">退出</a>
+        </span>
+    </div>
+    
+    <div class="content">
+        <div class="flow clearfix">
+            <div class="flow-step flow-step-1">
+                <em>1</em>
+                <span>上传房源数据</span>
+            </div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step flow-step-active flow-step-2">
+                <em>2</em>
+                <span>补充房源信息</span>
+            </div>
+        </div>
+        
+        <div class="form">
+            <div class="form-field clearfix">
+                <label class="form-label">指定楼号</label>
+                <input class="input-text" type="text" id="txt-building-num" value="" />
+                <span class="building-label">号楼</span>
+            </div>
+            <div class="form-field clearfix">
+                <label class="form-label">选择批次</label>
+                <ul class="batch-list">
+                    <li><label><input type="radio" id="radio-batch-1" name="batch_number" checked="checked" />第一期</label></li>
+                    <li><label><input type="radio" id="radio-batch-2" name="batch_number" />第二期</label></li>
+                    <li><label><input type="radio" id="radio-batch-3" name="batch_number" />第三期</label></li>
+                    <li><a href="#" class="link-new-batch">新的批次</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="bottom-toolbar clearfix">
+            <a href="#" class="btn">完成导入</a>
+            <a href="#" class="link">&lt; 上一步，上传房源数据</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        © <a href="#">Mycolorway Design</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+
+.batch-name {
+    display: block;
+    float: left;
+}
+
+.layout-table {
+    border-top: 1px dotted #cccccc;
+}
+
+.layout-table tr td {
+    height: 50px;
+    color: #000000;
+    font-size: 16px;
+}
+
+.layout-table .layout-name {
+    font-size: 24px;
+    font-family: arial;
+    font-weight: 800;
+}

@@ -1,0 +1,89 @@
+
+.form {
+    padding: 0 0 1px 10px;
+}
+
+.content {
+    position: relative;
+}
+
+.layout-pics {
+    width: 560px;
+    position: absolute;
+    top: 77px;
+    left: 350px;
+}
+
+.layout-pics label {
+    color: #666666;
+    display: block;
+    font-size: 16px;
+    padding: 0 0 10px 2px;
+}
+
+.pic-list {
+    padding: 15px 0 0 0;
+}
+
+.pic-list .pic-item {
+    float: left;
+    width: 120px;
+    margin: 0 20px 20px 0;
+}
+
+.pic-list .pic-item .pic-image {
+    display: block;
+    width: 118px;
+    height: 88px;
+    border: 1px solid #cccccc;
+}
+
+.pic-list .pic-item .pic-image img {
+    display: block;
+    width: 118px;
+    height: 88px;
+}
+
+.pic-list .pic-item .pic-info {
+    display: block;
+    float: left;
+    line-height: 24px;
+    font-size: 12px;
+    color: #999999;
+}
+
+.pic-list .pic-item .link-delete-pic {
+    display: block;
+    float: right;
+    line-height: 24px;
+    font-size: 12px;
+}
+
+.pic-list .link-add-pic {
+    float: left;
+    width: 118px;
+    height: 88px;
+    border: 1px dotted #cccccc;
+    background: #f9f9f9;
+    margin: 0 20px 44px 0;
+    color: #999999;
+    position: relative;
+}
+
+.pic-list .link-add-pic:hover {
+    color: #999999;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.pic-list .link-add-pic span {
+    display: block;
+    float: left;
+    padding: 0 0 0 20px;
+    background: url(../images/icon-add.png) no-repeat 1px 2px;
+    line-height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -34px;
+}

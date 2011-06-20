@@ -1,0 +1,18 @@
+
+.wrapper {
+    width: 550px;
+}
+
+.success-info {
+    padding: 40px 0 0 10px;
+    font-size: 14px;
+}
+
+.success-info p {
+    padding: 0 0 10px 0;
+    line-height: 1.6;
+}
+
+.bottom-toolbar {
+    margin: 20px 0 50px 10px;
+}

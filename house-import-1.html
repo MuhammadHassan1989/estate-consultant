@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>导入新房源：第一步 - 龙湖三千里</title>
+    <link rel="stylesheet" type="text/css" href="assets/styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/styles/house-import-1.css" />
+    
+    <script type="text/javascript" src="assets/scripts/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="assets/scripts/house-import-1.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <h1><a href="/" title="百家">龙湖三千里</a></h1>
+        <ul class="nav">
+            <li><a href="#" class="active">房源</a></li>
+            <li><a href="#">户型</a></li>
+            <li><a href="#">置业顾问</a></li>
+        </ul>
+        <span class="header-links">
+            <a href="/logout" class="link">退出</a>
+        </span>
+    </div>
+    
+    <div class="content">
+        <div class="flow clearfix">
+            <div class="flow-step flow-step-active flow-step-1">
+                <em>1</em>
+                <span>上传房源数据</span>
+            </div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step flow-step-2">
+                <em>2</em>
+                <span>补充房源信息</span>
+            </div>
+        </div>
+        
+        <div class="before-upload">
+            <div class="upload-toolbar clearfix">
+                <a href="#" class="btn btn-em">选择文件</a>
+                <span class="tips">每个文件对应一栋楼的房源信息</span>
+            </div>
+        
+            <div class="faq">
+                <div class="question">
+                    <span>Q:</span>
+                    <p>房源数据文件是个什么东西？</p>
+                </div>
+                <div class="anwser">
+                    <span>A:</span>
+                    <p>它是一个<em>Excel</em>表格</p>
+                    <p>它包含了一栋楼所有房源的基本信息，包括<em>位置、户型、价格、面积</em>等</p>
+                    <p>它的模版可以在<a href="#">这里下载</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="after-upload" style="display:none">
+            <div class="upload-result upload-result-success">
+                上传成功，请核对下面的摘要信息：
+            </div>
+            
+            <div class="unit-title">
+                龙湖三千里1号楼 - 1单元
+            </div>
+            <table class="datatable result-table">
+                <thead>
+                    <tr>
+                        <th>位置</th>
+                        <th>户型</th>
+                        <th>套型</th>
+                        <th>套内面积</th>
+                        <th>公摊面积</th>
+                        <th>房源数量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>A1</td>
+                        <td>三室一厅一厨一卫</td>
+                        <td>82.46</td>
+                        <td>12.59</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>A2</td>
+                        <td>三室一厅一厨一卫</td>
+                        <td>82.46</td>
+                        <td>12.59</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>03</td>
+                        <td>A3</td>
+                        <td>三室一厅一厨一卫</td>
+                        <td>82.46</td>
+                        <td>12.59</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>04</td>
+                        <td>A4</td>
+                        <td>三室一厅一厨一卫</td>
+                        <td>82.46</td>
+                        <td>12.59</td>
+                        <td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="unit-title">
+                龙湖三千里1号楼 - 2单元
+            </div>
+            <table class="datatable result-table">
+                <thead>
+                    <tr>
+                        <th>位置</th>
+                        <th>户型</th>
+                        <th>套型</th>
+                        <th>套内面积</th>
+                        <th>公摊面积</th>
+                        <th>房源数量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>B1</td>
+                        <td>三室一厅一厨一卫</td>
+                        <td>82.46</td>
+                        <td>12.59</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>B2</td>
+                        <td>三室一厅一厨一卫</td>
+                        <td>82.46</td>
+                        <td>12.59</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>03</td>
+                        <td>B3</td>
+                        <td>三室一厅一厨一卫</td>
+                        <td>82.46</td>
+                        <td>12.59</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>04</td>
+                        <td>B4</td>
+                        <td>三室一厅一厨一卫</td>
+                        <td>82.46</td>
+                        <td>12.59</td>
+                        <td>30</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="bottom-toolbar clearfix">
+                <a href="#" class="btn">数据没问题，下一步</a>
+                <a href="#" class="link">&lt; 重新上传数据</a>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="footer">
+        © <a href="#">Mycolorway Design</a>
+    </div>
+</div>
+</body>
+</html>

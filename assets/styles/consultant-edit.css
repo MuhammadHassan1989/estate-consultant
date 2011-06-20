@@ -1,0 +1,27 @@
+
+.form {
+    padding: 0 0 0 90px;
+    position: relative;
+}
+
+.avatar {
+    position: absolute;
+    top: 2px;
+    left: 10px;
+}
+
+.avatar .avatar-preview {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #cccccc;
+}
+
+.avatar .link-change-avatar {
+    display: block;
+    text-align: center;
+    line-height: 20px;
+}
+
+.bottom-toolbar {
+    margin-left: 90px;
+}

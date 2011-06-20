@@ -1,0 +1,99 @@
+
+.consultant-list {
+    padding: 50px 0 0 30px;
+}
+
+.consultant {
+    width: 300px;
+    height: 62px;
+    float: left;
+    padding: 0 0 40px 0;
+    position: relative;
+}
+
+.consultant .avatar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #cccccc;
+}
+
+.consultant .avatar img {
+    display: block;
+    width: 60px;
+    height: 60px;
+}
+
+.consultant .info {
+    padding: 0 0 0 75px;
+}
+
+.consultant .info .name {
+    display: block;
+    float: left;
+    line-height: 20px;
+    font-size: 14px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.consultant .info .role {
+    display: block;
+    float: left;
+    line-height: 20px;
+    height: 20px;
+    padding: 0 5px;
+    margin: 0 0 0 5px;
+    color: #ffffff;
+    background: #50a5e8;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.consultant .info .role-admin {
+    background: #ff6600;
+}
+
+.consultant .info .role-myself {
+    background: #cccccc;
+}
+
+.consultant .info .email {
+    display: block;
+    width: 210px;
+    float: left;
+    line-height: 20px;
+    height: 20px;
+    padding: 2px 0 0 0;
+}
+
+.consultant .link-edit-consultant,
+.consultant .link-delete-consultant,
+.consultant .link-reinvite {
+    display: block;
+    float: left;
+    line-height: 20px;
+    margin: 0 20px 0 0;
+}
+
+.consultant .link-delete-consultant {
+    color: #cccccc;
+}
+
+.consultant .link-delete-consultant:hover {
+    color: #ff3300;
+}
+
+.consultant .status {
+    display: block;
+    float: left;
+    line-height: 20px;
+    margin: 0 10px 0 0;
+}
+
+.bottom-toolbar {
+    margin: 0 0 50px 30px;
+}

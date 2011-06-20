@@ -1,0 +1,41 @@
+
+.flow {
+    padding: 30px 0 30px 10px;
+}
+
+.form {
+    padding: 0 0 20px 10px;
+}
+
+.form #txt-building-num {
+    width: 120px;
+}
+
+.form .building-label {
+    font-size: 18px;
+    color: #cccccc;
+    padding: 0 0 0 5px;
+    line-height: 29px;
+}
+
+.batch-list {
+    padding: 10px 0 0 0;
+}
+
+.batch-list li {
+    padding: 0 0 10px 0;
+    line-height: 20px;
+}
+
+.form .batch-list li label {
+    display: inline;
+    padding: 0;
+    font-size: 14px;
+    color: #000000;
+}
+
+.batch-list li .link-new-batch {
+    margin: 0 0 0 20px;
+    line-height: 20px;
+    text-decoration: underline;
+}

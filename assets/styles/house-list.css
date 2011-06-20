@@ -1,0 +1,160 @@
+
+.return-link {
+    float: left;
+    line-height: 32px;
+}
+
+.searchbar {
+    float: left;
+    position: relative;
+    margin: 0 0 0 20px;
+    padding: 0 0 0 10px;
+}
+
+.searchbar #txt-search {
+    font-size: 16px;
+    line-height: 20px;
+    width: 500px;
+    padding: 5px 5px;
+    color: #cccccc;
+    border: 1px solid #cccccc;
+    position: absolute;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    padding: 6px 5px\9
+}
+
+.searchbar #txt-search.active {
+    color: #333333;
+}
+
+.searchbar .link-search {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url(../images/icon-search.png) no-repeat 50% 3px;
+    position: absolute;
+    top: 0;
+    left: 490px;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.searchbar .link-search:hover {
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+
+.search-info {
+    padding: 0 0 40px 10px;
+    font-size: 18px;
+    color: #999999;
+}
+
+.position-title {
+    padding: 0 10px 5px 10px;
+}
+
+.position-title .position-name {
+    display: block;
+    float: left;
+    padding: 0 0 0 35px;
+    background: url(../images/icon-unit.png) no-repeat 0 5px;
+    line-height: 40px;
+    font-size: 20px;
+    font-family: arial;
+}
+
+.position-title .layout-name {
+    display: block;
+    float: right;
+    padding: 0 5px 0 0;
+    line-height: 40px;
+    font-size: 24px;
+    font-family: arial;
+    font-weight: 800;
+    color: #999999;
+}
+
+.house-table {
+    width: 100%;
+    table-layout: fixed;
+    margin: 0 0 40px 0;
+}
+
+.house-table tr {
+}
+
+.house-table td {
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    border-top: 1px dotted #cccccc;
+}
+
+.house-table tr.over td {
+    background: #f9f9f9;
+}
+
+.house-table td.floor {
+    width: 80px;
+}
+
+.house-table td.floor span {
+    display: block;
+    width: 60px;
+    height: 28px;
+    font-size: 14px;
+    font-family: arial black;
+    color: #ffffff;
+    text-align: center;
+    line-height: 28px;
+    margin-left: 10px;
+    float: left;
+}
+
+.house-table tr.house-forsell td.floor span {
+    background: #339933;
+}
+
+.house-table tr.house-ordered td.floor span {
+    background: #ff6600;
+}
+
+.house-table tr.house-sold td.floor span {
+    background: #cccccc;
+}
+
+.house-table tr.house-forsell td.status .normal {
+    color: #339933;
+}
+
+.house-table tr.house-ordered td.status .normal {
+    color: #ff6600;
+}
+
+.house-table tr.house-sold td.status .normal {
+    color: #cccccc;
+}
+
+.house-table td.links {
+    width: 80px;
+}
+
+.house-table td.links .link-edit {
+    display: block;
+    margin: 0 20px 0 0;
+    float: right;
+    width: 24px;
+    height: 24px;
+    background: url(../images/icon-edit.png) no-repeat 0 0;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.house-table td.links .link-edit:hover {
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+}
