@@ -34,6 +34,26 @@ $( function() {
         }
     );
     
+    $( ".link-delete-building" ).click( function( e ) {
+        e.preventDefault();
+        
+        var link = $( this );
+        var name = link.siblings( ".building-name" ).text();
+        $.confirm({
+            content: "确定要删除 " + name + " 的所有数据吗？",
+            callback: function( yes ) {
+                if ( !yes ) {
+                    return;
+                }
+                
+                link.parents( ".building" )
+                    .fadeOut( "fast", function() {
+                        $( this ).remove();
+                    });
+            }
+        });
+    });
+    
 });
 
 })( jQuery );

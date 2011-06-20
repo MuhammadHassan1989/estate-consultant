@@ -115,6 +115,9 @@
     font-weight: 800;
     color: #ffffff;
     background: #999999;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
 }
 
 .building .unit .link-position:hover {
