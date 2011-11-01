@@ -3,16 +3,20 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>estate</key>
-		<integer>1</integer>
 		<key>active</key>
 		<true/>
 		<key>batchID</key>
 		<integer>1</integer>
 		<key>batchName</key>
-		<string>光明城市一期</string>
+		<string>橡树湾项目二期 </string>
 		<key>buildings</key>
 		<array>
+			<array/>
+			<array/>
+			<array/>
+			<array/>
+			<array/>
+			<array/>
 			<array>
 				<array>
 					<dict>
@@ -39,89 +43,23 @@
 						<key>name</key>
 						<string>04</string>
 					</dict>
-				</array>
-				<array>
 					<dict>
 						<key>id</key>
 						<integer>5</integer>
 						<key>name</key>
-						<string>01</string>
+						<string>05</string>
 					</dict>
 					<dict>
 						<key>id</key>
 						<integer>6</integer>
 						<key>name</key>
-						<string>02</string>
-					</dict>
-					<dict>
-						<key>id</key>
-						<integer>7</integer>
-						<key>name</key>
-						<string>03</string>
-					</dict>
-					<dict>
-						<key>id</key>
-						<integer>8</integer>
-						<key>name</key>
-						<string>04</string>
-					</dict>
-				</array>
-			</array>
-			<array>
-				<array>
-					<dict>
-						<key>id</key>
-						<integer>9</integer>
-						<key>name</key>
-						<string>01</string>
-					</dict>
-					<dict>
-						<key>id</key>
-						<integer>10</integer>
-						<key>name</key>
-						<string>02</string>
-					</dict>
-					<dict>
-						<key>id</key>
-						<integer>11</integer>
-						<key>name</key>
-						<string>03</string>
-					</dict>
-					<dict>
-						<key>id</key>
-						<integer>12</integer>
-						<key>name</key>
-						<string>04</string>
-					</dict>
-				</array>
-				<array>
-					<dict>
-						<key>id</key>
-						<integer>13</integer>
-						<key>name</key>
-						<string>01</string>
-					</dict>
-					<dict>
-						<key>id</key>
-						<integer>14</integer>
-						<key>name</key>
-						<string>02</string>
-					</dict>
-					<dict>
-						<key>id</key>
-						<integer>15</integer>
-						<key>name</key>
-						<string>03</string>
-					</dict>
-					<dict>
-						<key>id</key>
-						<integer>16</integer>
-						<key>name</key>
-						<string>04</string>
+						<string>06</string>
 					</dict>
 				</array>
 			</array>
 		</array>
+		<key>estate</key>
+		<integer>1</integer>
 	</dict>
 </array>
 </plist>

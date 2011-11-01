@@ -61,11 +61,15 @@
         [self addObserverForClient:client];
     }
     self.dataSource = _clients;
-    
-                
+                    
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(clientCreated:) 
                                                  name:@"CreateClient" 
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(clientDeleted:) 
+                                                 name:@"DeleteClient" 
                                                object:nil];
 }
 
@@ -118,6 +122,31 @@
     [indexPaths release];
 }
 
+- (void)clientDeleted:(NSNotification *)notification
+{
+    Client *client = [[notification userInfo] valueForKey:@"client"];
+    
+    NSUInteger index = [_clients indexOfObject:client];
+    NSUInteger newIndex = index;
+    if (index == NSNotFound) {
+        return;
+    }
+    
+    [_clients removeObject:client];
+    if ([_clients count] <= index) {
+        newIndex = [_clients count] - 1;
+    }
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath, nil];
+    NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:newIndex inSection:0];
+    
+    [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView selectRowAtIndexPath:newIndexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+    [self.tableView.delegate tableView:self.tableView didSelectRowAtIndexPath:newIndexPath];
+    [indexPaths release];
+}
+
 - (void)addObserverForClient:(Client *)client
 {
     [client addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew context:nil];
@@ -147,6 +176,11 @@
 
 - (IBAction)changeSearchScope:(SingleSelectControl *)sender {
     [self filterClients:self.searchField.text];
+}
+
+- (IBAction)textFieldDidChange:(UITextField *)sender
+{
+    [self filterClients:sender.text];
 }
 
 #pragma mark - Table view data source
@@ -293,14 +327,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"StartSearchClient" object:self];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    NSString *searchString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    [self filterClients:searchString];
-    
-    return YES;
-}
-
 
 #pragma mark - Key-Value Observing
 
@@ -323,7 +349,7 @@
         }
         UILabel *sexLabel = (UILabel *)[cell.contentView viewWithTag:2];
         sexLabel.text = sexText;
-    }else if ([keyPath isEqualToString:@"phone"]) {
+    } else if ([keyPath isEqualToString:@"phone"]) {
         UILabel *phoneLabel = (UILabel *)[cell.contentView viewWithTag:1];
         phoneLabel.text = [object valueForKeyPath:keyPath];
     }

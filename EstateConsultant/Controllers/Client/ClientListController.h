@@ -26,6 +26,6 @@
 - (void)addObserverForClient:(Client *)client;
 - (void)removeObserverForClient:(Client *)client;
 - (void)filterClients:(NSString *)searchString;
-
+- (IBAction)textFieldDidChange:(UITextField *)sender;
 
 @end

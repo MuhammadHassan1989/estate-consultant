@@ -71,7 +71,7 @@
     for (House *house in history.houses) {
         UIFont *houseFont = [UIFont fontWithName:@"STHeitiSC-Medium" size:20];
         
-        NSString *houseText = [NSString stringWithFormat:@"%@号楼%@单元%@号%@楼 - ", 
+        NSString *houseText = [NSString stringWithFormat:@"%@ - %@号楼%@单元%@号%@楼 - ", house.layout.name,
                                house.position.unit.building.number,house.position.unit.number, house.position.name, house.floor];
         CGRect frame = CGRectMake(220, originY, 320, 50);
         UILabel *houseLabel = [[UILabel alloc] initWithFrame:frame];
@@ -89,7 +89,7 @@
         if (house.status.intValue == 1) {
             statusLabel.text = @"待售";
         } else if (house.status.intValue == 2) {
-            statusLabel.text = @"被认购";
+            statusLabel.text = @"认购";
         } else if (house.status.intValue == 3) {
             statusLabel.text = @"已售";
         }

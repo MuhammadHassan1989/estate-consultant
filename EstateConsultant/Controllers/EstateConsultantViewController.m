@@ -8,9 +8,15 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "EstateConsultantViewController.h"
+#import "StackScrollViewController.h"
+#import "ClientViewController.h"
+#import "LayoutViewController.h"
+#import "StockViewController.h"
+#import "LoanCalculatorController.h"
+#import "ClientCreateController.h"
 #import "ClientListController.h"
 #import "ClientDetailController.h"
-#import "ClientCreateController.h"
+#import "BatchListViewController.h"
 
 
 @implementation EstateConsultantViewController
@@ -40,6 +46,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [_consultant release];
+    [_batch release];
     [_clientButton release];
     [_layoutButton release];
     [_stockButton release];
@@ -52,6 +59,8 @@
     [_avatarShadow release];
     [_batchButton release];
     [_consultantNameLabel release];
+    [_maskView release];
+    [_clientCreateController release];
     [super dealloc];
 }
 
@@ -106,6 +115,7 @@
 - (void)viewDidUnload
 {
     [self setConsultant:nil];
+    [self setBatch:nil];
     [self setClientButton:nil];
     [self setLayoutButton:nil];
     [self setStockButton:nil];
@@ -174,8 +184,17 @@
             _loanCalculatorController.client = nil;
             _loanCalculatorController.position = nil;
             _loanCalculatorController.house = nil;
+            
             [self.view addSubview:_loanCalculatorController.view];
         }
+        
+        if (_clientViewController != nil && _clientViewController.viewControllers.count > 1) {
+            ClientDetailController *clientDetailController = [_clientViewController.viewControllers objectAtIndex:1];
+            _loanCalculatorController.client = clientDetailController.client;
+        } else {
+            _loanCalculatorController.client = nil;
+        }
+
         newController = _loanCalculatorController;
     }
     
@@ -183,19 +202,20 @@
         return;
     } else {  
         if (_currentController != nil) {
-            CATransition *transition = [CATransition animation];
-            transition.type = kCATransitionPush;
-            transition.duration = 0.5;
-            transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            CATransition *showTransition = [CATransition animation];
+            showTransition.type = kCATransitionPush;
+            showTransition.subtype = kCATransitionFromRight;
+            showTransition.duration = 0.6;
+            showTransition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];\
             
-            if (sender.tag > _currentButton.tag) {
-                transition.subtype = kCATransitionFromTop;
-            } else {
-                transition.subtype = kCATransitionFromBottom;            
-            }
-            
-            [newController.view.layer addAnimation:transition forKey:nil];
-            [_currentController.view.layer addAnimation:transition forKey:nil];
+            CATransition *hideTransition = [CATransition animation];
+            hideTransition.type = kCATransitionPush;
+            hideTransition.subtype = kCATransitionFromLeft;
+            hideTransition.duration = 0.6;
+            hideTransition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+                        
+            [newController.view.layer addAnimation:showTransition forKey:nil];
+            [_currentController.view.layer addAnimation:hideTransition forKey:nil];
         }
         
         newController.view.hidden = NO;
@@ -211,21 +231,82 @@
 }
 
 - (IBAction)createClient:(UIButton *)sender {
-    ClientCreateController *createController = [[ClientCreateController alloc] initWithNibName:@"ClientCreateController" bundle:nil];
-    createController.contentSizeForViewInPopover = CGSizeMake(340, 243);
+    if (_maskView == nil) {
+        _maskView = [[UIView alloc] initWithFrame:self.view.bounds];
+        _maskView.backgroundColor = [UIColor clearColor];
+        _maskView.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelCreateClient)];
+        [_maskView addGestureRecognizer:tapGesture];
+        [tapGesture release];
+        
+        [self.view addSubview:_maskView];
+    }
     
-    UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:createController];
+    if (_clientCreateController != nil) {
+        [_clientCreateController.view removeFromSuperview];
+        [_clientCreateController release];
+        _clientCreateController = nil;
+    }
+    _clientCreateController = [[ClientCreateController alloc] initWithNibName:@"ClientCreateController" bundle:nil];
+    _clientCreateController.rootController = self;
+    _clientCreateController.view.frame = CGRectMake(0, 0, 512, 326);
+    _clientCreateController.view.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+    _clientCreateController.view.alpha = 0;
+    [self.view addSubview:_clientCreateController.view];
+    
+    [UIView animateWithDuration:0.4
+                     animations:^{
+                         CGRect frame = _clientCreateController.view.frame;
+                         frame.origin.y = 40;
+                         _clientCreateController.view.frame = frame;
+                         _clientCreateController.view.alpha = 1.0;
+                     }];
+}
+
+- (void)cancelCreateClient
+{
+    if (_clientCreateController == nil) {
+        return;
+    }
+    
+    [_clientCreateController.view resignFirstResponder];
+    [UIView animateWithDuration:0.4
+                     animations:^{
+                         _clientCreateController.view.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+                         _clientCreateController.view.alpha = 0;
+                     }
+                     completion:^(BOOL finished){
+                         [_clientCreateController.view removeFromSuperview];
+                         [_clientCreateController release];
+                         _clientCreateController = nil;
+                         [_maskView removeFromSuperview];
+                         [_maskView release];
+                         _maskView = nil;
+                     }];
+}
+
+- (IBAction)selectBatch:(UIButton *)sender {
+    BatchListViewController *pickerController = [[BatchListViewController alloc] initWithNibName:@"BatchListViewController" bundle:nil];
+    pickerController.estate = self.consultant.estate;
+    pickerController.contentSizeForViewInPopover = CGSizeMake(320, self.consultant.estate.batches.count * 45);
+    
+    UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:pickerController];
     popoverController.delegate = self;
-    createController.parentPopover = popoverController;
+    pickerController.parentPopover = popoverController;
+    pickerController.rootController = self;
     
-    CGRect frame = sender.frame;
-    frame.size.width = 48;
-    [popoverController presentPopoverFromRect:frame
+    [popoverController presentPopoverFromRect:sender.frame
                                        inView:self.view
-                     permittedArrowDirections:UIPopoverArrowDirectionLeft
+                     permittedArrowDirections:UIPopoverArrowDirectionDown
                                      animated:YES];
     
-    [createController release];
+    [pickerController selectBatch:self.batch];
+    [pickerController release];
+}
+
+- (IBAction)logout:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)calculateLoan:(NSNotification *)notification
@@ -245,13 +326,6 @@
     } else {
         _loanCalculatorController.house = nil;
         _loanCalculatorController.position = nil;
-    }
-    
-    if (_clientViewController != nil && _clientViewController.viewControllers.count > 1) {
-        ClientDetailController *clientDetailController = [_clientViewController.viewControllers objectAtIndex:1];
-        _loanCalculatorController.client = clientDetailController.client;
-    } else {
-        _loanCalculatorController.client = nil;
     }
     
     [self selectMenu:self.calculatorButton];

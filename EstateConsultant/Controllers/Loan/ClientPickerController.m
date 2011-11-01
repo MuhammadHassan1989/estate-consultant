@@ -115,6 +115,11 @@
     [self.tableView selectRowAtIndexPath:indexPath animated:animated scrollPosition:UITableViewScrollPositionTop];
 }
 
+- (IBAction)textFieldDidChange:(UITextField *)sender
+{
+    [self filterClients:sender.text];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -257,14 +262,6 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"StartSearchClient" object:self];
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    NSString *searchString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    [self filterClients:searchString];
-    
-    return YES;
 }
 
 @end

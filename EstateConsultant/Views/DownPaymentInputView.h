@@ -14,7 +14,7 @@
     NSInteger _totalPrice;
 }
 
-@property (nonatomic, retain) UITextField *textfield;
+@property (nonatomic, assign) UITextField *textfield;
 @property (nonatomic, assign) NSInteger totalPrice;
 
 - (IBAction)numberTapped:(UIButton *)sender;

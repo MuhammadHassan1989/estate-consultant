@@ -1,113 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<VariablesStackState
-   version = "1.0">
-   <StackStates>
-      <StackState
-         stackFrameDescription = "-[ClientListController searchDisplayController:shouldReloadTableForSearchString:]:ClientListController.m">
-         <expressions>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[ClientViewController returnClientList:forEvent:]:ClientViewController.m">
-         <expressions>
-            <expression
-               value = "appDelegate.consultant">
-            </expression>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[EstateConsultantAppDelegate setIsDemo:]:EstateConsultantAppDelegate.m">
-         <expressions>
-            <expression
-               value = "_isDemo">
-            </expression>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[EstateConsultantAppDelegate managedObjectContext]:EstateConsultantAppDelegate.m">
-         <expressions>
-            <expression
-               value = "_isDemo">
-            </expression>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[ClientListController tableView:numberOfRowsInSection:]:ClientListController.m">
-         <expressions>
-            <expression
-               value = "self.searchController.searchResultsTableView">
-            </expression>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[HouseListViewController viewDidLoad]:HouseListViewController.m">
-         <expressions>
-            <expression
-               value = "self.scrollView">
-            </expression>
-            <expression
-               value = "_scrollView">
-            </expression>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[PositionItemView setPosition:]:PositionItemView.m">
-         <expressions>
-            <expression
-               value = "_button">
-            </expression>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[LoginViewController tryDemo:forEvent:]:LoginViewController.m">
-         <expressions>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[PositionItemView selectPosition:forEvent:]:PositionItemView.m">
-         <expressions>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[LayoutViewController setLayout:]:LayoutViewController.m">
-         <expressions>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[ClientHistoryView awakeFromNib]:ClientHistoryView.m">
-         <expressions>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[EstateConsultantAppDelegate setViewController:]:EstateConsultantAppDelegate.m">
-         <expressions>
-            <expression
-               value = "_viewController">
-            </expression>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[ClientEditController viewDidLoad]:ClientEditController.m">
-         <expressions>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[LayoutListController tableView:cellForRowAtIndexPath:]:LayoutListController.m">
-         <expressions>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[LayoutDetailController setLayout:]:LayoutDetailController.m">
-         <expressions>
-            <expression
-               value = "roundf(area)">
-            </expression>
-         </expressions>
-      </StackState>
-      <StackState
-         stackFrameDescription = "-[LayoutListController tableView:willDisplayCell:forRowAtIndexPath:]:LayoutListController.m">
-         <expressions>
-         </expressions>
-      </StackState>
-   </StackStates>
-</VariablesStackState>
+<VariablesViewState
+   version = "1.1">
+   <ContextStates>
+      <ContextState
+         contextName = "__-[LayoutDetailController showGallery:]_block_invoke_2:LayoutDetailController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_pictureImages">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9DAEA5B81341CCE80065D815"
+               BlueprintIdentifier = "9D3CCA2413BC6CFB000D6235"
                BuildableName = "EstateConsultant.app"
                BlueprintName = "EstateConsultant"
                ReferencedContainer = "container:EstateConsultant.xcodeproj">
@@ -40,7 +40,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9DAEA5B81341CCE80065D815"
+            BlueprintIdentifier = "9D3CCA2413BC6CFB000D6235"
             BuildableName = "EstateConsultant.app"
             BlueprintName = "EstateConsultant"
             ReferencedContainer = "container:EstateConsultant.xcodeproj">
@@ -59,7 +59,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9DAEA5B81341CCE80065D815"
+            BlueprintIdentifier = "9D3CCA2413BC6CFB000D6235"
             BuildableName = "EstateConsultant.app"
             BlueprintName = "EstateConsultant"
             ReferencedContainer = "container:EstateConsultant.xcodeproj">

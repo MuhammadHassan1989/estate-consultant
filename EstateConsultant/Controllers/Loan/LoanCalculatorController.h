@@ -19,7 +19,6 @@
     UILabel *_totalLabel;
     SingleSelectControl *_paymentType;
     SingleSelectControl *_loanRate;
-    SingleSelectControl *_discountRate;
     UITextField *_downPayment;
     UITextField *_loanPeriod;
     UILabel *_resultLabel;
@@ -29,8 +28,14 @@
     UIView *_clientView;
     UIButton *_pickClientButton;
     UIButton *_cancelClientButton;
+    UITextField *_discountAmount;
+    UILabel *_actualTotalLabel;
+    UIView *_discountView;
+    UILabel *_loanAmountLabel;
+    UILabel *_interestLabel;
     NSArray *_loanRateInfo;
     NSInteger _totalPrice;
+    NSInteger _actualTotalPrice;
 }
 
 @property (nonatomic, retain) Consultant *consultant;
@@ -41,7 +46,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *totalLabel;
 @property (nonatomic, retain) IBOutlet SingleSelectControl *paymentType;
 @property (nonatomic, retain) IBOutlet SingleSelectControl *loanRate;
-@property (nonatomic, retain) IBOutlet SingleSelectControl *discountRate;
 @property (nonatomic, retain) IBOutlet UITextField *downPayment;
 @property (nonatomic, retain) IBOutlet UITextField *loanPeriod;
 @property (nonatomic, retain) IBOutlet UILabel *resultLabel;
@@ -51,6 +55,11 @@
 @property (nonatomic, retain) IBOutlet UIView *clientView;
 @property (nonatomic, retain) IBOutlet UIButton *pickClientButton;
 @property (nonatomic, retain) IBOutlet UIButton *cancelClientButton;
+@property (nonatomic, retain) IBOutlet UITextField *discountAmount;
+@property (nonatomic, retain) IBOutlet UILabel *actualTotalLabel;
+@property (nonatomic, retain) IBOutlet UIView *discountView;
+@property (nonatomic, retain) IBOutlet UILabel *loanAmountLabel;
+@property (nonatomic, retain) IBOutlet UILabel *interestLabel;
 
 
 - (IBAction)pickClient:(UIButton *)sender;

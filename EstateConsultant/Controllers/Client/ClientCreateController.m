@@ -9,11 +9,13 @@
 #import "ClientCreateController.h"
 #import "DataProvider.h"
 #import "NumberInputView.h"
+#import "SingleSelectControl.h"
+#import "EstateConsultantViewController.h"
 
 
 @implementation ClientCreateController
 
-@synthesize parentPopover = _parentPopover;
+@synthesize rootController = _rootController;
 @synthesize consultant = _consultant;
 @synthesize nameLabel = _nameLabel;
 @synthesize phoneLabel = _phoneLabel;
@@ -55,20 +57,27 @@
     
     [self.phoneLabel setDelegate:self];
     [self.nameLabel setDelegate:self];    
-    
-    [self.addClientButton setEnabled:NO];
+        
+    self.sexSelect.defaultBackground = nil;
+    self.sexSelect.selectedBackground = [UIImage imageNamed:@"addclient-genderselected.png"];
+    self.sexSelect.titleFont = [UIFont fontWithName:@"STHeitiSC-Medium" size:26];
+    self.sexSelect.titleColor = [UIColor colorWithHue:0.088 saturation:0.31 brightness:0.46 alpha:1.0];
+    self.sexSelect.items = [NSArray arrayWithObjects:@"女士", @"先生", nil];
+    self.sexSelect.selectedIndex = 0;
     
     UIViewController *numberInputController = [[UIViewController alloc] initWithNibName:@"NumberInputView" bundle:nil];
     NumberInputView *numberInputView = (NumberInputView *)numberInputController.view;
     numberInputView.textfield = self.phoneLabel;
     self.phoneLabel.inputView = numberInputView;
     [numberInputController release];
+    
+    [self.nameLabel becomeFirstResponder];
 }
 
 - (void)viewDidUnload
 {
     [self setConsultant:nil];
-    [self setParentPopover:nil];
+    [self setRootController:nil];
     [self setNameLabel:nil];
     [self setPhoneLabel:nil];
     [self setSexSelect:nil];
@@ -96,8 +105,6 @@
     } else if (textField == self.phoneLabel) {
         if (self.nameLabel.text.length > 0 && self.phoneLabel.text.length > 0) {
             [self addClient:self];
-        } else {
-            [textField resignFirstResponder];            
         }
     }
     
@@ -106,12 +113,6 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (self.nameLabel.text.length > 0 && self.phoneLabel.text.length > 0) {
-        self.addClientButton.enabled = YES;
-    } else {
-        self.addClientButton.enabled = NO;
-    }
-    
     if (textField == self.phoneLabel) {
         NSPredicate *numberPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES '^[0-9]*$'"];
         if (![numberPredicate evaluateWithObject:string]) {
@@ -127,7 +128,12 @@
 - (IBAction)addClient:(id)sender {    
     NSString *name = self.nameLabel.text;
     NSString *phone = self.phoneLabel.text;
-    NSInteger sex = self.sexSelect.selectedSegmentIndex;
+    NSInteger sex = self.sexSelect.selectedIndex;
+    
+    if ([name length] < 1 && [phone length] < 1) {
+        return;
+    }
+    
     Client *newClient = [[DataProvider sharedProvider] clientWithName:name 
                                                              andPhone:phone 
                                                                andSex:sex 
@@ -140,7 +146,7 @@
                                                       userInfo:userInfo];
     [userInfo release];
     
-    [self.parentPopover dismissPopoverAnimated:NO];
+    [self.rootController cancelCreateClient];
 }
 
 @end

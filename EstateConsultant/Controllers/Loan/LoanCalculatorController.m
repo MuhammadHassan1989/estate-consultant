@@ -12,6 +12,7 @@
 #import "PositionPickerController.h"
 #import "HousePickerController.h"
 #import "DownPaymentInputView.h"
+#import "DiscountInputView.h"
 #import "NumberInputView.h"
 
 @implementation LoanCalculatorController
@@ -24,7 +25,6 @@
 @synthesize totalLabel = _totalLabel;
 @synthesize paymentType = _paymentType;
 @synthesize loanRate = _loanRate;
-@synthesize discountRate = _discountRate;
 @synthesize downPayment = _downPayment;
 @synthesize loanPeriod = _loanPeriod;
 @synthesize resultLabel = _resultLabel;
@@ -34,6 +34,11 @@
 @synthesize clientView = _clientView;
 @synthesize pickClientButton = _pickClientButton;
 @synthesize cancelClientButton = _cancelClientButton;
+@synthesize discountAmount = _discountAmount;
+@synthesize actualTotalLabel = _actualTotalLabel;
+@synthesize discountView = _discountView;
+@synthesize loanAmountLabel = _loanAmountLabel;
+@synthesize interestLabel = _interestLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,7 +56,6 @@
     [_totalLabel release];
     [_paymentType release];
     [_loanRate release];
-    [_discountRate release];
     [_downPayment release];
     [_loanPeriod release];
     [_resultLabel release];
@@ -65,6 +69,11 @@
     [_clientView release];
     [_pickClientButton release];
     [_cancelClientButton release];
+    [_discountAmount release];
+    [_actualTotalLabel release];
+    [_discountView release];
+    [_loanAmountLabel release];
+    [_interestLabel release];
     [super dealloc];
 }
 
@@ -110,9 +119,26 @@
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setPositiveFormat:@"###,###,###"];
-    NSString *numberString = [numberFormatter stringFromNumber:[NSNumber numberWithInt:_totalPrice]];
-    [self.totalLabel setText:[NSString stringWithFormat:@"%@ 元", numberString]];
+
+    if (_totalPrice == 0) {
+        [self.totalLabel setText:@"挂牌价"];
+    } else {
+        NSString *totalString = [numberFormatter stringFromNumber:[NSNumber numberWithInt:_totalPrice]];
+        [self.totalLabel setText:[NSString stringWithFormat:@"%@", totalString]];
+    }
+    
+    _actualTotalPrice = _totalPrice - [self.discountAmount.text intValue];
+    if (_actualTotalPrice > 0 && _actualTotalPrice != _totalPrice) {
+        NSString *actualTotalString = [numberFormatter stringFromNumber:[NSNumber numberWithInt:_actualTotalPrice]];
+        [self.actualTotalLabel setText:[NSString stringWithFormat:@"%@", actualTotalString]];
+    } else {
+        [self.actualTotalLabel setText:@"实得总价"];
+    }
     [numberFormatter release];
+    
+    CGRect discountFrame = self.discountView.frame;
+    discountFrame.origin.x = CGRectGetMinX(self.totalLabel.frame) + [self.totalLabel.text sizeWithFont:self.totalLabel.font].width + 10;
+    self.discountView.frame = discountFrame;
     
     [self calculateMonthlyPayment];
     
@@ -197,25 +223,18 @@
     self.loanRate.selectedTitleShadowOffset = CGSizeMake(0, 2);
     self.loanRate.contentEdgeInsets = UIEdgeInsetsMake(-5, 0, 0, 0);
     self.loanRate.selectedContentEdgeInsets = UIEdgeInsetsMake(3, 0, 0, 0);
-    self.loanRate.items = [NSArray arrayWithObjects:@"无", @"8.5折", @"1.1倍", nil];
+    self.loanRate.items = [NSArray arrayWithObjects:@"基准利率", @"1.1倍", @"1.3倍", @"1.4倍", nil];
     self.loanRate.selectedIndex = 0;
 
-    self.discountRate.defaultBackground = defaultBackground;
-    self.discountRate.selectedBackground = selectedBackground;
-    self.discountRate.titleFont = [UIFont fontWithName:@"STHeitiSC-Medium" size:16];
-    self.discountRate.titleColor = [UIColor whiteColor];
-    self.discountRate.titleShadowColor = [UIColor colorWithWhite:0 alpha:0.75];
-    self.discountRate.selectedTitleColor = [UIColor colorWithWhite:0.35 alpha:1.0];
-    self.discountRate.selectedTitleShadowColor = [UIColor colorWithWhite:1.0 alpha:0.75];
-    self.discountRate.titleShadowOffset = CGSizeMake(0, -1);
-    self.discountRate.selectedTitleShadowOffset = CGSizeMake(0, 2);
-    self.discountRate.contentEdgeInsets = UIEdgeInsetsMake(-5, 0, 0, 0);
-    self.discountRate.selectedContentEdgeInsets = UIEdgeInsetsMake(3, 0, 0, 0);
-    self.discountRate.items = [NSArray arrayWithObjects:@"无", @"1%", @"2%", @"3%", @"4%", @"5%", nil];
-    self.discountRate.selectedIndex = 0;
-        
+    [self.discountAmount setDelegate:self];
     [self.downPayment setDelegate:self];
     [self.loanPeriod setDelegate:self];
+    
+    UIViewController *discountInputController = [[UIViewController alloc] initWithNibName:@"DiscountInputView" bundle:nil];
+    DiscountInputView *discountInputView = (DiscountInputView *)discountInputController.view;
+    discountInputView.textfield = self.discountAmount;
+    self.discountAmount.inputView = discountInputView;
+    [discountInputController release];
     
     UIViewController *downPaymentInputController = [[UIViewController alloc] initWithNibName:@"DownPaymentInputView" bundle:nil];
     DownPaymentInputView *downPaymentInputView = (DownPaymentInputView *)downPaymentInputController.view;
@@ -240,7 +259,6 @@
     [self setTotalLabel:nil];
     [self setPaymentType:nil];
     [self setLoanRate:nil];
-    [self setDiscountRate:nil];
     [self setDownPayment:nil];
     [self setLoanPeriod:nil];
     [self setResultLabel:nil];
@@ -253,6 +271,11 @@
     [self setClientView:nil];
     [self setPickClientButton:nil];
     [self setCancelClientButton:nil];
+    [self setDiscountAmount:nil];
+    [self setActualTotalLabel:nil];
+    [self setDiscountView:nil];
+    [self setLoanAmountLabel:nil];
+    [self setInterestLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -397,9 +420,12 @@
     if (textField == self.downPayment) {
         [(DownPaymentInputView *)textField.inputView setTotalPrice:_totalPrice];
         
-        bounds.origin.y = 100;
+        bounds.origin.y = 145;
     } else if (textField == self.loanPeriod) {
-        bounds.origin.y = 170;
+        bounds.origin.y = 210;
+    } else if (textField == self.discountAmount) {
+        [(DiscountInputView *)textField.inputView setTotalPrice:_totalPrice];
+        bounds.origin.y = 40;
     }
     
     [UIView animateWithDuration:0.3
@@ -420,6 +446,19 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if (textField == self.discountAmount) {
+        _actualTotalPrice = _totalPrice - [self.discountAmount.text intValue];
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setPositiveFormat:@"###,###,###"];
+        if (_actualTotalPrice > 0 && _actualTotalPrice != _totalPrice) {
+            NSString *actualTotalString = [numberFormatter stringFromNumber:[NSNumber numberWithInt:_actualTotalPrice]];
+            [self.actualTotalLabel setText:[NSString stringWithFormat:@"%@", actualTotalString]];
+        } else {
+            [self.actualTotalLabel setText:@"实得总价"];
+        }
+        [numberFormatter release];
+    }
+    
     [self calculateMonthlyPayment];
     [textField resignFirstResponder];
     return YES;
@@ -435,15 +474,21 @@
 }
 
 - (void)calculateMonthlyPayment {
-    NSInteger totalPrice = _totalPrice;
+    NSInteger totalPrice = _actualTotalPrice;
     NSInteger paymentType = [self.paymentType selectedIndex];
     NSInteger downPayment = [self.downPayment.text intValue];
     NSInteger loanPeriod = [self.loanPeriod.text intValue];
 	NSInteger monthCount = loanPeriod * 12;
+    NSInteger totalLoan = 0;
+    NSInteger interest = 0;
     CGFloat rateDiscount = 1;
     CGFloat yearRate = 0;
 	CGFloat monthRate = 0;
 	NSInteger monthlyPayment = 0;
+    
+    if (totalPrice < 1) {
+        totalPrice = _totalPrice;
+    }
     
     if (loanPeriod == 0 || totalPrice < downPayment) {
         monthlyPayment = 0;
@@ -452,24 +497,13 @@
         if (selectedLoanRate == 0) {
             rateDiscount = 1;
         } else if (selectedLoanRate == 1) {
-            rateDiscount = 0.85;
-        } else if (selectedLoanRate == 2) {
             rateDiscount = 1.1;
+        } else if (selectedLoanRate == 2) {
+            rateDiscount = 1.3;
+        } else if (selectedLoanRate == 3) {
+            rateDiscount = 1.4;
         }
-        
-        NSInteger selectedDiscount = [self.discountRate selectedIndex];
-        if (selectedDiscount == 1) {
-            totalPrice = totalPrice * 0.99;
-        } else if (selectedDiscount == 2) {
-            totalPrice = totalPrice * 0.98;
-        } else if (selectedDiscount == 3) {
-            totalPrice = totalPrice * 0.97;
-        } else if (selectedDiscount == 4) {
-            totalPrice = totalPrice * 0.96;
-        } else if (selectedDiscount == 5) {
-            totalPrice = totalPrice * 0.95;
-        }
-        
+                
         NSDictionary *rateInfo = [_loanRateInfo objectAtIndex:paymentType];
         if (loanPeriod == 1) {
             yearRate = [[rateInfo objectForKey:@"rate1"] floatValue] / 100;
@@ -481,8 +515,10 @@
             yearRate = [[rateInfo objectForKey:@"rate5+"] floatValue] / 100;
         }
         monthRate = yearRate * rateDiscount / 12;
-        
-        monthlyPayment = (totalPrice - downPayment) * monthRate * pow(1 + monthRate, monthCount) / (pow(1 + monthRate, monthCount) - 1);
+
+        totalLoan = totalPrice - downPayment;
+        monthlyPayment = totalLoan * monthRate * pow(1 + monthRate, monthCount) / (pow(1 + monthRate, monthCount) - 1);
+        interest = monthlyPayment * monthCount - totalLoan;
         
         if (self.client != nil) {
             [[DataProvider sharedProvider] historyOfClient:self.client withAction:1 andHouse:self.house];
@@ -492,6 +528,8 @@
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setPositiveFormat:@"###,###,###"];
 	[self.resultLabel setText:[numberFormatter stringFromNumber:[NSNumber numberWithInt:monthlyPayment]]];
+    [self.loanAmountLabel setText:[numberFormatter stringFromNumber:[NSNumber numberWithInt:totalLoan]]];
+    [self.interestLabel setText:[numberFormatter stringFromNumber:[NSNumber numberWithInt:interest]]];
     [numberFormatter release];
 }
 

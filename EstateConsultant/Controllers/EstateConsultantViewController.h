@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StackScrollViewController.h"
-#import "ClientViewController.h"
-#import "LayoutViewController.h"
-#import "StockViewController.h"
-#import "LoanCalculatorController.h"
 #import "DataProvider.h"
+
+@class StackScrollViewController, ClientViewController, LayoutViewController, StockViewController, LoanCalculatorController, ClientCreateController;
+
 
 @interface EstateConsultantViewController : UIViewController <UIPopoverControllerDelegate> {
     UIButton *_clientButton;
@@ -31,6 +29,8 @@
     LoanCalculatorController *_loanCalculatorController;
     UIViewController *_currentController;
     UIButton *_currentButton;
+    UIView *_maskView;
+    ClientCreateController *_clientCreateController;
 }
 
 @property (nonatomic, retain) Consultant *consultant;
@@ -46,5 +46,8 @@
 
 - (IBAction)selectMenu:(id)sender;
 - (IBAction)createClient:(id)sender;
+- (void)cancelCreateClient;
+- (IBAction)selectBatch:(id)sender;
+- (IBAction)logout:(id)sender;
 
 @end

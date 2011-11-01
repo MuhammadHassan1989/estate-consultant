@@ -22,13 +22,15 @@
 @synthesize nameLabel = _nameLabel;
 @synthesize sexLabel = _sexLabel;
 @synthesize phoneLabel = _phoneLabel;
+@synthesize consultantLabel = _consultantLabel;
+@synthesize delButton = _delButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _profileFields = [[NSMutableArray alloc] init];
         _historyViews = [[NSMutableArray alloc] init];
+        _profileFields = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -40,8 +42,8 @@
     [self removeObserverForClient:_client];
     [_client release];
     [_profiles release];
-    [_scrollView release];
     [_infoList release];
+    [_scrollView release];
     [_historyList release];
     [_starImage release];
     [_nameLabel release];
@@ -50,6 +52,8 @@
     [_phoneLabel release];
     [_historyViews release];
     [_clientEditController release];
+    [_consultantLabel release];
+    [_delButton release];
     [super dealloc];
 }
 
@@ -68,21 +72,21 @@
     [super viewDidLoad];
 
     NSInteger index = 0;
-    for (Profile *profile in self.profiles) {
-        UIViewController *profileFieldController = [[UIViewController alloc] initWithNibName:@"ProfileFieldView" bundle:nil];
-        ProfileFieldView *profileField = (ProfileFieldView *)profileFieldController.view;
-        profileField.frame = CGRectMake(40, index * 60 + 115, 628, 50);
-        profileField.profile = profile;
-        
-        [self.infoList addSubview:profileField];
-        [_profileFields addObject:profileField];
-        [profileFieldController release];
-        
-        index++;
-    }
+//    for (Profile *profile in self.profiles) {
+//        UIViewController *profileFieldController = [[UIViewController alloc] initWithNibName:@"ProfileFieldView" bundle:nil];
+//        ProfileFieldView *profileField = (ProfileFieldView *)profileFieldController.view;
+//        profileField.frame = CGRectMake(40, index * 60 + 175, 628, 50);
+//        profileField.profile = profile;
+//        
+//        [self.infoList addSubview:profileField];
+//        [_profileFields addObject:profileField];
+//        [profileFieldController release];
+//        
+//        index++;
+//    }
     
     CGRect infoFrame = self.infoList.frame;
-    infoFrame.size.height = index * 60 + 115;
+    infoFrame.size.height = index * 60 + 175;
     [self.infoList setFrame:infoFrame];
     [self.scrollView setContentSize:CGSizeMake(702, infoFrame.origin.y + infoFrame.size.height + 20)];
     
@@ -108,6 +112,8 @@
     [self setNameLabel:nil];
     [self setSexLabel:nil];
     [self setPhoneLabel:nil];
+    [self setConsultantLabel:nil];
+    [self setDelButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -128,6 +134,7 @@
     self.starImage.highlighted = client.starred.boolValue;    
     self.nameLabel.text = client.name;
     self.phoneLabel.text = client.phone;
+    self.consultantLabel.text = client.consultant.name;
 
     if (client.sex.intValue == 1) {
         self.sexLabel.text = @"先生";
@@ -209,6 +216,27 @@
                          [_clientEditController release];
                          _clientEditController = nil;
                      }];
+}
+
+- (IBAction)deleteClient:(id)sender {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" 
+                                                        message:@"确定要删除这个客户的信息吗？" 
+                                                       delegate:self 
+                                              cancelButtonTitle:@"取消" 
+                                              otherButtonTitles:@"删除", nil];
+    [alertView show];
+    [alertView release];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:self.client, @"client", nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DeleteClient" 
+                                                            object:self
+                                                          userInfo:userInfo];
+        [userInfo release];
+    }
 }
 
 - (void)tapStar:(UIGestureRecognizer *)gesture

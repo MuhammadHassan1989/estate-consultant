@@ -38,8 +38,6 @@
     self.selectedBackground = [selectedBackground stretchableImageWithLeftCapWidth:10 topCapHeight:10];
     self.titleColor = [UIColor blackColor];
     self.titleShadowColor = [UIColor colorWithWhite:0 alpha:1.0];
-    self.selectedTitleColor = [UIColor colorWithWhite:0.35 alpha:1.0];
-    self.selectedTitleShadowColor = [UIColor colorWithWhite:1.0 alpha:1.0];
     self.titleShadowOffset = CGSizeMake(0, 0);
     self.selectedTitleShadowOffset = CGSizeMake(0, 0);
     self.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -112,7 +110,8 @@
             [button setTitle:@"" forState:UIControlStateNormal];
         }
         
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button.titleLabel setFont:self.titleFont];
+        [button setTitleColor:self.titleColor forState:UIControlStateNormal];
         [button setTitleShadowColor:self.titleShadowColor forState:UIControlStateNormal];
         [button setContentEdgeInsets:self.contentEdgeInsets];
         [button.titleLabel setShadowOffset:self.titleShadowOffset];
@@ -120,6 +119,14 @@
         [button setAdjustsImageWhenDisabled:NO];
         [button setAdjustsImageWhenHighlighted:NO];
         [button addTarget:self action:@selector(selectButton:) forControlEvents:UIControlEventTouchDown];
+        
+        if (self.selectedTitleColor == nil) {
+            self.selectedTitleColor = self.titleColor;
+        }
+        
+        if (self.selectedTitleShadowColor == nil) {
+            self.selectedTitleShadowColor = self.titleShadowColor;
+        }
         
         if ([self.delegate respondsToSelector:@selector(singleSelect:willDisplayButton:)]) {
             [self.delegate singleSelect:self willDisplayButton:button];

@@ -11,7 +11,7 @@
 #import "ClientEditController.h"
 
 
-@interface ClientDetailController : UIViewController {
+@interface ClientDetailController : UIViewController <UIAlertViewDelegate> {
     UIScrollView *_scrollView;
     UIView *_infoList;
     UIView *_historyList;
@@ -19,6 +19,8 @@
     UILabel *_nameLabel;
     UILabel *_sexLabel;
     UILabel *_phoneLabel;
+    UILabel *_consultantLabel;
+    UIButton *_delButton;
     Client *_client;
     NSArray *_profiles;
     NSMutableArray *_profileFields;
@@ -35,12 +37,15 @@
 @property (nonatomic, retain) IBOutlet UILabel *nameLabel;
 @property (nonatomic, retain) IBOutlet UILabel *sexLabel;
 @property (nonatomic, retain) IBOutlet UILabel *phoneLabel;
+@property (nonatomic, retain) IBOutlet UILabel *consultantLabel;
+@property (nonatomic, retain) IBOutlet UIButton *delButton;
 
 
 - (IBAction)editClient:(id)sender;
 - (void)addObserverForClient:(Client *)client;
 - (void)removeObserverForClient:(Client *)client;
 - (void)endEditClient:(NSNotification *)notification;
+- (IBAction)deleteClient:(id)sender;
 
 
 @end

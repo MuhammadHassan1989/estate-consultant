@@ -7,151 +7,235 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D236A61138AB38700A6B01A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D236A60138AB38700A6B01A /* QuartzCore.framework */; };
-		9D2D9B8F1377C392001D4F85 /* ProfileFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2D9B8E1377C392001D4F85 /* ProfileFieldView.m */; };
-		9D2D9B911377C3A7001D4F85 /* ProfileFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2D9B901377C3A7001D4F85 /* ProfileFieldView.xib */; };
-		9D2DFAFA134457470022F1F0 /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2DFAF9134457460022F1F0 /* DataProvider.m */; };
-		9D2DFAFD134459A00022F1F0 /* EstateConsultantUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2DFAFC134459A00022F1F0 /* EstateConsultantUtils.m */; };
-		9D2E257B139B911E00E5FA45 /* SingleSelectControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E257A139B911E00E5FA45 /* SingleSelectControl.m */; };
-		9D2E257F139BD4BE00E5FA45 /* single-select-button-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E257D139BD4BE00E5FA45 /* single-select-button-selected.png */; };
-		9D2E2580139BD4BE00E5FA45 /* single-select-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E257E139BD4BE00E5FA45 /* single-select-button.png */; };
-		9D2F100713824124003C7240 /* ClientDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F0FFD13824124003C7240 /* ClientDetailController.xib */; };
-		9D2F100813824124003C7240 /* ClientEditController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F0FFE13824124003C7240 /* ClientEditController.xib */; };
-		9D2F100913824124003C7240 /* ClientListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F0FFF13824124003C7240 /* ClientListController.xib */; };
-		9D2F100C13824124003C7240 /* ClientDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F100213824124003C7240 /* ClientDetailController.m */; };
-		9D2F100D13824124003C7240 /* ClientEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F100313824124003C7240 /* ClientEditController.m */; };
-		9D2F100E13824124003C7240 /* ClientListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F100413824124003C7240 /* ClientListController.m */; };
-		9D2F101913824150003C7240 /* LayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F101313824150003C7240 /* LayoutViewController.m */; };
-		9D2F101B13824150003C7240 /* StockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F101713824150003C7240 /* StockViewController.m */; };
-		9D2F1020138241AA003C7240 /* LayoutListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F101E138241AA003C7240 /* LayoutListController.m */; };
-		9D2F1021138241AA003C7240 /* LayoutListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F101F138241AA003C7240 /* LayoutListController.xib */; };
-		9D2F10231382482E003C7240 /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F10221382482E003C7240 /* house.png */; };
-		9D2F1027138257F9003C7240 /* LayoutDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F1025138257F8003C7240 /* LayoutDetailController.m */; };
-		9D2F1028138257F9003C7240 /* LayoutDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F1026138257F9003C7240 /* LayoutDetailController.xib */; };
-		9D2F70A1139F5D0100B0CF81 /* StockListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F70A0139F5D0100B0CF81 /* StockListHeaderView.m */; };
-		9D2F70A3139F5D1E00B0CF81 /* StockListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F70A2139F5D1E00B0CF81 /* StockListHeaderView.xib */; };
-		9D368560136F0D1600AD04FF /* clients.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D36855F136F0D1600AD04FF /* clients.png */; };
-		9D4ADB4113A4ACDF00E6D8B0 /* searchbar-short.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4ADB4013A4ACDF00E6D8B0 /* searchbar-short.png */; };
-		9D4ADB4613A4B5A900E6D8B0 /* PositionPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4ADB4413A4B5A900E6D8B0 /* PositionPickerController.m */; };
-		9D4ADB4713A4B5A900E6D8B0 /* PositionPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4ADB4513A4B5A900E6D8B0 /* PositionPickerController.xib */; };
-		9D4CF3D513A3387800C06B15 /* clientedit-cancel-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3D313A3387800C06B15 /* clientedit-cancel-icon.png */; };
-		9D4CF3D613A3387800C06B15 /* clientedit-done-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3D413A3387800C06B15 /* clientedit-done-icon.png */; };
-		9D4CF3DA13A3509F00C06B15 /* profile-field-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3D813A3509F00C06B15 /* profile-field-selected.png */; };
-		9D4CF3DB13A3509F00C06B15 /* profile-field.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3D913A3509F00C06B15 /* profile-field.png */; };
-		9D4CF3DD13A368E400C06B15 /* listitem-title.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3DC13A368E400C06B15 /* listitem-title.png */; };
-		9D4CF3DF13A36BED00C06B15 /* stock-detail-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3DE13A36BEC00C06B15 /* stock-detail-bg.png */; };
-		9D4CF3E713A36FA000C06B15 /* housedetail-iconcalculator.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3E613A36FA000C06B15 /* housedetail-iconcalculator.png */; };
-		9D4CF3EB13A3794E00C06B15 /* housedetail-forsell.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3E813A3794D00C06B15 /* housedetail-forsell.png */; };
-		9D4CF3EC13A3794E00C06B15 /* housedetail-ordered.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3E913A3794D00C06B15 /* housedetail-ordered.png */; };
-		9D4CF3ED13A3794E00C06B15 /* housedetail-sold.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3EA13A3794E00C06B15 /* housedetail-sold.png */; };
-		9D4CF3EF13A37D9000C06B15 /* calculator-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3EE13A37D9000C06B15 /* calculator-bg.png */; };
-		9D4CF3F113A3927300C06B15 /* calculator-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3F013A3927300C06B15 /* calculator-button.png */; };
-		9D4CF3F313A3942600C06B15 /* calculator-cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3F213A3942600C06B15 /* calculator-cancel.png */; };
-		9D4CF3F513A395EA00C06B15 /* calculator-choose-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3F413A395EA00C06B15 /* calculator-choose-button.png */; };
-		9D4CF3F713A39B9000C06B15 /* calculator-textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3F613A39B9000C06B15 /* calculator-textfield.png */; };
-		9D4CF3FE13A3ACA700C06B15 /* calculator-segmented-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3FC13A3ACA600C06B15 /* calculator-segmented-selected.png */; };
-		9D4CF3FF13A3ACA700C06B15 /* calculator-segmented.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3FD13A3ACA600C06B15 /* calculator-segmented.png */; };
-		9D4CF40213A3AD1E00C06B15 /* layout-nexticon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF40013A3AD1E00C06B15 /* layout-nexticon.png */; };
-		9D4CF40313A3AD1E00C06B15 /* layout-previcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF40113A3AD1E00C06B15 /* layout-previcon.png */; };
-		9D579C9213837254005A3EC4 /* StockDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D579C9013837254005A3EC4 /* StockDetailController.m */; };
-		9D579C9313837254005A3EC4 /* StockDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D579C9113837254005A3EC4 /* StockDetailController.xib */; };
-		9D579C9913837814005A3EC4 /* StockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D579C9813837814005A3EC4 /* StockTableViewCell.xib */; };
-		9D579CA413839BB3005A3EC4 /* StockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D579CA313839BB3005A3EC4 /* StockTableViewCell.m */; };
-		9D579CA81383BE87005A3EC4 /* ClientCreateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D579CA61383BE87005A3EC4 /* ClientCreateController.xib */; };
-		9D579CA91383BE87005A3EC4 /* ClientCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D579CA71383BE87005A3EC4 /* ClientCreateController.m */; };
-		9D5A240B137BC1B600F14CFC /* Profile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D5A240A137BC1B600F14CFC /* Profile.plist */; };
-		9D5A2411137BC92300F14CFC /* EstateConsultant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A240F137BC92300F14CFC /* EstateConsultant.xcdatamodeld */; };
-		9D60C74E1390D1FF00D95E64 /* EstateConsultantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D60C74C1390D1FF00D95E64 /* EstateConsultantViewController.m */; };
-		9D60C74F1390D1FF00D95E64 /* EstateConsultantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D60C74D1390D1FF00D95E64 /* EstateConsultantViewController.xib */; };
-		9D60C7521390D31200D95E64 /* consultant.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D60C7511390D31200D95E64 /* consultant.png */; };
-		9D60C7551390D6D800D95E64 /* StackScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D60C7541390D6D800D95E64 /* StackScrollViewController.m */; };
-		9D60C7701392835F00D95E64 /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D60C76F1392835E00D95E64 /* ClientViewController.m */; };
-		9D62283D139FD13600E9EDFF /* Estate.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D62283C139FD13600E9EDFF /* Estate.plist */; };
-		9D622889139FD96500E9EDFF /* Consultant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D622888139FD96500E9EDFF /* Consultant.m */; };
-		9D62288C139FD96500E9EDFF /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D62288B139FD96500E9EDFF /* History.m */; };
-		9D62288F139FD96500E9EDFF /* House.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D62288E139FD96500E9EDFF /* House.m */; };
-		9D622892139FD96500E9EDFF /* ClientProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D622891139FD96500E9EDFF /* ClientProfile.m */; };
-		9D622895139FD96500E9EDFF /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D622894139FD96500E9EDFF /* Building.m */; };
-		9D622898139FD96600E9EDFF /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D622897139FD96600E9EDFF /* Profile.m */; };
-		9D62289B139FD96600E9EDFF /* Batch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D62289A139FD96600E9EDFF /* Batch.m */; };
-		9D62289E139FD96600E9EDFF /* Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D62289D139FD96600E9EDFF /* Layout.m */; };
-		9D6228A1139FD96600E9EDFF /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6228A0139FD96600E9EDFF /* Position.m */; };
-		9D6228A4139FD96600E9EDFF /* Unit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6228A3139FD96600E9EDFF /* Unit.m */; };
-		9D6228A7139FD96600E9EDFF /* Estate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6228A6139FD96600E9EDFF /* Estate.m */; };
-		9D6228AA139FD96600E9EDFF /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6228A9139FD96600E9EDFF /* Client.m */; };
-		9D623FBD138CF5220019F1E4 /* NumberInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D623FBC138CF5220019F1E4 /* NumberInputView.m */; };
-		9D623FC0138CF53F0019F1E4 /* NumberInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D623FBF138CF53F0019F1E4 /* NumberInputView.xib */; };
-		9D642EF613850C9500A87D02 /* LoanCalculatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D642EF413850C9500A87D02 /* LoanCalculatorController.m */; };
-		9D642EF713850C9500A87D02 /* LoanCalculatorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D642EF513850C9500A87D02 /* LoanCalculatorController.xib */; };
-		9D727B731389535600870D79 /* PictureGalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D727B711389535600870D79 /* PictureGalleryController.m */; };
-		9D727B741389535600870D79 /* PictureGalleryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D727B721389535600870D79 /* PictureGalleryController.xib */; };
-		9D7B1369134D9AF7000DDA4D /* defaults.zip in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B1368134D9AF7000DDA4D /* defaults.zip */; };
-		9D7B1377134DA0C4000DDA4D /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B136D134DA0C4000DDA4D /* ioapi.c */; };
-		9D7B1378134DA0C4000DDA4D /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B136F134DA0C4000DDA4D /* mztools.c */; };
-		9D7B1379134DA0C4000DDA4D /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B1371134DA0C4000DDA4D /* unzip.c */; };
-		9D7B137A134DA0C4000DDA4D /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B1373134DA0C4000DDA4D /* zip.c */; };
-		9D7B137B134DA0C4000DDA4D /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B1376134DA0C4000DDA4D /* ZipArchive.mm */; };
-		9D7B137D134DA4D7000DDA4D /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7B137C134DA4D7000DDA4D /* libz.1.2.3.dylib */; };
-		9DA0926B1382BAA900CE4622 /* stock.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0926A1382BAA900CE4622 /* stock.png */; };
-		9DA092751382CBEC00CE4622 /* StockListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA092731382CBEC00CE4622 /* StockListController.m */; };
-		9DA092761382CBEC00CE4622 /* StockListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DA092741382CBEC00CE4622 /* StockListController.xib */; };
-		9DA7D63B13A08D5A0035BBB4 /* HouseItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA7D63A13A08D5A0035BBB4 /* HouseItemView.m */; };
-		9DA7D63E13A08D770035BBB4 /* HouseItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DA7D63D13A08D770035BBB4 /* HouseItemView.xib */; };
-		9DAEA5BE1341CCE80065D815 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5BD1341CCE80065D815 /* UIKit.framework */; };
-		9DAEA5C01341CCE80065D815 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5BF1341CCE80065D815 /* Foundation.framework */; };
-		9DAEA5C21341CCE80065D815 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5C11341CCE80065D815 /* CoreGraphics.framework */; };
-		9DAEA5C41341CCE80065D815 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5C31341CCE80065D815 /* CoreData.framework */; };
-		9DAEA5CD1341CCE80065D815 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA5CC1341CCE80065D815 /* main.m */; };
-		9DAEA5D01341CCE80065D815 /* EstateConsultantAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA5CF1341CCE80065D815 /* EstateConsultantAppDelegate.m */; };
-		9DAEA5EE1341CDD20065D815 /* Client.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5E31341CDD20065D815 /* Client.plist */; };
-		9DAEA5F11341CDD20065D815 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5E91341CDD20065D815 /* InfoPlist.strings */; };
-		9DAEA5F21341CDD20065D815 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5EB1341CDD20065D815 /* MainWindow.xib */; };
-		9DAEA5FC13422BA10065D815 /* Consultant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5FB13422BA10065D815 /* Consultant.plist */; };
-		9DAEA5FE13422C260065D815 /* History.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5FD13422C260065D815 /* History.plist */; };
-		9DAEA60013422C420065D815 /* House.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5FF13422C420065D815 /* House.plist */; };
-		9DAEA60213422C500065D815 /* Layout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA60113422C4F0065D815 /* Layout.plist */; };
-		9DAEA60413422C5A0065D815 /* Position.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA60313422C5A0065D815 /* Position.plist */; };
-		9DB107F613863F5D00190647 /* ClientPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB107F413863F5D00190647 /* ClientPickerController.m */; };
-		9DB107F713863F5D00190647 /* ClientPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DB107F513863F5D00190647 /* ClientPickerController.xib */; };
-		9DC0994A13A4C20900A653DD /* HousePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0994813A4C20800A653DD /* HousePickerController.m */; };
-		9DC0994B13A4C20900A653DD /* HousePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DC0994913A4C20800A653DD /* HousePickerController.xib */; };
-		9DCB3EEB13A1FD1D00F84C61 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EEA13A1FD1D00F84C61 /* bg.jpg */; };
-		9DCB3EEE13A1FFDA00F84C61 /* default-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EED13A1FFDA00F84C61 /* default-avatar.png */; };
-		9DCB3EF013A20B7D00F84C61 /* nav-button-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EEF13A20B7D00F84C61 /* nav-button-selected.png */; };
-		9DCB3EF213A20BAC00F84C61 /* nav-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EF113A20BAC00F84C61 /* nav-button.png */; };
-		9DCB3EF413A2124900F84C61 /* nav-button-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EF313A2124800F84C61 /* nav-button-bottom.png */; };
-		9DCB3EF913A212C400F84C61 /* nav-client-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EF513A212C400F84C61 /* nav-client-selected.png */; };
-		9DCB3EFA13A212C400F84C61 /* nav-client.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EF613A212C400F84C61 /* nav-client.png */; };
-		9DCB3EFB13A212C400F84C61 /* nav-house-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EF713A212C400F84C61 /* nav-house-selected.png */; };
-		9DCB3EFC13A212C400F84C61 /* nav-house.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EF813A212C400F84C61 /* nav-house.png */; };
-		9DCB3EFF13A2139700F84C61 /* nav-layout-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EFD13A2139700F84C61 /* nav-layout-selected.png */; };
-		9DCB3F0013A2139700F84C61 /* nav-layout.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EFE13A2139700F84C61 /* nav-layout.png */; };
-		9DCB3F0313A2148100F84C61 /* nav-addclient-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0113A2148100F84C61 /* nav-addclient-selected.png */; };
-		9DCB3F0413A2148100F84C61 /* nav-addclient.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0213A2148100F84C61 /* nav-addclient.png */; };
-		9DCB3F0713A2151800F84C61 /* nav-calculator-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0513A2151800F84C61 /* nav-calculator-selected.png */; };
-		9DCB3F0813A2151800F84C61 /* nav-calculator.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0613A2151800F84C61 /* nav-calculator.png */; };
-		9DCB3F0A13A2167800F84C61 /* nav-toolbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0913A2167800F84C61 /* nav-toolbar.png */; };
-		9DCB3F0C13A2179100F84C61 /* nav-sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0B13A2179100F84C61 /* nav-sync.png */; };
-		9DCB3F0E13A2184A00F84C61 /* nav-light-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0D13A2184A00F84C61 /* nav-light-button.png */; };
-		9DCB3F1013A21B1900F84C61 /* list-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0F13A21B1900F84C61 /* list-bg.png */; };
-		9DCB3F1213A21F7D00F84C61 /* searchbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1113A21F7D00F84C61 /* searchbar.png */; };
-		9DCB3F1513A23A7700F84C61 /* listitem-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1313A23A7700F84C61 /* listitem-selected.png */; };
-		9DCB3F1613A23A7700F84C61 /* listitem.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1413A23A7700F84C61 /* listitem.png */; };
-		9DCB3F1813A23CF900F84C61 /* clientdetail-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1713A23CF900F84C61 /* clientdetail-bg.png */; };
-		9DCB3F1B13A23F6400F84C61 /* star-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1913A23F6400F84C61 /* star-on.png */; };
-		9DCB3F1C13A23F6400F84C61 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1A13A23F6400F84C61 /* star.png */; };
-		9DCB3F1E13A23FB300F84C61 /* clientdetail-seperate.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1D13A23FB300F84C61 /* clientdetail-seperate.png */; };
-		9DCB3F2013A2406F00F84C61 /* clientdetail-edit-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1F13A2406F00F84C61 /* clientdetail-edit-icon.png */; };
-		9DCB3F2613A24CEA00F84C61 /* layoutdetail-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F2513A24CEA00F84C61 /* layoutdetail-bg.png */; };
-		9DCB5B22138D555F000572E8 /* DownPaymentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB5B21138D555F000572E8 /* DownPaymentInputView.m */; };
-		9DCB5B25138D5580000572E8 /* DownPaymentInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB5B24138D5580000572E8 /* DownPaymentInputView.xib */; };
-		9DF52511137E5E48008EC8D5 /* ProfileEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF52510137E5E48008EC8D5 /* ProfileEditView.m */; };
-		9DF52513137E5E5F008EC8D5 /* ProfileEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF52512137E5E5F008EC8D5 /* ProfileEditView.xib */; };
-		9DF52516137EC49F008EC8D5 /* ClientHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF52515137EC49F008EC8D5 /* ClientHistoryView.m */; };
-		9DF52518137EC4B5008EC8D5 /* ClientHistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF52517137EC4B5008EC8D5 /* ClientHistoryView.xib */; };
+		9D3CCA2713BC6CFB000D6235 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5BD1341CCE80065D815 /* UIKit.framework */; };
+		9D3CCA2813BC6CFB000D6235 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5BF1341CCE80065D815 /* Foundation.framework */; };
+		9D3CCA2913BC6CFB000D6235 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5C11341CCE80065D815 /* CoreGraphics.framework */; };
+		9D3CCA2A13BC6CFB000D6235 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAEA5C31341CCE80065D815 /* CoreData.framework */; };
+		9D3CCA4913BC7452000D6235 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D236A60138AB38700A6B01A /* QuartzCore.framework */; };
+		9D3CCA4A13BC7459000D6235 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7B137C134DA4D7000DDA4D /* libz.1.2.3.dylib */; };
+		9D3CCB3F13BC7B35000D6235 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6228A9139FD96600E9EDFF /* Client.m */; };
+		9D3CCB4013BC7B35000D6235 /* Estate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6228A6139FD96600E9EDFF /* Estate.m */; };
+		9D3CCB4113BC7B35000D6235 /* Unit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6228A3139FD96600E9EDFF /* Unit.m */; };
+		9D3CCB4213BC7B35000D6235 /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6228A0139FD96600E9EDFF /* Position.m */; };
+		9D3CCB4313BC7B35000D6235 /* Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D62289D139FD96600E9EDFF /* Layout.m */; };
+		9D3CCB4413BC7B35000D6235 /* Batch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D62289A139FD96600E9EDFF /* Batch.m */; };
+		9D3CCB4513BC7B35000D6235 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D622897139FD96600E9EDFF /* Profile.m */; };
+		9D3CCB4613BC7B35000D6235 /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D622894139FD96500E9EDFF /* Building.m */; };
+		9D3CCB4713BC7B35000D6235 /* ClientProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D622891139FD96500E9EDFF /* ClientProfile.m */; };
+		9D3CCB4813BC7B35000D6235 /* House.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D62288E139FD96500E9EDFF /* House.m */; };
+		9D3CCB4913BC7B35000D6235 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D62288B139FD96500E9EDFF /* History.m */; };
+		9D3CCB4A13BC7B35000D6235 /* Consultant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D622888139FD96500E9EDFF /* Consultant.m */; };
+		9D3CCB4B13BC7B35000D6235 /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2DFAF9134457460022F1F0 /* DataProvider.m */; };
+		9D3CCB4C13BC7B35000D6235 /* ProfileFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2D9B8E1377C392001D4F85 /* ProfileFieldView.m */; };
+		9D3CCB4D13BC7B35000D6235 /* ProfileEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF52510137E5E48008EC8D5 /* ProfileEditView.m */; };
+		9D3CCB4E13BC7B35000D6235 /* ClientHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF52515137EC49F008EC8D5 /* ClientHistoryView.m */; };
+		9D3CCB4F13BC7B36000D6235 /* StockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D579CA313839BB3005A3EC4 /* StockTableViewCell.m */; };
+		9D3CCB5013BC7B36000D6235 /* NumberInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D623FBC138CF5220019F1E4 /* NumberInputView.m */; };
+		9D3CCB5113BC7B36000D6235 /* DownPaymentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCB5B21138D555F000572E8 /* DownPaymentInputView.m */; };
+		9D3CCB5213BC7B36000D6235 /* SingleSelectControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E257A139B911E00E5FA45 /* SingleSelectControl.m */; };
+		9D3CCB5313BC7B36000D6235 /* StockListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F70A0139F5D0100B0CF81 /* StockListHeaderView.m */; };
+		9D3CCB5413BC7B36000D6235 /* HouseItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA7D63A13A08D5A0035BBB4 /* HouseItemView.m */; };
+		9D3CCB5513BC7B36000D6235 /* DiscountInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D0AC41F13B879030061F5B3 /* DiscountInputView.m */; };
+		9D3CCB5613BC7B36000D6235 /* ClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D60C76F1392835E00D95E64 /* ClientViewController.m */; };
+		9D3CCB5713BC7B36000D6235 /* ClientListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F100413824124003C7240 /* ClientListController.m */; };
+		9D3CCB5813BC7B36000D6235 /* ClientDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F100213824124003C7240 /* ClientDetailController.m */; };
+		9D3CCB5913BC7B36000D6235 /* ClientEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F100313824124003C7240 /* ClientEditController.m */; };
+		9D3CCB5A13BC7B36000D6235 /* ClientCreateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D579CA71383BE87005A3EC4 /* ClientCreateController.m */; };
+		9D3CCB5B13BC7B36000D6235 /* LayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F101313824150003C7240 /* LayoutViewController.m */; };
+		9D3CCB5C13BC7B36000D6235 /* LayoutListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F101E138241AA003C7240 /* LayoutListController.m */; };
+		9D3CCB5D13BC7B36000D6235 /* LayoutDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F1025138257F8003C7240 /* LayoutDetailController.m */; };
+		9D3CCB5E13BC7B36000D6235 /* PictureGalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D727B711389535600870D79 /* PictureGalleryController.m */; };
+		9D3CCB5F13BC7B36000D6235 /* StockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F101713824150003C7240 /* StockViewController.m */; };
+		9D3CCB6013BC7B36000D6235 /* StockListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA092731382CBEC00CE4622 /* StockListController.m */; };
+		9D3CCB6113BC7B36000D6235 /* StockDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D579C9013837254005A3EC4 /* StockDetailController.m */; };
+		9D3CCB6213BC7B36000D6235 /* LoanCalculatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D642EF413850C9500A87D02 /* LoanCalculatorController.m */; };
+		9D3CCB6313BC7B36000D6235 /* ClientPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB107F413863F5D00190647 /* ClientPickerController.m */; };
+		9D3CCB6413BC7B36000D6235 /* PositionPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4ADB4413A4B5A900E6D8B0 /* PositionPickerController.m */; };
+		9D3CCB6513BC7B36000D6235 /* HousePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0994813A4C20800A653DD /* HousePickerController.m */; };
+		9D3CCB6613BC7B36000D6235 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3CCA0813BC5EAD000D6235 /* LoginViewController.m */; };
+		9D3CCB6713BC7B36000D6235 /* BatchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2F2D5E13AF1BEB00EF46E8 /* BatchListViewController.m */; };
+		9D3CCB6813BC7B36000D6235 /* EstateConsultantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D60C74C1390D1FF00D95E64 /* EstateConsultantViewController.m */; };
+		9D3CCB6913BC7B36000D6235 /* StackScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D60C7541390D6D800D95E64 /* StackScrollViewController.m */; };
+		9D3CCB6A13BC7B36000D6235 /* EstateConsultantAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA5CF1341CCE80065D815 /* EstateConsultantAppDelegate.m */; };
+		9D3CCB6B13BC7B36000D6235 /* EstateConsultantUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D2DFAFC134459A00022F1F0 /* EstateConsultantUtils.m */; };
+		9D3CCB6C13BC7B36000D6235 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DAEA5CC1341CCE80065D815 /* main.m */; };
+		9D3CCB6D13BC7B63000D6235 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B136D134DA0C4000DDA4D /* ioapi.c */; };
+		9D3CCB6E13BC7B63000D6235 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B136F134DA0C4000DDA4D /* mztools.c */; };
+		9D3CCB6F13BC7B63000D6235 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B1371134DA0C4000DDA4D /* unzip.c */; };
+		9D3CCB7013BC7B63000D6235 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B1373134DA0C4000DDA4D /* zip.c */; };
+		9D3CCB7113BC7B64000D6235 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9D7B1376134DA0C4000DDA4D /* ZipArchive.mm */; };
+		9D3CCB7213BC7BD8000D6235 /* EstateConsultant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D5A240F137BC92300F14CFC /* EstateConsultant.xcdatamodeld */; };
+		9D6E6F931424750800666955 /* ProfileFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2D9B901377C3A7001D4F85 /* ProfileFieldView.xib */; };
+		9D6E6F941424750800666955 /* ProfileEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF52512137E5E5F008EC8D5 /* ProfileEditView.xib */; };
+		9D6E6F951424750800666955 /* ClientHistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF52517137EC4B5008EC8D5 /* ClientHistoryView.xib */; };
+		9D6E6F961424750800666955 /* StockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D579C9813837814005A3EC4 /* StockTableViewCell.xib */; };
+		9D6E6F971424750800666955 /* NumberInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D623FBF138CF53F0019F1E4 /* NumberInputView.xib */; };
+		9D6E6F981424750800666955 /* DownPaymentInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB5B24138D5580000572E8 /* DownPaymentInputView.xib */; };
+		9D6E6F991424750800666955 /* StockListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F70A2139F5D1E00B0CF81 /* StockListHeaderView.xib */; };
+		9D6E6F9A1424750800666955 /* HouseItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DA7D63D13A08D770035BBB4 /* HouseItemView.xib */; };
+		9D6E6F9B1424750800666955 /* DiscountInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0AC42213B879600061F5B3 /* DiscountInputView.xib */; };
+		9D6E6F9C1424751200666955 /* ClientListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F0FFF13824124003C7240 /* ClientListController.xib */; };
+		9D6E6F9D1424751200666955 /* ClientDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F0FFD13824124003C7240 /* ClientDetailController.xib */; };
+		9D6E6F9E1424751200666955 /* ClientEditController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F0FFE13824124003C7240 /* ClientEditController.xib */; };
+		9D6E6F9F1424751200666955 /* ClientCreateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D579CA61383BE87005A3EC4 /* ClientCreateController.xib */; };
+		9D6E6FA01424751E00666955 /* LayoutListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F101F138241AA003C7240 /* LayoutListController.xib */; };
+		9D6E6FA11424751E00666955 /* LayoutDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F1026138257F9003C7240 /* LayoutDetailController.xib */; };
+		9D6E6FA21424751E00666955 /* PictureGalleryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D727B721389535600870D79 /* PictureGalleryController.xib */; };
+		9D6E6FA31424752700666955 /* StockListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DA092741382CBEC00CE4622 /* StockListController.xib */; };
+		9D6E6FA41424752700666955 /* StockDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D579C9113837254005A3EC4 /* StockDetailController.xib */; };
+		9D6E6FA51424753E00666955 /* LoanCalculatorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D642EF513850C9500A87D02 /* LoanCalculatorController.xib */; };
+		9D6E6FA61424753E00666955 /* ClientPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DB107F513863F5D00190647 /* ClientPickerController.xib */; };
+		9D6E6FA71424753E00666955 /* PositionPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4ADB4513A4B5A900E6D8B0 /* PositionPickerController.xib */; };
+		9D6E6FA81424753E00666955 /* HousePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DC0994913A4C20800A653DD /* HousePickerController.xib */; };
+		9D6E6FA91424754700666955 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CCA0913BC5EAD000D6235 /* LoginViewController.xib */; };
+		9D6E6FAA1424754700666955 /* BatchListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F2D5F13AF1BEC00EF46E8 /* BatchListViewController.xib */; };
+		9D6E6FAB1424754700666955 /* EstateConsultantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D60C74D1390D1FF00D95E64 /* EstateConsultantViewController.xib */; };
+		9D6E6FAC1424755000666955 /* icon-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CCA1B13BC6C3B000D6235 /* icon-512.png */; };
+		9D6E6FAD1424755C00666955 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D12289F13A5E7EA0067CCB5 /* keyboard.png */; };
+		9D6E6FAE1424755C00666955 /* keyboard-0pct.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD67413BB03560060AAA8 /* keyboard-0pct.png */; };
+		9D6E6FAF1424755C00666955 /* keyboard-1pct.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD67513BB03560060AAA8 /* keyboard-1pct.png */; };
+		9D6E6FB01424755C00666955 /* keyboard-2pct.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD67613BB03560060AAA8 /* keyboard-2pct.png */; };
+		9D6E6FB11424755C00666955 /* keyboard-3pct.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD67713BB03560060AAA8 /* keyboard-3pct.png */; };
+		9D6E6FB21424755C00666955 /* keyboard-4pct.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD67813BB03560060AAA8 /* keyboard-4pct.png */; };
+		9D6E6FB31424755C00666955 /* keyboard-5pct.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD67913BB03560060AAA8 /* keyboard-5pct.png */; };
+		9D6E6FB41424755C00666955 /* keyboard-6pct.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD67A13BB03560060AAA8 /* keyboard-6pct.png */; };
+		9D6E6FB51424755C00666955 /* keyboard-7pct.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD67B13BB03560060AAA8 /* keyboard-7pct.png */; };
+		9D6E6FB61424755C00666955 /* keyboard-8pct.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD67C13BB03560060AAA8 /* keyboard-8pct.png */; };
+		9D6E6FB71424755C00666955 /* keyboard-9pct.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD67D13BB03560060AAA8 /* keyboard-9pct.png */; };
+		9D6E6FB81424755C00666955 /* keyboard-10pct.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD67E13BB03560060AAA8 /* keyboard-10pct.png */; };
+		9D6E6FB91424755C00666955 /* keyboard-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228A213A5E9D20067CCB5 /* keyboard-0.png */; };
+		9D6E6FBA1424755C00666955 /* keyboard-0000.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228A313A5E9D20067CCB5 /* keyboard-0000.png */; };
+		9D6E6FBB1424755C00666955 /* keyboard-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228A413A5E9D20067CCB5 /* keyboard-1.png */; };
+		9D6E6FBC1424755C00666955 /* keyboard-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228A513A5E9D20067CCB5 /* keyboard-2.png */; };
+		9D6E6FBD1424755C00666955 /* keyboard-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228A613A5E9D20067CCB5 /* keyboard-3.png */; };
+		9D6E6FBE1424755C00666955 /* keyboard-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228A713A5E9D20067CCB5 /* keyboard-4.png */; };
+		9D6E6FBF1424755C00666955 /* keyboard-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228A813A5E9D20067CCB5 /* keyboard-5.png */; };
+		9D6E6FC01424755C00666955 /* keyboard-6.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228A913A5E9D20067CCB5 /* keyboard-6.png */; };
+		9D6E6FC11424755C00666955 /* keyboard-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228AA13A5E9D20067CCB5 /* keyboard-7.png */; };
+		9D6E6FC21424755C00666955 /* keyboard-8.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228AB13A5E9D20067CCB5 /* keyboard-8.png */; };
+		9D6E6FC31424755C00666955 /* keyboard-9.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228AC13A5E9D20067CCB5 /* keyboard-9.png */; };
+		9D6E6FC41424755C00666955 /* keyboard-30.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228AD13A5E9D20067CCB5 /* keyboard-30.png */; };
+		9D6E6FC51424755C00666955 /* keyboard-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228AE13A5E9D20067CCB5 /* keyboard-40.png */; };
+		9D6E6FC61424755C00666955 /* keyboard-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228AF13A5E9D20067CCB5 /* keyboard-50.png */; };
+		9D6E6FC71424755C00666955 /* keyboard-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228B013A5E9D20067CCB5 /* keyboard-60.png */; };
+		9D6E6FC81424755C00666955 /* keyboard-70.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228B113A5E9D20067CCB5 /* keyboard-70.png */; };
+		9D6E6FC91424755C00666955 /* keyboard-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228B213A5E9D20067CCB5 /* keyboard-80.png */; };
+		9D6E6FCA1424755C00666955 /* keyboard-90.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228B313A5E9D20067CCB5 /* keyboard-90.png */; };
+		9D6E6FCB1424755C00666955 /* keyboard-del.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228B413A5E9D20067CCB5 /* keyboard-del.png */; };
+		9D6E6FCC1424755C00666955 /* keyboard-done.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228B513A5E9D20067CCB5 /* keyboard-done.png */; };
+		9D6E6FCD1424755C00666955 /* keyboard-reset.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D1228B613A5E9D20067CCB5 /* keyboard-reset.png */; };
+		9D6E6FCE1424756900666955 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CCA4613BC710B000D6235 /* Default-Landscape.png */; };
+		9D6E6FCF1424756900666955 /* forgetpwd-buttonclick.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CCC0413BDACA9000D6235 /* forgetpwd-buttonclick.png */; };
+		9D6E6FD01424756900666955 /* forgetpwd-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CCC0513BDACA9000D6235 /* forgetpwd-button.png */; };
+		9D6E6FD11424756900666955 /* scroll-mask-top.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DDF396913B04C07006D6863 /* scroll-mask-top.png */; };
+		9D6E6FD21424756900666955 /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CCA1713BC6C2F000D6235 /* login-bg.jpg */; };
+		9D6E6FD31424756900666955 /* logo-login.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CCA0C13BC5F87000D6235 /* logo-login.png */; };
+		9D6E6FD41424756900666955 /* signin-inputarea.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CCA0E13BC604E000D6235 /* signin-inputarea.png */; };
+		9D6E6FD51424756900666955 /* signin-trybutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CCA1413BC645E000D6235 /* signin-trybutton.png */; };
+		9D6E6FD61424756900666955 /* signin-forgetpwdbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CCA1013BC60CE000D6235 /* signin-forgetpwdbutton.png */; };
+		9D6E6FD71424756900666955 /* signin-signinbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3CCA1113BC60CE000D6235 /* signin-signinbutton.png */; };
+		9D6E6FD81424756900666955 /* addclient-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE565B513A65364005E667E /* addclient-bg.png */; };
+		9D6E6FD91424756900666955 /* listitem-tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F2D6213AF1F5F00EF46E8 /* listitem-tick.png */; };
+		9D6E6FDA1424756900666955 /* addclient-button-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE565B613A65364005E667E /* addclient-button-highlighted.png */; };
+		9D6E6FDB1424756900666955 /* addclient-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE565B713A65364005E667E /* addclient-button.png */; };
+		9D6E6FDC1424756900666955 /* addclient-genderselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE565B813A65364005E667E /* addclient-genderselected.png */; };
+		9D6E6FDD1424756900666955 /* addclient-line.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DE565B913A65364005E667E /* addclient-line.png */; };
+		9D6E6FDE1424756900666955 /* calculator-segmented-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3FC13A3ACA600C06B15 /* calculator-segmented-selected.png */; };
+		9D6E6FDF1424756900666955 /* calculator-segmented.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3FD13A3ACA600C06B15 /* calculator-segmented.png */; };
+		9D6E6FE01424756900666955 /* calculator-textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3F613A39B9000C06B15 /* calculator-textfield.png */; };
+		9D6E6FE11424756900666955 /* calculator-textfieldsmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD68B13BB1F650060AAA8 /* calculator-textfieldsmall.png */; };
+		9D6E6FE21424756900666955 /* calculator-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3EE13A37D9000C06B15 /* calculator-bg.png */; };
+		9D6E6FE31424756900666955 /* calculator-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3F013A3927300C06B15 /* calculator-button.png */; };
+		9D6E6FE41424756900666955 /* housedetail-iconcalculator.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3E613A36FA000C06B15 /* housedetail-iconcalculator.png */; };
+		9D6E6FE51424756900666955 /* housedetail-forsell.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3E813A3794D00C06B15 /* housedetail-forsell.png */; };
+		9D6E6FE61424756900666955 /* housedetail-ordered.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3E913A3794D00C06B15 /* housedetail-ordered.png */; };
+		9D6E6FE71424756900666955 /* housedetail-sold.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3EA13A3794E00C06B15 /* housedetail-sold.png */; };
+		9D6E6FE81424756900666955 /* star-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1913A23F6400F84C61 /* star-on.png */; };
+		9D6E6FE91424756900666955 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1A13A23F6400F84C61 /* star.png */; };
+		9D6E6FEA1424756900666955 /* searchbar-short.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4ADB4013A4ACDF00E6D8B0 /* searchbar-short.png */; };
+		9D6E6FEB1424756900666955 /* stock-detail-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3DE13A36BEC00C06B15 /* stock-detail-bg.png */; };
+		9D6E6FEC1424756900666955 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EEA13A1FD1D00F84C61 /* bg.jpg */; };
+		9D6E6FED1424756900666955 /* listitem-title.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3DC13A368E400C06B15 /* listitem-title.png */; };
+		9D6E6FEE1424756900666955 /* profile-field-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3D813A3509F00C06B15 /* profile-field-selected.png */; };
+		9D6E6FEF1424756900666955 /* profile-field.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3D913A3509F00C06B15 /* profile-field.png */; };
+		9D6E6FF01424756900666955 /* clientedit-cancel-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3D313A3387800C06B15 /* clientedit-cancel-icon.png */; };
+		9D6E6FF11424756900666955 /* clientedit-done-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3D413A3387800C06B15 /* clientedit-done-icon.png */; };
+		9D6E6FF21424756900666955 /* layoutdetail-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F2513A24CEA00F84C61 /* layoutdetail-bg.png */; };
+		9D6E6FF31424756900666955 /* searchbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1113A21F7D00F84C61 /* searchbar.png */; };
+		9D6E6FF41424756900666955 /* clientdetail-edit-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1F13A2406F00F84C61 /* clientdetail-edit-icon.png */; };
+		9D6E6FF51424756900666955 /* clientdetail-trash-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D7CD68D13BB2C8A0060AAA8 /* clientdetail-trash-icon.png */; };
+		9D6E6FF61424756A00666955 /* clientdetail-seperate.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1D13A23FB300F84C61 /* clientdetail-seperate.png */; };
+		9D6E6FF71424756A00666955 /* clientdetail-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1713A23CF900F84C61 /* clientdetail-bg.png */; };
+		9D6E6FF81424756A00666955 /* layout-nexticon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF40013A3AD1E00C06B15 /* layout-nexticon.png */; };
+		9D6E6FF91424756A00666955 /* layout-previcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF40113A3AD1E00C06B15 /* layout-previcon.png */; };
+		9D6E6FFA1424756A00666955 /* listitem-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1313A23A7700F84C61 /* listitem-selected.png */; };
+		9D6E6FFB1424756A00666955 /* listitem.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F1413A23A7700F84C61 /* listitem.png */; };
+		9D6E6FFC1424756A00666955 /* list-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0F13A21B1900F84C61 /* list-bg.png */; };
+		9D6E6FFD1424756A00666955 /* nav-light-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0D13A2184A00F84C61 /* nav-light-button.png */; };
+		9D6E6FFE1424756A00666955 /* nav-toolbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0913A2167800F84C61 /* nav-toolbar.png */; };
+		9D6E6FFF1424756A00666955 /* nav-sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0B13A2179100F84C61 /* nav-sync.png */; };
+		9D6E70001424756A00666955 /* nav-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EF113A20BAC00F84C61 /* nav-button.png */; };
+		9D6E70011424756A00666955 /* nav-button-bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EF313A2124800F84C61 /* nav-button-bottom.png */; };
+		9D6E70021424756A00666955 /* nav-button-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EEF13A20B7D00F84C61 /* nav-button-selected.png */; };
+		9D6E70031424756A00666955 /* single-select-button-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E257D139BD4BE00E5FA45 /* single-select-button-selected.png */; };
+		9D6E70041424756A00666955 /* single-select-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E257E139BD4BE00E5FA45 /* single-select-button.png */; };
+		9D6E70051424756A00666955 /* nav-client-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EF513A212C400F84C61 /* nav-client-selected.png */; };
+		9D6E70061424756A00666955 /* nav-client.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EF613A212C400F84C61 /* nav-client.png */; };
+		9D6E70071424756A00666955 /* nav-house-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EF713A212C400F84C61 /* nav-house-selected.png */; };
+		9D6E70081424756A00666955 /* nav-house.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EF813A212C400F84C61 /* nav-house.png */; };
+		9D6E70091424756A00666955 /* nav-layout-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EFD13A2139700F84C61 /* nav-layout-selected.png */; };
+		9D6E700A1424756A00666955 /* nav-layout.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EFE13A2139700F84C61 /* nav-layout.png */; };
+		9D6E700B1424756A00666955 /* nav-addclient-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0113A2148100F84C61 /* nav-addclient-selected.png */; };
+		9D6E700C1424756A00666955 /* nav-addclient.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0213A2148100F84C61 /* nav-addclient.png */; };
+		9D6E700D1424756A00666955 /* nav-calculator-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0513A2151800F84C61 /* nav-calculator-selected.png */; };
+		9D6E700E1424756A00666955 /* nav-calculator.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3F0613A2151800F84C61 /* nav-calculator.png */; };
+		9D6E700F1424756A00666955 /* consultant.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D60C7511390D31200D95E64 /* consultant.png */; };
+		9D6E70101424756A00666955 /* stock.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0926A1382BAA900CE4622 /* stock.png */; };
+		9D6E70111424756A00666955 /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D2F10221382482E003C7240 /* house.png */; };
+		9D6E70121424756A00666955 /* clients.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D36855F136F0D1600AD04FF /* clients.png */; };
+		9D6E70131424756A00666955 /* calculator-cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3F213A3942600C06B15 /* calculator-cancel.png */; };
+		9D6E70141424756A00666955 /* calculator-choose-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4CF3F413A395EA00C06B15 /* calculator-choose-button.png */; };
+		9D6E70151424756A00666955 /* default-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DCB3EED13A1FFDA00F84C61 /* default-avatar.png */; };
+		9D6E70161424757000666955 /* Estate.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D62283C139FD13600E9EDFF /* Estate.plist */; };
+		9D6E70171424757000666955 /* Profile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D5A240A137BC1B600F14CFC /* Profile.plist */; };
+		9D6E70181424757000666955 /* Client.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5E31341CDD20065D815 /* Client.plist */; };
+		9D6E70191424757000666955 /* Consultant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5FB13422BA10065D815 /* Consultant.plist */; };
+		9D6E701A1424757000666955 /* History.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5FD13422C260065D815 /* History.plist */; };
+		9D6E701B1424757000666955 /* House.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5FF13422C420065D815 /* House.plist */; };
+		9D6E701C1424757000666955 /* Layout.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA60113422C4F0065D815 /* Layout.plist */; };
+		9D6E701D1424757000666955 /* Position.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA60313422C5A0065D815 /* Position.plist */; };
+		9D6E701E1424757700666955 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5E91341CDD20065D815 /* InfoPlist.strings */; };
+		9D6E701F1424757700666955 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DAEA5EB1341CDD20065D815 /* MainWindow.xib */; };
+		9D6E70201424757700666955 /* defaults.zip in Resources */ = {isa = PBXBuildFile; fileRef = 9D7B1368134D9AF7000DDA4D /* defaults.zip */; };
+		9DFE71201426FBEF0043D57D /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DFE711F1426FBEF0043D57D /* icon-72.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D0AC41E13B879030061F5B3 /* DiscountInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscountInputView.h; sourceTree = "<group>"; };
+		9D0AC41F13B879030061F5B3 /* DiscountInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscountInputView.m; sourceTree = "<group>"; };
+		9D0AC42213B879600061F5B3 /* DiscountInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountInputView.xib; sourceTree = "<group>"; };
+		9D12289F13A5E7EA0067CCB5 /* keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard.png; sourceTree = "<group>"; };
+		9D1228A213A5E9D20067CCB5 /* keyboard-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-0.png"; sourceTree = "<group>"; };
+		9D1228A313A5E9D20067CCB5 /* keyboard-0000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-0000.png"; sourceTree = "<group>"; };
+		9D1228A413A5E9D20067CCB5 /* keyboard-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-1.png"; sourceTree = "<group>"; };
+		9D1228A513A5E9D20067CCB5 /* keyboard-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-2.png"; sourceTree = "<group>"; };
+		9D1228A613A5E9D20067CCB5 /* keyboard-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-3.png"; sourceTree = "<group>"; };
+		9D1228A713A5E9D20067CCB5 /* keyboard-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-4.png"; sourceTree = "<group>"; };
+		9D1228A813A5E9D20067CCB5 /* keyboard-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-5.png"; sourceTree = "<group>"; };
+		9D1228A913A5E9D20067CCB5 /* keyboard-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-6.png"; sourceTree = "<group>"; };
+		9D1228AA13A5E9D20067CCB5 /* keyboard-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-7.png"; sourceTree = "<group>"; };
+		9D1228AB13A5E9D20067CCB5 /* keyboard-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-8.png"; sourceTree = "<group>"; };
+		9D1228AC13A5E9D20067CCB5 /* keyboard-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-9.png"; sourceTree = "<group>"; };
+		9D1228AD13A5E9D20067CCB5 /* keyboard-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-30.png"; sourceTree = "<group>"; };
+		9D1228AE13A5E9D20067CCB5 /* keyboard-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-40.png"; sourceTree = "<group>"; };
+		9D1228AF13A5E9D20067CCB5 /* keyboard-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-50.png"; sourceTree = "<group>"; };
+		9D1228B013A5E9D20067CCB5 /* keyboard-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-60.png"; sourceTree = "<group>"; };
+		9D1228B113A5E9D20067CCB5 /* keyboard-70.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-70.png"; sourceTree = "<group>"; };
+		9D1228B213A5E9D20067CCB5 /* keyboard-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-80.png"; sourceTree = "<group>"; };
+		9D1228B313A5E9D20067CCB5 /* keyboard-90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-90.png"; sourceTree = "<group>"; };
+		9D1228B413A5E9D20067CCB5 /* keyboard-del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-del.png"; sourceTree = "<group>"; };
+		9D1228B513A5E9D20067CCB5 /* keyboard-done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-done.png"; sourceTree = "<group>"; };
+		9D1228B613A5E9D20067CCB5 /* keyboard-reset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-reset.png"; sourceTree = "<group>"; };
 		9D236A60138AB38700A6B01A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9D2D9B8D1377C392001D4F85 /* ProfileFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileFieldView.h; sourceTree = "<group>"; };
 		9D2D9B8E1377C392001D4F85 /* ProfileFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileFieldView.m; sourceTree = "<group>"; };
@@ -184,10 +268,28 @@
 		9D2F1024138257F7003C7240 /* LayoutDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutDetailController.h; sourceTree = "<group>"; };
 		9D2F1025138257F8003C7240 /* LayoutDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutDetailController.m; sourceTree = "<group>"; };
 		9D2F1026138257F9003C7240 /* LayoutDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LayoutDetailController.xib; sourceTree = "<group>"; };
+		9D2F2D5D13AF1BEB00EF46E8 /* BatchListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatchListViewController.h; sourceTree = "<group>"; };
+		9D2F2D5E13AF1BEB00EF46E8 /* BatchListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchListViewController.m; sourceTree = "<group>"; };
+		9D2F2D5F13AF1BEC00EF46E8 /* BatchListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BatchListViewController.xib; sourceTree = "<group>"; };
+		9D2F2D6213AF1F5F00EF46E8 /* listitem-tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listitem-tick.png"; sourceTree = "<group>"; };
 		9D2F709F139F5D0100B0CF81 /* StockListHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockListHeaderView.h; sourceTree = "<group>"; };
 		9D2F70A0139F5D0100B0CF81 /* StockListHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockListHeaderView.m; sourceTree = "<group>"; };
 		9D2F70A2139F5D1E00B0CF81 /* StockListHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockListHeaderView.xib; sourceTree = "<group>"; };
 		9D36855F136F0D1600AD04FF /* clients.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clients.png; sourceTree = "<group>"; };
+		9D3CCA0713BC5EAD000D6235 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		9D3CCA0813BC5EAD000D6235 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		9D3CCA0913BC5EAD000D6235 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		9D3CCA0C13BC5F87000D6235 /* logo-login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-login.png"; sourceTree = "<group>"; };
+		9D3CCA0E13BC604E000D6235 /* signin-inputarea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signin-inputarea.png"; sourceTree = "<group>"; };
+		9D3CCA1013BC60CE000D6235 /* signin-forgetpwdbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signin-forgetpwdbutton.png"; sourceTree = "<group>"; };
+		9D3CCA1113BC60CE000D6235 /* signin-signinbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signin-signinbutton.png"; sourceTree = "<group>"; };
+		9D3CCA1413BC645E000D6235 /* signin-trybutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signin-trybutton.png"; sourceTree = "<group>"; };
+		9D3CCA1713BC6C2F000D6235 /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
+		9D3CCA1B13BC6C3B000D6235 /* icon-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-512.png"; sourceTree = "<group>"; };
+		9D3CCA2513BC6CFB000D6235 /* EstateConsultant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EstateConsultant.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D3CCA4613BC710B000D6235 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
+		9D3CCC0413BDACA9000D6235 /* forgetpwd-buttonclick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forgetpwd-buttonclick.png"; sourceTree = "<group>"; };
+		9D3CCC0513BDACA9000D6235 /* forgetpwd-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forgetpwd-button.png"; sourceTree = "<group>"; };
 		9D4ADB4013A4ACDF00E6D8B0 /* searchbar-short.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchbar-short.png"; sourceTree = "<group>"; };
 		9D4ADB4313A4B5A800E6D8B0 /* PositionPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionPickerController.h; sourceTree = "<group>"; };
 		9D4ADB4413A4B5A900E6D8B0 /* PositionPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionPickerController.m; sourceTree = "<group>"; };
@@ -277,6 +379,19 @@
 		9D7B1375134DA0C4000DDA4D /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		9D7B1376134DA0C4000DDA4D /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
 		9D7B137C134DA4D7000DDA4D /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		9D7CD67413BB03560060AAA8 /* keyboard-0pct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-0pct.png"; sourceTree = "<group>"; };
+		9D7CD67513BB03560060AAA8 /* keyboard-1pct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-1pct.png"; sourceTree = "<group>"; };
+		9D7CD67613BB03560060AAA8 /* keyboard-2pct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-2pct.png"; sourceTree = "<group>"; };
+		9D7CD67713BB03560060AAA8 /* keyboard-3pct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-3pct.png"; sourceTree = "<group>"; };
+		9D7CD67813BB03560060AAA8 /* keyboard-4pct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-4pct.png"; sourceTree = "<group>"; };
+		9D7CD67913BB03560060AAA8 /* keyboard-5pct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-5pct.png"; sourceTree = "<group>"; };
+		9D7CD67A13BB03560060AAA8 /* keyboard-6pct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-6pct.png"; sourceTree = "<group>"; };
+		9D7CD67B13BB03560060AAA8 /* keyboard-7pct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-7pct.png"; sourceTree = "<group>"; };
+		9D7CD67C13BB03560060AAA8 /* keyboard-8pct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-8pct.png"; sourceTree = "<group>"; };
+		9D7CD67D13BB03560060AAA8 /* keyboard-9pct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-9pct.png"; sourceTree = "<group>"; };
+		9D7CD67E13BB03560060AAA8 /* keyboard-10pct.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard-10pct.png"; sourceTree = "<group>"; };
+		9D7CD68B13BB1F650060AAA8 /* calculator-textfieldsmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calculator-textfieldsmall.png"; sourceTree = "<group>"; };
+		9D7CD68D13BB2C8A0060AAA8 /* clientdetail-trash-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clientdetail-trash-icon.png"; sourceTree = "<group>"; };
 		9DA0926A1382BAA900CE4622 /* stock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stock.png; sourceTree = "<group>"; };
 		9DA092721382CBEC00CE4622 /* StockListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockListController.h; sourceTree = "<group>"; };
 		9DA092731382CBEC00CE4622 /* StockListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockListController.m; sourceTree = "<group>"; };
@@ -284,7 +399,6 @@
 		9DA7D63913A08D5A0035BBB4 /* HouseItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseItemView.h; sourceTree = "<group>"; };
 		9DA7D63A13A08D5A0035BBB4 /* HouseItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseItemView.m; sourceTree = "<group>"; };
 		9DA7D63D13A08D770035BBB4 /* HouseItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseItemView.xib; sourceTree = "<group>"; };
-		9DAEA5B91341CCE80065D815 /* EstateConsultant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EstateConsultant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DAEA5BD1341CCE80065D815 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9DAEA5BF1341CCE80065D815 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9DAEA5C11341CCE80065D815 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -339,37 +453,103 @@
 		9DCB5B20138D555F000572E8 /* DownPaymentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownPaymentInputView.h; sourceTree = "<group>"; };
 		9DCB5B21138D555F000572E8 /* DownPaymentInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownPaymentInputView.m; sourceTree = "<group>"; };
 		9DCB5B24138D5580000572E8 /* DownPaymentInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DownPaymentInputView.xib; sourceTree = "<group>"; };
+		9DDF396913B04C07006D6863 /* scroll-mask-top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scroll-mask-top.png"; sourceTree = "<group>"; };
+		9DE565B513A65364005E667E /* addclient-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addclient-bg.png"; sourceTree = "<group>"; };
+		9DE565B613A65364005E667E /* addclient-button-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addclient-button-highlighted.png"; sourceTree = "<group>"; };
+		9DE565B713A65364005E667E /* addclient-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addclient-button.png"; sourceTree = "<group>"; };
+		9DE565B813A65364005E667E /* addclient-genderselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addclient-genderselected.png"; sourceTree = "<group>"; };
+		9DE565B913A65364005E667E /* addclient-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addclient-line.png"; sourceTree = "<group>"; };
 		9DF5250F137E5E48008EC8D5 /* ProfileEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileEditView.h; sourceTree = "<group>"; };
 		9DF52510137E5E48008EC8D5 /* ProfileEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileEditView.m; sourceTree = "<group>"; };
 		9DF52512137E5E5F008EC8D5 /* ProfileEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileEditView.xib; sourceTree = "<group>"; };
 		9DF52514137EC49F008EC8D5 /* ClientHistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientHistoryView.h; sourceTree = "<group>"; };
 		9DF52515137EC49F008EC8D5 /* ClientHistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientHistoryView.m; sourceTree = "<group>"; };
 		9DF52517137EC4B5008EC8D5 /* ClientHistoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientHistoryView.xib; sourceTree = "<group>"; };
+		9DFE711F1426FBEF0043D57D /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9DAEA5B61341CCE80065D815 /* Frameworks */ = {
+		9D3CCA2213BC6CFB000D6235 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D236A61138AB38700A6B01A /* QuartzCore.framework in Frameworks */,
-				9D7B137D134DA4D7000DDA4D /* libz.1.2.3.dylib in Frameworks */,
-				9DAEA5BE1341CCE80065D815 /* UIKit.framework in Frameworks */,
-				9DAEA5C01341CCE80065D815 /* Foundation.framework in Frameworks */,
-				9DAEA5C21341CCE80065D815 /* CoreGraphics.framework in Frameworks */,
-				9DAEA5C41341CCE80065D815 /* CoreData.framework in Frameworks */,
+				9D3CCA2713BC6CFB000D6235 /* UIKit.framework in Frameworks */,
+				9D3CCA2813BC6CFB000D6235 /* Foundation.framework in Frameworks */,
+				9D3CCA2913BC6CFB000D6235 /* CoreGraphics.framework in Frameworks */,
+				9D3CCA2A13BC6CFB000D6235 /* CoreData.framework in Frameworks */,
+				9D3CCA4913BC7452000D6235 /* QuartzCore.framework in Frameworks */,
+				9D3CCA4A13BC7459000D6235 /* libz.1.2.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D1228A113A5E9970067CCB5 /* keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				9D12289F13A5E7EA0067CCB5 /* keyboard.png */,
+				9D7CD67413BB03560060AAA8 /* keyboard-0pct.png */,
+				9D7CD67513BB03560060AAA8 /* keyboard-1pct.png */,
+				9D7CD67613BB03560060AAA8 /* keyboard-2pct.png */,
+				9D7CD67713BB03560060AAA8 /* keyboard-3pct.png */,
+				9D7CD67813BB03560060AAA8 /* keyboard-4pct.png */,
+				9D7CD67913BB03560060AAA8 /* keyboard-5pct.png */,
+				9D7CD67A13BB03560060AAA8 /* keyboard-6pct.png */,
+				9D7CD67B13BB03560060AAA8 /* keyboard-7pct.png */,
+				9D7CD67C13BB03560060AAA8 /* keyboard-8pct.png */,
+				9D7CD67D13BB03560060AAA8 /* keyboard-9pct.png */,
+				9D7CD67E13BB03560060AAA8 /* keyboard-10pct.png */,
+				9D1228A213A5E9D20067CCB5 /* keyboard-0.png */,
+				9D1228A313A5E9D20067CCB5 /* keyboard-0000.png */,
+				9D1228A413A5E9D20067CCB5 /* keyboard-1.png */,
+				9D1228A513A5E9D20067CCB5 /* keyboard-2.png */,
+				9D1228A613A5E9D20067CCB5 /* keyboard-3.png */,
+				9D1228A713A5E9D20067CCB5 /* keyboard-4.png */,
+				9D1228A813A5E9D20067CCB5 /* keyboard-5.png */,
+				9D1228A913A5E9D20067CCB5 /* keyboard-6.png */,
+				9D1228AA13A5E9D20067CCB5 /* keyboard-7.png */,
+				9D1228AB13A5E9D20067CCB5 /* keyboard-8.png */,
+				9D1228AC13A5E9D20067CCB5 /* keyboard-9.png */,
+				9D1228AD13A5E9D20067CCB5 /* keyboard-30.png */,
+				9D1228AE13A5E9D20067CCB5 /* keyboard-40.png */,
+				9D1228AF13A5E9D20067CCB5 /* keyboard-50.png */,
+				9D1228B013A5E9D20067CCB5 /* keyboard-60.png */,
+				9D1228B113A5E9D20067CCB5 /* keyboard-70.png */,
+				9D1228B213A5E9D20067CCB5 /* keyboard-80.png */,
+				9D1228B313A5E9D20067CCB5 /* keyboard-90.png */,
+				9D1228B413A5E9D20067CCB5 /* keyboard-del.png */,
+				9D1228B513A5E9D20067CCB5 /* keyboard-done.png */,
+				9D1228B613A5E9D20067CCB5 /* keyboard-reset.png */,
+			);
+			name = keyboard;
+			sourceTree = "<group>";
+		};
 		9D13234E136D61B600D28686 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9D3CCA1A13BC6C3B000D6235 /* icon */,
+				9D1228A113A5E9970067CCB5 /* keyboard */,
+				9D3CCA4613BC710B000D6235 /* Default-Landscape.png */,
+				9D3CCC0413BDACA9000D6235 /* forgetpwd-buttonclick.png */,
+				9D3CCC0513BDACA9000D6235 /* forgetpwd-button.png */,
+				9DDF396913B04C07006D6863 /* scroll-mask-top.png */,
+				9D3CCA1713BC6C2F000D6235 /* login-bg.jpg */,
+				9D3CCA0C13BC5F87000D6235 /* logo-login.png */,
+				9D3CCA0E13BC604E000D6235 /* signin-inputarea.png */,
+				9D3CCA1413BC645E000D6235 /* signin-trybutton.png */,
+				9D3CCA1013BC60CE000D6235 /* signin-forgetpwdbutton.png */,
+				9D3CCA1113BC60CE000D6235 /* signin-signinbutton.png */,
+				9DE565B513A65364005E667E /* addclient-bg.png */,
+				9D2F2D6213AF1F5F00EF46E8 /* listitem-tick.png */,
+				9DE565B613A65364005E667E /* addclient-button-highlighted.png */,
+				9DE565B713A65364005E667E /* addclient-button.png */,
+				9DE565B813A65364005E667E /* addclient-genderselected.png */,
+				9DE565B913A65364005E667E /* addclient-line.png */,
 				9D4CF3FC13A3ACA600C06B15 /* calculator-segmented-selected.png */,
 				9D4CF3FD13A3ACA600C06B15 /* calculator-segmented.png */,
 				9D4CF3F613A39B9000C06B15 /* calculator-textfield.png */,
+				9D7CD68B13BB1F650060AAA8 /* calculator-textfieldsmall.png */,
 				9D4CF3EE13A37D9000C06B15 /* calculator-bg.png */,
 				9D4CF3F013A3927300C06B15 /* calculator-button.png */,
 				9D4CF3E613A36FA000C06B15 /* housedetail-iconcalculator.png */,
@@ -389,6 +569,7 @@
 				9DCB3F2513A24CEA00F84C61 /* layoutdetail-bg.png */,
 				9DCB3F1113A21F7D00F84C61 /* searchbar.png */,
 				9DCB3F1F13A2406F00F84C61 /* clientdetail-edit-icon.png */,
+				9D7CD68D13BB2C8A0060AAA8 /* clientdetail-trash-icon.png */,
 				9DCB3F1D13A23FB300F84C61 /* clientdetail-seperate.png */,
 				9DCB3F1713A23CF900F84C61 /* clientdetail-bg.png */,
 				9D4CF40013A3AD1E00C06B15 /* layout-nexticon.png */,
@@ -508,8 +689,20 @@
 				9DA7D63913A08D5A0035BBB4 /* HouseItemView.h */,
 				9DA7D63A13A08D5A0035BBB4 /* HouseItemView.m */,
 				9DA7D63D13A08D770035BBB4 /* HouseItemView.xib */,
+				9D0AC41E13B879030061F5B3 /* DiscountInputView.h */,
+				9D0AC41F13B879030061F5B3 /* DiscountInputView.m */,
+				9D0AC42213B879600061F5B3 /* DiscountInputView.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9D3CCA1A13BC6C3B000D6235 /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				9DFE711F1426FBEF0043D57D /* icon-72.png */,
+				9D3CCA1B13BC6C3B000D6235 /* icon-512.png */,
+			);
+			path = icon;
 			sourceTree = "<group>";
 		};
 		9D642EF213850C9400A87D02 /* Loan */ = {
@@ -569,7 +762,7 @@
 		9DAEA5BA1341CCE80065D815 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9DAEA5B91341CCE80065D815 /* EstateConsultant.app */,
+				9D3CCA2513BC6CFB000D6235 /* EstateConsultant.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -597,11 +790,11 @@
 				9DAEA5E11341CDD20065D815 /* Resources */,
 				9DAEA5C71341CCE80065D815 /* EstateConsultant-Info.plist */,
 				9DAEA5CB1341CCE80065D815 /* EstateConsultant-Prefix.pch */,
-				9DAEA5CC1341CCE80065D815 /* main.m */,
 				9DAEA5CE1341CCE80065D815 /* EstateConsultantAppDelegate.h */,
 				9DAEA5CF1341CCE80065D815 /* EstateConsultantAppDelegate.m */,
 				9D2DFAFB134459A00022F1F0 /* EstateConsultantUtils.h */,
 				9D2DFAFC134459A00022F1F0 /* EstateConsultantUtils.m */,
+				9DAEA5CC1341CCE80065D815 /* main.m */,
 			);
 			path = EstateConsultant;
 			sourceTree = "<group>";
@@ -674,6 +867,12 @@
 				9D2F101113824150003C7240 /* Layout */,
 				9D2F101513824150003C7240 /* Stock */,
 				9D642EF213850C9400A87D02 /* Loan */,
+				9D3CCA0713BC5EAD000D6235 /* LoginViewController.h */,
+				9D3CCA0813BC5EAD000D6235 /* LoginViewController.m */,
+				9D3CCA0913BC5EAD000D6235 /* LoginViewController.xib */,
+				9D2F2D5D13AF1BEB00EF46E8 /* BatchListViewController.h */,
+				9D2F2D5E13AF1BEB00EF46E8 /* BatchListViewController.m */,
+				9D2F2D5F13AF1BEC00EF46E8 /* BatchListViewController.xib */,
 				9D60C74B1390D1FF00D95E64 /* EstateConsultantViewController.h */,
 				9D60C74C1390D1FF00D95E64 /* EstateConsultantViewController.m */,
 				9D60C74D1390D1FF00D95E64 /* EstateConsultantViewController.xib */,
@@ -686,13 +885,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9DAEA5B81341CCE80065D815 /* EstateConsultant */ = {
+		9D3CCA2413BC6CFB000D6235 /* EstateConsultant */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9DAEA5D91341CCE80065D815 /* Build configuration list for PBXNativeTarget "EstateConsultant" */;
+			buildConfigurationList = 9D3CCA3D13BC6CFB000D6235 /* Build configuration list for PBXNativeTarget "EstateConsultant" */;
 			buildPhases = (
-				9DAEA5B51341CCE80065D815 /* Sources */,
-				9DAEA5B61341CCE80065D815 /* Frameworks */,
-				9DAEA5B71341CCE80065D815 /* Resources */,
+				9D3CCA2113BC6CFB000D6235 /* Sources */,
+				9D3CCA2213BC6CFB000D6235 /* Frameworks */,
+				9D3CCA2313BC6CFB000D6235 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -700,7 +899,7 @@
 			);
 			name = EstateConsultant;
 			productName = EstateConsultant;
-			productReference = 9DAEA5B91341CCE80065D815 /* EstateConsultant.app */;
+			productReference = 9D3CCA2513BC6CFB000D6235 /* EstateConsultant.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -724,162 +923,221 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9DAEA5B81341CCE80065D815 /* EstateConsultant */,
+				9D3CCA2413BC6CFB000D6235 /* EstateConsultant */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9DAEA5B71341CCE80065D815 /* Resources */ = {
+		9D3CCA2313BC6CFB000D6235 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DAEA5EE1341CDD20065D815 /* Client.plist in Resources */,
-				9DAEA5F11341CDD20065D815 /* InfoPlist.strings in Resources */,
-				9DAEA5F21341CDD20065D815 /* MainWindow.xib in Resources */,
-				9DAEA5FC13422BA10065D815 /* Consultant.plist in Resources */,
-				9DAEA5FE13422C260065D815 /* History.plist in Resources */,
-				9DAEA60013422C420065D815 /* House.plist in Resources */,
-				9DAEA60213422C500065D815 /* Layout.plist in Resources */,
-				9DAEA60413422C5A0065D815 /* Position.plist in Resources */,
-				9D7B1369134D9AF7000DDA4D /* defaults.zip in Resources */,
-				9D368560136F0D1600AD04FF /* clients.png in Resources */,
-				9D2D9B911377C3A7001D4F85 /* ProfileFieldView.xib in Resources */,
-				9D5A240B137BC1B600F14CFC /* Profile.plist in Resources */,
-				9DF52513137E5E5F008EC8D5 /* ProfileEditView.xib in Resources */,
-				9DF52518137EC4B5008EC8D5 /* ClientHistoryView.xib in Resources */,
-				9D2F100713824124003C7240 /* ClientDetailController.xib in Resources */,
-				9D2F100813824124003C7240 /* ClientEditController.xib in Resources */,
-				9D2F100913824124003C7240 /* ClientListController.xib in Resources */,
-				9D2F1021138241AA003C7240 /* LayoutListController.xib in Resources */,
-				9D2F10231382482E003C7240 /* house.png in Resources */,
-				9D2F1028138257F9003C7240 /* LayoutDetailController.xib in Resources */,
-				9DA0926B1382BAA900CE4622 /* stock.png in Resources */,
-				9DA092761382CBEC00CE4622 /* StockListController.xib in Resources */,
-				9D579C9313837254005A3EC4 /* StockDetailController.xib in Resources */,
-				9D579C9913837814005A3EC4 /* StockTableViewCell.xib in Resources */,
-				9D579CA81383BE87005A3EC4 /* ClientCreateController.xib in Resources */,
-				9D642EF713850C9500A87D02 /* LoanCalculatorController.xib in Resources */,
-				9DB107F713863F5D00190647 /* ClientPickerController.xib in Resources */,
-				9D727B741389535600870D79 /* PictureGalleryController.xib in Resources */,
-				9D623FC0138CF53F0019F1E4 /* NumberInputView.xib in Resources */,
-				9DCB5B25138D5580000572E8 /* DownPaymentInputView.xib in Resources */,
-				9D60C74F1390D1FF00D95E64 /* EstateConsultantViewController.xib in Resources */,
-				9D60C7521390D31200D95E64 /* consultant.png in Resources */,
-				9D2E257F139BD4BE00E5FA45 /* single-select-button-selected.png in Resources */,
-				9D2E2580139BD4BE00E5FA45 /* single-select-button.png in Resources */,
-				9D2F70A3139F5D1E00B0CF81 /* StockListHeaderView.xib in Resources */,
-				9D62283D139FD13600E9EDFF /* Estate.plist in Resources */,
-				9DA7D63E13A08D770035BBB4 /* HouseItemView.xib in Resources */,
-				9DCB3EEB13A1FD1D00F84C61 /* bg.jpg in Resources */,
-				9DCB3EEE13A1FFDA00F84C61 /* default-avatar.png in Resources */,
-				9DCB3EF013A20B7D00F84C61 /* nav-button-selected.png in Resources */,
-				9DCB3EF213A20BAC00F84C61 /* nav-button.png in Resources */,
-				9DCB3EF413A2124900F84C61 /* nav-button-bottom.png in Resources */,
-				9DCB3EF913A212C400F84C61 /* nav-client-selected.png in Resources */,
-				9DCB3EFA13A212C400F84C61 /* nav-client.png in Resources */,
-				9DCB3EFB13A212C400F84C61 /* nav-house-selected.png in Resources */,
-				9DCB3EFC13A212C400F84C61 /* nav-house.png in Resources */,
-				9DCB3EFF13A2139700F84C61 /* nav-layout-selected.png in Resources */,
-				9DCB3F0013A2139700F84C61 /* nav-layout.png in Resources */,
-				9DCB3F0313A2148100F84C61 /* nav-addclient-selected.png in Resources */,
-				9DCB3F0413A2148100F84C61 /* nav-addclient.png in Resources */,
-				9DCB3F0713A2151800F84C61 /* nav-calculator-selected.png in Resources */,
-				9DCB3F0813A2151800F84C61 /* nav-calculator.png in Resources */,
-				9DCB3F0A13A2167800F84C61 /* nav-toolbar.png in Resources */,
-				9DCB3F0C13A2179100F84C61 /* nav-sync.png in Resources */,
-				9DCB3F0E13A2184A00F84C61 /* nav-light-button.png in Resources */,
-				9DCB3F1013A21B1900F84C61 /* list-bg.png in Resources */,
-				9DCB3F1213A21F7D00F84C61 /* searchbar.png in Resources */,
-				9DCB3F1513A23A7700F84C61 /* listitem-selected.png in Resources */,
-				9DCB3F1613A23A7700F84C61 /* listitem.png in Resources */,
-				9DCB3F1813A23CF900F84C61 /* clientdetail-bg.png in Resources */,
-				9DCB3F1B13A23F6400F84C61 /* star-on.png in Resources */,
-				9DCB3F1C13A23F6400F84C61 /* star.png in Resources */,
-				9DCB3F1E13A23FB300F84C61 /* clientdetail-seperate.png in Resources */,
-				9DCB3F2013A2406F00F84C61 /* clientdetail-edit-icon.png in Resources */,
-				9DCB3F2613A24CEA00F84C61 /* layoutdetail-bg.png in Resources */,
-				9D4CF3D513A3387800C06B15 /* clientedit-cancel-icon.png in Resources */,
-				9D4CF3D613A3387800C06B15 /* clientedit-done-icon.png in Resources */,
-				9D4CF3DA13A3509F00C06B15 /* profile-field-selected.png in Resources */,
-				9D4CF3DB13A3509F00C06B15 /* profile-field.png in Resources */,
-				9D4CF3DD13A368E400C06B15 /* listitem-title.png in Resources */,
-				9D4CF3DF13A36BED00C06B15 /* stock-detail-bg.png in Resources */,
-				9D4CF3E713A36FA000C06B15 /* housedetail-iconcalculator.png in Resources */,
-				9D4CF3EB13A3794E00C06B15 /* housedetail-forsell.png in Resources */,
-				9D4CF3EC13A3794E00C06B15 /* housedetail-ordered.png in Resources */,
-				9D4CF3ED13A3794E00C06B15 /* housedetail-sold.png in Resources */,
-				9D4CF3EF13A37D9000C06B15 /* calculator-bg.png in Resources */,
-				9D4CF3F113A3927300C06B15 /* calculator-button.png in Resources */,
-				9D4CF3F313A3942600C06B15 /* calculator-cancel.png in Resources */,
-				9D4CF3F513A395EA00C06B15 /* calculator-choose-button.png in Resources */,
-				9D4CF3F713A39B9000C06B15 /* calculator-textfield.png in Resources */,
-				9D4CF3FE13A3ACA700C06B15 /* calculator-segmented-selected.png in Resources */,
-				9D4CF3FF13A3ACA700C06B15 /* calculator-segmented.png in Resources */,
-				9D4CF40213A3AD1E00C06B15 /* layout-nexticon.png in Resources */,
-				9D4CF40313A3AD1E00C06B15 /* layout-previcon.png in Resources */,
-				9D4ADB4113A4ACDF00E6D8B0 /* searchbar-short.png in Resources */,
-				9D4ADB4713A4B5A900E6D8B0 /* PositionPickerController.xib in Resources */,
-				9DC0994B13A4C20900A653DD /* HousePickerController.xib in Resources */,
+				9D6E6F931424750800666955 /* ProfileFieldView.xib in Resources */,
+				9D6E6F941424750800666955 /* ProfileEditView.xib in Resources */,
+				9D6E6F951424750800666955 /* ClientHistoryView.xib in Resources */,
+				9D6E6F961424750800666955 /* StockTableViewCell.xib in Resources */,
+				9D6E6F971424750800666955 /* NumberInputView.xib in Resources */,
+				9D6E6F981424750800666955 /* DownPaymentInputView.xib in Resources */,
+				9D6E6F9C1424751200666955 /* ClientListController.xib in Resources */,
+				9D6E6F9D1424751200666955 /* ClientDetailController.xib in Resources */,
+				9D6E6F9E1424751200666955 /* ClientEditController.xib in Resources */,
+				9D6E6F9F1424751200666955 /* ClientCreateController.xib in Resources */,
+				9D6E6F991424750800666955 /* StockListHeaderView.xib in Resources */,
+				9D6E6F9A1424750800666955 /* HouseItemView.xib in Resources */,
+				9D6E6F9B1424750800666955 /* DiscountInputView.xib in Resources */,
+				9D6E6FA01424751E00666955 /* LayoutListController.xib in Resources */,
+				9D6E6FA11424751E00666955 /* LayoutDetailController.xib in Resources */,
+				9D6E6FA21424751E00666955 /* PictureGalleryController.xib in Resources */,
+				9D6E6FA31424752700666955 /* StockListController.xib in Resources */,
+				9D6E6FA41424752700666955 /* StockDetailController.xib in Resources */,
+				9D6E6FA51424753E00666955 /* LoanCalculatorController.xib in Resources */,
+				9D6E6FA61424753E00666955 /* ClientPickerController.xib in Resources */,
+				9D6E6FA71424753E00666955 /* PositionPickerController.xib in Resources */,
+				9D6E6FA81424753E00666955 /* HousePickerController.xib in Resources */,
+				9D6E6FA91424754700666955 /* LoginViewController.xib in Resources */,
+				9D6E6FAC1424755000666955 /* icon-512.png in Resources */,
+				9D6E6FAA1424754700666955 /* BatchListViewController.xib in Resources */,
+				9D6E6FAB1424754700666955 /* EstateConsultantViewController.xib in Resources */,
+				9D6E6FAD1424755C00666955 /* keyboard.png in Resources */,
+				9D6E6FAE1424755C00666955 /* keyboard-0pct.png in Resources */,
+				9D6E6FAF1424755C00666955 /* keyboard-1pct.png in Resources */,
+				9D6E6FB01424755C00666955 /* keyboard-2pct.png in Resources */,
+				9D6E6FB11424755C00666955 /* keyboard-3pct.png in Resources */,
+				9D6E6FB21424755C00666955 /* keyboard-4pct.png in Resources */,
+				9D6E6FB31424755C00666955 /* keyboard-5pct.png in Resources */,
+				9D6E6FB41424755C00666955 /* keyboard-6pct.png in Resources */,
+				9D6E6FB51424755C00666955 /* keyboard-7pct.png in Resources */,
+				9D6E6FB61424755C00666955 /* keyboard-8pct.png in Resources */,
+				9D6E6FB71424755C00666955 /* keyboard-9pct.png in Resources */,
+				9D6E6FB81424755C00666955 /* keyboard-10pct.png in Resources */,
+				9D6E6FB91424755C00666955 /* keyboard-0.png in Resources */,
+				9D6E6FBA1424755C00666955 /* keyboard-0000.png in Resources */,
+				9D6E6FBB1424755C00666955 /* keyboard-1.png in Resources */,
+				9D6E6FBC1424755C00666955 /* keyboard-2.png in Resources */,
+				9D6E6FBD1424755C00666955 /* keyboard-3.png in Resources */,
+				9D6E70161424757000666955 /* Estate.plist in Resources */,
+				9D6E701E1424757700666955 /* InfoPlist.strings in Resources */,
+				9D6E701F1424757700666955 /* MainWindow.xib in Resources */,
+				9D6E70201424757700666955 /* defaults.zip in Resources */,
+				9D6E70171424757000666955 /* Profile.plist in Resources */,
+				9D6E70181424757000666955 /* Client.plist in Resources */,
+				9D6E70191424757000666955 /* Consultant.plist in Resources */,
+				9D6E701A1424757000666955 /* History.plist in Resources */,
+				9D6E701B1424757000666955 /* House.plist in Resources */,
+				9D6E701C1424757000666955 /* Layout.plist in Resources */,
+				9D6E701D1424757000666955 /* Position.plist in Resources */,
+				9D6E6FCE1424756900666955 /* Default-Landscape.png in Resources */,
+				9D6E6FCF1424756900666955 /* forgetpwd-buttonclick.png in Resources */,
+				9D6E6FD01424756900666955 /* forgetpwd-button.png in Resources */,
+				9D6E6FD11424756900666955 /* scroll-mask-top.png in Resources */,
+				9D6E6FD21424756900666955 /* login-bg.jpg in Resources */,
+				9D6E6FD31424756900666955 /* logo-login.png in Resources */,
+				9D6E6FD41424756900666955 /* signin-inputarea.png in Resources */,
+				9D6E6FD51424756900666955 /* signin-trybutton.png in Resources */,
+				9D6E6FD61424756900666955 /* signin-forgetpwdbutton.png in Resources */,
+				9D6E6FD71424756900666955 /* signin-signinbutton.png in Resources */,
+				9D6E6FD81424756900666955 /* addclient-bg.png in Resources */,
+				9D6E6FD91424756900666955 /* listitem-tick.png in Resources */,
+				9D6E6FDA1424756900666955 /* addclient-button-highlighted.png in Resources */,
+				9D6E6FDB1424756900666955 /* addclient-button.png in Resources */,
+				9D6E6FDC1424756900666955 /* addclient-genderselected.png in Resources */,
+				9D6E6FDD1424756900666955 /* addclient-line.png in Resources */,
+				9D6E6FDE1424756900666955 /* calculator-segmented-selected.png in Resources */,
+				9D6E6FDF1424756900666955 /* calculator-segmented.png in Resources */,
+				9D6E6FE01424756900666955 /* calculator-textfield.png in Resources */,
+				9D6E6FE11424756900666955 /* calculator-textfieldsmall.png in Resources */,
+				9D6E6FE21424756900666955 /* calculator-bg.png in Resources */,
+				9D6E6FE31424756900666955 /* calculator-button.png in Resources */,
+				9D6E6FE41424756900666955 /* housedetail-iconcalculator.png in Resources */,
+				9D6E6FE51424756900666955 /* housedetail-forsell.png in Resources */,
+				9D6E6FE61424756900666955 /* housedetail-ordered.png in Resources */,
+				9D6E6FE71424756900666955 /* housedetail-sold.png in Resources */,
+				9D6E6FE81424756900666955 /* star-on.png in Resources */,
+				9D6E6FE91424756900666955 /* star.png in Resources */,
+				9D6E6FEA1424756900666955 /* searchbar-short.png in Resources */,
+				9D6E6FEB1424756900666955 /* stock-detail-bg.png in Resources */,
+				9D6E6FEC1424756900666955 /* bg.jpg in Resources */,
+				9D6E6FED1424756900666955 /* listitem-title.png in Resources */,
+				9D6E6FEE1424756900666955 /* profile-field-selected.png in Resources */,
+				9D6E6FEF1424756900666955 /* profile-field.png in Resources */,
+				9D6E6FF01424756900666955 /* clientedit-cancel-icon.png in Resources */,
+				9D6E6FF11424756900666955 /* clientedit-done-icon.png in Resources */,
+				9D6E6FF21424756900666955 /* layoutdetail-bg.png in Resources */,
+				9D6E6FF31424756900666955 /* searchbar.png in Resources */,
+				9D6E6FF41424756900666955 /* clientdetail-edit-icon.png in Resources */,
+				9D6E6FF51424756900666955 /* clientdetail-trash-icon.png in Resources */,
+				9D6E6FF61424756A00666955 /* clientdetail-seperate.png in Resources */,
+				9D6E6FF71424756A00666955 /* clientdetail-bg.png in Resources */,
+				9D6E6FF81424756A00666955 /* layout-nexticon.png in Resources */,
+				9D6E6FF91424756A00666955 /* layout-previcon.png in Resources */,
+				9D6E6FFA1424756A00666955 /* listitem-selected.png in Resources */,
+				9D6E6FFB1424756A00666955 /* listitem.png in Resources */,
+				9D6E6FFC1424756A00666955 /* list-bg.png in Resources */,
+				9D6E6FFD1424756A00666955 /* nav-light-button.png in Resources */,
+				9D6E6FFE1424756A00666955 /* nav-toolbar.png in Resources */,
+				9D6E6FFF1424756A00666955 /* nav-sync.png in Resources */,
+				9D6E70001424756A00666955 /* nav-button.png in Resources */,
+				9D6E70011424756A00666955 /* nav-button-bottom.png in Resources */,
+				9D6E70021424756A00666955 /* nav-button-selected.png in Resources */,
+				9D6E70031424756A00666955 /* single-select-button-selected.png in Resources */,
+				9D6E70041424756A00666955 /* single-select-button.png in Resources */,
+				9D6E70051424756A00666955 /* nav-client-selected.png in Resources */,
+				9D6E70061424756A00666955 /* nav-client.png in Resources */,
+				9D6E70071424756A00666955 /* nav-house-selected.png in Resources */,
+				9D6E70081424756A00666955 /* nav-house.png in Resources */,
+				9D6E70091424756A00666955 /* nav-layout-selected.png in Resources */,
+				9D6E700A1424756A00666955 /* nav-layout.png in Resources */,
+				9D6E700B1424756A00666955 /* nav-addclient-selected.png in Resources */,
+				9D6E700C1424756A00666955 /* nav-addclient.png in Resources */,
+				9D6E700D1424756A00666955 /* nav-calculator-selected.png in Resources */,
+				9D6E700E1424756A00666955 /* nav-calculator.png in Resources */,
+				9D6E700F1424756A00666955 /* consultant.png in Resources */,
+				9D6E70101424756A00666955 /* stock.png in Resources */,
+				9D6E70111424756A00666955 /* house.png in Resources */,
+				9D6E70121424756A00666955 /* clients.png in Resources */,
+				9D6E70131424756A00666955 /* calculator-cancel.png in Resources */,
+				9D6E70141424756A00666955 /* calculator-choose-button.png in Resources */,
+				9D6E70151424756A00666955 /* default-avatar.png in Resources */,
+				9D6E6FBE1424755C00666955 /* keyboard-4.png in Resources */,
+				9D6E6FBF1424755C00666955 /* keyboard-5.png in Resources */,
+				9D6E6FC01424755C00666955 /* keyboard-6.png in Resources */,
+				9D6E6FC11424755C00666955 /* keyboard-7.png in Resources */,
+				9D6E6FC21424755C00666955 /* keyboard-8.png in Resources */,
+				9D6E6FC31424755C00666955 /* keyboard-9.png in Resources */,
+				9D6E6FC41424755C00666955 /* keyboard-30.png in Resources */,
+				9D6E6FC51424755C00666955 /* keyboard-40.png in Resources */,
+				9D6E6FC61424755C00666955 /* keyboard-50.png in Resources */,
+				9D6E6FC71424755C00666955 /* keyboard-60.png in Resources */,
+				9D6E6FC81424755C00666955 /* keyboard-70.png in Resources */,
+				9D6E6FC91424755C00666955 /* keyboard-80.png in Resources */,
+				9D6E6FCA1424755C00666955 /* keyboard-90.png in Resources */,
+				9D6E6FCB1424755C00666955 /* keyboard-del.png in Resources */,
+				9D6E6FCC1424755C00666955 /* keyboard-done.png in Resources */,
+				9D6E6FCD1424755C00666955 /* keyboard-reset.png in Resources */,
+				9DFE71201426FBEF0043D57D /* icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9DAEA5B51341CCE80065D815 /* Sources */ = {
+		9D3CCA2113BC6CFB000D6235 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DAEA5CD1341CCE80065D815 /* main.m in Sources */,
-				9DAEA5D01341CCE80065D815 /* EstateConsultantAppDelegate.m in Sources */,
-				9D2DFAFA134457470022F1F0 /* DataProvider.m in Sources */,
-				9D2DFAFD134459A00022F1F0 /* EstateConsultantUtils.m in Sources */,
-				9D7B1377134DA0C4000DDA4D /* ioapi.c in Sources */,
-				9D7B1378134DA0C4000DDA4D /* mztools.c in Sources */,
-				9D7B1379134DA0C4000DDA4D /* unzip.c in Sources */,
-				9D7B137A134DA0C4000DDA4D /* zip.c in Sources */,
-				9D7B137B134DA0C4000DDA4D /* ZipArchive.mm in Sources */,
-				9D2D9B8F1377C392001D4F85 /* ProfileFieldView.m in Sources */,
-				9D5A2411137BC92300F14CFC /* EstateConsultant.xcdatamodeld in Sources */,
-				9DF52511137E5E48008EC8D5 /* ProfileEditView.m in Sources */,
-				9DF52516137EC49F008EC8D5 /* ClientHistoryView.m in Sources */,
-				9D2F100C13824124003C7240 /* ClientDetailController.m in Sources */,
-				9D2F100D13824124003C7240 /* ClientEditController.m in Sources */,
-				9D2F100E13824124003C7240 /* ClientListController.m in Sources */,
-				9D2F101913824150003C7240 /* LayoutViewController.m in Sources */,
-				9D2F101B13824150003C7240 /* StockViewController.m in Sources */,
-				9D2F1020138241AA003C7240 /* LayoutListController.m in Sources */,
-				9D2F1027138257F9003C7240 /* LayoutDetailController.m in Sources */,
-				9DA092751382CBEC00CE4622 /* StockListController.m in Sources */,
-				9D579C9213837254005A3EC4 /* StockDetailController.m in Sources */,
-				9D579CA413839BB3005A3EC4 /* StockTableViewCell.m in Sources */,
-				9D579CA91383BE87005A3EC4 /* ClientCreateController.m in Sources */,
-				9D642EF613850C9500A87D02 /* LoanCalculatorController.m in Sources */,
-				9DB107F613863F5D00190647 /* ClientPickerController.m in Sources */,
-				9D727B731389535600870D79 /* PictureGalleryController.m in Sources */,
-				9D623FBD138CF5220019F1E4 /* NumberInputView.m in Sources */,
-				9DCB5B22138D555F000572E8 /* DownPaymentInputView.m in Sources */,
-				9D60C74E1390D1FF00D95E64 /* EstateConsultantViewController.m in Sources */,
-				9D60C7551390D6D800D95E64 /* StackScrollViewController.m in Sources */,
-				9D60C7701392835F00D95E64 /* ClientViewController.m in Sources */,
-				9D2E257B139B911E00E5FA45 /* SingleSelectControl.m in Sources */,
-				9D2F70A1139F5D0100B0CF81 /* StockListHeaderView.m in Sources */,
-				9D622889139FD96500E9EDFF /* Consultant.m in Sources */,
-				9D62288C139FD96500E9EDFF /* History.m in Sources */,
-				9D62288F139FD96500E9EDFF /* House.m in Sources */,
-				9D622892139FD96500E9EDFF /* ClientProfile.m in Sources */,
-				9D622895139FD96500E9EDFF /* Building.m in Sources */,
-				9D622898139FD96600E9EDFF /* Profile.m in Sources */,
-				9D62289B139FD96600E9EDFF /* Batch.m in Sources */,
-				9D62289E139FD96600E9EDFF /* Layout.m in Sources */,
-				9D6228A1139FD96600E9EDFF /* Position.m in Sources */,
-				9D6228A4139FD96600E9EDFF /* Unit.m in Sources */,
-				9D6228A7139FD96600E9EDFF /* Estate.m in Sources */,
-				9D6228AA139FD96600E9EDFF /* Client.m in Sources */,
-				9DA7D63B13A08D5A0035BBB4 /* HouseItemView.m in Sources */,
-				9D4ADB4613A4B5A900E6D8B0 /* PositionPickerController.m in Sources */,
-				9DC0994A13A4C20900A653DD /* HousePickerController.m in Sources */,
+				9D3CCB7213BC7BD8000D6235 /* EstateConsultant.xcdatamodeld in Sources */,
+				9D3CCB6D13BC7B63000D6235 /* ioapi.c in Sources */,
+				9D3CCB6E13BC7B63000D6235 /* mztools.c in Sources */,
+				9D3CCB6F13BC7B63000D6235 /* unzip.c in Sources */,
+				9D3CCB7013BC7B63000D6235 /* zip.c in Sources */,
+				9D3CCB7113BC7B64000D6235 /* ZipArchive.mm in Sources */,
+				9D3CCB3F13BC7B35000D6235 /* Client.m in Sources */,
+				9D3CCB4013BC7B35000D6235 /* Estate.m in Sources */,
+				9D3CCB4113BC7B35000D6235 /* Unit.m in Sources */,
+				9D3CCB4213BC7B35000D6235 /* Position.m in Sources */,
+				9D3CCB4313BC7B35000D6235 /* Layout.m in Sources */,
+				9D3CCB4413BC7B35000D6235 /* Batch.m in Sources */,
+				9D3CCB4513BC7B35000D6235 /* Profile.m in Sources */,
+				9D3CCB4613BC7B35000D6235 /* Building.m in Sources */,
+				9D3CCB4713BC7B35000D6235 /* ClientProfile.m in Sources */,
+				9D3CCB4813BC7B35000D6235 /* House.m in Sources */,
+				9D3CCB4913BC7B35000D6235 /* History.m in Sources */,
+				9D3CCB4A13BC7B35000D6235 /* Consultant.m in Sources */,
+				9D3CCB4B13BC7B35000D6235 /* DataProvider.m in Sources */,
+				9D3CCB4C13BC7B35000D6235 /* ProfileFieldView.m in Sources */,
+				9D3CCB4D13BC7B35000D6235 /* ProfileEditView.m in Sources */,
+				9D3CCB4E13BC7B35000D6235 /* ClientHistoryView.m in Sources */,
+				9D3CCB4F13BC7B36000D6235 /* StockTableViewCell.m in Sources */,
+				9D3CCB5013BC7B36000D6235 /* NumberInputView.m in Sources */,
+				9D3CCB5113BC7B36000D6235 /* DownPaymentInputView.m in Sources */,
+				9D3CCB5213BC7B36000D6235 /* SingleSelectControl.m in Sources */,
+				9D3CCB5313BC7B36000D6235 /* StockListHeaderView.m in Sources */,
+				9D3CCB5413BC7B36000D6235 /* HouseItemView.m in Sources */,
+				9D3CCB5513BC7B36000D6235 /* DiscountInputView.m in Sources */,
+				9D3CCB5613BC7B36000D6235 /* ClientViewController.m in Sources */,
+				9D3CCB5713BC7B36000D6235 /* ClientListController.m in Sources */,
+				9D3CCB5813BC7B36000D6235 /* ClientDetailController.m in Sources */,
+				9D3CCB5913BC7B36000D6235 /* ClientEditController.m in Sources */,
+				9D3CCB5A13BC7B36000D6235 /* ClientCreateController.m in Sources */,
+				9D3CCB5B13BC7B36000D6235 /* LayoutViewController.m in Sources */,
+				9D3CCB5C13BC7B36000D6235 /* LayoutListController.m in Sources */,
+				9D3CCB5D13BC7B36000D6235 /* LayoutDetailController.m in Sources */,
+				9D3CCB5E13BC7B36000D6235 /* PictureGalleryController.m in Sources */,
+				9D3CCB5F13BC7B36000D6235 /* StockViewController.m in Sources */,
+				9D3CCB6013BC7B36000D6235 /* StockListController.m in Sources */,
+				9D3CCB6113BC7B36000D6235 /* StockDetailController.m in Sources */,
+				9D3CCB6213BC7B36000D6235 /* LoanCalculatorController.m in Sources */,
+				9D3CCB6313BC7B36000D6235 /* ClientPickerController.m in Sources */,
+				9D3CCB6413BC7B36000D6235 /* PositionPickerController.m in Sources */,
+				9D3CCB6513BC7B36000D6235 /* HousePickerController.m in Sources */,
+				9D3CCB6613BC7B36000D6235 /* LoginViewController.m in Sources */,
+				9D3CCB6713BC7B36000D6235 /* BatchListViewController.m in Sources */,
+				9D3CCB6813BC7B36000D6235 /* EstateConsultantViewController.m in Sources */,
+				9D3CCB6913BC7B36000D6235 /* StackScrollViewController.m in Sources */,
+				9D3CCB6A13BC7B36000D6235 /* EstateConsultantAppDelegate.m in Sources */,
+				9D3CCB6B13BC7B36000D6235 /* EstateConsultantUtils.m in Sources */,
+				9D3CCB6C13BC7B36000D6235 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -905,6 +1163,37 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9D3CCA3E13BC6CFB000D6235 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EstateConsultant/EstateConsultant-Prefix.pch";
+				INFOPLIST_FILE = "EstateConsultant/EstateConsultant-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9D3CCA3F13BC6CFB000D6235 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chengdu Xinya Communication Technology Co., Ltd";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EstateConsultant/EstateConsultant-Prefix.pch";
+				INFOPLIST_FILE = "EstateConsultant/EstateConsultant-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1ACBEB67-59F2-4ADB-8CA7-2C9A4035004B";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		9DAEA5D71341CCE80065D815 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -939,51 +1228,23 @@
 			};
 			name = Release;
 		};
-		9DAEA5DA1341CCE80065D815 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EstateConsultant/EstateConsultant-Prefix.pch";
-				INFOPLIST_FILE = "EstateConsultant/EstateConsultant-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		9DAEA5DB1341CCE80065D815 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EstateConsultant/EstateConsultant-Prefix.pch";
-				INFOPLIST_FILE = "EstateConsultant/EstateConsultant-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9D3CCA3D13BC6CFB000D6235 /* Build configuration list for PBXNativeTarget "EstateConsultant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D3CCA3E13BC6CFB000D6235 /* Debug */,
+				9D3CCA3F13BC6CFB000D6235 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9DAEA5B31341CCE80065D815 /* Build configuration list for PBXProject "EstateConsultant" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9DAEA5D71341CCE80065D815 /* Debug */,
 				9DAEA5D81341CCE80065D815 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9DAEA5D91341CCE80065D815 /* Build configuration list for PBXNativeTarget "EstateConsultant" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9DAEA5DA1341CCE80065D815 /* Debug */,
-				9DAEA5DB1341CCE80065D815 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -10,14 +10,17 @@
 #import "DataProvider.h"
 
 
+@class EstateConsultantViewController, SingleSelectControl;
+
 @interface ClientCreateController : UIViewController <UITextFieldDelegate> {
+    EstateConsultantViewController *_rootController;
 }
 
-@property (nonatomic, assign) UIPopoverController *parentPopover;
+@property (nonatomic, assign) EstateConsultantViewController *rootController;
 @property (nonatomic, retain) Consultant *consultant;
 @property (nonatomic, retain) IBOutlet UITextField *nameLabel;
 @property (nonatomic, retain) IBOutlet UITextField *phoneLabel;
-@property (nonatomic, retain) IBOutlet UISegmentedControl *sexSelect;
+@property (nonatomic, retain) IBOutlet SingleSelectControl *sexSelect;
 @property (nonatomic, retain) IBOutlet UIButton *addClientButton;
 
 - (IBAction)addClient:(id)sender;

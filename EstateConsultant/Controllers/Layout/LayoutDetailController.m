@@ -292,7 +292,7 @@
     
     UIApplication *application = [UIApplication sharedApplication];
     EstateConsultantAppDelegate *appDelegate = (EstateConsultantAppDelegate *)[application delegate];
-    UIViewController *rootController = appDelegate.window.rootViewController;
+    UIViewController *rootController = appDelegate.window.rootViewController.modalViewController;
         
     UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
     maskView.backgroundColor = [UIColor blackColor];
@@ -339,7 +339,7 @@
     
     UIApplication *application = [UIApplication sharedApplication];
     EstateConsultantAppDelegate *appDelegate = (EstateConsultantAppDelegate *)[application delegate];
-    UIViewController *rootController = appDelegate.window.rootViewController;
+    UIViewController *rootController = appDelegate.window.rootViewController.modalViewController;
     
     UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 748)];
     maskView.backgroundColor = [UIColor blackColor];

@@ -32,5 +32,6 @@
 
 - (void)filterClients:(NSString *)searchString;
 - (void)selectClient:(Client *)client animated:(Boolean)animated;
+- (IBAction)textFieldDidChange:(UITextField *)sender;
 
 @end

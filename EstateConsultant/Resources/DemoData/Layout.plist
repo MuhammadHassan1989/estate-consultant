@@ -6,65 +6,65 @@
 		<key>batch</key>
 		<integer>1</integer>
 		<key>desc</key>
-		<string>一室一厅一卫</string>
+		<string>3室2厅2卫1厨 </string>
 		<key>floorArea</key>
-		<real>48.18</real>
+		<real>125</real>
 		<key>id</key>
 		<integer>1</integer>
 		<key>name</key>
-		<string>A1</string>
+		<string>J1</string>
 		<key>pics</key>
-		<string>layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg</string>
+		<string>layout-1.jpg;layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg;layout-pic-6.jpg;layout-pic-7.jpg;layout-pic-8.jpg;layout-pic-9.jpg;layout-pic-10.jpg</string>
 		<key>poolArea</key>
-		<real>14.61</real>
+		<integer>0</integer>
 	</dict>
 	<dict>
 		<key>batch</key>
 		<integer>1</integer>
 		<key>desc</key>
-		<string>一室一厅一卫</string>
+		<string>3室2厅1卫1厨</string>
 		<key>floorArea</key>
-		<real>49.56</real>
+		<real>101</real>
 		<key>id</key>
 		<integer>2</integer>
 		<key>name</key>
-		<string>A2</string>
+		<string>J2</string>
 		<key>pics</key>
-		<string>layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg</string>
+		<string>layout-2.jpg;layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg;layout-pic-6.jpg;layout-pic-7.jpg;layout-pic-8.jpg;layout-pic-9.jpg;layout-pic-10.jpg</string>
 		<key>poolArea</key>
-		<real>15.03</real>
+		<integer>0</integer>
 	</dict>
 	<dict>
 		<key>batch</key>
 		<integer>1</integer>
 		<key>desc</key>
-		<string>两室一厅一卫</string>
+		<string>3室2厅2卫1厨</string>
 		<key>floorArea</key>
-		<real>55.23</real>
+		<integer>110</integer>
 		<key>id</key>
 		<integer>3</integer>
 		<key>name</key>
-		<string>A3</string>
+		<string>J3</string>
 		<key>pics</key>
-		<string>layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg</string>
+		<string>layout-3.jpg;layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg;layout-pic-6.jpg;layout-pic-7.jpg;layout-pic-8.jpg;layout-pic-9.jpg;layout-pic-10.jpg</string>
 		<key>poolArea</key>
-		<real>16.75</real>
+		<integer>0</integer>
 	</dict>
 	<dict>
 		<key>batch</key>
 		<integer>1</integer>
 		<key>desc</key>
-		<string>一室一厅一卫</string>
+		<string>4室2厅2卫1厨</string>
 		<key>floorArea</key>
-		<real>47.87</real>
+		<integer>139</integer>
 		<key>id</key>
 		<integer>4</integer>
 		<key>name</key>
-		<string>A4</string>
+		<string>J4</string>
 		<key>pics</key>
-		<string>layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg</string>
+		<string>layout-4.jpg;layout-pic-1.jpg;layout-pic-2.jpg;layout-pic-3.jpg;layout-pic-4.jpg;layout-pic-5.jpg;layout-pic-6.jpg;layout-pic-7.jpg;layout-pic-8.jpg;layout-pic-9.jpg;layout-pic-10.jpg</string>
 		<key>poolArea</key>
-		<real>14.52</real>
+		<integer>0</integer>
 	</dict>
 </array>
 </plist>

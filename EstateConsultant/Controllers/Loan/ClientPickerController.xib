@@ -54,7 +54,6 @@
 						<string key="NSFrame">{{0, 64}, {320, 684}}</string>
 						<reference key="NSSuperview" ref="847584007"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
@@ -77,7 +76,7 @@
 					<object class="IBUITextField" id="359121001">
 						<reference key="NSNextResponder" ref="847584007"/>
 						<int key="NSvFlags">290</int>
-						<string key="NSFrame">{{47, 20}, {235, 30}}</string>
+						<string key="NSFrame">{{47, 20}, {253, 30}}</string>
 						<reference key="NSSuperview" ref="847584007"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="794488495"/>
@@ -164,6 +163,15 @@
 					</object>
 					<int key="connectionID">30</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">textFieldDidChange:</string>
+						<reference key="source" ref="359121001"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">18</int>
+					</object>
+					<int key="connectionID">31</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -224,13 +232,24 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">30</int>
+			<int key="maxID">31</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">ClientPickerController</string>
 					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">textFieldDidChange:</string>
+						<string key="NS.object.0">UITextField</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">textFieldDidChange:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">textFieldDidChange:</string>
+							<string key="candidateClassName">UITextField</string>
+						</object>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="searchField">UITextField</string>
 						<string key="searchFieldBackground">UIImageView</string>

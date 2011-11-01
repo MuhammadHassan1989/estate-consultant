@@ -213,24 +213,26 @@ static DataProvider *sharedProvider = nil;
             NSArray *buildings = [batch valueForKey:@"buildings"];
             NSInteger buildingID = 1;
             for (NSArray *building in buildings) {
-                Building *newBuilding = [NSEntityDescription insertNewObjectForEntityForName:@"Building"
+                if ( building.count > 0 ) {
+                    Building *newBuilding = [NSEntityDescription insertNewObjectForEntityForName:@"Building"
+                                                                          inManagedObjectContext:moc];
+                    newBuilding.number = [NSNumber numberWithInteger:buildingID];
+                    newBuilding.batch = newBatch;
+                    NSInteger unitID = 1;
+                    for (NSArray *units in building) {
+                        Unit *newUnit = [NSEntityDescription insertNewObjectForEntityForName:@"Unit"
                                                                       inManagedObjectContext:moc];
-                newBuilding.number = [NSNumber numberWithInteger:buildingID];
-                newBuilding.batch = newBatch;
-                NSInteger unitID = 1;
-                for (NSArray *units in building) {
-                    Unit *newUnit = [NSEntityDescription insertNewObjectForEntityForName:@"Unit"
-                                                                  inManagedObjectContext:moc];
-                    newUnit.number = [NSNumber numberWithInteger:unitID];
-                    newUnit.building = newBuilding;
-                    for (NSDictionary *position in units) {
-                        Position *newPosition = [NSEntityDescription insertNewObjectForEntityForName:@"Position"
-                                                                              inManagedObjectContext:moc];
-                        newPosition.name = [position valueForKey:@"name"];
-                        newPosition.positionID = [position valueForKey:@"id"];
-                        newPosition.unit = newUnit;
+                        newUnit.number = [NSNumber numberWithInteger:unitID];
+                        newUnit.building = newBuilding;
+                        for (NSDictionary *position in units) {
+                            Position *newPosition = [NSEntityDescription insertNewObjectForEntityForName:@"Position"
+                                                                                  inManagedObjectContext:moc];
+                            newPosition.name = [position valueForKey:@"name"];
+                            newPosition.positionID = [position valueForKey:@"id"];
+                            newPosition.unit = newUnit;
+                        }
+                        unitID++;
                     }
-                    unitID++;
                 }
                 
                 buildingID++;
